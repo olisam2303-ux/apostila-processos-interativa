@@ -136,6 +136,8 @@ nav#sidebar {
 }
 .bim-head .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); flex: 0 0 8px; }
 .bim-head.done .dot { background: var(--ok); }
+.bim-pts { margin-left: auto; font-family: "Fredoka"; font-size: 11px; color: var(--text-dim); background: var(--panel-2); padding: 2px 8px; border-radius: 10px; letter-spacing: 0; text-transform: none; }
+.bim-score { font-weight: 600; color: var(--accent); font-size: 13px; margin: 0 0 12px; }
 .mod { margin-bottom: 4px; border-radius: 10px; overflow: hidden; }
 .mod-title {
   font-weight: 600; font-size: 13px; padding: 9px 10px; background: var(--panel-2); cursor: pointer;
@@ -147,6 +149,8 @@ nav#sidebar {
 }
 .mod-node.done { background: var(--ok); border-color: var(--ok); color: #fff; }
 .mod-node.current { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 0 0 4px var(--accent-soft); }
+.mod-node.locked { background: var(--panel-2); border-color: var(--border); color: var(--text-dim); opacity: .55; }
+.mod.locked .mod-title { cursor: not-allowed; opacity: .65; }
 .mod-title .mt-title { flex: 1; }
 .mod-title .mt-pct { font-size: 10.5px; color: var(--text-dim); font-family: "Fredoka"; }
 .mod-screens { list-style: none; margin: 4px 0 0; padding: 0; }
@@ -275,6 +279,8 @@ footer.bottomnav .center-label { font-size: 12px; color: var(--text-dim); text-a
 }
 .map-node.done .circ { background: var(--ok); border-color: var(--ok); color: #fff; }
 .map-node.current .circ { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 0 0 5px var(--accent-soft); }
+.map-node.locked { cursor: not-allowed; }
+.map-node.locked .circ { background: var(--panel-2); border-color: var(--border); color: var(--text-dim); opacity: .55; }
 .map-node .lbl { font-size: 10.5px; text-align: center; color: var(--text-dim); line-height: 1.25; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6320,6 +6326,37 @@ function isModuleFullyVisited(wid, s) {
   const mi = MODULES.indexOf(mod);
   return mod.screens.every((sc,si)=> s.visited[mi+'-'+si]);
 }
+function isModuleUnlocked(mi) {
+  for (const b in BIMESTRE_INFO) {
+    const weeks = BIMESTRE_INFO[b].weeks;
+    const idx = weeks.findIndex(wid => MODULES.findIndex(m=>m.id===wid)===mi);
+    if (idx === -1) continue;
+    if (idx === 0) return true;
+    return isModuleFullyVisited(weeks[idx-1], state);
+  }
+  return true;
+}
+function bimestreScore(b) {
+  const weeks = BIMESTRE_INFO[b].weeks;
+  let totalItems = 0, doneItems = 0;
+  weeks.forEach(wid => {
+    const mi = MODULES.findIndex(m=>m.id===wid);
+    if (mi<0) return;
+    const mod = MODULES[mi];
+    mod.screens.forEach((scr, si) => {
+      if (scr.type === 'quiz') {
+        totalItems += scr.data.questions.length;
+        const answered = state.quizAnswers[mod.id+'_'+scr.id] || {};
+        doneItems += Object.values(answered).filter(a=>a && a.correct).length;
+      } else if (scr.type === 'practice' || scr.type === 'activity') {
+        totalItems += 1;
+        if (state.visited[mi+'-'+si]) doneItems += 1;
+      }
+    });
+  });
+  const pts = totalItems ? Math.round((doneItems/totalItems)*10*10)/10 : 0;
+  return { pts, doneItems, totalItems };
+}
 function bimestreDone(b, s) {
   const weeks = BIMESTRE_INFO[b].weeks;
   return weeks.every(wid => isModuleFullyVisited(wid, s));
@@ -6571,29 +6608,36 @@ function buildSidebar() {
   [1,2,3].forEach(b => {
     const info = BIMESTRE_INFO[b];
     const group = el('div','bim-group');
-    const head = el('div','bim-head'+(bimestreDone(b,state)?' done':''), '<span class="dot"></span><span>'+esc(info.title)+'</span>');
+    const score = bimestreScore(b);
+    const head = el('div','bim-head'+(bimestreDone(b,state)?' done':''), '<span class="dot"></span><span>'+esc(info.title)+'</span><span class="bim-pts">'+score.pts+'/10</span>');
     group.appendChild(head);
     info.weeks.forEach(wid => {
       const mi = MODULES.findIndex(m=>m.id===wid);
       if (mi<0) return;
       const mod = MODULES[mi];
       const prog = moduleProgress(mi);
-      const wrap = el('div','mod');
-      const nodeCls = prog.pct===100 ? 'done' : (mi===state.moduleIndex ? 'current' : '');
+      const unlocked = isModuleUnlocked(mi);
+      const wrap = el('div','mod'+(unlocked?'':' locked'));
+      const nodeCls = !unlocked ? 'locked' : (prog.pct===100 ? 'done' : (mi===state.moduleIndex ? 'current' : ''));
       const h = el('div','mod-title');
-      h.innerHTML = '<span class="mod-node '+nodeCls+'">'+(prog.pct===100?icon('check'):(wid.replace('s','')))+'</span>'+
+      h.innerHTML = '<span class="mod-node '+nodeCls+'">'+(!unlocked?icon('lock'):(prog.pct===100?icon('check'):(wid.replace('s',''))))+'</span>'+
         '<span class="mt-title">'+esc(mod.title.replace(/^Semana \d+ — /,''))+'</span>'+
-        '<span class="mt-pct">'+prog.pct+'%</span>';
+        '<span class="mt-pct">'+(unlocked?prog.pct+'%':'')+'</span>';
       const ul = el('ul','mod-screens');
-      mod.screens.forEach((scr, si) => {
-        const key = mi+'-'+si;
-        const li = el('li','', '<span class="stype">'+icon(SCREEN_META[scr.type].icon)+'</span><span>'+esc(scr.title)+'</span>'+(state.visited[key]?'<span class="chk">'+icon('check')+'</span>':''));
-        li.dataset.mi = mi; li.dataset.si = si;
-        li.addEventListener('click', () => { state.view='lesson'; goTo(mi, si); });
-        ul.appendChild(li);
+      if (unlocked) {
+        mod.screens.forEach((scr, si) => {
+          const key = mi+'-'+si;
+          const li = el('li','', '<span class="stype">'+icon(SCREEN_META[scr.type].icon)+'</span><span>'+esc(scr.title)+'</span>'+(state.visited[key]?'<span class="chk">'+icon('check')+'</span>':''));
+          li.dataset.mi = mi; li.dataset.si = si;
+          li.addEventListener('click', () => { state.view='lesson'; goTo(mi, si); });
+          ul.appendChild(li);
+        });
+      }
+      ul.style.display = (unlocked && mi===state.moduleIndex && state.view==='lesson') ? '' : 'none';
+      h.addEventListener('click', () => {
+        if (!unlocked) { toast('Termine a semana anterior para desbloquear esta.'); return; }
+        ul.style.display = ul.style.display==='none' ? '' : 'none';
       });
-      ul.style.display = (mi===state.moduleIndex && state.view==='lesson') ? '' : 'none';
-      h.addEventListener('click', () => { ul.style.display = ul.style.display==='none' ? '' : 'none'; });
       wrap.appendChild(h); wrap.appendChild(ul);
       group.appendChild(wrap);
     });
@@ -6617,17 +6661,23 @@ function renderMap() {
   [1,2,3].forEach(b => {
     const info = BIMESTRE_INFO[b];
     const box = el('div','map-bim');
+    const score = bimestreScore(b);
     box.appendChild(el('h3','', esc(info.title)));
     box.appendChild(el('p','', bimestreDone(b,state) ? 'Concluído — parabéns!' : 'Continue avançando pelas semanas.'));
+    box.appendChild(el('p','bim-score','Pontuação: '+score.pts+' / 10'));
     const trail = el('div','map-trail');
     info.weeks.forEach(wid => {
       const mi = MODULES.findIndex(m=>m.id===wid);
       if (mi<0) return;
       const prog = moduleProgress(mi);
-      const cls = prog.pct===100 ? 'done' : (mi===state.moduleIndex ? 'current' : '');
+      const unlocked = isModuleUnlocked(mi);
+      const cls = !unlocked ? 'locked' : (prog.pct===100 ? 'done' : (mi===state.moduleIndex ? 'current' : ''));
       const node = el('div','map-node '+cls);
-      node.innerHTML = '<div class="circ">'+(prog.pct===100?icon('check'):wid.replace('s',''))+'</div><div class="lbl">'+esc(MODULES[mi].title.replace(/^Semana \d+ — /,'').slice(0,26))+'</div>';
-      node.addEventListener('click', () => { state.view='lesson'; goTo(mi, 0); });
+      node.innerHTML = '<div class="circ">'+(!unlocked?icon('lock'):(prog.pct===100?icon('check'):wid.replace('s','')))+'</div><div class="lbl">'+esc(MODULES[mi].title.replace(/^Semana \d+ — /,'').slice(0,26))+'</div>';
+      node.addEventListener('click', () => {
+        if (!unlocked) { toast('Termine a semana anterior para desbloquear esta.'); return; }
+        state.view='lesson'; goTo(mi, 0);
+      });
       trail.appendChild(node);
     });
     box.appendChild(trail);
@@ -6668,6 +6718,7 @@ function updateFooter() {
 
 let justEarnedXP = 0;
 function goTo(mi, si) {
+  if (!isModuleUnlocked(mi)) { toast('Termine a semana anterior para desbloquear esta.'); return; }
   const key = mi+'-'+si;
   const alreadyVisited = !!state.visited[key];
   state.moduleIndex = mi; state.screenIndex = si; state.view = 'lesson';
