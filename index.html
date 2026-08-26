@@ -2420,7 +2420,16 @@ const BATCH_B = [
 <li>Canal de entrega: envio da atividade por meio do AVA.</li>
 </ol>
 <p>Situação fictícia produzida pela SEDUC-SP.</p>`,
-          dica: `Modelo de resposta sugerido: Assunto: Re: Refinar Requisitos — Módulo de Relatórios. Corpo: "Oi, Juliana, tudo bem? Obrigado pelo direcionamento. Para garantir prazo e valor, propomos alinhar alguns pontos: S: Quais visões são necessárias além de 'por mês'? Precisamos também da visualização por região, produto ou canal? M: O que significa 'rápido' para a diretoria (ex.: tempo de geração ≤ 5 s para 95% dos casos)? A: Há limitação de dados (ex.: histórico de 24 meses)? Quais são as fontes oficiais? R: Quais decisões a diretoria tomará com base no relatório? Quais KPIs são críticos (ex.: receita, margem e volume)? T: Há prazo para uma primeira versão (ex.: até 10 dias)? Qual é a janela de uso (ex.: reunião semanal)? Proposta de requisito (versão SMART): 'O sistema deve gerar um relatório de vendas mensal com filtros por período (últimos 24 meses) e região, apresentando receita total, volume e margem. O relatório deve ser gerado em até 5 segundos para bases de até 5 milhões de registros e permitir exportação em PDF e XLSX.'"`
+          gabarito: `<p><strong>Modelo de resposta sugerido</strong> — Assunto: Re: Refinar Requisitos — Módulo de Relatórios.</p>
+<p>Corpo: "Oi, Juliana, tudo bem? Obrigado pelo direcionamento. Para garantir prazo e valor, propomos alinhar alguns pontos:"</p>
+<ul>
+<li><strong>S:</strong> Quais visões são necessárias além de "por mês"? Precisamos também da visualização por região, produto ou canal?</li>
+<li><strong>M:</strong> O que significa "rápido" para a diretoria (ex.: tempo de geração ≤ 5 s para 95% dos casos)?</li>
+<li><strong>A:</strong> Há limitação de dados (ex.: histórico de 24 meses)? Quais são as fontes oficiais?</li>
+<li><strong>R:</strong> Quais decisões a diretoria tomará com base no relatório? Quais KPIs são críticos (ex.: receita, margem e volume)?</li>
+<li><strong>T:</strong> Há prazo para uma primeira versão (ex.: até 10 dias)? Qual é a janela de uso (ex.: reunião semanal)?</li>
+</ul>
+<p><strong>Proposta de requisito (versão SMART):</strong> "O sistema deve gerar um relatório de vendas mensal com filtros por período (últimos 24 meses) e região, apresentando receita total, volume e margem. O relatório deve ser gerado em até 5 segundos para bases de até 5 milhões de registros e permitir exportação em PDF e XLSX."</p>`
         },
         quiz: [
           {
@@ -2521,7 +2530,15 @@ const BATCH_B = [
 </ul>
 <p><strong>Execução</strong> – Revisem o requisito. O Revisor conduz uma leitura em pares, usando o checklist de qualidade (SMART, completo, testável etc.). Ele deve fazer perguntas ao autor para encontrar as lacunas do requisito. O autor responde acrescentando os detalhes que faltam.</p>
 <p><strong>Objetivo</strong> – Aprimorem o requisito. No final, o requisito simples e vago deve ser transformado em uma especificação mais rica e detalhada. Anotem as versões melhoradas e mostrem para o(a) professor(a) da turma.</p>`,
-          dica: `Diálogo simulado de exemplo: Revisor: "Ok, 'O sistema deve permitir o cadastro de novos produtos'. Específico. Mas está completo? O que eu preciso informar para cadastrar um produto? É só o nome?" Autor: "Ah, claro. Precisa do nome, preço e quantidade em estoque." Revisor: "Certo. E o preço? Pode ser negativo? Quantas casas decimais? E a quantidade? Pode ser zero?" Autor: "Boa pergunta. O preço não pode ser negativo. A quantidade pode ser zero. Vou adicionar isso." Revisor: "E quem pode cadastrar? Qualquer usuário ou só o administrador?" Autor: "Apenas administradores." Revisor: "Ótimo. E o que acontece depois que eu clico em 'Salvar'? Eu recebo uma mensagem de sucesso? Sou redirecionado para a lista de produtos?" Autor: "Hmm, não pensei nisso. Vamos definir que uma mensagem de 'Produto cadastrado com sucesso!' deve aparecer."`
+          gabarito: `<p><strong>Diálogo simulado de exemplo:</strong></p>
+<p><strong>Revisor:</strong> "Ok, 'O sistema deve permitir o cadastro de novos produtos'. Específico. Mas está completo? O que eu preciso informar para cadastrar um produto? É só o nome?"<br>
+<strong>Autor:</strong> "Ah, claro. Precisa do nome, preço e quantidade em estoque."<br>
+<strong>Revisor:</strong> "Certo. E o preço? Pode ser negativo? Quantas casas decimais? E a quantidade? Pode ser zero?"<br>
+<strong>Autor:</strong> "Boa pergunta. O preço não pode ser negativo. A quantidade pode ser zero. Vou adicionar isso."<br>
+<strong>Revisor:</strong> "E quem pode cadastrar? Qualquer usuário ou só o administrador?"<br>
+<strong>Autor:</strong> "Apenas administradores."<br>
+<strong>Revisor:</strong> "Ótimo. E o que acontece depois que eu clico em 'Salvar'? Eu recebo uma mensagem de sucesso? Sou redirecionado para a lista de produtos?"<br>
+<strong>Autor:</strong> "Hmm, não pensei nisso. Vamos definir que uma mensagem de 'Produto cadastrado com sucesso!' deve aparecer."</p>`
         },
         quiz: [
           {
@@ -2846,7 +2863,12 @@ const BATCH_B = [
 <p><strong>Solicitação 3 (de um Analista de Suporte):</strong> "Adicionar um link para a página de 'Termos e Condições' no rodapé do site. Alguns usuários perguntam onde encontrar essa informação."</p>
 <p>Para cada solicitação, defina: Impacto (?), Esforço (?), Ação Recomendada (?).</p>
 <p>Situação fictícia produzida pela SEDUC-SP.</p>`,
-          dica: `Matriz Impacto vs. Esforço: Quadrante Alto Impacto/Baixo Esforço = "Ouro! Façam isso agora." Quadrante Alto Impacto/Alto Esforço = "Grandes projetos. Precisam de planejamento cuidadoso." Quadrante Baixo Impacto/Baixo Esforço = "Tarefas de preenchimento. Façam quando sobrar tempo." Quadrante Baixo Impacto/Alto Esforço = "Ralos de tempo. Questionem se devem ser feitos." Gabarito: Solicitação 1 — Impacto Alto, Esforço Baixo, Ação: Fazer Agora/Prioridade Máxima. Solicitação 2 — Impacto Alto, Esforço Alto, Ação: Planejar como um Grande Projeto. Solicitação 3 — Impacto Baixo, Esforço Baixo, Ação: Fazer quando houver tempo/Encaixar no final do ciclo.`
+          dica: `Matriz Impacto vs. Esforço — Alto Impacto/Baixo Esforço: "Ouro! Façam isso agora." Alto Impacto/Alto Esforço: "Grandes projetos, precisam de planejamento cuidadoso." Baixo Impacto/Baixo Esforço: "Tarefas de preenchimento, façam quando sobrar tempo." Baixo Impacto/Alto Esforço: "Ralos de tempo, questionem se devem ser feitos."`,
+          gabarito: `<ul>
+<li><strong>Solicitação 1:</strong> Impacto Alto, Esforço Baixo — Ação: Fazer agora / prioridade máxima.</li>
+<li><strong>Solicitação 2:</strong> Impacto Alto, Esforço Alto — Ação: Planejar como um grande projeto.</li>
+<li><strong>Solicitação 3:</strong> Impacto Baixo, Esforço Baixo — Ação: Fazer quando houver tempo / encaixar no final do ciclo.</li>
+</ul>`
         },
         quiz: [
           {
@@ -3985,7 +4007,13 @@ print("Gráficos gerados automaticamente pelo Robô Analista!")</code></pre>
 <li>Um aluno faz o papel do cliente, outro do PO (Product Owner).</li>
 <li>Simulem uma demo de 3 minutos, onde o time explica o que foi entregue e coleta feedback.</li>
 </ul>`,
-          dica: `Resposta sugerida: História: Visualizar notas. Critérios: listar notas por disciplina, total de faltas e média final. DoD: código testado, revisado e apresentado ao PO. Feedback: cliente sugere incluir legenda de cores para médias.`
+          gabarito: `<p><strong>Resposta sugerida:</strong></p>
+<ul>
+<li><strong>História:</strong> Visualizar notas.</li>
+<li><strong>Critérios:</strong> listar notas por disciplina, total de faltas e média final.</li>
+<li><strong>DoD:</strong> código testado, revisado e apresentado ao PO.</li>
+<li><strong>Feedback:</strong> cliente sugere incluir legenda de cores para médias.</li>
+</ul>`
         },
         quiz: [
           {
@@ -4302,7 +4330,13 @@ const BATCH_D = [
 </ul>
 <p>Agora, reflita e responda: qual dessas alternativas você entende ser a ideal para esse contexto de entrega "sob pressão"?</p>
 <p><em>Situação fictícia produzida pela SEDUC-SP.</em></p>`,
-          dica: `Espera-se que o aluno reconheça como postura mais responsável a ação baseada em transparência e dados reais de produtividade, oferecendo alternativas viáveis em vez de uma promessa arriscada. É esperado que compreenda que: dizer "sim" sem base técnica aumenta o risco de atraso e erros; usar métricas como Velocity ajuda a tomar decisões mais seguras; oferecer alternativas demonstra maturidade profissional; responsabilidade também é saber negociar prazos, não apenas aceitar desafios.`
+          gabarito: `<p>Espera-se que o aluno reconheça como postura mais responsável a ação baseada em transparência e dados reais de produtividade, oferecendo alternativas viáveis em vez de uma promessa arriscada. É esperado que compreenda que:</p>
+<ul>
+<li>dizer "sim" sem base técnica aumenta o risco de atraso e erros;</li>
+<li>usar métricas como Velocity ajuda a tomar decisões mais seguras;</li>
+<li>oferecer alternativas demonstra maturidade profissional;</li>
+<li>responsabilidade também é saber negociar prazos, não apenas aceitar desafios.</li>
+</ul>`
         },
         quiz: [
           {
@@ -4460,11 +4494,33 @@ const BATCH_D = [
         ],
         colocandoEmPratica: {
           enunciado: `<p><strong>Análise de Cumulative Flow Diagrams (CFD).</strong> Você assumiu a função de Scrum Master na DevFlow, uma empresa com quarenta funcionários. Ao analisar o quadro de gestão visual, você se deparou com os dados dos Cumulative Flow Diagrams (CFD) dos últimos sprints.</p>
-<p>Sua missão: analisar os cenários a seguir e, para cada um, preencher o relatório de diagnóstico, respondendo: Problema (o que está travando o fluxo?); Risco (o que pode acontecer se nada for feito?); Violação (qual boa prática, ex.: WIP Limit, Fluxo Contínuo, foi ignorada?); Recomendação (qual ação prática deve ser tomada?); Responsável (quem deve agir: SM, Time, PO?).</p>
+<p>Sua missão: analisar os cenários a seguir e, para cada um, preencher o relatório de diagnóstico, respondendo aos cinco pontos:</p>
+<ul>
+<li><strong>Problema:</strong> o que está travando o fluxo?</li>
+<li><strong>Risco:</strong> o que pode acontecer se nada for feito?</li>
+<li><strong>Violação:</strong> qual boa prática (ex.: WIP Limit, Fluxo Contínuo) foi ignorada?</li>
+<li><strong>Recomendação:</strong> qual ação prática deve ser tomada?</li>
+<li><strong>Responsável:</strong> quem deve agir (SM, Time, PO)?</li>
+</ul>
 <p><strong>Cenário 1: O gargalo invisível.</strong> Dados do Sprint 30: a faixa de Code Review começou com três tarefas (Dia 1) e terminou com doze tarefas (Dia 15), tornando-se cada vez mais larga. Enquanto isso, a faixa de Done cresceu muito devagar. Sintoma: as tarefas chegam em revisão mais rápido do que são aprovadas.</p>
 <p><strong>Cenário 2: A ilusão de produtividade.</strong> Dados do Sprint 31: a faixa de Doing ocupou 40% do gráfico durante todo o sprint, mantendo mais de 25 tarefas em andamento simultaneamente para um time pequeno. Poucas tarefas chegaram ao Done.</p>
 <p><em>Atividade em grupo, durante a aula, 40 minutos, com envio de arquivo para o AVA.</em></p>`,
-          dica: `Cenário 1 — Problema: acúmulo de tarefas em Code Review, indicando gargalo nesse estágio. Risco: aumento do lead time, atrasos nas entregas e frustração do time por muito trabalho parado. Violação: falta de controle de WIP em Code Review e ausência de balanceamento do fluxo. Recomendação: definir limite de WIP para Code Review e priorizar revisões antes de iniciar novas tarefas. Responsável: o Scrum Master em conjunto com o time de desenvolvimento. Cenário 2 — Problema: WIP excessivo no estágio Doing com muitas tarefas em andamento simultaneamente. Risco: aumento do lead time, queda de qualidade e baixa previsibilidade das entregas. Violação: ignorar limite de WIP e o princípio de "terminar antes de começar". Recomendação: reduzir o WIP em Doing e concentrar-se em concluir tarefas antes de iniciar novas. Responsável: o time de desenvolvimento com apoio do Scrum Master.`
+          gabarito: `<p><strong>Cenário 1 — O gargalo invisível:</strong></p>
+<ul>
+<li><strong>Problema:</strong> acúmulo de tarefas em Code Review, indicando gargalo nesse estágio.</li>
+<li><strong>Risco:</strong> aumento do lead time, atrasos nas entregas e frustração do time por muito trabalho parado.</li>
+<li><strong>Violação:</strong> falta de controle de WIP em Code Review e ausência de balanceamento do fluxo.</li>
+<li><strong>Recomendação:</strong> definir limite de WIP para Code Review e priorizar revisões antes de iniciar novas tarefas.</li>
+<li><strong>Responsável:</strong> o Scrum Master em conjunto com o time de desenvolvimento.</li>
+</ul>
+<p><strong>Cenário 2 — A ilusão de produtividade:</strong></p>
+<ul>
+<li><strong>Problema:</strong> WIP excessivo no estágio Doing, com muitas tarefas em andamento simultaneamente.</li>
+<li><strong>Risco:</strong> aumento do lead time, queda de qualidade e baixa previsibilidade das entregas.</li>
+<li><strong>Violação:</strong> ignorar o limite de WIP e o princípio de "terminar antes de começar".</li>
+<li><strong>Recomendação:</strong> reduzir o WIP em Doing e concentrar-se em concluir tarefas antes de iniciar novas.</li>
+<li><strong>Responsável:</strong> o time de desenvolvimento, com apoio do Scrum Master.</li>
+</ul>`
         },
         quiz: [
           {
@@ -4627,7 +4683,13 @@ const BATCH_D = [
 <ol>
 <li>DO (Execução simulada — 5 min): o grupo descreve ao professor (que atuará como o "Sistema/Ambiente") exatamente o que farão. O professor fornecerá o output (resultado) da ação.</li>
 <li>CHECK (Verificação de métricas — 5 min): o grupo analisa o output fornecido pelo professor, confrontando-o com a hipótese inicial. Análise de variância: o resultado alcançou a métrica de sucesso? Ocorreram efeitos colaterais não previstos? (Ex.: o script funcionou, mas exigiu permissão de administrador que ninguém tem.)</li>
-<li>ACT (Padronização ou ajuste — 5 min): com base nos dados, o grupo deve tomar uma decisão gerencial: Padronizar (Standardize) — o experimento funcionou, a solução torna-se o novo padrão oficial da equipe; Adaptar (Pivot) — a hipótese estava parcialmente correta, mas requer ajustes, um novo ciclo PDCA se inicia; Abandonar (Abort) — o custo da solução superou o benefício, a hipótese é descartada.</li>
+<li>ACT (Padronização ou ajuste — 5 min): com base nos dados, o grupo deve tomar uma decisão gerencial:
+<ul>
+<li>Padronizar (Standardize): o experimento funcionou. A solução torna-se o novo padrão oficial da equipe.</li>
+<li>Adaptar (Pivot): a hipótese estava parcialmente correta, mas requer ajustes. Um novo ciclo PDCA se inicia.</li>
+<li>Abandonar (Abort): o custo da solução superou o benefício. A hipótese é descartada.</li>
+</ul>
+</li>
 </ol>
 <p><strong>Perguntas de consolidação (pós-atividade):</strong></p>
 <ul>
@@ -4894,7 +4956,14 @@ const BATCH_D = [
 <p>Nesse contexto, fica claro que trabalhar de forma ágil vai além de seguir processos: envolve atitudes de colaboração, respeito e responsabilidade, valorizando o papel de cada integrante.</p>
 <p><em>Situação fictícia produzida pela SEDUC-SP.</em></p>
 <p>Pense sobre a situação apresentada e reflita: como você costuma agir quando trabalha em equipe e existem funções diferentes? Por que respeitar o papel e a responsabilidade de cada pessoa é importante para o grupo? O que você faz quando há opiniões diferentes sobre como realizar uma tarefa? Quais atitudes demonstram colaboração em um trabalho coletivo? Como suas escolhas podem contribuir para um ambiente de trabalho mais cooperativo e produtivo?</p>`,
-          dica: `Espera-se que os alunos reconheçam a importância da colaboração para o sucesso do trabalho em equipe; demonstrem respeito às diferentes funções e responsabilidades do grupo; identifiquem atitudes positivas diante de divergências; compreendam que responsabilidade individual impacta o desempenho coletivo; relacionem colaboração e respeito à entrega de melhores resultados.`
+          gabarito: `<p>Espera-se que os alunos:</p>
+<ul>
+<li>reconheçam a importância da colaboração para o sucesso do trabalho em equipe;</li>
+<li>demonstrem respeito às diferentes funções e responsabilidades do grupo;</li>
+<li>identifiquem atitudes positivas diante de divergências;</li>
+<li>compreendam que responsabilidade individual impacta o desempenho coletivo;</li>
+<li>relacionem colaboração e respeito à entrega de melhores resultados.</li>
+</ul>`
         },
         quiz: [
           {
@@ -5054,7 +5123,7 @@ const BATCH_E = [
 <p><strong>O QUE FAZER</strong></p>
 <p>Sua equipe deve, em modelo Kanban ou em lista:</p>
 <ul><li>Definir quais itens entram na sprint;</li><li>Organizar os itens selecionados (pode ser em formato de lista ou Kanban);</li><li>Definir um Sprint Goal claro e coerente;</li><li>Justificar brevemente as escolhas da equipe.</li></ul>`,
-          dica: `FICA A DICA: considerem a prioridade dos itens do backlog, a complexidade de cada tarefa (discutam em grupo) e a capacidade disponível da equipe. (Em grupos, 15 minutos, durante a aula.)`
+          dica: `Considerem a prioridade dos itens do backlog, a complexidade de cada tarefa (discutam em grupo) e a capacidade disponível da equipe. (Em grupos, 15 minutos, durante a aula.)`
         },
         quiz: [
           {
@@ -6346,6 +6415,16 @@ function renderPractice(body, mod, screen) {
     card.appendChild(dica);
   }
   body.appendChild(card);
+  if (d.gabarito) {
+    const toggle = el('button','gabarito-toggle', icon('eye')+'Ver orientações do professor');
+    const box = el('div','gabarito-box card');
+    const gwrap = document.createElement('div');
+    gwrap.innerHTML = d.gabarito;
+    box.appendChild(gwrap);
+    toggle.addEventListener('click', () => { box.classList.toggle('open'); toggle.innerHTML = box.classList.contains('open') ? 'Ocultar orientações do professor' : icon('eye')+'Ver orientações do professor'; });
+    body.appendChild(toggle);
+    body.appendChild(box);
+  }
 }
 
 function renderActivity(body, mod, screen) {
