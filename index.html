@@ -153,6 +153,8 @@ nav#sidebar {
 .mod.locked .mod-title { cursor: not-allowed; opacity: .65; }
 .mod-title .mt-title { flex: 1; }
 .mod-title .mt-pct { font-size: 10.5px; color: var(--text-dim); font-family: "Fredoka"; }
+.mod-deadline { font-size: 10.5px; padding: 3px 10px 6px 40px; color: var(--text-dim); font-family: "Fredoka"; }
+.mod-deadline.overdue { color: var(--err); font-weight: 600; }
 .mod-screens { list-style: none; margin: 4px 0 0; padding: 0; }
 .mod-screens li {
   padding: 7px 10px 7px 40px; font-size: 12.5px; color: var(--text-dim); cursor: pointer; border-radius: 8px;
@@ -282,6 +284,8 @@ footer.bottomnav .center-label { font-size: 12px; color: var(--text-dim); text-a
 .map-node.locked { cursor: not-allowed; }
 .map-node.locked .circ { background: var(--panel-2); border-color: var(--border); color: var(--text-dim); opacity: .55; }
 .map-node .lbl { font-size: 10.5px; text-align: center; color: var(--text-dim); line-height: 1.25; }
+.map-node .lbl .dl { display: block; font-family: "Fredoka"; margin-top: 2px; }
+.map-node .lbl .dl.overdue { color: var(--err); font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
@@ -6289,7 +6293,7 @@ const ICONS = {
    ESTADO / GAMIFICAÇÃO
    ========================================================= */
 const STORAGE_KEY = 'jornadaProcessos_v1';
-const DEFAULT_STATE = { moduleIndex:0, screenIndex:0, visited:{}, quizAnswers:{}, xp:0, streak:0, bestStreak:0, badges:{}, view:'lesson' };
+const DEFAULT_STATE = { moduleIndex:0, screenIndex:0, visited:{}, quizAnswers:{}, xp:0, streak:0, bestStreak:0, badges:{}, view:'lesson', unlockDates:{} };
 function loadState() {
   try { const raw = localStorage.getItem(STORAGE_KEY); if (raw) return Object.assign({}, DEFAULT_STATE, JSON.parse(raw)); } catch(e) {}
   return Object.assign({}, DEFAULT_STATE);
@@ -6356,6 +6360,35 @@ function bimestreScore(b) {
   });
   const pts = totalItems ? Math.round((doneItems/totalItems)*10*10)/10 : 0;
   return { pts, doneItems, totalItems };
+}
+function addBusinessDays(date, days) {
+  const d = new Date(date);
+  let added = 0;
+  while (added < days) {
+    d.setDate(d.getDate() + 1);
+    const dow = d.getDay();
+    if (dow !== 0 && dow !== 6) added++;
+  }
+  return d;
+}
+function fmtDate(d) { return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0'); }
+function ensureUnlockDates() {
+  let changed = false;
+  const newlyUnlocked = [];
+  for (let mi = 0; mi < MODULES.length; mi++) {
+    if (isModuleUnlocked(mi) && !state.unlockDates[mi]) {
+      state.unlockDates[mi] = Date.now();
+      newlyUnlocked.push(mi);
+      changed = true;
+    }
+  }
+  if (changed) saveState();
+  return newlyUnlocked;
+}
+function weekDeadline(mi) {
+  const ts = state.unlockDates[mi];
+  if (!ts) return null;
+  return addBusinessDays(new Date(ts), 5);
 }
 function bimestreDone(b, s) {
   const weeks = BIMESTRE_INFO[b].weeks;
@@ -6638,7 +6671,15 @@ function buildSidebar() {
         if (!unlocked) { toast('Termine a semana anterior para desbloquear esta.'); return; }
         ul.style.display = ul.style.display==='none' ? '' : 'none';
       });
-      wrap.appendChild(h); wrap.appendChild(ul);
+      wrap.appendChild(h);
+      if (unlocked && prog.pct<100) {
+        const dl = weekDeadline(mi);
+        if (dl) {
+          const overdue = Date.now() > dl.getTime();
+          wrap.appendChild(el('div','mod-deadline'+(overdue?' overdue':''), (overdue?'Prazo encerrado — era ':'Prazo: ')+fmtDate(dl)+' (5 dias úteis)'));
+        }
+      }
+      wrap.appendChild(ul);
       group.appendChild(wrap);
     });
     nav.appendChild(group);
@@ -6673,7 +6714,15 @@ function renderMap() {
       const unlocked = isModuleUnlocked(mi);
       const cls = !unlocked ? 'locked' : (prog.pct===100 ? 'done' : (mi===state.moduleIndex ? 'current' : ''));
       const node = el('div','map-node '+cls);
-      node.innerHTML = '<div class="circ">'+(!unlocked?icon('lock'):(prog.pct===100?icon('check'):wid.replace('s','')))+'</div><div class="lbl">'+esc(MODULES[mi].title.replace(/^Semana \d+ — /,'').slice(0,26))+'</div>';
+      let dlHtml = '';
+      if (unlocked && prog.pct<100) {
+        const dl = weekDeadline(mi);
+        if (dl) {
+          const overdue = Date.now() > dl.getTime();
+          dlHtml = '<span class="dl'+(overdue?' overdue':'')+'">'+(overdue?'Encerrado ':'Até ')+fmtDate(dl)+'</span>';
+        }
+      }
+      node.innerHTML = '<div class="circ">'+(!unlocked?icon('lock'):(prog.pct===100?icon('check'):wid.replace('s','')))+'</div><div class="lbl">'+esc(MODULES[mi].title.replace(/^Semana \d+ — /,'').slice(0,26))+dlHtml+'</div>';
       node.addEventListener('click', () => {
         if (!unlocked) { toast('Termine a semana anterior para desbloquear esta.'); return; }
         state.view='lesson'; goTo(mi, 0);
@@ -6738,7 +6787,17 @@ function goTo(mi, si) {
   checkBadges();
 }
 
+let appBooted = false;
 function render() {
+  const newlyUnlocked = ensureUnlockDates();
+  if (appBooted) {
+    newlyUnlocked.forEach(mi => {
+      const dl = weekDeadline(mi);
+      const label = MODULES[mi].title.replace(/^Semana \d+ — /,'');
+      toast('Semana liberada: '+label+'. Prazo de 5 dias úteis — até '+fmtDate(dl)+'.');
+    });
+  }
+  appBooted = true;
   if (state.view === 'map') { renderMap(); }
   else {
     const mod = MODULES[state.moduleIndex];
