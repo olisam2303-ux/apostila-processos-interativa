@@ -1,0 +1,317 @@
+<title>Ferramentas da Jornada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef2f4; --panel: #ffffff; --panel-2: #f2f5f6; --border: #dbe3e6;
+  --text: #12202a; --text-dim: #5c6f78;
+  --accent: #0ea394; --accent-soft: #d9f3ef; --accent-line: #9fd9d0;
+  --trello: #1d5fa8; --trello-soft: #e2edf9; --trello-line: #a9c8e8;
+  --hub: #4b3a2a; --hub-soft: #f1ece3; --hub-line: #d8c8ae;
+  --accent-3: #7c5cd6; --accent-3-soft: #ece5fb;
+  --ok: #1f9d55; --ok-soft: #dff5e6;
+  --shadow: 0 1px 3px rgba(10,20,25,0.08), 0 6px 18px rgba(10,20,25,0.06);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1418; --panel: #141d23; --panel-2: #182229; --border: #26343c;
+    --text: #eaf1f4; --text-dim: #90a3ac;
+    --accent: #35d6c0; --accent-soft: #10302c; --accent-line: #1f4a43;
+    --trello: #6fa8dc; --trello-soft: #172433; --trello-line: #2c4258;
+    --hub: #d8c8ae; --hub-soft: #241f18; --hub-line: #4a3f2c;
+    --accent-3: #a58bff; --accent-3-soft: #241d3d;
+    --ok: #52d788; --ok-soft: #10301d;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1418; --panel: #141d23; --panel-2: #182229; --border: #26343c;
+  --text: #eaf1f4; --text-dim: #90a3ac;
+  --accent: #35d6c0; --accent-soft: #10302c; --accent-line: #1f4a43;
+  --trello: #6fa8dc; --trello-soft: #172433; --trello-line: #2c4258;
+  --hub: #d8c8ae; --hub-soft: #241f18; --hub-line: #4a3f2c;
+  --accent-3: #a58bff; --accent-3-soft: #241d3d;
+  --ok: #52d788; --ok-soft: #10301d;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Poppins", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.65; }
+.fun { font-family: "Fredoka", "Poppins", sans-serif; }
+.mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.page { max-width: 780px; margin: 0 auto; padding: 40px 22px 70px; }
+
+.top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.mark { width: 40px; height: 40px; border-radius: 11px; flex: 0 0 40px; background: linear-gradient(145deg, var(--accent), var(--accent-3)); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow); }
+.mark svg { width: 22px; height: 22px; }
+.top strong { font-family: "Fredoka"; font-size: 19px; display: block; }
+.top span { font-size: 12.5px; color: var(--text-dim); }
+.lede { font-size: 14.5px; color: var(--text-dim); max-width: 60ch; margin: 18px 0 26px; }
+
+.jump { display: flex; gap: 10px; margin-bottom: 34px; flex-wrap: wrap; }
+.jump a { font-family: "Fredoka"; font-size: 12.5px; font-weight: 600; text-decoration: none; padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--border); color: var(--text); }
+.jump a.tr { border-color: var(--trello-line); color: var(--trello); }
+.jump a.gh { border-color: var(--hub-line); color: var(--hub); }
+.jump a.cmp { border-color: var(--accent-3); color: var(--accent-3); }
+
+section.tool { margin-bottom: 46px; }
+.tool-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.tool-head .ticon { width: 38px; height: 38px; border-radius: 10px; flex: 0 0 38px; display: flex; align-items: center; justify-content: center; }
+.tool-head h2 { font-family: "Fredoka"; margin: 0; font-size: 20px; }
+.tool.trello .ticon { background: var(--trello-soft); color: var(--trello); }
+.tool.github .ticon { background: var(--hub-soft); color: var(--hub); }
+.tool-sub { font-size: 13px; color: var(--text-dim); margin: 0 0 20px; }
+
+.step { display: flex; gap: 14px; margin-bottom: 16px; }
+.step .snum { font-family: "Fredoka"; font-weight: 700; font-size: 13px; width: 26px; height: 26px; border-radius: 50%; flex: 0 0 26px; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.tool.trello .snum { background: var(--trello-soft); color: var(--trello); }
+.tool.github .snum { background: var(--hub-soft); color: var(--hub); }
+.step .sbody h4 { margin: 0 0 4px; font-size: 14.5px; font-weight: 600; }
+.step .sbody p { margin: 0 0 6px; font-size: 13.5px; color: var(--text-dim); }
+.step .week-tag { display: inline-block; font-family: "Fredoka"; font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-bottom: 6px; }
+
+.code { background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; font-size: 12.5px; overflow-x: auto; margin: 8px 0 4px; white-space: pre; }
+.callout { border-left: 3px solid var(--accent-3); background: var(--accent-3-soft); border-radius: 0 10px 10px 0; padding: 12px 16px; font-size: 13px; margin: 18px 0; }
+
+table.cmp { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0 30px; }
+table.cmp th, table.cmp td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+table.cmp th { background: var(--panel-2); font-family: "Fredoka"; font-weight: 600; font-size: 12px; }
+table.cmp td.yes { color: var(--ok); font-weight: 600; }
+
+.map-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--border); }
+.map-row:last-child { border-bottom: none; }
+.map-row .from { color: var(--trello); font-weight: 600; text-align: right; }
+.map-row .to { color: var(--hub); font-weight: 600; }
+.map-row .arrow { color: var(--text-dim); }
+.badge-opt { display: inline-block; font-family: "Fredoka"; font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--accent-3-soft); color: var(--accent-3); margin-bottom: 6px; }
+
+footer { text-align: center; font-size: 12px; color: var(--text-dim); margin-top: 30px; }
+</style>
+
+<div class="page">
+  <a href="index.html" style="display:inline-flex; align-items:center; gap:6px; font-family:'Fredoka'; font-size:12.5px; font-weight:600; color:var(--text-dim); text-decoration:none; margin-bottom:18px;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Voltar para a apostila
+  </a>
+  <div class="top">
+    <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg></div>
+    <div>
+      <strong class="fun">Ferramentas da Jornada</strong>
+      <span>Trello e GitHub para rodar as atividades de Processos na prática</span>
+    </div>
+  </div>
+  <p class="lede">Guia de configuração dos dois sistemas gratuitos que melhor cobrem os assuntos da disciplina — backlog, sprints, Kanban, métricas e, no caso do GitHub, integração contínua de verdade. Cada passo indica em qual semana da apostila ele entra em ação.</p>
+
+  <div class="jump">
+    <a class="tr" href="#trello">Trello — passo a passo</a>
+    <a class="gh" href="#github">GitHub — passo a passo</a>
+    <a class="cmp" href="#comparativo">Qual escolher</a>
+    <a class="cmp" href="#migracao">Migrar do Trello pro GitHub</a>
+  </div>
+
+  <section class="tool trello" id="trello">
+    <div class="tool-head"><div class="ticon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="6.5" y="6.5" width="4.5" height="10" rx="1"/><rect x="13" y="6.5" width="4.5" height="6" rx="1"/></svg></div><h2>Trello</h2></div>
+    <p class="tool-sub">Gratuito, sem cartão de crédito, e o mais visual dos dois — melhor para turmas que ainda não programam.</p>
+
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="sbody">
+        <h4>Criar a conta e o quadro da turma</h4>
+        <p>Em trello.com, crie uma conta gratuita (pode ser com o e-mail escolar). Crie um quadro (Board) chamado, por exemplo, <span class="mono">Processos — Turma 1ºA</span>. Convide os alunos como membros do quadro (ou crie um quadro por squad, se a turma for grande).</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="sbody">
+        <span class="week-tag">Semanas 1, 2, 6, 7 — Requisitos</span>
+        <h4>Backlog de requisitos</h4>
+        <p>Crie uma lista <span class="mono">Backlog</span>. Cada requisito vira um cartão: título no formato "Como um &lt;usuário&gt;, eu quero &lt;funcionalidade&gt; para que &lt;motivo&gt;", critério de aceitação na descrição, e um checklist para os critérios SMART. Use etiquetas (labels) coloridas para marcar RF / RNF, ou Essencial / Importante / Desejável / Adiado (MoSCoW) — a mesma classificação já usada na atividade da Semana 2.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="sbody">
+        <span class="week-tag">Semanas 11, 13, 17 — Sprints</span>
+        <h4>Sprint board e story points</h4>
+        <p>Crie listas <span class="mono">Sprint Backlog</span> → <span class="mono">Em andamento</span> → <span class="mono">Em revisão</span> → <span class="mono">Concluído</span>. Ative os <strong>Campos personalizados</strong> (Power-Up gratuito) e crie um campo numérico "Story Points" — é o que a turma preenche durante o Planning Poker da Semana 11. Ao fim de cada sprint, some os pontos dos cartões que chegaram em Concluído: esse número é a <strong>Velocity</strong> real da turma (Semana 13).</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="sbody">
+        <span class="week-tag">Semana 12 — Papéis do Scrum</span>
+        <h4>PO, Scrum Master e Dev Team</h4>
+        <p>Atribua um aluno como responsável por ordenar o Backlog (PO). Crie uma etiqueta <span class="mono">Bloqueado</span> — só quem está no papel de Scrum Master pode remover essa etiqueta de um cartão, depois de resolver o impedimento. Os demais alunos (Dev Team) só movem cartões entre as listas, nunca reordenam o Backlog.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="sbody">
+        <span class="week-tag">Semana 18 — Kanban e WIP</span>
+        <h4>Limite de WIP por coluna</h4>
+        <p>No menu do quadro, ative <strong>Limites de lista</strong> (gratuito): defina, por exemplo, no máximo 3 cartões na lista "Em andamento". O cabeçalho da lista fica vermelho quando o limite é ultrapassado — é a própria mecânica da Semana 18 acontecendo ao vivo, sem precisar simular com papel.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">6</div>
+      <div class="sbody">
+        <span class="week-tag">Semana 14 — Retrospectiva</span>
+        <h4>Quadro de retrospectiva</h4>
+        <p>Crie um quadro à parte (ou 4 listas temporárias) chamado <span class="mono">Retro — Sprint N</span> com as colunas Liked / Learned / Lacked / Longed for. Cada aluno escreve um cartão por sentimento; ative o Power-Up de <strong>Votação</strong> (gratuito) para o dot voting dos temas mais importantes a resolver.</p>
+      </div>
+    </div>
+
+    <div class="callout">Tudo isso funciona no plano <strong>Trello Free</strong> — nenhum dos Power-Ups citados exige upgrade para uma turma de até ~10 membros por quadro.</div>
+  </section>
+
+  <section class="tool github" id="github">
+    <div class="tool-head"><div class="ticon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 00-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg></div><h2>GitHub</h2></div>
+    <p class="tool-sub">Gratuito, e o único dos dois que fecha o ciclo até Integração Contínua de verdade — ideal a partir do momento em que a turma já escreve algum código.</p>
+
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="sbody">
+        <h4>Criar a conta e o repositório</h4>
+        <p>Em github.com, crie uma conta gratuita. Se os alunos tiverem e-mail escolar, o <span class="mono">GitHub Education</span> libera benefícios extras (opcional, não é necessário para nada deste guia). Crie um repositório por squad, ex.: <span class="mono">processos-squad-a</span>.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="sbody">
+        <span class="week-tag">Semanas 1, 2, 11 — Requisitos e backlog</span>
+        <h4>Issues como histórias de usuário</h4>
+        <p>Na aba <span class="mono">Issues</span>, cada requisito vira uma issue com o título em formato de user story. Crie labels customizadas em Settings → Labels: <span class="mono">rf</span>, <span class="mono">rnf</span>, <span class="mono">must</span>, <span class="mono">should</span>, <span class="mono">could</span>, <span class="mono">wont</span> (MoSCoW) e <span class="mono">bug</span> (para as semanas de teste).</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="sbody">
+        <span class="week-tag">Semana 18 — Kanban</span>
+        <h4>Project (quadro Kanban nativo)</h4>
+        <p>Na aba <span class="mono">Projects</span> do repositório, crie um novo Project em visão de quadro, com colunas <span class="mono">Todo</span> → <span class="mono">In Progress</span> → <span class="mono">Done</span>. Arraste as issues para lá. O contador de itens por coluna, visível no cabeçalho, cumpre o mesmo papel de alerta visual de WIP que o Trello.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="sbody">
+        <span class="week-tag">Semanas 11, 13 — Sprints e métricas</span>
+        <h4>Milestones como Sprints</h4>
+        <p>Em Issues → Milestones, crie <span class="mono">Sprint 1</span>, <span class="mono">Sprint 2</span> etc., cada uma com data de entrega. Associe as issues da sprint ao milestone. A barra de progresso do milestone (issues fechadas / total) já funciona como um burndown simplificado para a Semana 13.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="sbody">
+        <span class="week-tag">Semana 20 — Integração Contínua</span>
+        <h4>Primeiro pipeline com GitHub Actions</h4>
+        <p>Crie o arquivo <span class="mono">.github/workflows/ci.yml</span> no repositório com o conteúdo abaixo. Ele roda automaticamente a cada envio de código (push), exatamente o conceito de CI apresentado na Semana 20 — a build acontece sozinha, sem ninguém precisar rodar nada manualmente.</p>
+        <div class="code mono">name: CI
+on: [push]
+jobs:
+  build-e-teste:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rodar verificação
+        run: echo "Build passou! Aqui entraria o comando de teste real, ex.: pytest ou npm test"</div>
+        <p>Depois que a turma já tiver algum código com testes automatizados (ex.: de uma disciplina de programação), basta trocar a linha <span class="mono">run:</span> pelo comando de teste real.</p>
+      </div>
+    </div>
+
+    <div class="callout">Tudo isso funciona no plano <strong>GitHub Free</strong>, inclusive em repositórios privados — não precisa de cartão de crédito nem de upgrade.</div>
+  </section>
+
+  <section id="comparativo">
+    <h2 class="fun" style="font-size:20px">Qual escolher</h2>
+    <table class="cmp">
+      <tr><th></th><th>Trello</th><th>GitHub</th></tr>
+      <tr><td>Curva de aprendizado</td><td class="yes">Mais simples</td><td>Exige entender repositório/commit</td></tr>
+      <tr><td>Backlog e Kanban</td><td class="yes">Sim</td><td class="yes">Sim</td></tr>
+      <tr><td>Sprints e métricas ágeis</td><td class="yes">Sim (manual)</td><td class="yes">Sim (via Milestones)</td></tr>
+      <tr><td>Integração Contínua real (Semana 20)</td><td>Não</td><td class="yes">Sim — GitHub Actions</td></tr>
+      <tr><td>Exige a turma já programar</td><td>Não</td><td>Ajuda, mas não é obrigatório</td></tr>
+    </table>
+    <p style="font-size:13.5px; color:var(--text-dim)">Uma combinação possível: <strong>Trello do Bimestre 1 ao 2</strong> (Requisitos, Scrum, Kanban conceitual) e <strong>migrar para o GitHub no Bimestre 3</strong>, quando a Semana 20 chega em Integração Contínua — assim a turma sente a diferença entre simular um pipeline e ver um de verdade rodando.</p>
+  </section>
+
+  <section id="migracao">
+    <h2 class="fun" style="font-size:20px">Migrando do Trello para o GitHub</h2>
+    <p class="tool-sub">Pensado para o momento sugerido acima: fazer a virada na virada do Bimestre 2 para o 3, quando a Semana 20 traz Integração Contínua. Um quadro de turma costuma ter poucas dezenas de cartões — dá pra migrar à mão em uma aula, sem precisar de nenhum script.</p>
+
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="sbody">
+        <h4>Antes de tudo: conte e exporte</h4>
+        <p>Anote quantos cartões existem em cada lista do Trello — é a sua conferência de chegada no fim. Depois, no quadro, abra o menu <span class="mono">⋯</span> no canto superior direito → <span class="mono">Mais</span> → <span class="mono">Imprimir, exportar e compartilhar</span> → <span class="mono">Exportar como JSON</span>. Guarde esse arquivo como backup, mesmo sem usá-lo diretamente — se algo se perder na migração manual, a informação original continua ali.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="sbody">
+        <h4>Preparar o "chão" no GitHub antes de mover conteúdo</h4>
+        <p>Recrie no repositório as mesmas labels que existem no Trello (Settings → Labels): as etiquetas RF/RNF/MoSCoW e a etiqueta <span class="mono">Bloqueado</span> do papel de Scrum Master. No Project novo, crie um campo numérico <span class="mono">Story Points</span> e um campo de status com as mesmas colunas das listas do Trello, na mesma ordem.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="sbody">
+        <h4>De onde veio, para onde vai</h4>
+        <p>Cada elemento do Trello tem um equivalente direto — é só uma questão de nomenclatura:</p>
+        <div style="margin-top:10px">
+          <div class="map-row"><span class="from">Quadro (Board)</span><span class="arrow">→</span><span class="to">Repositório + Project</span></div>
+          <div class="map-row"><span class="from">Lista (List)</span><span class="arrow">→</span><span class="to">Coluna de status no Project</span></div>
+          <div class="map-row"><span class="from">Cartão (Card)</span><span class="arrow">→</span><span class="to">Issue</span></div>
+          <div class="map-row"><span class="from">Etiqueta (Label)</span><span class="arrow">→</span><span class="to">Label</span></div>
+          <div class="map-row"><span class="from">Checklist</span><span class="arrow">→</span><span class="to">Lista de tarefas markdown: <span class="mono">- [ ] item</span></span></div>
+          <div class="map-row"><span class="from">Campo "Story Points"</span><span class="arrow">→</span><span class="to">Campo numérico personalizado</span></div>
+          <div class="map-row"><span class="from">Membro no cartão</span><span class="arrow">→</span><span class="to">Assignee da issue</span></div>
+          <div class="map-row"><span class="from">Data de entrega</span><span class="arrow">→</span><span class="to">Milestone (Sprint)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="sbody">
+        <h4>Migrar cartão por cartão, na ordem certa</h4>
+        <p>Comece pela lista <span class="mono">Backlog</span>/<span class="mono">A Fazer</span> — geralmente sem histórico, mais rápida de recriar. Para cada cartão: nova Issue com o mesmo título, cole a descrição, recrie o checklist como lista de tarefas, aplique as labels equivalentes, preencha o Story Points e coloque na coluna certa do Project. Deixe os cartões de <span class="mono">Concluído</span> por último — servem só de histórico, então podem virar issues já fechadas (<span class="mono">Closed</span>) direto, sem passar pelo quadro.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="sbody">
+        <span class="badge-opt">opcional, avançado</span>
+        <h4>Acelerar com o GitHub CLI, se a turma já tiver essa familiaridade</h4>
+        <p>Para quem tem conforto técnico: exporte o quadro também como CSV (Power-Up gratuito "Export for Trello" faz isso), instale o <span class="mono">GitHub CLI</span> (<span class="mono">gh</span>) e crie as issues em lote a partir de uma lista simples de linhas <span class="mono">título;labels</span>:</p>
+        <div class="code mono">while IFS=';' read -r titulo labels; do
+  gh issue create --title "$titulo" --label "$labels"
+done < cartoes.csv</div>
+        <p>Isso não substitui a conferência manual dos campos (Story Points, checklist, coluna) — só poupa o trabalho de digitar título e labels um por um.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="snum">6</div>
+      <div class="sbody">
+        <h4>Conferir e só depois arquivar o Trello</h4>
+        <p>Compare o total de issues criadas com a contagem anotada no passo 1. Não exclua o quadro do Trello de imediato: use <span class="mono">Fechar quadro</span> (arquivar, reversível) e mantenha por algumas semanas antes de excluir de vez.</p>
+      </div>
+    </div>
+
+    <div class="callout">Ideia pedagógica: transforme a própria migração numa atividade de aula, encaixada numa Sprint Review ou Retrospectiva (Semanas 14/17) — "trocar de ferramenta no meio do projeto" é, na prática, o mesmo tipo de mudança discutido na Semana 7 (Gerenciamento de Mudanças em Requisitos). Peça para a turma preencher um Registro de Controle de Mudanças de verdade antes de migrar.</div>
+  </section>
+
+  <footer>Guia complementar da apostila "Jornada Processos" — Processos de Desenvolvimento de Software.</footer>
+</div>
