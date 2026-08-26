@@ -5851,6 +5851,12 @@ const BATCH_E = [
 <p>Isso permite executar builds e testes na nuvem, sem depender do computador do desenvolvedor. Também é possível usar self-hosted runners, mantidos pela própria equipe.</p>`
           },
           {
+            heading: `Por que usar automação no pipeline?`,
+            html: `<p>Automatizar o pipeline permite que o projeto seja validado de forma consistente a cada mudança. Com isso, a equipe:</p>
+<ul><li>Evita esquecimentos nas verificações;</li><li>Garante um padrão de qualidade;</li><li>Economiza tempo em tarefas repetitivas;</li><li>Mantém o fluxo de desenvolvimento mais ágil.</li></ul>
+<p>Na prática, a automação organiza o processo e dá mais confiança para evoluir o código.</p>`
+          },
+          {
             heading: `Exemplo de workflow simples`,
             html: `<p><strong>Como ler esse workflow:</strong></p>
 <ul><li>name → nome do workflow;</li><li>on: [push] → quando ele é executado;</li><li>jobs → define o que será feito;</li><li>runs-on → ambiente (runner);</li><li>checkout → baixa o código;</li><li>run → executa comando.</li></ul>
