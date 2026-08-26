@@ -1770,14 +1770,17 @@ Pergunta: "Maya errou ao desafiar a equipe e gerar conflito?" Resposta ética: �
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Arquiteto de testes do app de mensagens</strong> (em grupos, 18 minutos, até a próxima aula)</p>
-<p>Vocês são a nova equipe de QA de uma empresa que está criando um novo aplicativo de mensagens e precisam planejar os testes!</p>
-<p>Cenário: nova feature "Mensagem que desaparece após 24 horas".</p>
-<ul>
-<li>Parte 1 – Mapeamento: descreva um teste para cada tipo (Unitário, Integração, E2E/Sistema, Manual/Aceitação). Exemplo dado para o tipo Unitário: testar a função que define o tempo de expiração da mensagem — verificar se, ao criar uma mensagem temporária, a função definirExpiracao(mensagem, 24) é chamada corretamente.</li>
-<li>Parte 2 – Priorização: distribua os recursos para dez testes entre os quatro tipos.</li>
-</ul>
-<p><em>Situação fictícia produzida pela SEDUC-SP.</em></p>`,
+          enunciado: `<p><strong>Arquiteto de testes do app de mensagens</strong> (em grupos, até a próxima aula)</p>
+<p>Vocês são a equipe de QA de um app de mensagens novo. Cenário: a funcionalidade "mensagem que desaparece após 24 horas". <em>Situação fictícia produzida pela SEDUC-SP.</em></p>
+<p><strong>Parte 1 — Mapeamento:</strong> descrevam 1 teste para cada tipo (a primeira linha já vem de exemplo).</p>
+<table>
+<tr><th>Tipo de teste</th><th>Mapeamento — descreva o teste</th></tr>
+<tr><td>Unitário</td><td><em>Exemplo: testar a função que define o tempo de expiração — verificar se, ao criar uma mensagem temporária, a função definirExpiracao(mensagem, 24) é chamada corretamente.</em></td></tr>
+<tr><td>Integração</td><td>_______________</td></tr>
+<tr><td>E2E (sistema)</td><td>_______________</td></tr>
+<tr><td>Manual (aceitação)</td><td>_______________</td></tr>
+</table>
+<p><strong>Parte 2 — Priorização:</strong> vocês têm 10 testes pra rodar antes do lançamento. Distribuam esse total entre os 4 tipos (a soma tem que dar 10) — lembrem da pirâmide de testes: a base tem mais testes que o topo.</p>`,
           dica: `Enviem foto ou documento on-line com as respostas solicitadas.`
         },
         quiz: [
@@ -1860,13 +1863,20 @@ Pergunta: "Maya errou ao desafiar a equipe e gerar conflito?" Resposta ética: �
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Plano de teste para rede social</strong> (em grupos, 18 minutos, durante a aula)</p>
-<p>Vocês foram contratados por uma empresa que criou uma nova rede social para testar a feature do "stories". Para isso, será necessário:</p>
-<ul>
-<li>Parte 1 – Classificar: cada teste como Manual (M) ou Automatizado (A) e justificar a escolha. Testes a classificar: verificar se o storie expira em 24h; avaliar se os filtros são bonitos; testar upload de 1.000 fotos; verificar a emoção ao ver stories dos amigos; checar se funciona em 50 celulares; validar sincronização entre devices.</li>
-<li>Parte 2 – Priorizar: os recursos para apenas cinco testes automatizados. Quais automatizaria primeiro?</li>
-<li>Parte 3 – Escrever: um script básico com os passos em português para automatizar o teste "Postar stories com foto e verificar se aparece".</li>
-</ul>`
+          enunciado: `<p><strong>Plano de teste para rede social</strong> (em grupos)</p>
+<p>Vocês foram contratados pra testar a feature "stories" de uma rede social nova.</p>
+<p><strong>Parte 1 — Classifiquem</strong> cada teste como Manual (M) ou Automatizado (A), e justifiquem:</p>
+<table>
+<tr><th>Teste</th><th>M ou A?</th><th>Por quê?</th></tr>
+<tr><td>Verificar se o stories expira em 24h</td><td>_____</td><td>_______________</td></tr>
+<tr><td>Avaliar se os filtros são bonitos</td><td>_____</td><td>_______________</td></tr>
+<tr><td>Testar upload de 1.000 fotos</td><td>_____</td><td>_______________</td></tr>
+<tr><td>Verificar a emoção ao ver stories dos amigos</td><td>_____</td><td>_______________</td></tr>
+<tr><td>Checar se funciona em 50 celulares</td><td>_____</td><td>_______________</td></tr>
+<tr><td>Validar sincronização entre devices</td><td>_____</td><td>_______________</td></tr>
+</table>
+<p><strong>Parte 2 — Priorizem:</strong> só há recurso pra automatizar 5. Quais vocês fariam primeiro?</p>
+<p><strong>Parte 3 — Escrevam</strong> um script básico, em português, com os passos pra automatizar: "Postar stories com foto e verificar se aparece".</p>`
         },
         quiz: [
           {
@@ -2106,25 +2116,19 @@ const BATCH_B = [
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Testando um app de quiz</strong></p>
-<p>Vamos aplicar as técnicas de particionamento de equivalência e análise de valor-limite para testar um aplicativo de quiz educacional.</p>
-<p><strong>Requisitos do app de quiz:</strong></p>
-<ul>
-<li>usuários podem responder entre 5 e 50 perguntas por sessão;</li>
-<li>cada pergunta tem tempo-limite entre 10 e 60 segundos;</li>
-<li>pontuação: respostas corretas valem entre 1 e 10 pontos;</li>
-<li>idade mínima para cadastro: 13 anos;</li>
-<li>usuários podem criar quizzes com 5-20 perguntas.</li>
-</ul>
-<p><strong>Instruções para a atividade:</strong></p>
-<ol>
-<li>formem grupos de 3 a 4 alunos;</li>
-<li>identifiquem as variáveis de entrada e suas partições válidas e inválidas;</li>
-<li>determinem os valores-limite para cada variável;</li>
-<li>criem pelo menos 3 casos de teste utilizando as técnicas aprendidas;</li>
-<li>gerem um relatório no formato .doc ou .pdf para registro da atividade e enviem aqui no AVA.</li>
-</ol>`,
-          dica: `Exemplo de caso de teste: ID: TC-001. Objetivo: criar quiz com número mínimo de perguntas. Técnica: valor-limite. Entrada: número de perguntas = 5 (valor mínimo permitido). Resultado: sistema deve aceitar a criação do quiz.`
+          enunciado: `<p><strong>Testando um app de quiz</strong> (grupos de 3 a 4)</p>
+<p>Regras do app: perguntas por sessão entre 5 e 50 · tempo por pergunta entre 10 e 60 segundos · pontuação de 1 a 10 · idade mínima de 13 anos · quiz criado com 5-20 perguntas.</p>
+<p><strong>Passo 1</strong> — identifiquem as variáveis de entrada e suas partições válidas/inválidas, e determinem os valores-limite de cada uma.</p>
+<p><strong>Passo 2 — criem pelo menos 3 casos de teste</strong>, no modelo abaixo:</p>
+<table>
+<tr><th>Campo</th><th>Exemplo (TC-001)</th></tr>
+<tr><td>ID</td><td>TC-001</td></tr>
+<tr><td>Objetivo</td><td>criar quiz com número mínimo de perguntas</td></tr>
+<tr><td>Técnica</td><td>valor-limite</td></tr>
+<tr><td>Entrada</td><td>número de perguntas = 5 (valor mínimo permitido)</td></tr>
+<tr><td>Resultado esperado</td><td>sistema deve aceitar a criação do quiz</td></tr>
+</table>
+<p><strong>Instruções de entrega:</strong> gerem um relatório (.doc ou .pdf) com as partições, os valores-limite e os 3 casos de teste, e enviem no AVA.</p>`
         },
         quiz: [
           {
@@ -2216,16 +2220,16 @@ const BATCH_B = [
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Teste do sistema MediAgenda</strong></p>
-<p>Nesta atividade prática, você e seu grupo executarão testes no sistema MediAgenda, registrarão as falhas encontradas e elaborarão um relatório simples com os resultados.</p>
-<ul>
-<li><strong>Preparação:</strong> organizem-se em grupos de 3 a 4 alunos.</li>
-<li><strong>Execução:</strong> usem os casos de teste propostos. Identifiquem oportunidades de torná-los mais completos e robustos, com o objetivo de revelar falhas no sistema.</li>
-<li><strong>Relatório:</strong> ao final, produzam um relatório que resuma os problemas identificados, destacando as falhas mais críticas. Entreguem o relatório ao professor.</li>
-</ul>
-<p><strong>Casos de teste para execução:</strong></p>
-<p><strong>TC-001 – Agendar consulta com data válida</strong><br>Precondições: usuário logado.<br>Passos: selecionar especialidade, médico, data futura e horário.<br>Resultado esperado: consulta agendada com sucesso.</p>
-<p><strong>TC-002 – Agendar consulta com data passada</strong><br>Precondições: usuário logado.<br>Passos: selecionar especialidade, médico, data passada e horário.<br>Resultado esperado: mensagem de erro sobre data inválida.</p>`
+          enunciado: `<p><strong>Teste do sistema MediAgenda</strong> (grupos de 3 a 4)</p>
+<p>Executem os casos de teste abaixo no sistema MediAgenda, registrem as falhas encontradas e produzam um relatório resumindo os problemas.</p>
+<table>
+<tr><th>Campo</th><th>TC-001 — data válida</th><th>TC-002 — data passada</th></tr>
+<tr><td>Precondição</td><td>usuário logado</td><td>usuário logado</td></tr>
+<tr><td>Passos</td><td>selecionar especialidade, médico, data futura e horário</td><td>selecionar especialidade, médico, data passada e horário</td></tr>
+<tr><td>Resultado esperado</td><td>consulta agendada com sucesso</td><td>mensagem de erro sobre data inválida</td></tr>
+</table>
+<p><strong>Depois de executar:</strong> identifiquem oportunidades de tornar os casos mais completos e robustos, e escrevam um relatório resumindo as falhas mais críticas encontradas.</p>
+<p><strong>Instruções de entrega:</strong> entreguem o relatório ao professor.</p>`
         },
         quiz: [
           {
@@ -2398,24 +2402,21 @@ const BATCH_B = [
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Atividade em grupo — Responder um e-mail sobre requisitos</strong></p>
-<p>De: pm.juliana@empresa.com<br>Para: Squad-A (Vocês)<br>Assunto: Refinar Requisitos — Módulo de relatórios<br>Corpo: "Pessoal, precisamos de um relatório de vendas bonito e rápido para a diretoria o quanto antes. Ele deve mostrar os dados por mês e permitir exportar. Conto com vocês!"</p>
-<p><strong>Tarefa:</strong> Redigir uma resposta ao e-mail aplicando SMART para esclarecer e propor uma versão reescrita dos requisitos, com critérios de aceite.</p>
-<p><strong>Entregáveis:</strong></p>
-<ol>
-<li>Resposta ao e-mail (texto final em .DOCX ou .PDF) com:
-<ul>
-<li>Bloco 1: Agradecimento e síntese do entendido.</li>
-<li>Bloco 2: Perguntas de esclarecimento (SMART).</li>
-<li>Bloco 3: Proposta de requisito reescrito (SMART) + Critérios de aceite.</li>
-<li>Bloco 4: Riscos/dependências e próximos passos.</li>
-</ul>
-</li>
-<li>Anexo opcional: tabela curta "antes × depois" (requisito original → requisito SMART).</li>
-<li>Nome do arquivo: resposta-email-requisitos_Squad-&lt;Letra&gt;_&lt;Data&gt;.pdf.</li>
-<li>Canal de entrega: envio da atividade por meio do AVA.</li>
-</ol>
-<p>Situação fictícia produzida pela SEDUC-SP.</p>`,
+          enunciado: `<p><strong>Responder um e-mail sobre requisitos</strong> (Squad-A)</p>
+<table>
+<tr><th>De</th><td>pm.juliana@empresa.com</td></tr>
+<tr><th>Assunto</th><td>Refinar Requisitos — Módulo de relatórios</td></tr>
+<tr><th>Corpo</th><td><em>"Pessoal, precisamos de um relatório de vendas bonito e rápido para a diretoria o quanto antes. Ele deve mostrar os dados por mês e permitir exportar. Conto com vocês!"</em></td></tr>
+</table>
+<p>Respondam esse e-mail preenchendo os 4 blocos, na ordem:</p>
+<table>
+<tr><th>Bloco</th><th>O que escrever</th></tr>
+<tr><td>① Agradecimento + síntese</td><td>O que vocês entenderam do pedido, em poucas frases.</td></tr>
+<tr><td>② Perguntas de esclarecimento</td><td>2 a 3 perguntas pra tornar o pedido SMART (específico, mensurável, com prazo).</td></tr>
+<tr><td>③ Requisito reescrito (SMART) + critérios de aceite</td><td>A versão final do requisito, já corrigida.</td></tr>
+<tr><td>④ Riscos/dependências e próximos passos</td><td>O que pode dar errado e o que vem depois.</td></tr>
+</table>
+<p><strong>Instruções de entrega:</strong> enviem a resposta final ao e-mail (.DOCX ou .PDF) no AVA, com um nome simples de arquivo, ex.: resposta-email_squadA.pdf.</p>`,
           gabarito: `<p><strong>Modelo de resposta sugerido</strong> — Assunto: Re: Refinar Requisitos — Módulo de Relatórios.</p>
 <p>Corpo: "Oi, Juliana, tudo bem? Obrigado pelo direcionamento. Para garantir prazo e valor, propomos alinhar alguns pontos:"</p>
 <ul>
@@ -2517,15 +2518,15 @@ const BATCH_B = [
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Leitura em pares na prática</strong></p>
-<p><strong>Preparação</strong> – Formem as duplas. Um será o autor e o outro, o revisor.</p>
-<p><strong>Cenário</strong> – Escrevam o requisito. O Autor deve escrever o seguinte requisito:</p>
-<ul>
-<li>ID: RF-015</li>
-<li>Descrição: O sistema deve permitir o cadastro de novos produtos.</li>
-</ul>
-<p><strong>Execução</strong> – Revisem o requisito. O Revisor conduz uma leitura em pares, usando o checklist de qualidade (SMART, completo, testável etc.). Ele deve fazer perguntas ao autor para encontrar as lacunas do requisito. O autor responde acrescentando os detalhes que faltam.</p>
-<p><strong>Objetivo</strong> – Aprimorem o requisito. No final, o requisito simples e vago deve ser transformado em uma especificação mais rica e detalhada. Anotem as versões melhoradas e mostrem para o(a) professor(a) da turma.</p>`,
+          enunciado: `<p><strong>Leitura em pares na prática</strong> (duplas — um autor, um revisor)</p>
+<p>O autor começa com este requisito, simples e vago de propósito:</p>
+<table>
+<tr><th>ID</th><td>RF-015</td></tr>
+<tr><th>Descrição</th><td>O sistema deve permitir o cadastro de novos produtos.</td></tr>
+</table>
+<p><strong>Passo 1 — Revisão:</strong> o revisor conduz uma leitura em pares usando o checklist de qualidade (SMART, completo, testável...), fazendo perguntas ao autor pra encontrar as lacunas.</p>
+<p><strong>Passo 2 — Resposta do autor:</strong> o autor acrescenta os detalhes que faltam, com base nas perguntas do revisor.</p>
+<p><strong>Passo 3 — Resultado:</strong> anotem a versão melhorada do requisito (deve sair mais rica e detalhada que a original) e mostrem ao professor.</p>`,
           gabarito: `<p><strong>Diálogo simulado de exemplo:</strong></p>
 <p><strong>Revisor:</strong> "Ok, 'O sistema deve permitir o cadastro de novos produtos'. Específico. Mas está completo? O que eu preciso informar para cadastrar um produto? É só o nome?"<br>
 <strong>Autor:</strong> "Ah, claro. Precisa do nome, preço e quantidade em estoque."<br>
@@ -2758,19 +2759,17 @@ const BATCH_B = [
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Guardiões do livro de receitas da vovó</strong></p>
-<p>Você e seu grupo foram encarregados de organizar o famoso livro de receitas. Para isso, criaram uma planilha simples que servirá como "Registro de Controle de Mudanças". Sua tarefa é criar a estrutura dessa planilha e registrar duas novas solicitações que acabaram de chegar.</p>
-<ol>
-<li>Desenhe a estrutura: em uma folha ou editor de texto, desenhe uma tabela (planilha). Pense nas etapas do PCM e crie pelo menos seis colunas para registrar e rastrear uma mudança do início ao fim.</li>
-<li>Preencha o registro com as novas solicitações:
-<ul>
-<li>Solicitação 1 (do Tio Carlos): "O bolo de chocolate é ótimo, mas sou diabético. Seria possível criar uma versão sem açúcar, usando adoçante culinário? A urgência é alta, pois meu aniversário é no mês que vem e eu adoraria poder comer o bolo."</li>
-<li>Solicitação 2 (da Prima Joana): "Vi na internet que bolo de chocolate com um toque de café fica incrível. Poderíamos testar adicionar uma colher de café na massa? Não tem urgência, é só uma ideia para o futuro."</li>
-</ul>
-</li>
-<li>Preencha duas linhas da sua planilha, uma para cada solicitação. Para colunas em que a informação ainda não existe (como "Data de Aprovação"), deixe em branco ou escreva "Pendente".</li>
-</ol>
-<p><strong>Instruções de entrega:</strong> após finalizar a planilha, envie aqui no AVA no formato Doc/PDF.</p>`,
+          enunciado: `<p><strong>Guardiões do livro de receitas da vovó</strong> (em grupo)</p>
+<p>Vocês vão criar um "Registro de Controle de Mudanças" pro livro de receitas da família. Usem as etapas do PCM como base pras colunas.</p>
+<p><strong>Passo 1</strong> — montem a planilha com pelo menos 6 colunas (veja sugestões na dica abaixo).</p>
+<p><strong>Passo 2 — registrem estes 2 pedidos que acabaram de chegar</strong>, uma linha para cada:</p>
+<table>
+<tr><th>Solicitante</th><th>Pedido</th></tr>
+<tr><td>Tio Carlos</td><td><em>"O bolo de chocolate é ótimo, mas sou diabético. Dá pra fazer sem açúcar, com adoçante culinário? Urgência alta — meu aniversário é mês que vem."</em></td></tr>
+<tr><td>Prima Joana</td><td><em>"Vi que bolo de chocolate com um toque de café fica incrível. Podemos testar? Sem urgência, é só uma ideia para o futuro."</em></td></tr>
+</table>
+<p>Se uma coluna ainda não tem informação (ex.: "Data de aprovação"), deixem em branco ou escrevam "Pendente".</p>
+<p><strong>Instruções de entrega:</strong> enviem a planilha aqui no AVA em formato Doc/PDF.</p>`,
           dica: `Estrutura da planilha (colunas sugeridas): ID da Solicitação, Data da Solicitação, Solicitante, Descrição da Mudança, Justificativa/Benefício, Prioridade, Status (Pendente, Em Análise, Aprovado, Rejeitado), Data da Decisão, Responsável pela Análise.`
         },
         quiz: [
@@ -2852,13 +2851,14 @@ const BATCH_B = [
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Product Owner (PO) de um projeto de e-commerce</strong></p>
-<p>Você, como Product Owner (PO) de um app de e-commerce, tem o backlog da próxima sprint (2 semanas) já definido. Três stakeholders trouxeram novas solicitações de mudança. Sua tarefa é usar a matriz Esforço vs. Impacto para priorizar o que deve ser feito. Para cada solicitação, classifique o Impacto para o negócio e o esforço de desenvolvimento em alto ou baixo.</p>
-<p><strong>Solicitação 1 (do Diretor de Marketing):</strong> "Mudar a cor do botão 'Comprar' de azul para laranja. Nossos testes de A/B indicam que a cor laranja aumenta a conversão em 15%."</p>
-<p><strong>Solicitação 2 (do Gerente de Logística):</strong> "Integrar nosso sistema com o sistema dos Correios em tempo real para calcular o frete. Hoje o cálculo é manual e está gerando muitos erros."</p>
-<p><strong>Solicitação 3 (de um Analista de Suporte):</strong> "Adicionar um link para a página de 'Termos e Condições' no rodapé do site. Alguns usuários perguntam onde encontrar essa informação."</p>
-<p>Para cada solicitação, defina: Impacto (?), Esforço (?), Ação Recomendada (?).</p>
-<p>Situação fictícia produzida pela SEDUC-SP.</p>`,
+          enunciado: `<p><strong>Product Owner de um e-commerce</strong></p>
+<p>Vocês são o PO de um app de e-commerce, com o backlog da próxima sprint (2 semanas) já definido. 3 stakeholders trouxeram pedidos novos — usem a matriz Impacto × Esforço pra decidir o que fazer com cada um.</p>
+<table>
+<tr><th>Solicitação</th><th>Impacto</th><th>Esforço</th><th>Ação recomendada</th></tr>
+<tr><td>Diretor de Marketing: mudar a cor do botão "Comprar" de azul pra laranja (testes de A/B indicam +15% de conversão)</td><td>_____</td><td>_____</td><td>_______________</td></tr>
+<tr><td>Gerente de Logística: integrar com os Correios em tempo real pro cálculo de frete (hoje é manual e gera erros)</td><td>_____</td><td>_____</td><td>_______________</td></tr>
+<tr><td>Analista de Suporte: adicionar um link pra "Termos e Condições" no rodapé</td><td>_____</td><td>_____</td><td>_______________</td></tr>
+</table>`,
           dica: `Matriz Impacto vs. Esforço — Alto Impacto/Baixo Esforço: "Ouro! Façam isso agora." Alto Impacto/Alto Esforço: "Grandes projetos, precisam de planejamento cuidadoso." Baixo Impacto/Baixo Esforço: "Tarefas de preenchimento, façam quando sobrar tempo." Baixo Impacto/Alto Esforço: "Ralos de tempo, questionem se devem ser feitos."`,
           gabarito: `<ul>
 <li><strong>Solicitação 1:</strong> Impacto Alto, Esforço Baixo — Ação: Fazer agora / prioridade máxima.</li>
