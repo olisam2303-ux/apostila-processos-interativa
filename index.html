@@ -857,13 +857,14 @@ const BATCH_A = [
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Analista por um dia</strong> (10 minutos, em grupo de até 4 pessoas)</p>
-<p>Devido ao grande fluxo de atendimento na secretaria, a diretora de uma escola localizada em São Joaquim da Barra decidiu criar um app pelo qual os alunos poderão consultar suas notas, faltas e horários.</p>
-<p>Quais requisitos são necessários para atender a essa demanda? Em grupo, vocês deverão criar:</p>
-<ul>
-<li>Cinco requisitos funcionais completos: use o template apresentado na aula "O sistema DEVE [verbo]..."; seja específico; pense como o aluno: do que você precisaria?</li>
-<li>Cinco requisitos não funcionais completos: um de cada categoria (performance, segurança, usabilidade, confiabilidade, portabilidade); use métricas: números, percentuais, tempo.</li>
-</ul>`
+          enunciado: `<p><strong>Analista por um dia</strong> (grupo de até 4 pessoas)</p>
+<p>A diretora de uma escola em São Joaquim da Barra quer um app pelo qual os alunos consultem notas, faltas e horários — porque a secretaria está sobrecarregada de atendimento.</p>
+<table>
+<tr><th>O que escrever</th><th>Quantos</th><th>Como fazer</th></tr>
+<tr><td>Requisitos funcionais (RF)</td><td>5</td><td>Usem o modelo "O sistema DEVE [verbo] + [objeto] + [contexto]". Pensem como aluno: do que você precisaria?</td></tr>
+<tr><td>Requisitos não funcionais (RNF)</td><td>5</td><td>Um de cada categoria: performance, segurança, usabilidade, confiabilidade, portabilidade. Cada um precisa de uma métrica (número, % ou tempo).</td></tr>
+</table>
+<p><strong>Dica:</strong> um RNF sem número não vale — "rápido" não é métrica, "responde em até 3 segundos" é.</p>`
         },
         quiz: [
           {
@@ -1085,33 +1086,18 @@ const BATCH_A = [
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Mini sprint de elicitação</strong> (durante a aula, em duplas/grupos)</p>
-<p>A biblioteca da faculdade deseja modernizar o sistema de reserva das salas de estudo. A sua missão é registrar perguntas e descobertas durante o processo de elicitação, ajudando a entender melhor as necessidades para esse novo sistema.</p>
-<p>Agora, vocês vão colocar em prática os conhecimentos estudados nesta aula. Trabalhem em duplas e sigam as instruções a seguir para coletar e organizar os requisitos. Lembre-se de registrar as perguntas realizadas e as descobertas durante o processo. Vamos lá!</p>
-<ol>
-<li>Em duplas criem:
-<ul>
-<li>3 perguntas estruturadas (fechadas).</li>
-<li>3 perguntas semiestruturadas.</li>
-<li>5 questões para um questionário (mistura de tipos).</li>
-</ul>
-</li>
-<li>Depois, em quartetos:
-<ul>
-<li>Entrevistem a outra dupla.</li>
-<li>Registrem as principais descobertas.</li>
-</ul>
-</li>
-<li>Na etapa final, retomem os registros feitos durante as entrevistas e analisem:
-<ul>
-<li>Identifiquem 3 requisitos que foram revelados na atividade.</li>
-<li>Garantam que pelo menos 1 requisito seja "não óbvio", ou seja, algo que não apareceria em uma pergunta superficial.</li>
-<li>Classifiquem cada requisito usando a metodologia MoSCoW.</li>
-</ul>
-</li>
-<li>Após realizar a atividade, escreva uma síntese em um arquivo de texto e envie aqui no AVA.</li>
-</ol>
-<p><em>Situação fictícia produzida pela SEDUC-SP.</em></p>`,
+          enunciado: `<p><strong>Mini sprint de elicitação</strong> (em duplas, depois em quartetos)</p>
+<p>A biblioteca da faculdade quer modernizar o sistema de reserva das salas de estudo. <em>Situação fictícia produzida pela SEDUC-SP.</em></p>
+<p><strong>Passo 1 — em dupla, preparem as perguntas:</strong></p>
+<table>
+<tr><th>Tipo</th><th>Quantas</th></tr>
+<tr><td>Estruturadas (fechadas, tipo "sim/não")</td><td>3</td></tr>
+<tr><td>Semiestruturadas (abrem espaço pra resposta livre)</td><td>3</td></tr>
+<tr><td>Questionário (mistura os dois tipos)</td><td>5</td></tr>
+</table>
+<p><strong>Passo 2 — em quarteto, entrevistem a outra dupla</strong> e anotem as 3 descobertas mais importantes.</p>
+<p><strong>Passo 3 — analisem o que descobriram:</strong> escolham 3 requisitos revelados na entrevista, garantam que pelo menos 1 seja "não óbvio" (não apareceria numa pergunta superficial), e classifiquem cada um pelo MoSCoW.</p>
+<p><strong>Instruções de entrega:</strong> escrevam uma síntese com o que fizeram nos 3 passos e enviem no AVA.</p>`,
           dica: `A metodologia MoSCoW é uma forma de priorizar tarefas em projetos, dividindo-as em quatro categorias: essenciais, importantes, desejáveis e que podem ser adiadas. (Fonte: SEBRAE, [s.d.].)`
         },
         quiz: [
@@ -1198,13 +1184,19 @@ const BATCH_A = [
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Observação e brainstorming</strong> (durante a aula, em grupo)</p>
-<p>Cenário: o processo de entrada na faculdade (catraca/portaria) é lento e causa filas. O objetivo da atividade é identificar os problemas e sugerir soluções inovadoras.</p>
-<ol>
-<li><strong>Observação simulada:</strong> dois voluntários simulam a entrada na faculdade, enquanto os demais observam atentamente. Cada estudante deve anotar o que percebeu utilizando o método AEIOU (Ambiente, Entrevistas, Interações, Objetos e Usuários).</li>
-<li><strong>Brainstorming relâmpago:</strong> cada estudante escreve cinco ideias para melhorar o processo de entrada em pedaços de papel. Em seguida, o grupo compartilha todas as ideias, junta as que são parecidas e escolhe as três mais relevantes.</li>
-<li><strong>Síntese:</strong> cada grupo apresenta sua ideia mais inovadora para a turma. Depois, todos identificam padrões que aparecem nas ideias e votam nas mais viáveis e criativas.</li>
-</ol>`
+          enunciado: `<p><strong>Observação e brainstorming</strong> (em grupo)</p>
+<p>Cenário: o processo de entrada na faculdade (catraca/portaria) é lento e causa filas.</p>
+<p><strong>Passo 1 — Observação simulada:</strong> 2 colegas encenam a entrada na faculdade enquanto o resto observa e anota usando o AEIOU:</p>
+<table>
+<tr><th>Categoria</th><th>Pergunta-guia</th></tr>
+<tr><td>Activities</td><td>O que as pessoas fazem?</td></tr>
+<tr><td>Environment</td><td>Onde isso acontece?</td></tr>
+<tr><td>Interactions</td><td>Com quem ou o quê interagem?</td></tr>
+<tr><td>Objects</td><td>Que objetos usam (inclusive gambiarras)?</td></tr>
+<tr><td>Users</td><td>Quem são as pessoas envolvidas?</td></tr>
+</table>
+<p><strong>Passo 2 — Brainstorming relâmpago:</strong> cada um escreve 5 ideias pra melhorar o processo. Depois, o grupo junta as parecidas e escolhe as 3 melhores.</p>
+<p><strong>Passo 3 — Síntese:</strong> apresentem a ideia mais inovadora pra turma e votem nas mais viáveis.</p>`
         },
         quiz: [
           {
@@ -1446,21 +1438,16 @@ Insistir vs. sair: tente por 6 meses com pequenas vitórias para ver se há evol
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Clínica dos princípios</strong> (durante a aula, em grupo)</p>
-<p>Nesta atividade, vamos diagnosticar e "tratar" problemas com base nos princípios do Manifesto Ágil.</p>
-<p>A startup caótica: "Nossas entregas atrasam, às vezes só a cada 6 meses. A equipe faz hora extra todos os dias. O cliente reclama porque não é ouvido. O código está desorganizado, mas nunca sobra tempo para arrumar."</p>
-<p><em>Situação fictícia produzida pela SEDUC-SP.</em></p>
-<p><strong>Instruções:</strong></p>
-<ul>
-<li>identifiquem três princípios do Manifesto Ágil que foram violados;</li>
-<li>expliquem as consequências dessas violações no processo e no relacionamento com o cliente;</li>
-<li>proponham três ações de melhoria, baseadas nos princípios escolhidos.</li>
-</ul>
-<p><strong>Formato de entrega:</strong></p>
-<ul>
-<li>quadro A4 (ou digital) dividido em três colunas: 1. Princípios violados; 2. Consequências; 3. Ações de melhoria;</li>
-<li>envie o quadro para registro no AVA.</li>
-</ul>`
+          enunciado: `<p><strong>Clínica dos princípios</strong> (em grupo)</p>
+<p>Cenário — a startup caótica: "Nossas entregas atrasam, às vezes só a cada 6 meses. A equipe faz hora extra todos os dias. O cliente reclama porque não é ouvido. O código está desorganizado, mas nunca sobra tempo para arrumar." <em>Situação fictícia produzida pela SEDUC-SP.</em></p>
+<p>Preencham o quadro: 3 princípios do Manifesto Ágil violados, a consequência de cada um e uma ação de melhoria.</p>
+<table>
+<tr><th>Princípio violado</th><th>Consequência (no processo / no cliente)</th><th>Ação de melhoria</th></tr>
+<tr><td>_______________</td><td>_______________</td><td>_______________</td></tr>
+<tr><td>_______________</td><td>_______________</td><td>_______________</td></tr>
+<tr><td>_______________</td><td>_______________</td><td>_______________</td></tr>
+</table>
+<p><strong>Instruções de entrega:</strong> enviem o quadro preenchido no AVA (Google Docs em tabela, ou foto do quadro feito no papel).</p>`
         },
         quiz: [
           {
@@ -1553,18 +1540,20 @@ Insistir vs. sair: tente por 6 meses com pequenas vitórias para ver se há evol
           }
         ],
         colocandoEmPratica: {
-          enunciado: `<p><strong>Simulação ágil completa</strong> (durante a aula, em grupo)</p>
-<p>Vocês irão vivenciar uma simulação de trabalho ágil em grupo, passando por sprints curtos, planejamento, execução, revisão e adaptação.</p>
+          enunciado: `<p><strong>Simulação ágil completa</strong> (2 grupos de ~10 pessoas, 1 Product Owner por grupo, indicado pelo professor)</p>
+<table>
+<tr><th>Momento</th><th>O que acontece</th></tr>
+<tr><td>Sprint 1 — Planning</td><td>O PO apresenta a visão. Desenvolvedores desenham telas, com foco em login e lista de festas.</td></tr>
+<tr><td>Review 1</td><td>O PO avalia o resultado e dá um feedback (ex.: "Precisa de filtros!").</td></tr>
+<tr><td>Sprint 2 — Replanning</td><td>Replanejem com o feedback (30s), desenvolvam de forma iterativa (2min30s) e se adaptem ao que aprenderam.</td></tr>
+<tr><td>Review 2</td><td>O PO testa a navegação e traz um pedido inesperado (ex.: "Integração com Spotify").</td></tr>
+</table>
+<p><strong>Ao final, respondam:</strong></p>
 <ul>
-<li>Dividam-se em 2 grupos de aproximadamente 10 pessoas.</li>
-<li>Cada grupo terá 1 Product Owner (PO) (indicado pelo professor).</li>
-<li>Os demais serão desenvolvedores.</li>
-<li>Sigam as orientações a seguir e ao final respondam: 1. O que funcionou? 2. O que pode melhorar? 3. Como os valores ágeis apareceram?</li>
-</ul>
-<p><strong>Sprint 1:</strong> Planning — PO apresenta a visão; desenvolvimento — desenhar telas; foco em login e lista de festas.</p>
-<p><strong>Review 1:</strong> PO avalia resultado; feedback (exemplo: "Precisa de filtros!").</p>
-<p><strong>Sprint 2:</strong> replanning com feedback (30s); desenvolvimento iterativo (2min30s); adaptação com base no aprendizado.</p>
-<p><strong>Review 2:</strong> PO testa a navegação; novo pedido (exemplo: "Integração com Spotify").</p>`
+<li>O que funcionou?</li>
+<li>O que pode melhorar?</li>
+<li>Como os valores ágeis apareceram?</li>
+</ul>`
         },
         quiz: [
           {
