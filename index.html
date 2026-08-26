@@ -2029,6 +2029,19 @@ const BATCH_B = [
 </ul>`
           }
         ],
+        quiz: [
+          {
+            question: `Qual das opções abaixo é um exemplo de teste FUNCIONAL?`,
+            options: [
+              `Verificar se o carrinho de compras realmente adiciona o item quando o botão é clicado.`,
+              `Medir quantos milissegundos o servidor leva para responder a uma requisição.`,
+              `Analisar se o código segue os padrões de nomenclatura da equipe.`,
+              `Verificar quantas linhas de código foram alteradas no último commit.`
+            ],
+            correct: 0,
+            feedback: `Teste funcional é caixa-preta: verifica SE o sistema faz o que deveria, olhando só entrada e saída — como clicar em um botão e checar o resultado. Medir tempo de resposta, revisar padrões de código ou contar linhas alteradas olham para dentro do sistema, não para o comportamento que o usuário vê.`
+          }
+        ],
         serSempreMais: {
           situacao: `<p><strong>A testadora que salvou o lançamento</strong></p>
 <p>Ana era testadora júnior na GameStudio. Faltando 2 dias para lançar o jogo mobile mais esperado do ano, todos comemoravam: "Código 100% testado!". Ana, curiosa, pensou: "Mas alguém jogou como jogador de verdade?". Ficou a noite testando. Descobriu: quando o jogador morria na fase 3 e usava "continue", o jogo travava. Ninguém havia testado esse cenário específico.</p>
