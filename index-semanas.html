@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semanas interativas — Processos de Desenvolvimento de Software</title>
+<style>
+:root{--bg:#f3f7f6;--panel:#fff;--panel-2:#e8f2f0;--border:#d3e3e0;--text:#17231f;--text-dim:#59736c;--accent:#0e8074;--accent-d:#0a5e55;--ok:#1b8a5a;--ok-bg:#e6f6ee;--err:#c9333a;--err-bg:#fdecec;--warn:#8a5a1b;--warn-bg:#f9f0e2;--radius:10px;--shadow:0 1px 3px rgba(20,25,45,.08),0 1px 2px rgba(20,25,45,.06)}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;margin:0;padding:0 16px 80px}
+.wrap{max-width:860px;margin:0 auto}
+header.top{padding:32px 0 8px}
+header.top h1{margin:0 0 4px;font-size:1.7rem;line-height:1.2}
+header.top p{margin:0;color:var(--text-dim)}
+h2{font-size:1.3rem;margin:36px 0 6px;padding-top:8px}
+h3{font-size:1.05rem;margin:20px 0 8px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;margin:14px 0}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--accent-d);background:var(--panel-2);border-radius:999px;padding:3px 10px;margin-bottom:8px}
+.muted{color:var(--text-dim);font-size:.92rem}
+.info{background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;font-size:.92rem;color:var(--text-dim)}
+fieldset{border:0;margin:0;padding:0}
+legend{font-weight:600;margin-bottom:10px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin:7px 0;cursor:pointer;background:#fff}
+.opt:hover{border-color:var(--accent)}
+.opt input{margin-top:3px;flex:0 0 auto}
+.opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+.opt.wrong{border-color:var(--err);background:var(--err-bg)}
+.opt.locked{cursor:default;opacity:.9}
+button{font:inherit;font-weight:600;border:0;border-radius:8px;padding:9px 16px;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-d)}
+.btn-ghost{background:var(--panel-2);color:var(--accent-d)}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.feedback{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:.95rem;display:none}
+.feedback.show{display:block}
+.feedback.ok{background:var(--ok-bg);border:1px solid var(--ok);color:#0f5e3f}
+.feedback.err{background:var(--err-bg);border:1px solid var(--err);color:#8f2229}
+.feedback.done{background:var(--panel-2);border:1px solid var(--border);color:var(--text)}
+label.field{display:block;margin:12px 0 4px;font-weight:600;font-size:.95rem}
+input[type=text],textarea,select{width:100%;font:inherit;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:7px;padding:8px 10px}
+textarea{min-height:60px;resize:vertical}
+.sub{border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:10px 0;background:#fbfdfc}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.grid2{grid-template-columns:1fr}}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.92rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel-2)}
+.check-row{display:flex;gap:16px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.check-row .q{flex:1 1 260px}
+.check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
+.score{font-weight:700}
+.print-only{display:none}
+footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+@media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
+</style></head><body><div class="wrap">
+<header class="top"><h1>Semanas interativas — Processos de Desenvolvimento de Software</h1>
+<p>Quizzes "Pause e Responda" (3 tentativas) + Registro de Aula com Gerar PDF</p></header><h2>Bimestre 1</h2><div class="card"><ul><li><a href="semana-01-requisitos.html">Semana 1 — Requisitos: o ciclo de um requisito</a></li><li><a href="semana-02-elicitacao.html">Semana 2 — Técnicas de elicitação de requisitos</a></li><li><a href="semana-03-manifesto-agil.html">Semana 3 — Manifesto Ágil e seus princípios</a></li><li><a href="semana-04-introducao-testes.html">Semana 4 — Introdução aos testes de software e tipos de testes</a></li><li><a href="semana-05-testes-funcionais.html">Semana 5 — Testes funcionais: conceitos e metodologias</a></li><li><a href="semana-06-validacao-verificacao.html">Semana 6 — Validação e verificação de requisitos</a></li><li><a href="semana-07-gerenciamento-mudancas.html">Semana 7 — Gerenciamento de mudanças em requisitos</a></li></ul></div><h2>Bimestre 2</h2><div class="card"><ul><li><a href="semana-08-casos-de-teste.html">Semana 8 — Casos de teste funcional e automação básica</a></li><li><a href="semana-09-metricas-qualidade.html">Semana 9 — Métricas de qualidade e priorização de testes</a></li><li><a href="semana-10-cultura-agil.html">Semana 10 — Cultura ágil e mudança de mentalidade</a></li><li><a href="semana-11-release-iteracoes.html">Semana 11 — Planejamento de release e iterações</a></li><li><a href="semana-12-papeis-scrum-po.html">Semana 12 — Papéis no Scrum: o Product Owner</a></li><li><a href="semana-13-metricas-ageis.html">Semana 13 — Métricas ágeis: Velocity, Burndown e CFD</a></li><li><a href="semana-14-retrospectiva.html">Semana 14 — Retrospectiva e melhoria contínua</a></li></ul></div><h2>Bimestre 3</h2><div class="card"><ul><li><a href="semana-15-modelos-processo.html">Semana 15 — Modelos de processo: cascata, incremental e evolutivo</a></li><li><a href="semana-16-manifesto-papeis-scrum.html">Semana 16 — Manifesto Ágil e papéis do Scrum (consolidação)</a></li><li><a href="semana-17-eventos-artefatos-scrum.html">Semana 17 — Eventos e artefatos do Scrum</a></li><li><a href="semana-18-kanban-wip.html">Semana 18 — Kanban: fluxo contínuo e limites de WIP</a></li><li><a href="semana-19-estimativas-ageis.html">Semana 19 — Estimativas ágeis: story points, velocity e release plan</a></li><li><a href="semana-20-ci-cd.html">Semana 20 — Integração Contínua (CI) e Entrega Contínua (CD)</a></li></ul></div><footer>Gerado automaticamente.</footer></div></body></html>

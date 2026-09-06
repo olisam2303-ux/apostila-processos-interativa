@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semana 13 — Métricas ágeis: Velocity, Burndown e CFD | Processos de Desenvolvimento de Software</title>
+<style>
+:root{--bg:#f3f7f6;--panel:#fff;--panel-2:#e8f2f0;--border:#d3e3e0;--text:#17231f;--text-dim:#59736c;--accent:#0e8074;--accent-d:#0a5e55;--ok:#1b8a5a;--ok-bg:#e6f6ee;--err:#c9333a;--err-bg:#fdecec;--warn:#8a5a1b;--warn-bg:#f9f0e2;--radius:10px;--shadow:0 1px 3px rgba(20,25,45,.08),0 1px 2px rgba(20,25,45,.06)}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;margin:0;padding:0 16px 80px}
+.wrap{max-width:860px;margin:0 auto}
+header.top{padding:32px 0 8px}
+header.top h1{margin:0 0 4px;font-size:1.7rem;line-height:1.2}
+header.top p{margin:0;color:var(--text-dim)}
+h2{font-size:1.3rem;margin:36px 0 6px;padding-top:8px}
+h3{font-size:1.05rem;margin:20px 0 8px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;margin:14px 0}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--accent-d);background:var(--panel-2);border-radius:999px;padding:3px 10px;margin-bottom:8px}
+.muted{color:var(--text-dim);font-size:.92rem}
+.info{background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;font-size:.92rem;color:var(--text-dim)}
+fieldset{border:0;margin:0;padding:0}
+legend{font-weight:600;margin-bottom:10px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin:7px 0;cursor:pointer;background:#fff}
+.opt:hover{border-color:var(--accent)}
+.opt input{margin-top:3px;flex:0 0 auto}
+.opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+.opt.wrong{border-color:var(--err);background:var(--err-bg)}
+.opt.locked{cursor:default;opacity:.9}
+button{font:inherit;font-weight:600;border:0;border-radius:8px;padding:9px 16px;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-d)}
+.btn-ghost{background:var(--panel-2);color:var(--accent-d)}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.feedback{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:.95rem;display:none}
+.feedback.show{display:block}
+.feedback.ok{background:var(--ok-bg);border:1px solid var(--ok);color:#0f5e3f}
+.feedback.err{background:var(--err-bg);border:1px solid var(--err);color:#8f2229}
+.feedback.done{background:var(--panel-2);border:1px solid var(--border);color:var(--text)}
+label.field{display:block;margin:12px 0 4px;font-weight:600;font-size:.95rem}
+input[type=text],textarea,select{width:100%;font:inherit;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:7px;padding:8px 10px}
+textarea{min-height:60px;resize:vertical}
+.sub{border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:10px 0;background:#fbfdfc}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.grid2{grid-template-columns:1fr}}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.92rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel-2)}
+.check-row{display:flex;gap:16px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.check-row .q{flex:1 1 260px}
+.check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
+.score{font-weight:700}
+.print-only{display:none}
+footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+@media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top no-print">
+  <h1>Semana 13 — Métricas ágeis: Velocity, Burndown e CFD</h1>
+  <p>Disciplina de Processos de Desenvolvimento de Software · Bimestre 2 · Capítulo 13 · Aulas 1 a 3</p>
+</header>
+
+<div class="info no-print">
+  <strong>Como funciona.</strong> Cada aula tem um quiz <em>Pause e Responda</em> — você tem
+  <strong>até 3 tentativas</strong> por quiz e vale a melhor.
+  O <em>Registro da Aula</em> é um formulário: preencha, clique em <strong>Gerar PDF</strong> e envie o PDF no AVA.
+  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente).
+</div>
+
+<h2 class="no-print">Pause e Responda 1</h2>
+<div class="card no-print" data-quiz="0">
+  <span class="tag">Quiz da semana</span>
+  <p class="qtext"></p>
+  <fieldset><legend class="muted">Escolha uma alternativa:</legend><div class="opts"></div></fieldset>
+  <div class="btn-row"><button class="btn-primary answer">Responder</button><span class="muted attempts">Tentativa 1 de 3</span></div>
+  <div class="feedback" aria-live="polite"></div>
+</div>
+<h2 class="no-print">Pause e Responda 2</h2>
+<div class="card no-print" data-quiz="1">
+  <span class="tag">Quiz da semana</span>
+  <p class="qtext"></p>
+  <fieldset><legend class="muted">Escolha uma alternativa:</legend><div class="opts"></div></fieldset>
+  <div class="btn-row"><button class="btn-primary answer">Responder</button><span class="muted attempts">Tentativa 1 de 3</span></div>
+  <div class="feedback" aria-live="polite"></div>
+</div>
+<h2 class="no-print">Pause e Responda 3a</h2>
+<div class="card no-print" data-quiz="2">
+  <span class="tag">Quiz da semana</span>
+  <p class="qtext"></p>
+  <fieldset><legend class="muted">Escolha uma alternativa:</legend><div class="opts"></div></fieldset>
+  <div class="btn-row"><button class="btn-primary answer">Responder</button><span class="muted attempts">Tentativa 1 de 3</span></div>
+  <div class="feedback" aria-live="polite"></div>
+</div>
+
+<h2 class="no-print">Registro da Aula — "Análise de Cumulative Flow Diagrams (CFD)"</h2>
+<div class="card no-print"><span class="tag">Contexto</span><p>Você é o <strong>Scrum Master</strong> da "DevFlow". Analisando o quadro de gestão visual, encontrou padrões nos CFD dos últimos sprints. Para cada cenário, preencha o <strong>relatório de diagnóstico</strong>.</p>
+    <p class="muted">Este roteiro não existia — foi montado a partir do enunciado da aula e do quiz.</p></div>
+<form id="reg-0" class="card no-print">
+<h3>Identificação</h3><label class="field" for="f_241">Turma</label><input type="text" id="f_241" placeholder="">
+<label class="field" for="f_242">Data</label><input type="text" id="f_242" placeholder="dd/mm/aaaa">
+<label class="field" for="f_243">Nome ou nº do grupo</label><input type="text" id="f_243" placeholder="">
+<label class="field" for="f_244">Integrantes (separe por vírgula)</label><input type="text" id="f_244" placeholder="">
+<h3>Cenário 1 — O gargalo invisível (Sprint 30)</h3><p class="muted">A faixa de Code Review começou com 3 tarefas (Dia 1) e terminou com 12 (Dia 15), ficando cada vez mais larga. A faixa de Done cresceu muito devagar. Sintoma: as tarefas chegam à revisão mais rápido do que são aprovadas.</p><label class="field" for="f_245">Problema — o que está travando o fluxo?</label><textarea id="f_245"></textarea>
+<label class="field" for="f_246">Risco — o que acontece se nada for feito?</label><textarea id="f_246"></textarea>
+<label class="field" for="f_247">Violação — que boa prática (ex.: WIP Limit, fluxo contínuo) foi ignorada?</label><input type="text" id="f_247" placeholder="">
+<label class="field" for="f_248">Recomendação — que ação prática deve ser tomada?</label><textarea id="f_248"></textarea>
+<label class="field" for="f_249">Responsável — quem deve agir (SM / Time / PO)?</label><input type="text" id="f_249" placeholder="">
+<h3>Cenário 2 — A ilusão de produtividade (Sprint 31)</h3><p class="muted">A faixa de Doing ocupou 40% do gráfico durante todo o sprint, mantendo mais de 25 tarefas em andamento simultâneas para um time pequeno. Poucas tarefas chegaram ao Done.</p><label class="field" for="f_250">Problema — o que está travando o fluxo?</label><textarea id="f_250"></textarea>
+<label class="field" for="f_251">Risco — o que acontece se nada for feito?</label><textarea id="f_251"></textarea>
+<label class="field" for="f_252">Violação — que boa prática foi ignorada?</label><input type="text" id="f_252" placeholder="">
+<label class="field" for="f_253">Recomendação — que ação prática deve ser tomada?</label><textarea id="f_253"></textarea>
+<label class="field" for="f_254">Responsável — quem deve agir?</label><input type="text" id="f_254" placeholder="">
+<h3>Cenário 3 — Cálculo de lead time</h3><p class="muted">Usando os dados do quiz (To Do 5, In Progress 6, Testing 15, Done 20; throughput 2 itens/dia), calcule o lead time pela Lei de Little e explique o que ele significa para o cliente.</p><label class="field" for="f_255">WIP (trabalho não concluído)</label><input type="text" id="f_255" placeholder="">
+<label class="field" for="f_256">Throughput (itens/dia)</label><input type="text" id="f_256" placeholder="">
+<label class="field" for="f_257">Lead time = WIP ÷ throughput</label><input type="text" id="f_257" placeholder="">
+<label class="field" for="f_258">O que esse lead time significa na prática para quem espera uma entrega?</label><textarea id="f_258"></textarea>
+  <div class="btn-row no-print">
+    <button type="button" class="btn-primary btnPdf" data-k="0">Gerar PDF</button>
+    <button type="button" class="btn-ghost btnSave" data-k="0">Salvar rascunho</button>
+    <button type="button" class="btn-ghost btnClear" data-k="0">Limpar</button>
+    <span class="muted saveMsg" data-k="0"></span>
+  </div>
+</form>
+
+<div class="card no-print" id="resumoQuiz">
+  <span class="tag">Seu desempenho nos quizzes desta semana</span>
+  <p class="score" id="scoreLine">Respondidos: 0 de 3 · Acertos: 0</p>
+  <p class="muted">Os acertos dos quizzes de todas as semanas do bimestre somam a nota de
+  <strong>Pause e Responda</strong>: acertos ÷ 21 × 4,0 pontos.</p>
+</div>
+
+<h2 class="no-print">Como esta semana entra na nota do bimestre</h2>
+<div class="card no-print">
+  <p>O bimestre vale <strong>10,0 pontos</strong>:</p>
+  <table>
+    <tr><th>Componente</th><th>Pontos</th><th>Cálculo</th></tr>
+    <tr><td>Pause e Responda (todos os quizzes do bimestre)</td><td>4,0</td><td>até 3 tentativas por quiz, vale a melhor · nota = acertos ÷ 21 × 4,0</td></tr>
+    <tr><td>Registro de Aula (1 por semana — 7 no total)</td><td>6,0</td><td>cada registro de 0 a 1,0 pela rubrica · nota = média dos 7 × 6,0</td></tr>
+  </table>
+  <h3>Rubrica — Análise de Cumulative Flow Diagrams (CFD) (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Preencheu os 5 campos do relatório (Problema/Risco/Violação/Recomendação/Responsável) nos 2 cenários</td><td>0,2</td></tr><tr><td>Identificou corretamente as violações (falta de WIP limit; excesso de trabalho em andamento)</td><td>0,2</td></tr><tr><td>Recomendações são práticas e ligadas ao problema (não genéricas)</td><td>0,2</td></tr><tr><td>Cálculo de lead time correto (WIP ÷ throughput) e interpretação coerente</td><td>0,2</td></tr><tr><td>Relatório claro; entregue no AVA com identificação</td><td>0,2</td></tr></table>
+</div>
+
+<div class="print-only" id="printSummary-0"></div>
+
+<footer>
+  Situação fictícia produzida pela SEDUC-SP. Material da apostila
+  <em>Processos de Desenvolvimento de Software: Requisitos, Agilidade e Qualidade na Prática</em> —
+  Semana 13 (Capítulo 13).
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var LS={get:function(k,d){try{var v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},
+set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{localStorage.removeItem(k);}catch(e){}}};
+var PFX="p2s13_";
+var QCOUNT=3;
+var QUIZZES=[{"q":"Uma equipe Scrum planejou dez user stories (40 story points) para o Sprint 8. Ao final, sete stories ficaram 100% concluídas (28 points), duas ficaram 90% (10 points) e uma ficou 50% (2 points). Qual é a Velocity do Sprint 8?","opts":["30 points (28 + 2, stories 100% e 50% concluídas).","28 points (apenas stories 100% concluídas).","40 points (tudo que foi planejado).","38 points (28 + 10, stories 100% e 90% concluídas)."],"correct":1,"exp":"Velocity conta apenas o que foi 100% concluído (atende a Definition of Done). Histórias parciais não contam — nem as de 90%. Logo, Velocity = 28 points."},{"q":"Uma equipe Scrum está no Dia 5 de um sprint de 10 dias: trabalho total 30 story points; trabalho restante real 18 points; trabalho restante ideal 15 points. Qual é a situação da equipe?","opts":["A equipe está atrasada (acima da linha ideal).","A equipe está no ritmo certo (próxima da linha ideal).","A equipe está com platô (sem progresso).","A equipe está adiantada (abaixo da linha ideal)."],"correct":0,"exp":"No burndown, a linha real acima da ideal significa que sobra mais trabalho do que o previsto para aquele dia (18 > 15). A equipe está atrasada em relação ao ritmo planejado."},{"q":"Uma equipe Kanban tem um CFD no Dia 10 com: To Do 5, In Progress 6, Testing 15, Done 20. Throughput = 20 itens ÷ 10 dias = 2 itens/dia. Qual é o lead time?","opts":["20 dias","13 dias","5 dias","10 dias"],"correct":1,"exp":"Lei de Little: lead time = trabalho em andamento ÷ throughput. WIP (o que ainda não está \"Done\") = 5 + 6 + 15 = 26 itens. 26 ÷ 2 por dia = 13 dias."}];
+var ACTS=[{"k":0,"ids":["f_241","f_242","f_243","f_244","f_245","f_246","f_247","f_248","f_249","f_250","f_251","f_252","f_253","f_254","f_255","f_256","f_257","f_258"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_241"},{"label":"Data","id":"f_242"},{"label":"Nome ou nº do grupo","id":"f_243"},{"label":"Integrantes (separe por vírgula)","id":"f_244"},{"h":"Cenário 1 — O gargalo invisível (Sprint 30)"},{"label":"Problema — o que está travando o fluxo?","id":"f_245"},{"label":"Risco — o que acontece se nada for feito?","id":"f_246"},{"label":"Violação — que boa prática (ex.: WIP Limit, fluxo contínuo) foi ignorada?","id":"f_247"},{"label":"Recomendação — que ação prática deve ser tomada?","id":"f_248"},{"label":"Responsável — quem deve agir (SM / Time / PO)?","id":"f_249"},{"h":"Cenário 2 — A ilusão de produtividade (Sprint 31)"},{"label":"Problema — o que está travando o fluxo?","id":"f_250"},{"label":"Risco — o que acontece se nada for feito?","id":"f_251"},{"label":"Violação — que boa prática foi ignorada?","id":"f_252"},{"label":"Recomendação — que ação prática deve ser tomada?","id":"f_253"},{"label":"Responsável — quem deve agir?","id":"f_254"},{"h":"Cenário 3 — Cálculo de lead time"},{"label":"WIP (trabalho não concluído)","id":"f_255"},{"label":"Throughput (itens/dia)","id":"f_256"},{"label":"Lead time = WIP ÷ throughput","id":"f_257"},{"label":"O que esse lead time significa na prática para quem espera uma entrega?","id":"f_258"}],"title":"Análise de Cumulative Flow Diagrams (CFD)"}];
+var SEM_LABEL="Semana 13 · Métricas ágeis: Velocity, Burndown e CFD";
+
+function renderQuiz(card){
+  var qi=parseInt(card.getAttribute("data-quiz"),10);
+  var data=QUIZZES[qi];
+  card.querySelector(".qtext").textContent=data.q;
+  var box=card.querySelector(".opts");
+  data.opts.forEach(function(txt,i){
+    var lab=document.createElement("label");lab.className="opt";
+    lab.innerHTML='<input type="radio" name="q'+qi+'" value="'+i+'"><span>'+txt+'</span>';
+    box.appendChild(lab);
+  });
+  var state=LS.get(PFX+"quiz"+qi,{tries:0,done:false,correct:false});
+  var fb=card.querySelector(".feedback"),att=card.querySelector(".attempts"),btn=card.querySelector(".answer");
+  function lock(){card.querySelectorAll('input[type=radio]').forEach(function(r){r.disabled=true;});
+    card.querySelectorAll(".opt").forEach(function(o){o.classList.add("locked");});btn.disabled=true;}
+  function paint(){card.querySelectorAll(".opt")[data.correct].classList.add("correct");}
+  function showDone(){
+    fb.className="feedback show "+(state.correct?"ok":"done");
+    fb.innerHTML=(state.correct?"<strong>Correto!</strong> ":"<strong>Tentativas encerradas.</strong> ")
+      +"A alternativa certa é: <em>"+data.opts[data.correct].replace(/\.$/,"")+"</em>.<br>"+data.exp;
+    att.textContent=state.correct?"Acertou":"3 de 3 tentativas usadas";paint();lock();
+  }
+  if(state.done)showDone(); else att.textContent="Tentativa "+(state.tries+1)+" de 3";
+  btn.addEventListener("click",function(){
+    var sel=card.querySelector('input[name=q'+qi+']:checked');
+    if(!sel){fb.className="feedback show err";fb.textContent="Selecione uma alternativa antes de responder.";return;}
+    var val=parseInt(sel.value,10);state.tries++;
+    if(val===data.correct){state.done=true;state.correct=true;LS.set(PFX+"quiz"+qi,state);showDone();updateScore();}
+    else{
+      sel.closest(".opt").classList.add("wrong");
+      if(state.tries>=3){state.done=true;state.correct=false;LS.set(PFX+"quiz"+qi,state);showDone();updateScore();}
+      else{LS.set(PFX+"quiz"+qi,state);fb.className="feedback show err";
+        fb.innerHTML="<strong>Não foi dessa vez.</strong> Tentativa "+(state.tries+1)+" de 3. Revise o conteúdo da aula e tente de novo.";
+        att.textContent="Tentativa "+(state.tries+1)+" de 3";}
+    }
+  });
+}
+function updateScore(){
+  var done=0,ok=0;
+  for(var i=0;i<QCOUNT;i++){var s=LS.get(PFX+"quiz"+i,{done:false,correct:false});if(s.done)done++;if(s.correct)ok++;}
+  var el=document.getElementById("scoreLine");
+  if(el)el.textContent="Respondidos: "+done+" de "+QCOUNT+" · Acertos: "+ok;
+}
+document.querySelectorAll("[data-quiz]").forEach(renderQuiz);
+updateScore();
+
+/* ----- Atividades ----- */
+function escp(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+ACTS.forEach(function(a){
+  var form=document.getElementById("reg-"+a.k);
+  var key=PFX+"reg"+a.k;
+  function collect(){
+    var o={};
+    a.ids.forEach(function(id){var el=document.getElementById(id);if(el)o[id]=el.value;});
+    a.radios.forEach(function(n){var c=form.querySelector('input[name='+n+']:checked');o[n]=c?c.value:"";});
+    return o;
+  }
+  function restore(o){
+    if(!o)return;
+    a.ids.forEach(function(id){var el=document.getElementById(id);if(el&&o[id]!=null)el.value=o[id];});
+    a.radios.forEach(function(n){if(o[n]){var c=form.querySelector('input[name='+n+'][value="'+o[n]+'"]');if(c)c.checked=true;}});
+  }
+  restore(LS.get(key,null));
+  var saveMsg=form.querySelector(".saveMsg");
+  function flash(t){saveMsg.textContent=t;setTimeout(function(){saveMsg.textContent="";},2500);}
+  form.querySelector(".btnSave").addEventListener("click",function(){LS.set(key,collect());flash("Rascunho salvo neste navegador.");});
+  form.addEventListener("input",function(){LS.set(key,collect());});
+  form.querySelector(".btnClear").addEventListener("click",function(){
+    if(!confirm("Apagar o preenchimento desta atividade?"))return;
+    LS.del(key);
+    a.ids.forEach(function(id){var el=document.getElementById(id);if(el)el.value="";});
+    a.radios.forEach(function(n){form.querySelectorAll('input[name='+n+']').forEach(function(r){r.checked=false;});});
+    flash("Formulário limpo.");
+  });
+  a._collect=collect;
+});
+function buildSummary(a){
+  var o=a._collect(),h="";
+  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
+  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
+    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
+    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
+  });
+  document.getElementById("printSummary-"+a.k).innerHTML=h;
+}
+function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
+function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
+var PRINTING=null;
+window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
+window.addEventListener("afterprint",resetPrint);
+document.querySelectorAll(".btnPdf").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var k=parseInt(this.getAttribute("data-k"),10);
+    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+  });
+});
+})();
+</script>
+</body>
+</html>

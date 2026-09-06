@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semana 15 — Modelos de processo: cascata, incremental e evolutivo | Processos de Desenvolvimento de Software</title>
+<style>
+:root{--bg:#f3f7f6;--panel:#fff;--panel-2:#e8f2f0;--border:#d3e3e0;--text:#17231f;--text-dim:#59736c;--accent:#0e8074;--accent-d:#0a5e55;--ok:#1b8a5a;--ok-bg:#e6f6ee;--err:#c9333a;--err-bg:#fdecec;--warn:#8a5a1b;--warn-bg:#f9f0e2;--radius:10px;--shadow:0 1px 3px rgba(20,25,45,.08),0 1px 2px rgba(20,25,45,.06)}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;margin:0;padding:0 16px 80px}
+.wrap{max-width:860px;margin:0 auto}
+header.top{padding:32px 0 8px}
+header.top h1{margin:0 0 4px;font-size:1.7rem;line-height:1.2}
+header.top p{margin:0;color:var(--text-dim)}
+h2{font-size:1.3rem;margin:36px 0 6px;padding-top:8px}
+h3{font-size:1.05rem;margin:20px 0 8px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;margin:14px 0}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--accent-d);background:var(--panel-2);border-radius:999px;padding:3px 10px;margin-bottom:8px}
+.muted{color:var(--text-dim);font-size:.92rem}
+.info{background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;font-size:.92rem;color:var(--text-dim)}
+fieldset{border:0;margin:0;padding:0}
+legend{font-weight:600;margin-bottom:10px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin:7px 0;cursor:pointer;background:#fff}
+.opt:hover{border-color:var(--accent)}
+.opt input{margin-top:3px;flex:0 0 auto}
+.opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+.opt.wrong{border-color:var(--err);background:var(--err-bg)}
+.opt.locked{cursor:default;opacity:.9}
+button{font:inherit;font-weight:600;border:0;border-radius:8px;padding:9px 16px;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-d)}
+.btn-ghost{background:var(--panel-2);color:var(--accent-d)}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.feedback{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:.95rem;display:none}
+.feedback.show{display:block}
+.feedback.ok{background:var(--ok-bg);border:1px solid var(--ok);color:#0f5e3f}
+.feedback.err{background:var(--err-bg);border:1px solid var(--err);color:#8f2229}
+.feedback.done{background:var(--panel-2);border:1px solid var(--border);color:var(--text)}
+label.field{display:block;margin:12px 0 4px;font-weight:600;font-size:.95rem}
+input[type=text],textarea,select{width:100%;font:inherit;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:7px;padding:8px 10px}
+textarea{min-height:60px;resize:vertical}
+.sub{border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:10px 0;background:#fbfdfc}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.grid2{grid-template-columns:1fr}}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.92rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel-2)}
+.check-row{display:flex;gap:16px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.check-row .q{flex:1 1 260px}
+.check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
+.score{font-weight:700}
+.print-only{display:none}
+footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+@media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top no-print">
+  <h1>Semana 15 — Modelos de processo: cascata, incremental e evolutivo</h1>
+  <p>Disciplina de Processos de Desenvolvimento de Software · Bimestre 3 · Capítulo 15 · Aulas 1 a 3</p>
+</header>
+
+<div class="info no-print">
+  <strong>Como funciona.</strong> Cada aula tem um quiz <em>Pause e Responda</em> — você tem
+  <strong>até 3 tentativas</strong> por quiz e vale a melhor.
+  Esta semana tem <strong>duas atividades práticas</strong>; cada uma tem seu próprio botão <strong>Gerar PDF</strong>.
+  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente).
+</div>
+
+<h2 class="no-print">Pause e Responda 1</h2>
+<div class="card no-print" data-quiz="0">
+  <span class="tag">Quiz da semana</span>
+  <p class="qtext"></p>
+  <fieldset><legend class="muted">Escolha uma alternativa:</legend><div class="opts"></div></fieldset>
+  <div class="btn-row"><button class="btn-primary answer">Responder</button><span class="muted attempts">Tentativa 1 de 3</span></div>
+  <div class="feedback" aria-live="polite"></div>
+</div>
+<h2 class="no-print">Pause e Responda 2</h2>
+<div class="card no-print" data-quiz="1">
+  <span class="tag">Quiz da semana</span>
+  <p class="qtext"></p>
+  <fieldset><legend class="muted">Escolha uma alternativa:</legend><div class="opts"></div></fieldset>
+  <div class="btn-row"><button class="btn-primary answer">Responder</button><span class="muted attempts">Tentativa 1 de 3</span></div>
+  <div class="feedback" aria-live="polite"></div>
+</div>
+<h2 class="no-print">Pause e Responda 3</h2>
+<div class="card no-print" data-quiz="2">
+  <span class="tag">Quiz da semana</span>
+  <p class="qtext"></p>
+  <fieldset><legend class="muted">Escolha uma alternativa:</legend><div class="opts"></div></fieldset>
+  <div class="btn-row"><button class="btn-primary answer">Responder</button><span class="muted attempts">Tentativa 1 de 3</span></div>
+  <div class="feedback" aria-live="polite"></div>
+</div>
+
+<h2 class="no-print">Atividade 1 — "Modelo em cascata na prática"</h2>
+<div class="card no-print"><span class="tag">Contexto</span><p>Uma empresa vai desenvolver um sistema de controle de pedidos. Prazo curto, orçamento limitado, requisitos definidos e (segundo o cliente) sem mudanças. A equipe escolhe o <strong>modelo cascata</strong>.</p>
+      <p class="muted">Base: apostila, Capítulo 15. Fases oficiais (aula S15A1): requisitos, análise, projeto, implementação, testes, manutenção. Desenhem o fluxograma no draw.io.</p></div>
+<form id="reg-0" class="card no-print">
+<h3>Identificação</h3><label class="field" for="f_274">Turma</label><input type="text" id="f_274" placeholder="">
+<label class="field" for="f_275">Data</label><input type="text" id="f_275" placeholder="dd/mm/aaaa">
+<label class="field" for="f_276">Nome ou nº do grupo</label><input type="text" id="f_276" placeholder="">
+<label class="field" for="f_277">Integrantes (separe por vírgula)</label><input type="text" id="f_277" placeholder="">
+<h3>Desafio 1 — As fases do modelo cascata</h3><p class="muted">Objetivo de cada fase em uma frase; por que uma fase só começa após a anterior; o que acontece se uma fase for mal executada. Colem a imagem do fluxograma do draw.io (6 caixas de cima para baixo, sem setas de retorno).</p><label class="field" for="f_278">Requisitos</label><input type="text" id="f_278" placeholder="">
+<label class="field" for="f_279">Análise</label><input type="text" id="f_279" placeholder="">
+<label class="field" for="f_280">Projeto</label><input type="text" id="f_280" placeholder="">
+<label class="field" for="f_281">Implementação</label><input type="text" id="f_281" placeholder="">
+<label class="field" for="f_282">Testes</label><input type="text" id="f_282" placeholder="">
+<label class="field" for="f_283">Manutenção</label><input type="text" id="f_283" placeholder="">
+<label class="field" for="f_284">Por que uma fase só começa após a anterior?</label><textarea id="f_284"></textarea>
+<label class="field" for="f_285">O que acontece se uma fase for mal executada?</label><textarea id="f_285"></textarea>
+<label class="field" for="f_286">Fluxograma do draw.io — descreva ou cole a imagem no PDF</label><textarea id="f_286"></textarea>
+<h3>Desafio 2 — Erro de entendimento da própria equipe</h3><p class="muted">Um requisito foi mal entendido; percebe-se só na implementação. O erro é interno.</p><label class="field" for="f_287">O cascata permite voltar fácil aos requisitos? Justifique.</label><textarea id="f_287"></textarea>
+<label class="field" for="f_288">Impactos em prazo e custo</label><textarea id="f_288"></textarea>
+<label class="field" for="f_289">Por que é mais grave em processos rígidos?</label><textarea id="f_289"></textarea>
+<h3>Desafio 3 — Quando o cascata funciona bem</h3><label class="field" for="f_290">Situações em que o cascata é boa escolha</label><textarea id="f_290"></textarea>
+<label class="field" for="f_291">Por que requisitos estáveis se beneficiam dele</label><textarea id="f_291"></textarea>
+<label class="field" for="f_292">Relação com facilidade de planejamento e documentação</label><textarea id="f_292"></textarea>
+<h3>Desafio 4 — Mudança solicitada pelo cliente</h3><p class="muted">Diferente do Desafio 2: o produto não estava errado; o cliente mudou de ideia com a implementação em andamento.</p><label class="field" for="f_293">Por que o cascata tem dificuldade de absorver a mudança agora</label><textarea id="f_293"></textarea>
+<label class="field" for="f_294">Como isso gera retrabalho nas fases concluídas</label><textarea id="f_294"></textarea>
+<label class="field" for="f_295">Risco de insatisfação do cliente</label><textarea id="f_295"></textarea>
+<label class="field" for="f_296">Diferença entre este desafio (mudança externa) e o Desafio 2 (erro interno)</label><textarea id="f_296"></textarea>
+<h3>Desafio 5 — Avaliação crítica</h3><label class="field" for="f_297">O cascata serve para projetos longos, complexos e com requisitos incertos? Justifique.</label><textarea id="f_297"></textarea>
+<label class="field" for="f_298">Por que escolher o modelo adequado é uma decisão importante</label><textarea id="f_298"></textarea>
+<label class="field" for="f_299">Por que não existe um modelo &quot;perfeito&quot; para todos os projetos</label><textarea id="f_299"></textarea>
+  <div class="btn-row no-print">
+    <button type="button" class="btn-primary btnPdf" data-k="0">Gerar PDF — Atividade 1</button>
+    <button type="button" class="btn-ghost btnSave" data-k="0">Salvar rascunho</button>
+    <button type="button" class="btn-ghost btnClear" data-k="0">Limpar</button>
+    <span class="muted saveMsg" data-k="0"></span>
+  </div>
+</form>
+<h2 class="no-print">Atividade 2 — "Modelos incremental e evolutivo"</h2>
+<div class="card no-print"><span class="tag">Contexto</span><p>Uma startup desenvolve um app de organização de estudos para o ensino médio. Objetivo inicial: registrar matérias e tarefas. Com o uso surgem lembretes automáticos, gráficos de desempenho, integração com calendário — os requisitos mudam.</p>
+      <p class="muted">Base: apostila, Capítulo 15 (tabela de comparação dos três modelos). Desenhem os dois modelos no draw.io.</p></div>
+<form id="reg-1" class="card no-print">
+<h3>Identificação</h3><label class="field" for="f_300">Turma</label><input type="text" id="f_300" placeholder="">
+<label class="field" for="f_301">Data</label><input type="text" id="f_301" placeholder="dd/mm/aaaa">
+<label class="field" for="f_302">Nome ou nº do grupo</label><input type="text" id="f_302" placeholder="">
+<label class="field" for="f_303">Integrantes (separe por vírgula)</label><input type="text" id="f_303" placeholder="">
+<h3>Etapa 1 — Compreensão do problema</h3><label class="field" for="f_304">Objetivo inicial do sistema</label><textarea id="f_304"></textarea>
+<label class="field" for="f_305">Por que os requisitos não estão totalmente definidos</label><textarea id="f_305"></textarea>
+<label class="field" for="f_306">Que tipos de mudança podem surgir com o uso</label><textarea id="f_306"></textarea>
+<h3>Etapa 2 — Planejamento incremental</h3><p class="muted">O contexto já sugere a ordem: registrar matérias/tarefas → lembretes → gráficos + calendário. Para cada versão, o que entrega e por que essa ordem.</p><label class="field">Versão</label><div class="sub"><strong>1</strong><label class="field" for="g_307">O que a versão entrega</label><input type="text" id="g_307"><label class="field" for="g_308">Por que nesta ordem (valor / dependências)</label><input type="text" id="g_308"></div><div class="sub"><strong>2</strong><label class="field" for="g_309">O que a versão entrega</label><input type="text" id="g_309"><label class="field" for="g_310">Por que nesta ordem (valor / dependências)</label><input type="text" id="g_310"></div><div class="sub"><strong>3</strong><label class="field" for="g_311">O que a versão entrega</label><input type="text" id="g_311"><label class="field" for="g_312">Por que nesta ordem (valor / dependências)</label><input type="text" id="g_312"></div>
+<h3>Etapa 3 — Aplicação do modelo evolutivo</h3><label class="field" for="f_313">Como o feedback dos usuários gera mudanças</label><textarea id="f_313"></textarea>
+<label class="field" for="f_314">Como os requisitos são ajustados a cada ciclo</label><textarea id="f_314"></textarea>
+<label class="field" for="f_315">Por que esse modelo se adapta melhor a contextos incertos</label><textarea id="f_315"></textarea>
+<h3>Etapa 4 — Relação com as fases clássicas</h3><p class="muted">Em 3 a 4 frases: como requisitos, análise, projeto, implementação, testes e manutenção acontecem dentro de cada ciclo (várias vezes), e não uma única vez.</p><label class="field" for="f_316">Explicação</label><textarea id="f_316"></textarea>
+<h3>Etapa 5 — Diagramas no draw.io</h3><p class="muted">Página 1: incremental (3 mini-ciclos em sequência). Página 2: evolutivo (esboço → protótipo → retorno → losango "atende?": não volta a "refinar", sim segue para o fim).</p><label class="field" for="f_317">Descreva ou cole as duas imagens no PDF</label><textarea id="f_317"></textarea>
+<h3>Etapa 6 — Justificativa da escolha</h3><p class="muted">Por que incremental/evolutivo é melhor que cascata rígido para este projeto (use a tabela do Capítulo 15).</p><label class="field" for="f_318">Justificativa</label><textarea id="f_318"></textarea>
+  <div class="btn-row no-print">
+    <button type="button" class="btn-primary btnPdf" data-k="1">Gerar PDF — Atividade 2</button>
+    <button type="button" class="btn-ghost btnSave" data-k="1">Salvar rascunho</button>
+    <button type="button" class="btn-ghost btnClear" data-k="1">Limpar</button>
+    <span class="muted saveMsg" data-k="1"></span>
+  </div>
+</form>
+
+<div class="card no-print" id="resumoQuiz">
+  <span class="tag">Seu desempenho nos quizzes desta semana</span>
+  <p class="score" id="scoreLine">Respondidos: 0 de 3 · Acertos: 0</p>
+  <p class="muted">Os acertos dos quizzes de todas as semanas do bimestre somam a nota de
+  <strong>Pause e Responda</strong>: acertos ÷ 18 × 4,0 pontos.</p>
+</div>
+
+<h2 class="no-print">Como esta semana entra na nota do bimestre</h2>
+<div class="card no-print">
+  <p>O bimestre vale <strong>10,0 pontos</strong>:</p>
+  <table>
+    <tr><th>Componente</th><th>Pontos</th><th>Cálculo</th></tr>
+    <tr><td>Pause e Responda (todos os quizzes do bimestre)</td><td>4,0</td><td>até 3 tentativas por quiz, vale a melhor · nota = acertos ÷ 18 × 4,0</td></tr>
+    <tr><td>Atividades práticas (esta semana tem 2; 6 semanas no bimestre)</td><td>6,0</td><td>cada atividade de 0 a 1,0 pela rubrica · nota da semana = média das atividades da semana · nota do componente = média das 6 semanas × 6,0</td></tr>
+  </table>
+  <h3>Rubrica — Atividade 1: Modelo em cascata na prática (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>As 6 fases descritas com objetivo claro</td><td>0,2</td></tr><tr><td>Fluxograma do modelo cascata sem nenhuma seta de retorno</td><td>0,2</td></tr><tr><td>Respostas dos Desafios 2 e 4 diferenciadas (erro interno × mudança do cliente)</td><td>0,2</td></tr><tr><td>Avaliação crítica coerente (contexto define o modelo, não moda)</td><td>0,2</td></tr><tr><td>Texto claro; entregue em PDF no AVA com identificação</td><td>0,2</td></tr></table>
+<h3>Rubrica — Atividade 2: Modelos incremental e evolutivo (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Problema descrito com clareza; requisitos que mudam identificados</td><td>0,2</td></tr><tr><td>Sistema dividido em pelo menos 3 versões, cada uma com o que entrega</td><td>0,2</td></tr><tr><td>Modelo evolutivo explicado com o laço "refinar e repetir"</td><td>0,2</td></tr><tr><td>Os dois diagramas do draw.io presentes (incremental e evolutivo)</td><td>0,2</td></tr><tr><td>Justificativa usa a comparação do Capítulo 15; entregue em PDF no AVA</td><td>0,2</td></tr></table>
+</div>
+
+<div class="print-only" id="printSummary-0"></div>
+<div class="print-only" id="printSummary-1"></div>
+
+<footer>
+  Situação fictícia produzida pela SEDUC-SP. Material da apostila
+  <em>Processos de Desenvolvimento de Software: Requisitos, Agilidade e Qualidade na Prática</em> —
+  Semana 15 (Capítulo 15).
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var LS={get:function(k,d){try{var v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},
+set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{localStorage.removeItem(k);}catch(e){}}};
+var PFX="p3s15_";
+var QCOUNT=3;
+var QUIZZES=[{"q":"Qual é o principal objetivo do SDLC no desenvolvimento de software?","opts":["Programar o sistema o mais rápido possível.","Garantir que o software nunca precise de manutenção.","Eliminar a necessidade de testes.","Organizar o desenvolvimento em fases bem definidas."],"correct":3,"exp":"O SDLC (ciclo de vida do desenvolvimento de software) organiza o trabalho em fases com propósito claro — requisitos, análise, projeto, implementação, testes e manutenção —, reduzindo improviso e retrabalho. Velocidade, ausência de manutenção e ausência de testes não são objetivos."},{"q":"Por que o modelo cascata apresenta dificuldades quando surgem mudanças após o início da implementação?","opts":["Porque o retorno entre fases não é limitado.","Porque o retorno entre fases é limitado.","Porque elimina a documentação.","Porque não permite testes."],"correct":1,"exp":"No cascata, cada fase só começa quando a anterior termina, e voltar a uma fase concluída é custoso e evitado. Como o retorno é limitado, uma mudança tardia obriga a refazer fases já fechadas."},{"q":"Por que modelos incrementais e evolutivos são mais adequados quando os requisitos mudam com o tempo?","opts":["Porque permitem entregas e ajustes contínuos.","Porque impedem mudanças no projeto.","Porque eliminam fases do desenvolvimento.","Porque evitam planejamento inicial."],"correct":0,"exp":"Esses modelos entregam o sistema em pedaços (incremental) ou refinam uma versão a cada ciclo com base em retorno (evolutivo). Assim, um requisito que muda é absorvido no próximo incremento/ciclo, sem refazer tudo."}];
+var ACTS=[{"k":0,"ids":["f_274","f_275","f_276","f_277","f_278","f_279","f_280","f_281","f_282","f_283","f_284","f_285","f_286","f_287","f_288","f_289","f_290","f_291","f_292","f_293","f_294","f_295","f_296","f_297","f_298","f_299"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_274"},{"label":"Data","id":"f_275"},{"label":"Nome ou nº do grupo","id":"f_276"},{"label":"Integrantes (separe por vírgula)","id":"f_277"},{"h":"Desafio 1 — As fases do modelo cascata"},{"label":"Requisitos","id":"f_278"},{"label":"Análise","id":"f_279"},{"label":"Projeto","id":"f_280"},{"label":"Implementação","id":"f_281"},{"label":"Testes","id":"f_282"},{"label":"Manutenção","id":"f_283"},{"label":"Por que uma fase só começa após a anterior?","id":"f_284"},{"label":"O que acontece se uma fase for mal executada?","id":"f_285"},{"label":"Fluxograma do draw.io — descreva ou cole a imagem no PDF","id":"f_286"},{"h":"Desafio 2 — Erro de entendimento da própria equipe"},{"label":"O cascata permite voltar fácil aos requisitos? Justifique.","id":"f_287"},{"label":"Impactos em prazo e custo","id":"f_288"},{"label":"Por que é mais grave em processos rígidos?","id":"f_289"},{"h":"Desafio 3 — Quando o cascata funciona bem"},{"label":"Situações em que o cascata é boa escolha","id":"f_290"},{"label":"Por que requisitos estáveis se beneficiam dele","id":"f_291"},{"label":"Relação com facilidade de planejamento e documentação","id":"f_292"},{"h":"Desafio 4 — Mudança solicitada pelo cliente"},{"label":"Por que o cascata tem dificuldade de absorver a mudança agora","id":"f_293"},{"label":"Como isso gera retrabalho nas fases concluídas","id":"f_294"},{"label":"Risco de insatisfação do cliente","id":"f_295"},{"label":"Diferença entre este desafio (mudança externa) e o Desafio 2 (erro interno)","id":"f_296"},{"h":"Desafio 5 — Avaliação crítica"},{"label":"O cascata serve para projetos longos, complexos e com requisitos incertos? Justifique.","id":"f_297"},{"label":"Por que escolher o modelo adequado é uma decisão importante","id":"f_298"},{"label":"Por que não existe um modelo \"perfeito\" para todos os projetos","id":"f_299"}],"title":"Modelo em cascata na prática"},{"k":1,"ids":["f_300","f_301","f_302","f_303","f_304","f_305","f_306","g_307","g_308","g_309","g_310","g_311","g_312","f_313","f_314","f_315","f_316","f_317","f_318"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_300"},{"label":"Data","id":"f_301"},{"label":"Nome ou nº do grupo","id":"f_302"},{"label":"Integrantes (separe por vírgula)","id":"f_303"},{"h":"Etapa 1 — Compreensão do problema"},{"label":"Objetivo inicial do sistema","id":"f_304"},{"label":"Por que os requisitos não estão totalmente definidos","id":"f_305"},{"label":"Que tipos de mudança podem surgir com o uso","id":"f_306"},{"h":"Etapa 2 — Planejamento incremental"},{"label":"Versão #1 — O que a versão entrega","id":"g_307"},{"label":"Versão #1 — Por que nesta ordem (valor / dependências)","id":"g_308"},{"label":"Versão #2 — O que a versão entrega","id":"g_309"},{"label":"Versão #2 — Por que nesta ordem (valor / dependências)","id":"g_310"},{"label":"Versão #3 — O que a versão entrega","id":"g_311"},{"label":"Versão #3 — Por que nesta ordem (valor / dependências)","id":"g_312"},{"h":"Etapa 3 — Aplicação do modelo evolutivo"},{"label":"Como o feedback dos usuários gera mudanças","id":"f_313"},{"label":"Como os requisitos são ajustados a cada ciclo","id":"f_314"},{"label":"Por que esse modelo se adapta melhor a contextos incertos","id":"f_315"},{"h":"Etapa 4 — Relação com as fases clássicas"},{"label":"Explicação","id":"f_316"},{"h":"Etapa 5 — Diagramas no draw.io"},{"label":"Descreva ou cole as duas imagens no PDF","id":"f_317"},{"h":"Etapa 6 — Justificativa da escolha"},{"label":"Justificativa","id":"f_318"}],"title":"Modelos incremental e evolutivo"}];
+var SEM_LABEL="Semana 15 · Modelos de processo: cascata, incremental e evolutivo";
+
+function renderQuiz(card){
+  var qi=parseInt(card.getAttribute("data-quiz"),10);
+  var data=QUIZZES[qi];
+  card.querySelector(".qtext").textContent=data.q;
+  var box=card.querySelector(".opts");
+  data.opts.forEach(function(txt,i){
+    var lab=document.createElement("label");lab.className="opt";
+    lab.innerHTML='<input type="radio" name="q'+qi+'" value="'+i+'"><span>'+txt+'</span>';
+    box.appendChild(lab);
+  });
+  var state=LS.get(PFX+"quiz"+qi,{tries:0,done:false,correct:false});
+  var fb=card.querySelector(".feedback"),att=card.querySelector(".attempts"),btn=card.querySelector(".answer");
+  function lock(){card.querySelectorAll('input[type=radio]').forEach(function(r){r.disabled=true;});
+    card.querySelectorAll(".opt").forEach(function(o){o.classList.add("locked");});btn.disabled=true;}
+  function paint(){card.querySelectorAll(".opt")[data.correct].classList.add("correct");}
+  function showDone(){
+    fb.className="feedback show "+(state.correct?"ok":"done");
+    fb.innerHTML=(state.correct?"<strong>Correto!</strong> ":"<strong>Tentativas encerradas.</strong> ")
+      +"A alternativa certa é: <em>"+data.opts[data.correct].replace(/\.$/,"")+"</em>.<br>"+data.exp;
+    att.textContent=state.correct?"Acertou":"3 de 3 tentativas usadas";paint();lock();
+  }
+  if(state.done)showDone(); else att.textContent="Tentativa "+(state.tries+1)+" de 3";
+  btn.addEventListener("click",function(){
+    var sel=card.querySelector('input[name=q'+qi+']:checked');
+    if(!sel){fb.className="feedback show err";fb.textContent="Selecione uma alternativa antes de responder.";return;}
+    var val=parseInt(sel.value,10);state.tries++;
+    if(val===data.correct){state.done=true;state.correct=true;LS.set(PFX+"quiz"+qi,state);showDone();updateScore();}
+    else{
+      sel.closest(".opt").classList.add("wrong");
+      if(state.tries>=3){state.done=true;state.correct=false;LS.set(PFX+"quiz"+qi,state);showDone();updateScore();}
+      else{LS.set(PFX+"quiz"+qi,state);fb.className="feedback show err";
+        fb.innerHTML="<strong>Não foi dessa vez.</strong> Tentativa "+(state.tries+1)+" de 3. Revise o conteúdo da aula e tente de novo.";
+        att.textContent="Tentativa "+(state.tries+1)+" de 3";}
+    }
+  });
+}
+function updateScore(){
+  var done=0,ok=0;
+  for(var i=0;i<QCOUNT;i++){var s=LS.get(PFX+"quiz"+i,{done:false,correct:false});if(s.done)done++;if(s.correct)ok++;}
+  var el=document.getElementById("scoreLine");
+  if(el)el.textContent="Respondidos: "+done+" de "+QCOUNT+" · Acertos: "+ok;
+}
+document.querySelectorAll("[data-quiz]").forEach(renderQuiz);
+updateScore();
+
+/* ----- Atividades ----- */
+function escp(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+ACTS.forEach(function(a){
+  var form=document.getElementById("reg-"+a.k);
+  var key=PFX+"reg"+a.k;
+  function collect(){
+    var o={};
+    a.ids.forEach(function(id){var el=document.getElementById(id);if(el)o[id]=el.value;});
+    a.radios.forEach(function(n){var c=form.querySelector('input[name='+n+']:checked');o[n]=c?c.value:"";});
+    return o;
+  }
+  function restore(o){
+    if(!o)return;
+    a.ids.forEach(function(id){var el=document.getElementById(id);if(el&&o[id]!=null)el.value=o[id];});
+    a.radios.forEach(function(n){if(o[n]){var c=form.querySelector('input[name='+n+'][value="'+o[n]+'"]');if(c)c.checked=true;}});
+  }
+  restore(LS.get(key,null));
+  var saveMsg=form.querySelector(".saveMsg");
+  function flash(t){saveMsg.textContent=t;setTimeout(function(){saveMsg.textContent="";},2500);}
+  form.querySelector(".btnSave").addEventListener("click",function(){LS.set(key,collect());flash("Rascunho salvo neste navegador.");});
+  form.addEventListener("input",function(){LS.set(key,collect());});
+  form.querySelector(".btnClear").addEventListener("click",function(){
+    if(!confirm("Apagar o preenchimento desta atividade?"))return;
+    LS.del(key);
+    a.ids.forEach(function(id){var el=document.getElementById(id);if(el)el.value="";});
+    a.radios.forEach(function(n){form.querySelectorAll('input[name='+n+']').forEach(function(r){r.checked=false;});});
+    flash("Formulário limpo.");
+  });
+  a._collect=collect;
+});
+function buildSummary(a){
+  var o=a._collect(),h="";
+  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
+  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
+    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
+    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
+  });
+  document.getElementById("printSummary-"+a.k).innerHTML=h;
+}
+function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
+function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
+var PRINTING=null;
+window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
+window.addEventListener("afterprint",resetPrint);
+document.querySelectorAll(".btnPdf").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var k=parseInt(this.getAttribute("data-k"),10);
+    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+  });
+});
+})();
+</script>
+</body>
+</html>
