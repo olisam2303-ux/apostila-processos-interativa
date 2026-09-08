@@ -219,6 +219,7 @@ main#content { flex: 1; overflow-y: auto; padding: 30px 34px 70px; max-width: 88
 .quiz-opt:disabled { cursor: default; }
 .quiz-explain { display: none; font-size: 13px; color: var(--text-dim); margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: var(--panel-2); border-left: 3px solid var(--accent); }
 .quiz-explain.open { display: block; }
+.quiz-attempts { font-size: 11.5px; color: var(--text-dim); margin-top: 6px; font-family: "Fredoka"; }
 .xp-float { display: inline-block; font-family: "Fredoka"; font-weight: 700; color: var(--ok); font-size: 12.5px; margin-left: 8px; opacity: 0; animation: floatUp .9s ease forwards; }
 @keyframes floatUp { 0%{opacity:0; transform:translateY(4px);} 20%{opacity:1;} 100%{opacity:0; transform:translateY(-14px);} }
 @keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-4px);} 75%{transform:translateX(4px);} }
@@ -233,6 +234,8 @@ main#content { flex: 1; overflow-y: auto; padding: 30px 34px 70px; max-width: 88
 .pratica-link { border-left: 3px solid var(--gold); background: var(--gold-soft); border-radius: 0 10px 10px 0; padding: 12px 15px; font-size: 13.5px; margin-top: 12px; }
 .pratica-link a { font-weight: 600; }
 .pratica-gab { margin-top: 8px; font-size: 12.5px; opacity: .95; }
+.pratica-frame { margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--panel); }
+.pratica-frame iframe { width: 100%; height: 70vh; min-height: 480px; border: 0; display: block; background: #fff; }
 
 /* ---------- FOOTER ---------- */
 footer.bottomnav { border-top: 1px solid var(--border); background: var(--panel); padding: 10px 16px; display: flex; align-items: center; gap: 10px; position: sticky; bottom: 0; z-index: 20; }
@@ -6448,15 +6451,6 @@ function renderPractice(body, mod, screen) {
   const SEMANA_FILE = {"s01":"semana-01-requisitos.html","s02":"semana-02-elicitacao.html","s03":"semana-03-manifesto-agil.html","s04":"semana-04-introducao-testes.html","s05":"semana-05-testes-funcionais.html","s06":"semana-06-validacao-verificacao.html","s07":"semana-07-gerenciamento-mudancas.html","s08":"semana-08-casos-de-teste.html","s09":"semana-09-metricas-qualidade.html","s10":"semana-10-cultura-agil.html","s11":"semana-11-release-iteracoes.html","s12":"semana-12-papeis-scrum-po.html","s13":"semana-13-metricas-ageis.html","s14":"semana-14-retrospectiva.html","s15":"semana-15-modelos-processo.html","s16":"semana-16-manifesto-papeis-scrum.html","s17":"semana-17-eventos-artefatos-scrum.html","s18":"semana-18-kanban-wip.html","s19":"semana-19-estimativas-ageis.html","s20":"semana-20-ci-cd.html"};
   const GABARITO = {"s01":[["Gabarito de exemplo","gabaritos/Exemplo_S01_Simulando_o_ciclo_completo.pdf"]],"s02":[["Gabarito de exemplo","gabaritos/Exemplo_S02_Mini_sprint_de_elicitacao.pdf"]],"s03":[["Gabarito de exemplo","gabaritos/Exemplo_S03_Clinica_dos_principios.pdf"]],"s04":[["Gabarito de exemplo","gabaritos/Exemplo_S04_Arquiteto_de_testes.pdf"]],"s05":[["Gabarito de exemplo","gabaritos/Exemplo_S05_Testando_um_app_de_quiz.pdf"]],"s06":[["Gabarito de exemplo","gabaritos/Exemplo_S06_Responder_email_requisitos.pdf"]],"s07":[["Gabarito de exemplo","gabaritos/Exemplo_S07_Guardioes_livro_de_receitas.pdf"]],"s08":[["Gabarito de exemplo","gabaritos/Exemplo_S08_Escrevendo_a_receita_perfeita.pdf"]],"s09":[["Gabarito de exemplo","gabaritos/Exemplo_S09_Investigacao_digital_detetive.pdf"]],"s10":[["Gabarito de exemplo","gabaritos/Exemplo_S10_O_dilema_do_contrato.pdf"]],"s11":[["Gabarito de exemplo","gabaritos/Exemplo_S11_Montando_um_sprint_backlog.pdf"]],"s12":[["Gabarito de exemplo","gabaritos/Exemplo_S12_Product_Owner_a_voz_do_negocio.pdf"]],"s13":[["Gabarito de exemplo","gabaritos/Exemplo_S13_Analise_de_CFD.pdf"]],"s14":[["Gabarito de exemplo","gabaritos/Exemplo_S14_Laboratorio_de_retrospectiva.pdf"]],"s15":[["Atividade 1 (Cascata)","gabaritos/Exemplo_S15_Atividade1_Cascata.pdf"],["Atividade 2 (Incremental e evolutivo)","gabaritos/Exemplo_S15_Atividade2_Incremental_Evolutivo.pdf"]],"s16":[["Atividade 1 (Papeis do Scrum)","gabaritos/Exemplo_S16_Atividade1_Papeis_do_Scrum.pdf"],["Atividade 2 (Produto em papel)","gabaritos/Exemplo_S16_Atividade2_Produto_em_papel.pdf"]],"s17":[["Atividade 1 (Daily Scrum)","gabaritos/Exemplo_S17_Atividade1_Daily_Scrum.pdf"],["Atividade 2 (Review & Retrospective)","gabaritos/Exemplo_S17_Atividade2_Review_Retrospective.pdf"]],"s18":[["Gabarito de exemplo","gabaritos/Exemplo_S18_O_contrato_da_equipe.pdf"]],"s19":[["Gabarito de exemplo","gabaritos/Exemplo_S19_Estimando_o_backlog.pdf"]],"s20":[["Gabarito de exemplo","gabaritos/Exemplo_S20_Lendo_um_workflow.pdf"]]};
   const card = el('div','card');
-  (function(){
-    var wk = mod && mod.id, sf = SEMANA_FILE[wk];
-    if (!sf) return;
-    var n = parseInt(String(wk).slice(1), 10);
-    var gb = GABARITO[wk] || [];
-    var html = '<strong>\uD83E\uDDE9 Vers\u00e3o interativa da Semana ' + n + ':</strong> 3 quizzes <em>Pause e Responda</em> (at\u00e9 3 tentativas) e o Registro da Aula como formul\u00e1rio, com bot\u00e3o <em>Gerar PDF</em> para enviar no AVA. <a href="' + sf + '" target="_blank" rel="noopener">Abrir a vers\u00e3o interativa \u2197</a>';
-    if (gb.length) html += '<div class="pratica-gab"><span>\uD83D\uDCC4 Gabarito de exemplo (PDF):</span> ' + gb.map(function(g){return '<a href="' + g[1] + '" target="_blank" rel="noopener">' + g[0] + '</a>';}).join(' \u00b7 ') + '</div>';
-    var box = el('div','pratica-link'); box.innerHTML = html; body.appendChild(box);
-  })();
   const wrap = document.createElement('div');
   wrap.innerHTML = d.enunciado;
   card.appendChild(wrap);
@@ -6465,6 +6459,21 @@ function renderPractice(body, mod, screen) {
     card.appendChild(dica);
   }
   body.appendChild(card);
+  (function(){
+    var wk = mod && mod.id, sf = SEMANA_FILE[wk];
+    if (!sf) return;
+    var gb = GABARITO[wk] || [];
+    var head = '<strong>\uD83E\uDDE9 Registro da Aula \u2014 formul\u00e1rio interativo:</strong> preencha abaixo e clique em <em>Gerar PDF</em> para enviar no AVA. Os 3 quizzes <em>Pause e Responda</em> desta semana (at\u00e9 3 tentativas cada) tamb\u00e9m est\u00e3o na vers\u00e3o completa. <a href="' + sf + '" target="_blank" rel="noopener">Abrir em uma aba pr\u00F3pria \u2197</a>';
+    if (gb.length) head += '<div class="pratica-gab"><span>\uD83D\uDCC4 Gabarito de exemplo (PDF):</span> ' + gb.map(function(g){return '<a href="' + g[1] + '" target="_blank" rel="noopener">' + g[0] + '</a>';}).join(' \u00b7 ') + '</div>';
+    var box = el('div','pratica-link'); box.innerHTML = head; body.appendChild(box);
+    var frameWrap = el('div','pratica-frame');
+    var frame = document.createElement('iframe');
+    frame.src = sf + '#reg-0';
+    frame.loading = 'lazy';
+    frame.title = 'Registro da Aula \u2014 formul\u00e1rio';
+    frameWrap.appendChild(frame);
+    body.appendChild(frameWrap);
+  })();
   if (d.gabarito) {
     const toggle = el('button','gabarito-toggle', icon('eye')+'Ver orientações do professor');
     const box = el('div','gabarito-box card');
@@ -6550,6 +6559,7 @@ function renderSummary(body, mod, screen) {
   }
 }
 
+const QUIZ_MAX_ATTEMPTS = 3;
 function renderQuiz(body, mod, screen) {
   const d = screen.data;
   const scoreLbl = el('div','quiz-score','');
@@ -6564,20 +6574,32 @@ function renderQuiz(body, mod, screen) {
     const box = el('div','quiz-q');
     box.appendChild(el('div','qtext', (qi+1)+'. '+esc(q.question)));
     const explain = el('div','quiz-explain', q.feedback ? esc(q.feedback) : '');
+    const attemptsLbl = el('div','quiz-attempts','');
     const optButtons = [];
-    let attempts = 0;
+    const rec = answered[qi] || { tries: 0, correct: false };
+    const isDone = () => rec.correct || rec.tries >= QUIZ_MAX_ATTEMPTS;
+    function lockAll(revealCorrect) {
+      optButtons.forEach((bb,ii)=>{ bb.disabled=true; if (revealCorrect && ii===q.correct) bb.classList.add('correct'); });
+    }
+    function updateAttemptsLbl() {
+      if (rec.correct) attemptsLbl.textContent = 'Acertou!';
+      else if (rec.tries >= QUIZ_MAX_ATTEMPTS) attemptsLbl.textContent = QUIZ_MAX_ATTEMPTS+' de '+QUIZ_MAX_ATTEMPTS+' tentativas usadas';
+      else attemptsLbl.textContent = 'Tentativa '+(rec.tries+1)+' de '+QUIZ_MAX_ATTEMPTS;
+    }
     q.options.forEach((opt, oi) => {
       const b = el('button','quiz-opt', esc(opt));
       b.addEventListener('click', () => {
-        if (answered[qi] && answered[qi].correct) return;
-        attempts++;
+        if (isDone()) return;
+        rec.tries++;
         if (oi === q.correct) {
-          answered[qi] = { correct:true, firstTry: attempts===1 };
+          rec.correct = true;
+          rec.firstTry = rec.tries === 1;
+          answered[qi] = rec;
           state.quizAnswers[mod.id+'_'+screen.id] = answered;
           saveState();
-          optButtons.forEach((bb,ii)=>{ bb.disabled=true; if (ii===oi) bb.classList.add('correct'); });
+          lockAll(true);
           explain.classList.add('open');
-          const gained = attempts===1 ? 20 : 10;
+          const gained = rec.firstTry ? 20 : 10;
           const tag = el('span','xp-float','+'+gained+' XP');
           box.querySelector('.qtext').appendChild(tag);
           state.streak++; state.bestStreak = Math.max(state.bestStreak, state.streak);
@@ -6587,17 +6609,26 @@ function renderQuiz(body, mod, screen) {
         } else {
           b.classList.add('wrong');
           b.disabled = true;
+          answered[qi] = rec;
+          state.quizAnswers[mod.id+'_'+screen.id] = answered;
           state.streak = 0;
           saveState();
           updateHUD();
+          if (rec.tries >= QUIZ_MAX_ATTEMPTS) {
+            lockAll(true);
+            explain.classList.add('open');
+          }
         }
+        updateAttemptsLbl();
       });
       box.appendChild(b);
       optButtons.push(b);
     });
+    box.appendChild(attemptsLbl);
     box.appendChild(explain);
-    if (answered[qi] && answered[qi].correct) {
-      optButtons.forEach((bb,ii)=>{ bb.disabled=true; if (ii===q.correct) bb.classList.add('correct'); });
+    updateAttemptsLbl();
+    if (isDone()) {
+      lockAll(true);
       explain.classList.add('open');
     }
     body.appendChild(box);
