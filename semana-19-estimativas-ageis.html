@@ -51,6 +51,45 @@ th{background:var(--panel-2)}
 .score{font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+
+/* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
+#relatorio{display:none}
+@media print{
+  @page{size:A4;margin:25mm 20mm 20mm 25mm}
+  body{background:#fff;color:#000;font-family:"Times New Roman",Georgia,serif;font-size:12pt;line-height:1.5;padding:0}
+  .wrap>*:not(#relatorio){display:none !important}
+  #relatorio{display:block}
+  .wrap{max-width:none;padding:0;margin:0}
+
+  .folha{page-break-after:always;text-align:center}
+  .folha .inst{font-size:12pt;font-weight:bold;text-transform:uppercase;line-height:1.4}
+  .folha .meio{margin-top:70mm}
+  .folha .fim{margin-top:70mm;text-transform:uppercase}
+  .folha .tituloTrab{font-size:14pt;font-weight:bold;text-transform:uppercase;margin-top:6mm}
+  .folha .subtitulo{font-size:12pt;margin-top:2mm}
+  .folha .autores{font-size:12pt;margin-top:4mm}
+  .fr-nota{width:8.5cm;margin:14mm 0 0 auto;text-align:justify;font-size:10pt;line-height:1.3}
+  .fr-orient{width:8.5cm;margin:6mm 0 0 auto;text-align:left;font-size:10pt}
+
+  #roteiro h2.rtitulo{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:0 0 8mm}
+  #roteiro .rlinha{font-size:12pt;margin-bottom:2mm}
+  #roteiro .rlinha b{text-transform:uppercase}
+  #roteiro h3{font-size:12pt;font-weight:bold;text-transform:uppercase;margin:7mm 0 3mm;page-break-after:avoid}
+  #roteiro p{margin:0 0 3mm;text-align:justify}
+  #roteiro ul{margin:0 0 3mm;padding-left:6mm}
+  #roteiro li{margin-bottom:1.5mm}
+  #roteiro .lista-obj{list-style:none;padding-left:0}
+  #roteiro .lista-obj li:before{content:"✓  ";font-weight:bold}
+
+  #roteiro .item{margin-bottom:5mm;page-break-inside:avoid}
+  #roteiro .item .perg{font-weight:bold;margin-bottom:1.5mm}
+  #roteiro .item .rot{font-size:10.5pt;font-variant:small-caps;color:#333;margin-top:2mm}
+  #roteiro .item .resp{white-space:pre-wrap;border-bottom:1px dotted #999;padding-bottom:1mm;min-height:5mm}
+  #roteiro table{width:100%;border-collapse:collapse;font-size:10.5pt;margin-top:2mm}
+  #roteiro th,#roteiro td{border:1px solid #666;padding:1.5mm 2mm}
+  #roteiro th{background:#e8e8e8;color:#000;text-transform:none;font-variant:small-caps;letter-spacing:0}
+  #roteiro .checkline{margin-bottom:1.5mm;font-size:11pt}
+}
 @media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
 </style>
 </head>
@@ -98,10 +137,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>Organizem as tarefas do novo aplicativo <strong>"Entregas da escola"</strong>. Não usem horas — estimativa relativa!</p>
     <p class="muted">Passos: (1) escolham a tarefa <strong>âncora</strong> (a mais simples, como referência); (2) classifiquem cada tarefa por <strong>tamanho de camiseta</strong> (XS a XL) comparando com a âncora; (3) convertam para <strong>story points (Fibonacci: 1, 2, 3, 5, 8, 13)</strong> com base na complexidade e na incerteza. Base: apostila, Capítulo 19.</p></div>
 <form id="reg-0" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_405">Turma</label><input type="text" id="f_405" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
+<label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
+<label class="field" for="f_405">Turma</label><input type="text" id="f_405" placeholder="">
 <label class="field" for="f_406">Data</label><input type="text" id="f_406" placeholder="dd/mm/aaaa">
 <label class="field" for="f_407">Nome ou nº do grupo</label><input type="text" id="f_407" placeholder="">
 <label class="field" for="f_408">Integrantes (separe por vírgula)</label><input type="text" id="f_408" placeholder="">
+<label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Tarefa âncora</h3><label class="field" for="f_409">Qual tarefa foi escolhida como âncora e por quê</label><input type="text" id="f_409" placeholder="">
 <h3>Tabela de estimativas</h3><p class="muted">Para as 5 tarefas do backlog, preencham o tamanho de camiseta e os story points.</p><label class="field">Tarefa</label><div class="sub"><strong>1</strong><label class="field" for="g_410">Tarefa</label><input type="text" id="g_410"><label class="field" for="g_411">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_411"><label class="field" for="g_412">Story points (1,2,3,5,8,13)</label><input type="text" id="g_412"><label class="field" for="g_413">Por que essa estimativa</label><input type="text" id="g_413"></div><div class="sub"><strong>2</strong><label class="field" for="g_414">Tarefa</label><input type="text" id="g_414"><label class="field" for="g_415">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_415"><label class="field" for="g_416">Story points (1,2,3,5,8,13)</label><input type="text" id="g_416"><label class="field" for="g_417">Por que essa estimativa</label><input type="text" id="g_417"></div><div class="sub"><strong>3</strong><label class="field" for="g_418">Tarefa</label><input type="text" id="g_418"><label class="field" for="g_419">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_419"><label class="field" for="g_420">Story points (1,2,3,5,8,13)</label><input type="text" id="g_420"><label class="field" for="g_421">Por que essa estimativa</label><input type="text" id="g_421"></div><div class="sub"><strong>4</strong><label class="field" for="g_422">Tarefa</label><input type="text" id="g_422"><label class="field" for="g_423">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_423"><label class="field" for="g_424">Story points (1,2,3,5,8,13)</label><input type="text" id="g_424"><label class="field" for="g_425">Por que essa estimativa</label><input type="text" id="g_425"></div><div class="sub"><strong>5</strong><label class="field" for="g_426">Tarefa</label><input type="text" id="g_426"><label class="field" for="g_427">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_427"><label class="field" for="g_428">Story points (1,2,3,5,8,13)</label><input type="text" id="g_428"><label class="field" for="g_429">Por que essa estimativa</label><input type="text" id="g_429"></div>
 <p class="muted">Tarefas: 1. Corrigir erro de texto na home · 2. Criar tela de cadastro de usuário · 3. Integrar API de pagamento externo · 4. Atualizar cor de botão no sistema · 5. Criar relatório de vendas.</p>
@@ -133,7 +175,78 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <h3>Rubrica — Estimando o backlog do nosso aplicativo (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Tarefa âncora escolhida de forma justificada (a mais simples)</td><td>0,2</td></tr><tr><td>As 5 tarefas classificadas por tamanho de camiseta comparando com a âncora</td><td>0,2</td></tr><tr><td>Story points em Fibonacci, coerentes com complexidade e incerteza (ex.: integrar API > corrigir texto)</td><td>0,2</td></tr><tr><td>Análise identifica a tarefa de maior incerteza e estima o nº de sprints</td><td>0,2</td></tr><tr><td>Entregue em PDF (ou foto da tabela) no AVA com identificação</td><td>0,2</td></tr></table>
 </div>
 
-<div class="print-only" id="printSummary-0"></div>
+<div id="relatorio">
+
+  <div class="folha">
+    <div class="inst" data-fill="escola"></div>
+    <div class="inst">Curso Técnico · Processos de Desenvolvimento de Software</div>
+    <div class="meio">
+      <div class="autores" data-fill="integrantes"></div>
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Processos de Desenvolvimento de Software</div>
+      <div class="subtitulo">Semana 19 — <span data-fill="atividade"></span></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div class="folha">
+    <div class="autores" data-fill="integrantes"></div>
+    <div class="meio">
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Semana 19 — <span data-fill="atividade"></span></div>
+      <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 3º bimestre.</div>
+      <div class="fr-orient" data-fill="professor"></div>
+      <div class="fr-orient" data-fill="turma"></div>
+      <div class="fr-orient" data-fill="data"></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div id="roteiro">
+    <h2 class="rtitulo">Registro de Aula</h2>
+    <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
+    <div class="rlinha"><b>Unidade:</b> Semana 19 — Estimativas ágeis: story points, velocity e release plan</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
+    <div class="rlinha"><b>Base teórica:</b> Capítulo 19 — Estimativas ágeis: story points, velocity e release plan (estimativa relativa, escala Fibonacci, velocity)</div>
+
+    <h3>Objetivos</h3>
+    <ul class="lista-obj">
+      <li>Praticar estimativa relativa usando uma tarefa âncora e tamanhos de camiseta (XS a XL) antes de converter para story points.</li>
+      <li>Converter estimativas de tamanho de camiseta em story points na escala Fibonacci, considerando complexidade e incerteza.</li>
+      <li>Identificar a tarefa de maior incerteza do backlog e projetar quantas sprints seriam necessárias dada uma velocity.</li>
+    </ul>
+
+    <h3>Solução digital</h3>
+    <p>Página interativa da atividade + navegador. O relatório é preenchido diretamente nesta página e exportado em PDF pelo próprio navegador (botão <b>Gerar PDF</b> ou Ctrl+P → Salvar como PDF). Não é preciso instalar nada, e a página funciona sem internet.</p>
+
+    <h3>Procedimento / Atividade</h3>
+    <p><b>Contexto:</b> organizem as tarefas do novo aplicativo "Entregas da escola". Não usem horas — estimativa relativa! Passos: (1) escolham a tarefa âncora (a mais simples, como referência); (2) classifiquem cada tarefa por tamanho de camiseta (XS a XL) comparando com a âncora; (3) convertam para story points (Fibonacci: 1, 2, 3, 5, 8, 13) com base na complexidade e na incerteza.</p>
+
+    <h3>Procedimentos para a realização da atividade</h3>
+    <div id="corpoRoteiro"></div>
+
+    <h3>Checklist de entrega</h3>
+    <div id="corpoChecklist"></div>
+
+    <h3>Critérios de avaliação</h3>
+    <table>
+      <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
+      <tbody id="corpoCriterios"></tbody>
+    </table>
+
+    <h3>Referências</h3>
+    <ul>
+      <li>Apostila da disciplina — Processos de Desenvolvimento de Software, Semana 19 (Capítulo 19).</li>
+      <li>SEDUC-SP — Registro da Aula 19, Semana 19 (Estimando o backlog do nosso aplicativo).</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
   Situação fictícia produzida pela SEDUC-SP. Material da apostila
@@ -150,7 +263,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p3s19_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"O que os story points representam em métodos ágeis?","opts":["Complexidade, esforço e incerteza da tarefa.","Número de devs necessários.","Horas exatas de trabalho.","Tempo de duração da sprint."],"correct":0,"exp":"Story points são uma medida relativa que combina complexidade, esforço e incerteza. Não são horas: duas tarefas com o mesmo ponto podem levar tempos diferentes, mas têm \"tamanho\" parecido."},{"q":"O que representa a velocidade (velocity) da equipe em métodos ágeis?","opts":["Média de story points entregues por sprint.","Número de desenvolvedores no time.","Quantidade de horas trabalhadas.","Total de tarefas no backlog."],"correct":0,"exp":"Velocity é a média de story points de histórias 100% concluídas por sprint. Serve para prever quanto o time consegue entregar nas próximas sprints e planejar o release."},{"q":"O que significa dependência entre tarefas?","opts":["Uma tarefa elimina outra.","Uma tarefa precisa de outra para começar.","Tarefas sempre começam ao mesmo tempo.","Tarefas são independentes."],"correct":1,"exp":"Há dependência quando uma tarefa só pode começar (ou terminar) depois de outra. Dependências afetam a ordem do backlog e o planejamento do release — o ideal é reduzi-las."}];
-var ACTS=[{"k":0,"ids":["f_405","f_406","f_407","f_408","f_409","g_410","g_411","g_412","g_413","g_414","g_415","g_416","g_417","g_418","g_419","g_420","g_421","g_422","g_423","g_424","g_425","g_426","g_427","g_428","g_429","f_430","f_431"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_405"},{"label":"Data","id":"f_406"},{"label":"Nome ou nº do grupo","id":"f_407"},{"label":"Integrantes (separe por vírgula)","id":"f_408"},{"h":"Tarefa âncora"},{"label":"Qual tarefa foi escolhida como âncora e por quê","id":"f_409"},{"h":"Tabela de estimativas"},{"label":"Tarefa #1 — Tarefa","id":"g_410"},{"label":"Tarefa #1 — Tamanho de camiseta (XS–XL)","id":"g_411"},{"label":"Tarefa #1 — Story points (1,2,3,5,8,13)","id":"g_412"},{"label":"Tarefa #1 — Por que essa estimativa","id":"g_413"},{"label":"Tarefa #2 — Tarefa","id":"g_414"},{"label":"Tarefa #2 — Tamanho de camiseta (XS–XL)","id":"g_415"},{"label":"Tarefa #2 — Story points (1,2,3,5,8,13)","id":"g_416"},{"label":"Tarefa #2 — Por que essa estimativa","id":"g_417"},{"label":"Tarefa #3 — Tarefa","id":"g_418"},{"label":"Tarefa #3 — Tamanho de camiseta (XS–XL)","id":"g_419"},{"label":"Tarefa #3 — Story points (1,2,3,5,8,13)","id":"g_420"},{"label":"Tarefa #3 — Por que essa estimativa","id":"g_421"},{"label":"Tarefa #4 — Tarefa","id":"g_422"},{"label":"Tarefa #4 — Tamanho de camiseta (XS–XL)","id":"g_423"},{"label":"Tarefa #4 — Story points (1,2,3,5,8,13)","id":"g_424"},{"label":"Tarefa #4 — Por que essa estimativa","id":"g_425"},{"label":"Tarefa #5 — Tarefa","id":"g_426"},{"label":"Tarefa #5 — Tamanho de camiseta (XS–XL)","id":"g_427"},{"label":"Tarefa #5 — Story points (1,2,3,5,8,13)","id":"g_428"},{"label":"Tarefa #5 — Por que essa estimativa","id":"g_429"},{"h":"Análise"},{"label":"Qual tarefa tem maior incerteza e por quê?","id":"f_430"},{"label":"Se a velocity do time fosse 13 pontos por sprint, quantas sprints o backlog levaria?","id":"f_431"}],"title":"Estimando o backlog do nosso aplicativo"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_405","f_406","f_407","f_408","f_prof","f_409","g_410","g_411","g_412","g_413","g_414","g_415","g_416","g_417","g_418","g_419","g_420","g_421","g_422","g_423","g_424","g_425","g_426","g_427","g_428","g_429","f_430","f_431"],"radios":[],"f_esc":"f_esc","f_aluno":"f_aluno","f_prof":"f_prof","f_turma":"f_405","f_data":"f_406","f_int":"f_408","spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_405"},{"label":"Data","id":"f_406"},{"label":"Nome ou nº do grupo","id":"f_407"},{"label":"Integrantes (separe por vírgula)","id":"f_408"},{"label":"Professor(a)","id":"f_prof"},{"h":"Tarefa âncora"},{"label":"Qual tarefa foi escolhida como âncora e por quê","id":"f_409"},{"h":"Tabela de estimativas"},{"label":"Tarefa #1 — Tarefa","id":"g_410"},{"label":"Tarefa #1 — Tamanho de camiseta (XS–XL)","id":"g_411"},{"label":"Tarefa #1 — Story points (1,2,3,5,8,13)","id":"g_412"},{"label":"Tarefa #1 — Por que essa estimativa","id":"g_413"},{"label":"Tarefa #2 — Tarefa","id":"g_414"},{"label":"Tarefa #2 — Tamanho de camiseta (XS–XL)","id":"g_415"},{"label":"Tarefa #2 — Story points (1,2,3,5,8,13)","id":"g_416"},{"label":"Tarefa #2 — Por que essa estimativa","id":"g_417"},{"label":"Tarefa #3 — Tarefa","id":"g_418"},{"label":"Tarefa #3 — Tamanho de camiseta (XS–XL)","id":"g_419"},{"label":"Tarefa #3 — Story points (1,2,3,5,8,13)","id":"g_420"},{"label":"Tarefa #3 — Por que essa estimativa","id":"g_421"},{"label":"Tarefa #4 — Tarefa","id":"g_422"},{"label":"Tarefa #4 — Tamanho de camiseta (XS–XL)","id":"g_423"},{"label":"Tarefa #4 — Story points (1,2,3,5,8,13)","id":"g_424"},{"label":"Tarefa #4 — Por que essa estimativa","id":"g_425"},{"label":"Tarefa #5 — Tarefa","id":"g_426"},{"label":"Tarefa #5 — Tamanho de camiseta (XS–XL)","id":"g_427"},{"label":"Tarefa #5 — Story points (1,2,3,5,8,13)","id":"g_428"},{"label":"Tarefa #5 — Por que essa estimativa","id":"g_429"},{"h":"Análise"},{"label":"Qual tarefa tem maior incerteza e por quê?","id":"f_430"},{"label":"Se a velocity do time fosse 13 pontos por sprint, quantas sprints o backlog levaria?","id":"f_431"}],"title":"Estimando o backlog do nosso aplicativo","rubrica":[["Tarefa âncora escolhida de forma justificada (a mais simples)","0,2"],["As 5 tarefas classificadas por tamanho de camiseta comparando com a âncora","0,2"],["Story points em Fibonacci, coerentes com complexidade e incerteza (ex.: integrar API > corrigir texto)","0,2"],["Análise identifica a tarefa de maior incerteza e estima o nº de sprints","0,2"],["Entregue em PDF (ou foto da tabela) no AVA com identificação","0,2"]]}];
 var SEM_LABEL="Semana 19 · Estimativas ágeis: story points, velocity e release plan";
 
 function renderQuiz(card){
@@ -228,28 +341,49 @@ ACTS.forEach(function(a){
   });
   a._collect=collect;
 });
-function buildSummary(a){
-  var o=a._collect(),h="";
-  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
-  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
-  a.spec.forEach(function(it){
-    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
-    var v;
-    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
-    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
-    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
-  });
-  document.getElementById("printSummary-"+a.k).innerHTML=h;
+function preencher(sel, texto){
+  document.querySelectorAll(sel).forEach(function(el){ el.textContent = texto; });
 }
-function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
-function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
-var PRINTING=null;
-window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
-window.addEventListener("afterprint",resetPrint);
+function montarRelatorio(a){
+  var o=a._collect();
+  var integrantes = o[a.f_int] || o[a.f_aluno] || "___________________________";
+  preencher("[data-fill=escola]", o[a.f_esc] || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
+  preencher("[data-fill=integrantes]", integrantes);
+  preencher("[data-fill=professor]", o[a.f_prof] ? ("Professor(a): "+o[a.f_prof]) : "");
+  preencher("[data-fill=turma]", o[a.f_turma] ? ("Turma: "+o[a.f_turma]) : "");
+  preencher("[data-fill=data]", o[a.f_data] ? ("Data: "+o[a.f_data]) : "");
+
+  var h="";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h3>"+escp(it.h)+"</h3>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"(não marcado)";}
+    else{v=o[it.id]||"(em branco)";}
+    h+="<div class='item'><div class='perg'>"+escp(it.label)+"</div><div class='resp'>"+escp(v)+"</div></div>";
+  });
+  document.getElementById("corpoRoteiro").innerHTML=h;
+
+  var checklist=[
+    "Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.",
+    "Tarefa âncora escolhida e as 5 tarefas do backlog classificadas por tamanho de camiseta e story points.",
+    "Análise identifica a tarefa de maior incerteza e estima o número de sprints.",
+    "PDF (ou foto da tabela) gerado e enviado no AVA com identificação."
+  ];
+  var hc="";
+  checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
+  document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
+}
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
     var k=parseInt(this.getAttribute("data-k"),10);
-    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+    var a=ACTS.filter(function(x){return x.k===k;})[0];
+    montarRelatorio(a);
+    window.print();
   });
 });
 })();

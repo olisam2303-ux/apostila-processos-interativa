@@ -51,6 +51,45 @@ th{background:var(--panel-2)}
 .score{font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+
+/* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
+#relatorio{display:none}
+@media print{
+  @page{size:A4;margin:25mm 20mm 20mm 25mm}
+  body{background:#fff;color:#000;font-family:"Times New Roman",Georgia,serif;font-size:12pt;line-height:1.5;padding:0}
+  .wrap>*:not(#relatorio){display:none !important}
+  #relatorio{display:block}
+  .wrap{max-width:none;padding:0;margin:0}
+
+  .folha{page-break-after:always;text-align:center}
+  .folha .inst{font-size:12pt;font-weight:bold;text-transform:uppercase;line-height:1.4}
+  .folha .meio{margin-top:70mm}
+  .folha .fim{margin-top:70mm;text-transform:uppercase}
+  .folha .tituloTrab{font-size:14pt;font-weight:bold;text-transform:uppercase;margin-top:6mm}
+  .folha .subtitulo{font-size:12pt;margin-top:2mm}
+  .folha .autores{font-size:12pt;margin-top:4mm}
+  .fr-nota{width:8.5cm;margin:14mm 0 0 auto;text-align:justify;font-size:10pt;line-height:1.3}
+  .fr-orient{width:8.5cm;margin:6mm 0 0 auto;text-align:left;font-size:10pt}
+
+  #roteiro h2.rtitulo{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:0 0 8mm}
+  #roteiro .rlinha{font-size:12pt;margin-bottom:2mm}
+  #roteiro .rlinha b{text-transform:uppercase}
+  #roteiro h3{font-size:12pt;font-weight:bold;text-transform:uppercase;margin:7mm 0 3mm;page-break-after:avoid}
+  #roteiro p{margin:0 0 3mm;text-align:justify}
+  #roteiro ul{margin:0 0 3mm;padding-left:6mm}
+  #roteiro li{margin-bottom:1.5mm}
+  #roteiro .lista-obj{list-style:none;padding-left:0}
+  #roteiro .lista-obj li:before{content:"✓  ";font-weight:bold}
+
+  #roteiro .item{margin-bottom:5mm;page-break-inside:avoid}
+  #roteiro .item .perg{font-weight:bold;margin-bottom:1.5mm}
+  #roteiro .item .rot{font-size:10.5pt;font-variant:small-caps;color:#333;margin-top:2mm}
+  #roteiro .item .resp{white-space:pre-wrap;border-bottom:1px dotted #999;padding-bottom:1mm;min-height:5mm}
+  #roteiro table{width:100%;border-collapse:collapse;font-size:10.5pt;margin-top:2mm}
+  #roteiro th,#roteiro td{border:1px solid #666;padding:1.5mm 2mm}
+  #roteiro th{background:#e8e8e8;color:#000;text-transform:none;font-variant:small-caps;letter-spacing:0}
+  #roteiro .checkline{margin-bottom:1.5mm;font-size:11pt}
+}
 @media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
 </style>
 </head>
@@ -98,10 +137,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>Vocês são a nova equipe de QA de um aplicativo de mensagens. A nova funcionalidade é <strong>"Mensagem que desaparece após 24 horas"</strong>.</p>
     <p class="muted">Parte 1 — Mapeamento: descrevam um teste para cada tipo. Parte 2 — Priorização: distribuam 10 testes entre os tipos.</p></div>
 <form id="reg-0" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_63">Turma</label><input type="text" id="f_63" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
+<label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
+<label class="field" for="f_63">Turma</label><input type="text" id="f_63" placeholder="">
 <label class="field" for="f_64">Data</label><input type="text" id="f_64" placeholder="dd/mm/aaaa">
 <label class="field" for="f_65">Nome ou nº do grupo</label><input type="text" id="f_65" placeholder="">
 <label class="field" for="f_66">Integrantes (separe por vírgula)</label><input type="text" id="f_66" placeholder="">
+<label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Parte 1 — Mapeamento</h3><p class="muted">Um teste para cada tipo (o exemplo de Unitário já vem preenchido no roteiro).</p><label class="field" for="f_67">Unitário — descreva um teste</label><textarea id="f_67"></textarea>
 <label class="field" for="f_68">Integração — descreva um teste</label><textarea id="f_68"></textarea>
 <label class="field" for="f_69">E2E (sistema) — descreva um teste</label><textarea id="f_69"></textarea>
@@ -137,7 +179,78 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <h3>Rubrica — Arquiteto de testes do app de mensagens (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Cumpriu todas as etapas/partes pedidas no roteiro</td><td>0,2</td></tr><tr><td>Conteúdo tecnicamente correto e coerente com o cenário</td><td>0,2</td></tr><tr><td>Usa corretamente os conceitos-chave da semana (níveis de teste: unitário, integração, sistema/E2E, aceitação; priorização)</td><td>0,2</td></tr><tr><td>Texto claro, organizado e com vocabulário técnico adequado</td><td>0,2</td></tr><tr><td>Entregue no prazo, em PDF pelo AVA, com identificação do grupo/aluno</td><td>0,2</td></tr></table>
 </div>
 
-<div class="print-only" id="printSummary-0"></div>
+<div id="relatorio">
+
+  <div class="folha">
+    <div class="inst" data-fill="escola"></div>
+    <div class="inst">Curso Técnico · Processos de Desenvolvimento de Software</div>
+    <div class="meio">
+      <div class="autores" data-fill="integrantes"></div>
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Processos de Desenvolvimento de Software</div>
+      <div class="subtitulo">Semana 4 — <span data-fill="atividade"></span></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div class="folha">
+    <div class="autores" data-fill="integrantes"></div>
+    <div class="meio">
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Semana 4 — <span data-fill="atividade"></span></div>
+      <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 1º bimestre.</div>
+      <div class="fr-orient" data-fill="professor"></div>
+      <div class="fr-orient" data-fill="turma"></div>
+      <div class="fr-orient" data-fill="data"></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div id="roteiro">
+    <h2 class="rtitulo">Registro de Aula</h2>
+    <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
+    <div class="rlinha"><b>Unidade:</b> Semana 4 — Introdução aos testes de software e tipos de testes</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
+    <div class="rlinha"><b>Base teórica:</b> Capítulo 4 — Introdução aos testes de software: níveis de teste (unitário, integração, sistema/E2E, aceitação) e priorização</div>
+
+    <h3>Objetivos</h3>
+    <ul class="lista-obj">
+      <li>Diferenciar os quatro níveis de teste (unitário, integração, sistema/E2E, aceitação) a partir de uma funcionalidade real.</li>
+      <li>Elaborar um caso de teste representativo para cada nível.</li>
+      <li>Priorizar um conjunto de testes entre os níveis e justificar a distribuição.</li>
+    </ul>
+
+    <h3>Solução digital</h3>
+    <p>Página interativa da atividade + navegador. O relatório é preenchido diretamente nesta página e exportado em PDF pelo próprio navegador (botão <b>Gerar PDF</b> ou Ctrl+P → Salvar como PDF). Não é preciso instalar nada, e a página funciona sem internet.</p>
+
+    <h3>Procedimento / Atividade</h3>
+    <p><b>Contexto:</b> vocês são a nova equipe de QA de um aplicativo de mensagens. A nova funcionalidade é "Mensagem que desaparece após 24 horas". Na Parte 1 (Mapeamento) descrevem um teste para cada tipo; na Parte 2 (Priorização) distribuem 10 testes entre os tipos e justificam a distribuição.</p>
+
+    <h3>Procedimentos para a realização da atividade</h3>
+    <div id="corpoRoteiro"></div>
+
+    <h3>Checklist de entrega</h3>
+    <div id="corpoChecklist"></div>
+
+    <h3>Critérios de avaliação</h3>
+    <table>
+      <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
+      <tbody id="corpoCriterios"></tbody>
+    </table>
+
+    <h3>Referências</h3>
+    <ul>
+      <li>Apostila da disciplina — Processos de Desenvolvimento de Software, Semana 4 (Capítulo 4).</li>
+      <li>SEDUC-SP — Registro da Aula 4, Semana 4 (Arquiteto de testes do app de mensagens).</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
   Situação fictícia produzida pela SEDUC-SP. Material da apostila
@@ -154,7 +267,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p1s4_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"Uma empresa lançou um app sem testes porque \"o prazo era apertado\". Na primeira semana, perdeu 50% dos usuários por bugs. Isso demonstra o princípio de que um teste:","opts":["mostra o paradoxo do pesticida em ação.","mostra presença, não ausência de defeitos.","será exaustivo quando necessário.","quando antecipado, economiza tempo e dinheiro."],"correct":3,"exp":"O princípio do teste antecipado (early testing): quanto mais cedo um defeito é encontrado, mais barato é corrigi-lo. Pular os testes para ganhar prazo transferiu o custo — muito maior — para depois do lançamento."},{"q":"Uma empresa teve três problemas ao lançar um app: (1) função de cálculo errada, (2) API não conecta com o banco e (3) botão submit não aparece no iPhone. Qual sequência de testes teria encontrado esses bugs mais rapidamente?","opts":["Unitário → Integração → Sistema → Aceitação","Sistema → Unitário → Aceitação → Integração","Aceitação → Sistema → Integração → Unitário","Integração → Aceitação → Unitário → Sistema"],"correct":0,"exp":"Cada bug é de um nível: o cálculo errado é pego no teste unitário; a API que não conecta, no teste de integração; o botão que some no iPhone, no teste de sistema (E2E). A ordem crescente encontra cada um o quanto antes."},{"q":"Uma empresa testa login manualmente 50 vezes por dia, gastando 5 minutos cada vez. Automatizar custaria dezesseis horas de desenvolvimento. Em quantos dias o investimento se pagaria?","opts":["Nunca, pois teste manual é mais barato.","Quatro dias, considerando tempo total gasto.","Dois dias, pois automação é sempre mais rápida.","Dez dias, baseado em ROI real."],"correct":1,"exp":"Gasto manual por dia = 50 × 5 min = 250 min ≈ 4,17 h. Investimento = 16 h. 16 ÷ 4,17 ≈ 3,8 → em torno de 4 dias o tempo economizado já cobre as 16 horas."}];
-var ACTS=[{"k":0,"ids":["f_63","f_64","f_65","f_66","f_67","f_68","f_69","f_70","f_71","f_72","f_73","f_74","f_75"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_63"},{"label":"Data","id":"f_64"},{"label":"Nome ou nº do grupo","id":"f_65"},{"label":"Integrantes (separe por vírgula)","id":"f_66"},{"h":"Parte 1 — Mapeamento"},{"label":"Unitário — descreva um teste","id":"f_67"},{"label":"Integração — descreva um teste","id":"f_68"},{"label":"E2E (sistema) — descreva um teste","id":"f_69"},{"label":"Manual (aceitação) — descreva um teste","id":"f_70"},{"h":"Parte 2 — Priorização"},{"label":"Unitário — quantos testes","id":"f_71"},{"label":"Integração — quantos testes","id":"f_72"},{"label":"E2E (sistema) — quantos testes","id":"f_73"},{"label":"Manual (aceitação) — quantos testes","id":"f_74"},{"label":"Justificativa da distribuição","id":"f_75"}],"title":"Arquiteto de testes do app de mensagens"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_63","f_64","f_65","f_66","f_prof","f_67","f_68","f_69","f_70","f_71","f_72","f_73","f_74","f_75"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_63"},{"label":"Data","id":"f_64"},{"label":"Nome ou nº do grupo","id":"f_65"},{"label":"Integrantes (separe por vírgula)","id":"f_66"},{"label":"Professor(a)","id":"f_prof"},{"h":"Parte 1 — Mapeamento"},{"label":"Unitário — descreva um teste","id":"f_67"},{"label":"Integração — descreva um teste","id":"f_68"},{"label":"E2E (sistema) — descreva um teste","id":"f_69"},{"label":"Manual (aceitação) — descreva um teste","id":"f_70"},{"h":"Parte 2 — Priorização"},{"label":"Unitário — quantos testes","id":"f_71"},{"label":"Integração — quantos testes","id":"f_72"},{"label":"E2E (sistema) — quantos testes","id":"f_73"},{"label":"Manual (aceitação) — quantos testes","id":"f_74"},{"label":"Justificativa da distribuição","id":"f_75"}],"title":"Arquiteto de testes do app de mensagens","rubrica":[["Cumpriu todas as etapas/partes pedidas no roteiro","0,2"],["Conteúdo tecnicamente correto e coerente com o cenário","0,2"],["Usa corretamente os conceitos-chave da semana (níveis de teste: unitário, integração, sistema/E2E, aceitação; priorização)","0,2"],["Texto claro, organizado e com vocabulário técnico adequado","0,2"],["Entregue no prazo, em PDF pelo AVA, com identificação do grupo/aluno","0,2"]]}];
 var SEM_LABEL="Semana 4 · Introdução aos testes de software e tipos de testes";
 
 function renderQuiz(card){
@@ -232,28 +345,49 @@ ACTS.forEach(function(a){
   });
   a._collect=collect;
 });
-function buildSummary(a){
-  var o=a._collect(),h="";
-  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
-  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
-  a.spec.forEach(function(it){
-    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
-    var v;
-    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
-    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
-    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
-  });
-  document.getElementById("printSummary-"+a.k).innerHTML=h;
+function preencher(sel, texto){
+  document.querySelectorAll(sel).forEach(function(el){ el.textContent = texto; });
 }
-function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
-function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
-var PRINTING=null;
-window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
-window.addEventListener("afterprint",resetPrint);
+function montarRelatorio(a){
+  var o=a._collect();
+  var integrantes = o.f_66 || o.f_aluno || "___________________________";
+  preencher("[data-fill=escola]", o.f_esc || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
+  preencher("[data-fill=integrantes]", integrantes);
+  preencher("[data-fill=professor]", o.f_prof ? ("Professor(a): "+o.f_prof) : "");
+  preencher("[data-fill=turma]", o.f_63 ? ("Turma: "+o.f_63) : "");
+  preencher("[data-fill=data]", o.f_64 ? ("Data: "+o.f_64) : "");
+
+  var h="";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h3>"+escp(it.h)+"</h3>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"(não marcado)";}
+    else{v=o[it.id]||"(em branco)";}
+    h+="<div class='item'><div class='perg'>"+escp(it.label)+"</div><div class='resp'>"+escp(v)+"</div></div>";
+  });
+  document.getElementById("corpoRoteiro").innerHTML=h;
+
+  var checklist=[
+    "Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.",
+    "Parte 1 — um teste foi descrito para cada nível (unitário, integração, E2E, manual/aceitação).",
+    "Parte 2 — a distribuição dos 10 testes soma 10 e está justificada.",
+    "PDF gerado e enviado no AVA com o grupo identificado."
+  ];
+  var hc="";
+  checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
+  document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
+}
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
     var k=parseInt(this.getAttribute("data-k"),10);
-    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+    var a=ACTS.filter(function(x){return x.k===k;})[0];
+    montarRelatorio(a);
+    window.print();
   });
 });
 })();

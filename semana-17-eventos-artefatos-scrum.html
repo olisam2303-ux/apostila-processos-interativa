@@ -51,6 +51,45 @@ th{background:var(--panel-2)}
 .score{font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+
+/* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
+#relatorio{display:none}
+@media print{
+  @page{size:A4;margin:25mm 20mm 20mm 25mm}
+  body{background:#fff;color:#000;font-family:"Times New Roman",Georgia,serif;font-size:12pt;line-height:1.5;padding:0}
+  .wrap>*:not(#relatorio){display:none !important}
+  #relatorio{display:block}
+  .wrap{max-width:none;padding:0;margin:0}
+
+  .folha{page-break-after:always;text-align:center}
+  .folha .inst{font-size:12pt;font-weight:bold;text-transform:uppercase;line-height:1.4}
+  .folha .meio{margin-top:70mm}
+  .folha .fim{margin-top:70mm;text-transform:uppercase}
+  .folha .tituloTrab{font-size:14pt;font-weight:bold;text-transform:uppercase;margin-top:6mm}
+  .folha .subtitulo{font-size:12pt;margin-top:2mm}
+  .folha .autores{font-size:12pt;margin-top:4mm}
+  .fr-nota{width:8.5cm;margin:14mm 0 0 auto;text-align:justify;font-size:10pt;line-height:1.3}
+  .fr-orient{width:8.5cm;margin:6mm 0 0 auto;text-align:left;font-size:10pt}
+
+  #roteiro h2.rtitulo{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:0 0 8mm}
+  #roteiro .rlinha{font-size:12pt;margin-bottom:2mm}
+  #roteiro .rlinha b{text-transform:uppercase}
+  #roteiro h3{font-size:12pt;font-weight:bold;text-transform:uppercase;margin:7mm 0 3mm;page-break-after:avoid}
+  #roteiro p{margin:0 0 3mm;text-align:justify}
+  #roteiro ul{margin:0 0 3mm;padding-left:6mm}
+  #roteiro li{margin-bottom:1.5mm}
+  #roteiro .lista-obj{list-style:none;padding-left:0}
+  #roteiro .lista-obj li:before{content:"✓  ";font-weight:bold}
+
+  #roteiro .item{margin-bottom:5mm;page-break-inside:avoid}
+  #roteiro .item .perg{font-weight:bold;margin-bottom:1.5mm}
+  #roteiro .item .rot{font-size:10.5pt;font-variant:small-caps;color:#333;margin-top:2mm}
+  #roteiro .item .resp{white-space:pre-wrap;border-bottom:1px dotted #999;padding-bottom:1mm;min-height:5mm}
+  #roteiro table{width:100%;border-collapse:collapse;font-size:10.5pt;margin-top:2mm}
+  #roteiro th,#roteiro td{border:1px solid #666;padding:1.5mm 2mm}
+  #roteiro th{background:#e8e8e8;color:#000;text-transform:none;font-variant:small-caps;letter-spacing:0}
+  #roteiro .checkline{margin-bottom:1.5mm;font-size:11pt}
+}
 @media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
 </style>
 </head>
@@ -98,10 +137,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>Uma equipe usa Scrum; a sprint está em andamento. A meta é entregar uma funcionalidade importante, mas surgiram situações que podem comprometer o prazo. O grupo conduz uma Daily Scrum e decide como lidar com os bloqueios.</p>
       <p class="muted">Base: apostila, Capítulos 17 e 7.</p></div>
 <form id="reg-0" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_353">Turma</label><input type="text" id="f_353" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
+<label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
+<label class="field" for="f_353">Turma</label><input type="text" id="f_353" placeholder="">
 <label class="field" for="f_354">Data</label><input type="text" id="f_354" placeholder="dd/mm/aaaa">
 <label class="field" for="f_355">Nome ou nº do grupo</label><input type="text" id="f_355" placeholder="">
 <label class="field" for="f_356">Integrantes (separe por vírgula)</label><input type="text" id="f_356" placeholder="">
+<label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Etapa 1 — Estrutura da Daily Scrum</h3><label class="field" for="f_357">O que foi feito desde a última reunião?</label><textarea id="f_357"></textarea>
 <label class="field" for="f_358">O que será feito hoje?</label><textarea id="f_358"></textarea>
 <label class="field" for="f_359">Por que a reunião deve ser curta (time-boxed)?</label><textarea id="f_359"></textarea>
@@ -126,10 +168,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>A equipe concluiu uma sprint de duas semanas. Meta: <em>"Implementar cadastro de usuários e sistema básico de login"</em>. Resultados: cadastro OK; login com falhas intermitentes; documentação não concluída; conflito de comunicação entre dois membros.</p>
       <p class="muted">Base: apostila, Capítulos 17 e 14. Separem <strong>produto</strong> (Review) de <strong>processo</strong> (Retrospective).</p></div>
 <form id="reg-1" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_380">Turma</label><input type="text" id="f_380" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc2">Escola</label><input type="text" id="f_esc2" placeholder="">
+<label class="field" for="f_aluno2">Nome do aluno</label><input type="text" id="f_aluno2" placeholder="">
+<label class="field" for="f_380">Turma</label><input type="text" id="f_380" placeholder="">
 <label class="field" for="f_381">Data</label><input type="text" id="f_381" placeholder="dd/mm/aaaa">
 <label class="field" for="f_382">Nome ou nº do grupo</label><input type="text" id="f_382" placeholder="">
 <label class="field" for="f_383">Integrantes (separe por vírgula)</label><input type="text" id="f_383" placeholder="">
+<label class="field" for="f_prof2">Professor(a)</label><input type="text" id="f_prof2" placeholder="">
 <h3>Etapa 1 — Sprint Review (produto)</h3><label class="field" for="f_384">A meta foi totalmente atingida? O que foi entregue corretamente?</label><textarea id="f_384"></textarea>
 <label class="field" for="f_385">O que precisa de ajustes?</label><textarea id="f_385"></textarea>
 <label class="field" for="f_386">O que priorizar no backlog para a próxima sprint?</label><textarea id="f_386"></textarea>
@@ -168,8 +213,80 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Rubrica — Atividade 2: Sprint Review e Sprint Retrospective (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Análise da meta clara; produto e processo separados</td><td>0,2</td></tr><tr><td>Feedback do cliente ligado ao backlog</td><td>0,2</td></tr><tr><td>Pelo menos 3 ações de melhoria concretas</td><td>0,2</td></tr><tr><td>Conexão com inspeção e adaptação explicada</td><td>0,2</td></tr><tr><td>Texto organizado; entregue em PDF no AVA com identificação</td><td>0,2</td></tr></table>
 </div>
 
-<div class="print-only" id="printSummary-0"></div>
-<div class="print-only" id="printSummary-1"></div>
+<div id="relatorio">
+
+  <div class="folha">
+    <div class="inst" data-fill="escola"></div>
+    <div class="inst">Curso Técnico · Processos de Desenvolvimento de Software</div>
+    <div class="meio">
+      <div class="autores" data-fill="integrantes"></div>
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Processos de Desenvolvimento de Software</div>
+      <div class="subtitulo">Semana 17 — <span data-fill="atividade"></span></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div class="folha">
+    <div class="autores" data-fill="integrantes"></div>
+    <div class="meio">
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Semana 17 — <span data-fill="atividade"></span></div>
+      <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 3º bimestre.</div>
+      <div class="fr-orient" data-fill="professor"></div>
+      <div class="fr-orient" data-fill="turma"></div>
+      <div class="fr-orient" data-fill="data"></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div id="roteiro">
+    <h2 class="rtitulo">Registro de Aula</h2>
+    <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
+    <div class="rlinha"><b>Unidade:</b> Semana 17 — Eventos e artefatos do Scrum</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
+    <div class="rlinha"><b>Base teórica:</b> Capítulo 17 — Eventos e artefatos do Scrum (Daily Scrum, Sprint Review, Sprint Retrospective)</div>
+
+    <h3>Objetivos</h3>
+    <ul class="lista-obj">
+      <li>Praticar a estrutura da Daily Scrum e diferenciar relatar um impedimento de justificar um atraso.</li>
+      <li>Identificar impedimentos reais em cenários dados e definir quem deve agir em cada caso.</li>
+      <li>Separar produto (Sprint Review) de processo (Sprint Retrospective) ao analisar os resultados de uma sprint.</li>
+      <li>Propor ações de melhoria concretas ligando Review e Retrospective aos princípios de inspeção e adaptação.</li>
+    </ul>
+
+    <h3>Solução digital</h3>
+    <p>Página interativa da atividade + navegador. O relatório é preenchido diretamente nesta página e exportado em PDF pelo próprio navegador (botão <b>Gerar PDF</b> ou Ctrl+P → Salvar como PDF). Não é preciso instalar nada, e a página funciona sem internet.</p>
+
+    <h3>Procedimento / Atividade</h3>
+    <p><b>Atividade 1 — Daily Scrum e gestão de impedimentos:</b> uma equipe usa Scrum; a sprint está em andamento. A meta é entregar uma funcionalidade importante, mas surgiram situações que podem comprometer o prazo. O grupo conduz uma Daily Scrum e decide como lidar com os bloqueios.</p>
+    <p><b>Atividade 2 — Sprint Review e Sprint Retrospective:</b> a equipe concluiu uma sprint de duas semanas. Meta: "Implementar cadastro de usuários e sistema básico de login". Resultados: cadastro OK; login com falhas intermitentes; documentação não concluída; conflito de comunicação entre dois membros.</p>
+
+    <h3>Procedimentos para a realização da atividade</h3>
+    <div id="corpoRoteiro"></div>
+
+    <h3>Checklist de entrega</h3>
+    <div id="corpoChecklist"></div>
+
+    <h3>Critérios de avaliação</h3>
+    <table>
+      <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
+      <tbody id="corpoCriterios"></tbody>
+    </table>
+
+    <h3>Referências</h3>
+    <ul>
+      <li>Apostila da disciplina — Processos de Desenvolvimento de Software, Semana 17 (Capítulo 17).</li>
+      <li>SEDUC-SP — Registro da Aula 17, Semana 17 (Atividades 1 e 2).</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
   Situação fictícia produzida pela SEDUC-SP. Material da apostila
@@ -186,7 +303,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p3s17_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"Qual é o principal objetivo do Sprint Planning?","opts":["Definir o que será feito e a meta da sprint.","Cancelar tarefas do backlog.","Apresentar o produto ao cliente.","Avaliar o desempenho da sprint anterior."],"correct":0,"exp":"No Sprint Planning o time seleciona itens do backlog, define a meta da sprint e planeja como entregá-los. Apresentar ao cliente é a Sprint Review; avaliar a sprint anterior é a Retrospective."},{"q":"Qual é o principal objetivo da Daily Scrum?","opts":["Sincronizar o time e monitorar progresso.","Atualizar apenas o Product Owner.","Resolver todos os problemas técnicos.","Revisar o backlog completo."],"correct":0,"exp":"A Daily é uma reunião curta (time-boxed) para o time se alinhar sobre o progresso rumo à meta e identificar impedimentos. Não é para resolver os problemas ali nem para revisar todo o backlog."},{"q":"Qual é a principal diferença entre Sprint Review e Sprint Retrospective?","opts":["Review resolve conflitos internos.","Ambas analisam apenas o backlog.","Retrospective define a meta da sprint.","Review analisa o produto, Retrospective analisa o processo."],"correct":3,"exp":"A Sprint Review inspeciona o incremento (o produto entregue) e colhe feedback; a Sprint Retrospective inspeciona o processo de trabalho do time e define ações de melhoria."}];
-var ACTS=[{"k":0,"ids":["f_353","f_354","f_355","f_356","f_357","f_358","f_359","g_360","g_361","g_362","g_363","g_364","g_365","g_366","g_367","g_368","g_369","g_370","g_371","f_372","f_373","f_374","f_375","f_376","f_377","f_378","f_379"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_353"},{"label":"Data","id":"f_354"},{"label":"Nome ou nº do grupo","id":"f_355"},{"label":"Integrantes (separe por vírgula)","id":"f_356"},{"h":"Etapa 1 — Estrutura da Daily Scrum"},{"label":"O que foi feito desde a última reunião?","id":"f_357"},{"label":"O que será feito hoje?","id":"f_358"},{"label":"Por que a reunião deve ser curta (time-boxed)?","id":"f_359"},{"h":"Etapa 2 — Identificando impedimentos"},{"label":"Cenário #1 — Cenário","id":"g_360"},{"label":"Cenário #1 — É impedimento real? (sim/não)","id":"g_361"},{"label":"Cenário #1 — Por que pode afetar a sprint","id":"g_362"},{"label":"Cenário #1 — Quem deve agir","id":"g_363"},{"label":"Cenário #2 — Cenário","id":"g_364"},{"label":"Cenário #2 — É impedimento real? (sim/não)","id":"g_365"},{"label":"Cenário #2 — Por que pode afetar a sprint","id":"g_366"},{"label":"Cenário #2 — Quem deve agir","id":"g_367"},{"label":"Cenário #3 — Cenário","id":"g_368"},{"label":"Cenário #3 — É impedimento real? (sim/não)","id":"g_369"},{"label":"Cenário #3 — Por que pode afetar a sprint","id":"g_370"},{"label":"Cenário #3 — Quem deve agir","id":"g_371"},{"h":"Etapa 3 — Comunicação correta"},{"label":"Como uma comunicação inadequada pode gerar conflito","id":"f_372"},{"label":"Diferença entre justificar um atraso e relatar um impedimento","id":"f_373"},{"h":"Etapa 4 — Priorização e meta da sprint"},{"label":"Como priorizar corretamente","id":"f_374"},{"label":"Como manter o foco na meta da sprint","id":"f_375"},{"label":"Quem define ajustes no backlog","id":"f_376"},{"h":"Etapa 5 — Monitoramento do progresso"},{"label":"Por que a Daily funciona como ferramenta de monitoramento","id":"f_377"},{"label":"Como impedimentos impactam o progresso e como falhas pequenas viram grandes atrasos","id":"f_378"},{"h":"Etapa 6 — Reflexão final"},{"label":"Qual o verdadeiro objetivo da Daily Scrum e como a gestão de impedimentos protege o time","id":"f_379"}],"title":"Daily Scrum e gestão de impedimentos"},{"k":1,"ids":["f_380","f_381","f_382","f_383","f_384","f_385","f_386","f_387","f_388","f_389","f_390","f_391","f_392","f_393","f_394"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_380"},{"label":"Data","id":"f_381"},{"label":"Nome ou nº do grupo","id":"f_382"},{"label":"Integrantes (separe por vírgula)","id":"f_383"},{"h":"Etapa 1 — Sprint Review (produto)"},{"label":"A meta foi totalmente atingida? O que foi entregue corretamente?","id":"f_384"},{"label":"O que precisa de ajustes?","id":"f_385"},{"label":"O que priorizar no backlog para a próxima sprint?","id":"f_386"},{"h":"Etapa 2 — Feedback do cliente"},{"label":"Como esse feedback impacta o backlog e o que priorizar","id":"f_387"},{"h":"Etapa 3 — Sprint Retrospective (processo)"},{"label":"O que funcionou bem na colaboração","id":"f_388"},{"label":"Quais problemas surgiram; houve falhas de comunicação?","id":"f_389"},{"label":"O que poderia ter sido feito diferente","id":"f_390"},{"h":"Etapa 4 — Ações concretas"},{"label":"Ação 1","id":"f_391"},{"label":"Ação 2","id":"f_392"},{"label":"Ação 3","id":"f_393"},{"h":"Etapa 5 — Conexão com inspeção e adaptação"},{"label":"Por que Review e Retrospective são eventos de inspeção e como promovem a adaptação","id":"f_394"}],"title":"Sprint Review e Sprint Retrospective"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_353","f_354","f_355","f_356","f_357","f_358","f_359","g_360","g_361","g_362","g_363","g_364","g_365","g_366","g_367","g_368","g_369","g_370","g_371","f_372","f_373","f_374","f_375","f_376","f_377","f_378","f_379","f_prof"],"radios":[],"f_esc":"f_esc","f_aluno":"f_aluno","f_prof":"f_prof","f_turma":"f_353","f_data":"f_354","f_int":"f_356","spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_353"},{"label":"Data","id":"f_354"},{"label":"Nome ou nº do grupo","id":"f_355"},{"label":"Integrantes (separe por vírgula)","id":"f_356"},{"label":"Professor(a)","id":"f_prof"},{"h":"Etapa 1 — Estrutura da Daily Scrum"},{"label":"O que foi feito desde a última reunião?","id":"f_357"},{"label":"O que será feito hoje?","id":"f_358"},{"label":"Por que a reunião deve ser curta (time-boxed)?","id":"f_359"},{"h":"Etapa 2 — Identificando impedimentos"},{"label":"Cenário #1 — Cenário","id":"g_360"},{"label":"Cenário #1 — É impedimento real? (sim/não)","id":"g_361"},{"label":"Cenário #1 — Por que pode afetar a sprint","id":"g_362"},{"label":"Cenário #1 — Quem deve agir","id":"g_363"},{"label":"Cenário #2 — Cenário","id":"g_364"},{"label":"Cenário #2 — É impedimento real? (sim/não)","id":"g_365"},{"label":"Cenário #2 — Por que pode afetar a sprint","id":"g_366"},{"label":"Cenário #2 — Quem deve agir","id":"g_367"},{"label":"Cenário #3 — Cenário","id":"g_368"},{"label":"Cenário #3 — É impedimento real? (sim/não)","id":"g_369"},{"label":"Cenário #3 — Por que pode afetar a sprint","id":"g_370"},{"label":"Cenário #3 — Quem deve agir","id":"g_371"},{"h":"Etapa 3 — Comunicação correta"},{"label":"Como uma comunicação inadequada pode gerar conflito","id":"f_372"},{"label":"Diferença entre justificar um atraso e relatar um impedimento","id":"f_373"},{"h":"Etapa 4 — Priorização e meta da sprint"},{"label":"Como priorizar corretamente","id":"f_374"},{"label":"Como manter o foco na meta da sprint","id":"f_375"},{"label":"Quem define ajustes no backlog","id":"f_376"},{"h":"Etapa 5 — Monitoramento do progresso"},{"label":"Por que a Daily funciona como ferramenta de monitoramento","id":"f_377"},{"label":"Como impedimentos impactam o progresso e como falhas pequenas viram grandes atrasos","id":"f_378"},{"h":"Etapa 6 — Reflexão final"},{"label":"Qual o verdadeiro objetivo da Daily Scrum e como a gestão de impedimentos protege o time","id":"f_379"}],"title":"Daily Scrum e gestão de impedimentos","rubrica":[["A tabela da Etapa 2 está toda preenchida","0,2"],["As respostas separam \"identificar\" de \"resolver\" o impedimento","0,2"],["Distingue justificar atraso de relatar impedimento; identifica o responsável por cada decisão","0,2"],["Reflexão coerente sobre o objetivo da Daily","0,2"],["Texto claro; entregue em PDF no AVA com identificação","0,2"]]},{"k":1,"ids":["f_esc2","f_aluno2","f_380","f_381","f_382","f_383","f_384","f_385","f_386","f_387","f_388","f_389","f_390","f_391","f_392","f_393","f_394","f_prof2"],"radios":[],"f_esc":"f_esc2","f_aluno":"f_aluno2","f_prof":"f_prof2","f_turma":"f_380","f_data":"f_381","f_int":"f_383","spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc2"},{"label":"Nome do aluno","id":"f_aluno2"},{"label":"Turma","id":"f_380"},{"label":"Data","id":"f_381"},{"label":"Nome ou nº do grupo","id":"f_382"},{"label":"Integrantes (separe por vírgula)","id":"f_383"},{"label":"Professor(a)","id":"f_prof2"},{"h":"Etapa 1 — Sprint Review (produto)"},{"label":"A meta foi totalmente atingida? O que foi entregue corretamente?","id":"f_384"},{"label":"O que precisa de ajustes?","id":"f_385"},{"label":"O que priorizar no backlog para a próxima sprint?","id":"f_386"},{"h":"Etapa 2 — Feedback do cliente"},{"label":"Como esse feedback impacta o backlog e o que priorizar","id":"f_387"},{"h":"Etapa 3 — Sprint Retrospective (processo)"},{"label":"O que funcionou bem na colaboração","id":"f_388"},{"label":"Quais problemas surgiram; houve falhas de comunicação?","id":"f_389"},{"label":"O que poderia ter sido feito diferente","id":"f_390"},{"h":"Etapa 4 — Ações concretas"},{"label":"Ação 1","id":"f_391"},{"label":"Ação 2","id":"f_392"},{"label":"Ação 3","id":"f_393"},{"h":"Etapa 5 — Conexão com inspeção e adaptação"},{"label":"Por que Review e Retrospective são eventos de inspeção e como promovem a adaptação","id":"f_394"}],"title":"Sprint Review e Sprint Retrospective","rubrica":[["Análise da meta clara; produto e processo separados","0,2"],["Feedback do cliente ligado ao backlog","0,2"],["Pelo menos 3 ações de melhoria concretas","0,2"],["Conexão com inspeção e adaptação explicada","0,2"],["Texto organizado; entregue em PDF no AVA com identificação","0,2"]]}];
 var SEM_LABEL="Semana 17 · Eventos e artefatos do Scrum";
 
 function renderQuiz(card){
@@ -264,28 +381,49 @@ ACTS.forEach(function(a){
   });
   a._collect=collect;
 });
-function buildSummary(a){
-  var o=a._collect(),h="";
-  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
-  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
-  a.spec.forEach(function(it){
-    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
-    var v;
-    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
-    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
-    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
-  });
-  document.getElementById("printSummary-"+a.k).innerHTML=h;
+function preencher(sel, texto){
+  document.querySelectorAll(sel).forEach(function(el){ el.textContent = texto; });
 }
-function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
-function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
-var PRINTING=null;
-window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
-window.addEventListener("afterprint",resetPrint);
+function montarRelatorio(a){
+  var o=a._collect();
+  var integrantes = o[a.f_int] || o[a.f_aluno] || "___________________________";
+  preencher("[data-fill=escola]", o[a.f_esc] || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
+  preencher("[data-fill=integrantes]", integrantes);
+  preencher("[data-fill=professor]", o[a.f_prof] ? ("Professor(a): "+o[a.f_prof]) : "");
+  preencher("[data-fill=turma]", o[a.f_turma] ? ("Turma: "+o[a.f_turma]) : "");
+  preencher("[data-fill=data]", o[a.f_data] ? ("Data: "+o[a.f_data]) : "");
+
+  var h="";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h3>"+escp(it.h)+"</h3>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"(não marcado)";}
+    else{v=o[it.id]||"(em branco)";}
+    h+="<div class='item'><div class='perg'>"+escp(it.label)+"</div><div class='resp'>"+escp(v)+"</div></div>";
+  });
+  document.getElementById("corpoRoteiro").innerHTML=h;
+
+  var checklist=[
+    "Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.",
+    "Todas as etapas da atividade selecionada (Atividade 1 — Daily Scrum, ou Atividade 2 — Sprint Review/Retrospective) estão completas.",
+    "As respostas seguem a distinção pedida em cada atividade (identificar × resolver impedimento; produto × processo).",
+    "PDF gerado e enviado no AVA com o grupo identificado."
+  ];
+  var hc="";
+  checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
+  document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
+}
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
     var k=parseInt(this.getAttribute("data-k"),10);
-    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+    var a=ACTS.filter(function(x){return x.k===k;})[0];
+    montarRelatorio(a);
+    window.print();
   });
 });
 })();

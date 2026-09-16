@@ -51,6 +51,45 @@ th{background:var(--panel-2)}
 .score{font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+
+/* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
+#relatorio{display:none}
+@media print{
+  @page{size:A4;margin:25mm 20mm 20mm 25mm}
+  body{background:#fff;color:#000;font-family:"Times New Roman",Georgia,serif;font-size:12pt;line-height:1.5;padding:0}
+  .wrap>*:not(#relatorio){display:none !important}
+  #relatorio{display:block}
+  .wrap{max-width:none;padding:0;margin:0}
+
+  .folha{page-break-after:always;text-align:center}
+  .folha .inst{font-size:12pt;font-weight:bold;text-transform:uppercase;line-height:1.4}
+  .folha .meio{margin-top:70mm}
+  .folha .fim{margin-top:70mm;text-transform:uppercase}
+  .folha .tituloTrab{font-size:14pt;font-weight:bold;text-transform:uppercase;margin-top:6mm}
+  .folha .subtitulo{font-size:12pt;margin-top:2mm}
+  .folha .autores{font-size:12pt;margin-top:4mm}
+  .fr-nota{width:8.5cm;margin:14mm 0 0 auto;text-align:justify;font-size:10pt;line-height:1.3}
+  .fr-orient{width:8.5cm;margin:6mm 0 0 auto;text-align:left;font-size:10pt}
+
+  #roteiro h2.rtitulo{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:0 0 8mm}
+  #roteiro .rlinha{font-size:12pt;margin-bottom:2mm}
+  #roteiro .rlinha b{text-transform:uppercase}
+  #roteiro h3{font-size:12pt;font-weight:bold;text-transform:uppercase;margin:7mm 0 3mm;page-break-after:avoid}
+  #roteiro p{margin:0 0 3mm;text-align:justify}
+  #roteiro ul{margin:0 0 3mm;padding-left:6mm}
+  #roteiro li{margin-bottom:1.5mm}
+  #roteiro .lista-obj{list-style:none;padding-left:0}
+  #roteiro .lista-obj li:before{content:"✓  ";font-weight:bold}
+
+  #roteiro .item{margin-bottom:5mm;page-break-inside:avoid}
+  #roteiro .item .perg{font-weight:bold;margin-bottom:1.5mm}
+  #roteiro .item .rot{font-size:10.5pt;font-variant:small-caps;color:#333;margin-top:2mm}
+  #roteiro .item .resp{white-space:pre-wrap;border-bottom:1px dotted #999;padding-bottom:1mm;min-height:5mm}
+  #roteiro table{width:100%;border-collapse:collapse;font-size:10.5pt;margin-top:2mm}
+  #roteiro th,#roteiro td{border:1px solid #666;padding:1.5mm 2mm}
+  #roteiro th{background:#e8e8e8;color:#000;text-transform:none;font-variant:small-caps;letter-spacing:0}
+  #roteiro .checkline{margin-bottom:1.5mm;font-size:11pt}
+}
 @media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
 </style>
 </head>
@@ -98,10 +137,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>Uma empresa adota o Scrum. As decisões do dia a dia não são de uma única pessoa: cada papel tem responsabilidades próprias. Analisem situações e decidam qual papel decide o quê, ligando às valores/princípios ágeis.</p>
       <p class="muted">Base: apostila, Capítulos 12 e 16.</p></div>
 <form id="reg-0" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_319">Turma</label><input type="text" id="f_319" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
+<label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
+<label class="field" for="f_319">Turma</label><input type="text" id="f_319" placeholder="">
 <label class="field" for="f_320">Data</label><input type="text" id="f_320" placeholder="dd/mm/aaaa">
 <label class="field" for="f_321">Nome ou nº do grupo</label><input type="text" id="f_321" placeholder="">
 <label class="field" for="f_322">Integrantes (separe por vírgula)</label><input type="text" id="f_322" placeholder="">
+<label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Desafio 1 — Compreendendo os papéis</h3><label class="field" for="f_323">Foco principal de PO, SM e Dev Team</label><textarea id="f_323"></textarea>
 <label class="field" for="f_324">Por que o Scrum separa as responsabilidades</label><textarea id="f_324"></textarea>
 <label class="field" for="f_325">O que acontece quando um papel assume decisões que não são suas</label><textarea id="f_325"></textarea>
@@ -124,10 +166,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>Antes de qualquer código, o grupo vai <strong>construir um produto em papel</strong>, simulando as decisões iniciais de um projeto ágil (Sprint Zero): definir o produto, levantar ideias, priorizar e planejar.</p>
       <p class="muted">A construção é em papel (rascunho rápido). A entrega é: fotos das folhas do grupo + este relato individual em PDF no AVA.</p></div>
 <form id="reg-1" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_334">Turma</label><input type="text" id="f_334" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc2">Escola</label><input type="text" id="f_esc2" placeholder="">
+<label class="field" for="f_aluno2">Nome do aluno</label><input type="text" id="f_aluno2" placeholder="">
+<label class="field" for="f_334">Turma</label><input type="text" id="f_334" placeholder="">
 <label class="field" for="f_335">Data</label><input type="text" id="f_335" placeholder="dd/mm/aaaa">
 <label class="field" for="f_336">Nome ou nº do grupo</label><input type="text" id="f_336" placeholder="">
 <label class="field" for="f_337">Integrantes (separe por vírgula)</label><input type="text" id="f_337" placeholder="">
+<label class="field" for="f_prof2">Professor(a)</label><input type="text" id="f_prof2" placeholder="">
 <h3>Etapa 1 — Definição do problema</h3><label class="field" for="f_338">Que problema o produto resolve</label><textarea id="f_338"></textarea>
 <label class="field" for="f_339">Quem seriam os usuários</label><input type="text" id="f_339" placeholder="">
 <label class="field" for="f_340">Por que esse problema é relevante</label><textarea id="f_340"></textarea>
@@ -170,8 +215,80 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Rubrica — Atividade 2: Dinâmica &quot;Construindo um produto em papel&quot; (Sprint Zero) (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Descreve claramente o produto (o que é, problema, usuários)</td><td>0,2</td></tr><tr><td>Apresenta as decisões do grupo e explica as prioridades</td><td>0,2</td></tr><tr><td>Planejamento da Sprint Zero: primeira entrega, divisão de tarefas, dúvidas</td><td>0,2</td></tr><tr><td>Relaciona a experiência a valores e princípios ágeis</td><td>0,2</td></tr><tr><td>Fotos das folhas anexadas no AVA + relato em PDF com identificação</td><td>0,2</td></tr></table>
 </div>
 
-<div class="print-only" id="printSummary-0"></div>
-<div class="print-only" id="printSummary-1"></div>
+<div id="relatorio">
+
+  <div class="folha">
+    <div class="inst" data-fill="escola"></div>
+    <div class="inst">Curso Técnico · Processos de Desenvolvimento de Software</div>
+    <div class="meio">
+      <div class="autores" data-fill="integrantes"></div>
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Processos de Desenvolvimento de Software</div>
+      <div class="subtitulo">Semana 16 — <span data-fill="atividade"></span></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div class="folha">
+    <div class="autores" data-fill="integrantes"></div>
+    <div class="meio">
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Semana 16 — <span data-fill="atividade"></span></div>
+      <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 3º bimestre.</div>
+      <div class="fr-orient" data-fill="professor"></div>
+      <div class="fr-orient" data-fill="turma"></div>
+      <div class="fr-orient" data-fill="data"></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div id="roteiro">
+    <h2 class="rtitulo">Registro de Aula</h2>
+    <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
+    <div class="rlinha"><b>Unidade:</b> Semana 16 — Manifesto Ágil e papéis do Scrum (consolidação)</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
+    <div class="rlinha"><b>Base teórica:</b> Capítulos 12 e 16 — Papéis do Scrum (PO, SM, Dev Team) e Manifesto Ágil (consolidação)</div>
+
+    <h3>Objetivos</h3>
+    <ul class="lista-obj">
+      <li>Diferenciar as responsabilidades de Product Owner, Scrum Master e Development Team em situações práticas de decisão.</li>
+      <li>Relacionar essas decisões aos valores e princípios do Manifesto Ágil.</li>
+      <li>Simular a Sprint Zero de um produto: definir o problema, levantar e priorizar funcionalidades e planejar a primeira entrega.</li>
+      <li>Refletir sobre como as decisões em grupo e a experiência da dinâmica se relacionam aos valores ágeis.</li>
+    </ul>
+
+    <h3>Solução digital</h3>
+    <p>Página interativa da atividade + navegador. O relatório é preenchido diretamente nesta página e exportado em PDF pelo próprio navegador (botão <b>Gerar PDF</b> ou Ctrl+P → Salvar como PDF). Não é preciso instalar nada, e a página funciona sem internet.</p>
+
+    <h3>Procedimento / Atividade</h3>
+    <p><b>Atividade 1 — Contexto:</b> uma empresa adota o Scrum. As decisões do dia a dia não são de uma única pessoa: cada papel tem responsabilidades próprias. O grupo analisa situações e decide qual papel decide o quê, ligando às valores/princípios ágeis.</p>
+    <p><b>Atividade 2 — Contexto:</b> antes de qualquer código, o grupo constrói um produto em papel, simulando as decisões iniciais de um projeto ágil (Sprint Zero): definir o produto, levantar ideias, priorizar e planejar. A construção é em papel (rascunho rápido); a entrega é fotos das folhas do grupo + este relato individual em PDF no AVA.</p>
+
+    <h3>Procedimentos para a realização da atividade</h3>
+    <div id="corpoRoteiro"></div>
+
+    <h3>Checklist de entrega</h3>
+    <div id="corpoChecklist"></div>
+
+    <h3>Critérios de avaliação</h3>
+    <table>
+      <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
+      <tbody id="corpoCriterios"></tbody>
+    </table>
+
+    <h3>Referências</h3>
+    <ul>
+      <li>Apostila da disciplina — Processos de Desenvolvimento de Software, Semana 16 (Capítulo 16).</li>
+      <li>SEDUC-SP — Registro da Aula 16, Semana 16 (Manifesto Ágil e papéis do Scrum).</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
   Situação fictícia produzida pela SEDUC-SP. Material da apostila
@@ -188,7 +305,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p3s16_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"Qual é a principal ideia defendida pelo Manifesto Ágil no desenvolvimento de software?","opts":["Priorizar entrega de valor e adaptação a mudanças.","Evitar contato frequente com o cliente.","Focar apenas em documentação detalhada.","Seguir planos rígidos sem alterações."],"correct":0,"exp":"O Manifesto Ágil valoriza software funcionando, colaboração com o cliente e responder a mudanças. A ideia central é entregar valor com frequência e adaptar o plano conforme o aprendizado."},{"q":"No Scrum, quem é responsável por definir as prioridades do produto?","opts":["Scrum Master","Product Owner","Cliente diretamente","Development Team"],"correct":1,"exp":"O Product Owner é a \"voz do negócio\": mantém e ordena o Product Backlog por valor. O Scrum Master cuida do processo; o Development Team decide como implementar e quanto cabe na sprint."},{"q":"Qual é o principal objetivo do Sprint Zero em um projeto ágil?","opts":["Testar o produto com usuários.","Entregar funcionalidades completas.","Alinhar visão e planejamento inicial.","Eliminar mudanças futuras."],"correct":2,"exp":"O Sprint Zero é o momento inicial para alinhar a visão do produto, entender o problema, montar o backlog inicial e preparar o time — antes de escrever código. Não é para entregar funcionalidades nem para \"congelar\" o escopo."}];
-var ACTS=[{"k":0,"ids":["f_319","f_320","f_321","f_322","f_323","f_324","f_325","f_326","f_327","f_328","f_329","f_330","f_331","f_332","f_333"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_319"},{"label":"Data","id":"f_320"},{"label":"Nome ou nº do grupo","id":"f_321"},{"label":"Integrantes (separe por vírgula)","id":"f_322"},{"h":"Desafio 1 — Compreendendo os papéis"},{"label":"Foco principal de PO, SM e Dev Team","id":"f_323"},{"label":"Por que o Scrum separa as responsabilidades","id":"f_324"},{"label":"O que acontece quando um papel assume decisões que não são suas","id":"f_325"},{"h":"Desafio 2 — Decisões sobre prioridades"},{"label":"Qual papel define as prioridades e por quê","id":"f_326"},{"label":"Ligação com o princípio de entregar valor ao cliente com frequência","id":"f_327"},{"h":"Desafio 3 — Impedimentos no trabalho"},{"label":"Quem deve atuar para remover os impedimentos e como isso protege o time","id":"f_328"},{"label":"Relação com um princípio ágil","id":"f_329"},{"h":"Desafio 4 — Quem decide a técnica"},{"label":"Quem toma essa decisão e por que não é do PO nem do SM","id":"f_330"},{"label":"Relação com a auto-organização das equipes","id":"f_331"},{"h":"Desafio 5 — Quando um papel invade o outro"},{"label":"Por que isso gera problemas e qual princípio ágil é violado","id":"f_332"},{"label":"Como a separação correta de papéis melhora o trabalho","id":"f_333"}],"title":"Papéis do Scrum: PO, SM e Dev Team"},{"k":1,"ids":["f_334","f_335","f_336","f_337","f_338","f_339","f_340","f_341","f_342","f_343","f_344","f_345","f_346","f_347","f_348","f_349","f_350","f_351","f_352"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_334"},{"label":"Data","id":"f_335"},{"label":"Nome ou nº do grupo","id":"f_336"},{"label":"Integrantes (separe por vírgula)","id":"f_337"},{"h":"Etapa 1 — Definição do problema"},{"label":"Que problema o produto resolve","id":"f_338"},{"label":"Quem seriam os usuários","id":"f_339"},{"label":"Por que esse problema é relevante","id":"f_340"},{"h":"Etapa 2 — Ideias e funcionalidades"},{"label":"Ideias de funcionalidades levantadas","id":"f_341"},{"label":"Quais foram selecionadas para o início e por quê","id":"f_342"},{"h":"Etapa 3 — Priorização"},{"label":"Funcionalidades em ordem de importância","id":"f_343"},{"label":"Critério usado para decidir a prioridade","id":"f_344"},{"label":"O que ficou para depois e por quê","id":"f_345"},{"h":"Etapa 4 — Planejamento inicial (Sprint Zero)"},{"label":"O que o grupo decidiu fazer primeiro","id":"f_346"},{"label":"Como as tarefas foram distribuídas","id":"f_347"},{"label":"Dúvidas em aberto","id":"f_348"},{"h":"Etapa 5 — Representação da solução"},{"label":"Descreva ou cole a imagem no PDF","id":"f_349"},{"h":"Etapa 6 — Reflexão final"},{"label":"Como foi trabalhar em grupo e como as decisões foram tomadas","id":"f_350"},{"label":"O que poderia melhorar numa próxima iteração","id":"f_351"},{"label":"Relação da experiência com valores e princípios ágeis","id":"f_352"}],"title":"Dinâmica \"Construindo um produto em papel\" (Sprint Zero)"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_319","f_320","f_321","f_322","f_prof","f_323","f_324","f_325","f_326","f_327","f_328","f_329","f_330","f_331","f_332","f_333"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_319"},{"label":"Data","id":"f_320"},{"label":"Nome ou nº do grupo","id":"f_321"},{"label":"Integrantes (separe por vírgula)","id":"f_322"},{"label":"Professor(a)","id":"f_prof"},{"h":"Desafio 1 — Compreendendo os papéis"},{"label":"Foco principal de PO, SM e Dev Team","id":"f_323"},{"label":"Por que o Scrum separa as responsabilidades","id":"f_324"},{"label":"O que acontece quando um papel assume decisões que não são suas","id":"f_325"},{"h":"Desafio 2 — Decisões sobre prioridades"},{"label":"Qual papel define as prioridades e por quê","id":"f_326"},{"label":"Ligação com o princípio de entregar valor ao cliente com frequência","id":"f_327"},{"h":"Desafio 3 — Impedimentos no trabalho"},{"label":"Quem deve atuar para remover os impedimentos e como isso protege o time","id":"f_328"},{"label":"Relação com um princípio ágil","id":"f_329"},{"h":"Desafio 4 — Quem decide a técnica"},{"label":"Quem toma essa decisão e por que não é do PO nem do SM","id":"f_330"},{"label":"Relação com a auto-organização das equipes","id":"f_331"},{"h":"Desafio 5 — Quando um papel invade o outro"},{"label":"Por que isso gera problemas e qual princípio ágil é violado","id":"f_332"},{"label":"Como a separação correta de papéis melhora o trabalho","id":"f_333"}],"title":"Papéis do Scrum: PO, SM e Dev Team","rubrica":[["Cumpriu todas as etapas/partes pedidas no roteiro","0,2"],["Conteúdo tecnicamente correto e coerente com o cenário","0,2"],["Usa corretamente os conceitos-chave da semana (papéis do Scrum: PO, SM, Dev Team; auto-organização; valores/princípios ágeis)","0,2"],["Texto claro, organizado e com vocabulário técnico adequado","0,2"],["Entregue no prazo, em PDF pelo AVA, com identificação do grupo/aluno","0,2"]]},{"k":1,"ids":["f_esc2","f_aluno2","f_334","f_335","f_336","f_337","f_prof2","f_338","f_339","f_340","f_341","f_342","f_343","f_344","f_345","f_346","f_347","f_348","f_349","f_350","f_351","f_352"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc2"},{"label":"Nome do aluno","id":"f_aluno2"},{"label":"Turma","id":"f_334"},{"label":"Data","id":"f_335"},{"label":"Nome ou nº do grupo","id":"f_336"},{"label":"Integrantes (separe por vírgula)","id":"f_337"},{"label":"Professor(a)","id":"f_prof2"},{"h":"Etapa 1 — Definição do problema"},{"label":"Que problema o produto resolve","id":"f_338"},{"label":"Quem seriam os usuários","id":"f_339"},{"label":"Por que esse problema é relevante","id":"f_340"},{"h":"Etapa 2 — Ideias e funcionalidades"},{"label":"Ideias de funcionalidades levantadas","id":"f_341"},{"label":"Quais foram selecionadas para o início e por quê","id":"f_342"},{"h":"Etapa 3 — Priorização"},{"label":"Funcionalidades em ordem de importância","id":"f_343"},{"label":"Critério usado para decidir a prioridade","id":"f_344"},{"label":"O que ficou para depois e por quê","id":"f_345"},{"h":"Etapa 4 — Planejamento inicial (Sprint Zero)"},{"label":"O que o grupo decidiu fazer primeiro","id":"f_346"},{"label":"Como as tarefas foram distribuídas","id":"f_347"},{"label":"Dúvidas em aberto","id":"f_348"},{"h":"Etapa 5 — Representação da solução"},{"label":"Descreva ou cole a imagem no PDF","id":"f_349"},{"h":"Etapa 6 — Reflexão final"},{"label":"Como foi trabalhar em grupo e como as decisões foram tomadas","id":"f_350"},{"label":"O que poderia melhorar numa próxima iteração","id":"f_351"},{"label":"Relação da experiência com valores e princípios ágeis","id":"f_352"}],"title":"Dinâmica \"Construindo um produto em papel\" (Sprint Zero)","rubrica":[["Descreve claramente o produto (o que é, problema, usuários)","0,2"],["Apresenta as decisões do grupo e explica as prioridades","0,2"],["Planejamento da Sprint Zero: primeira entrega, divisão de tarefas, dúvidas","0,2"],["Relaciona a experiência a valores e princípios ágeis","0,2"],["Fotos das folhas anexadas no AVA + relato em PDF com identificação","0,2"]]}];
 var SEM_LABEL="Semana 16 · Manifesto Ágil e papéis do Scrum (consolidação)";
 
 function renderQuiz(card){
@@ -266,28 +383,56 @@ ACTS.forEach(function(a){
   });
   a._collect=collect;
 });
-function buildSummary(a){
-  var o=a._collect(),h="";
-  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
-  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
-  a.spec.forEach(function(it){
-    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
-    var v;
-    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
-    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
-    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
-  });
-  document.getElementById("printSummary-"+a.k).innerHTML=h;
+function preencher(sel, texto){
+  document.querySelectorAll(sel).forEach(function(el){ el.textContent = texto; });
 }
-function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
-function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
-var PRINTING=null;
-window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
-window.addEventListener("afterprint",resetPrint);
+function campoPorLabel(a,label){
+  var achado=null;
+  a.spec.forEach(function(it){ if(it.label===label) achado=it.id; });
+  return achado;
+}
+function montarRelatorio(a){
+  var o=a._collect();
+  var idEsc=campoPorLabel(a,"Escola"), idAluno=campoPorLabel(a,"Nome do aluno"), idProf=campoPorLabel(a,"Professor(a)"),
+      idTurma=campoPorLabel(a,"Turma"), idData=campoPorLabel(a,"Data"), idInteg=campoPorLabel(a,"Integrantes (separe por vírgula)");
+  var integrantes = (idInteg&&o[idInteg]) || (idAluno&&o[idAluno]) || "___________________________";
+  preencher("[data-fill=escola]", (idEsc&&o[idEsc]) || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
+  preencher("[data-fill=integrantes]", integrantes);
+  preencher("[data-fill=professor]", (idProf&&o[idProf]) ? ("Professor(a): "+o[idProf]) : "");
+  preencher("[data-fill=turma]", (idTurma&&o[idTurma]) ? ("Turma: "+o[idTurma]) : "");
+  preencher("[data-fill=data]", (idData&&o[idData]) ? ("Data: "+o[idData]) : "");
+
+  var h="";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h3>"+escp(it.h)+"</h3>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"(não marcado)";}
+    else{v=o[it.id]||"(em branco)";}
+    h+="<div class='item'><div class='perg'>"+escp(it.label)+"</div><div class='resp'>"+escp(v)+"</div></div>";
+  });
+  document.getElementById("corpoRoteiro").innerHTML=h;
+
+  var checklist=[
+    "Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.",
+    "Todos os desafios/etapas da atividade selecionada foram respondidos.",
+    "Relação com valores/princípios ágeis explicada nas respostas.",
+    "PDF gerado (e, na Atividade 2, fotos das folhas) enviado no AVA com o grupo identificado."
+  ];
+  var hc="";
+  checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
+  document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
+}
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
     var k=parseInt(this.getAttribute("data-k"),10);
-    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+    var a=ACTS.filter(function(x){return x.k===k;})[0];
+    montarRelatorio(a);
+    window.print();
   });
 });
 })();

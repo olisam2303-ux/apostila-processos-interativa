@@ -51,6 +51,45 @@ th{background:var(--panel-2)}
 .score{font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+
+/* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
+#relatorio{display:none}
+@media print{
+  @page{size:A4;margin:25mm 20mm 20mm 25mm}
+  body{background:#fff;color:#000;font-family:"Times New Roman",Georgia,serif;font-size:12pt;line-height:1.5;padding:0}
+  .wrap>*:not(#relatorio){display:none !important}
+  #relatorio{display:block}
+  .wrap{max-width:none;padding:0;margin:0}
+
+  .folha{page-break-after:always;text-align:center}
+  .folha .inst{font-size:12pt;font-weight:bold;text-transform:uppercase;line-height:1.4}
+  .folha .meio{margin-top:70mm}
+  .folha .fim{margin-top:70mm;text-transform:uppercase}
+  .folha .tituloTrab{font-size:14pt;font-weight:bold;text-transform:uppercase;margin-top:6mm}
+  .folha .subtitulo{font-size:12pt;margin-top:2mm}
+  .folha .autores{font-size:12pt;margin-top:4mm}
+  .fr-nota{width:8.5cm;margin:14mm 0 0 auto;text-align:justify;font-size:10pt;line-height:1.3}
+  .fr-orient{width:8.5cm;margin:6mm 0 0 auto;text-align:left;font-size:10pt}
+
+  #roteiro h2.rtitulo{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:0 0 8mm}
+  #roteiro .rlinha{font-size:12pt;margin-bottom:2mm}
+  #roteiro .rlinha b{text-transform:uppercase}
+  #roteiro h3{font-size:12pt;font-weight:bold;text-transform:uppercase;margin:7mm 0 3mm;page-break-after:avoid}
+  #roteiro p{margin:0 0 3mm;text-align:justify}
+  #roteiro ul{margin:0 0 3mm;padding-left:6mm}
+  #roteiro li{margin-bottom:1.5mm}
+  #roteiro .lista-obj{list-style:none;padding-left:0}
+  #roteiro .lista-obj li:before{content:"✓  ";font-weight:bold}
+
+  #roteiro .item{margin-bottom:5mm;page-break-inside:avoid}
+  #roteiro .item .perg{font-weight:bold;margin-bottom:1.5mm}
+  #roteiro .item .rot{font-size:10.5pt;font-variant:small-caps;color:#333;margin-top:2mm}
+  #roteiro .item .resp{white-space:pre-wrap;border-bottom:1px dotted #999;padding-bottom:1mm;min-height:5mm}
+  #roteiro table{width:100%;border-collapse:collapse;font-size:10.5pt;margin-top:2mm}
+  #roteiro th,#roteiro td{border:1px solid #666;padding:1.5mm 2mm}
+  #roteiro th{background:#e8e8e8;color:#000;text-transform:none;font-variant:small-caps;letter-spacing:0}
+  #roteiro .checkline{margin-bottom:1.5mm;font-size:11pt}
+}
 @media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
 </style>
 </head>
@@ -99,10 +138,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
     <p class="muted">Passo a passo: (1) calculem a capacidade total em horas; (2) montem um Sprint backlog com até 5 histórias que caibam nessa capacidade; (3) simulem um planning poker para estimar o esforço.</p>
     <p class="muted"><strong>Histórias candidatas</strong> (estimativa inicial em horas): H1 Tela de login — 16h · H2 Cadastro de cliente — 24h · H3 Listagem de produtos — 20h · H4 Carrinho de compras — 32h · H5 Filtro por categoria — 12h · H6 Relatório de vendas — 28h · H7 Modo escuro — 8h.</p></div>
 <form id="reg-0" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_172">Turma</label><input type="text" id="f_172" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
+<label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
+<label class="field" for="f_172">Turma</label><input type="text" id="f_172" placeholder="">
 <label class="field" for="f_173">Data</label><input type="text" id="f_173" placeholder="dd/mm/aaaa">
 <label class="field" for="f_174">Nome ou nº do grupo</label><input type="text" id="f_174" placeholder="">
 <label class="field" for="f_175">Integrantes (separe por vírgula)</label><input type="text" id="f_175" placeholder="">
+<label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Passo 1 — Capacidade da equipe</h3><p class="muted">Informem quantas horas produtivas cada integrante tem na sprint (ex.: 6 h/dia × 10 dias). Somem.</p><label class="field" for="f_176">DEV — horas na sprint</label><input type="text" id="f_176" placeholder="">
 <label class="field" for="f_177">QA — horas na sprint</label><input type="text" id="f_177" placeholder="">
 <label class="field" for="f_178">PO — horas na sprint</label><input type="text" id="f_178" placeholder="">
@@ -142,7 +184,78 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <h3>Rubrica — Montando um Sprint backlog viável (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Capacidade calculada de forma explícita (horas por pessoa × dias)</td><td>0,2</td></tr><tr><td>Sprint backlog com até 5 histórias cuja soma de horas cabe na capacidade</td><td>0,2</td></tr><tr><td>Cada história tem responsável; o que ficou de fora foi justificado</td><td>0,2</td></tr><tr><td>Planning poker: estimativas individuais + discussão das divergências + valor final</td><td>0,2</td></tr><tr><td>Relatório em PDF/DOCX no AVA, claro e com identificação</td><td>0,2</td></tr></table>
 </div>
 
-<div class="print-only" id="printSummary-0"></div>
+<div id="relatorio">
+
+  <div class="folha">
+    <div class="inst" data-fill="escola"></div>
+    <div class="inst">Curso Técnico · Processos de Desenvolvimento de Software</div>
+    <div class="meio">
+      <div class="autores" data-fill="integrantes"></div>
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Processos de Desenvolvimento de Software</div>
+      <div class="subtitulo">Semana 11 — <span data-fill="atividade"></span></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div class="folha">
+    <div class="autores" data-fill="integrantes"></div>
+    <div class="meio">
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Semana 11 — <span data-fill="atividade"></span></div>
+      <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 2º bimestre.</div>
+      <div class="fr-orient" data-fill="professor"></div>
+      <div class="fr-orient" data-fill="turma"></div>
+      <div class="fr-orient" data-fill="data"></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div id="roteiro">
+    <h2 class="rtitulo">Registro de Aula</h2>
+    <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
+    <div class="rlinha"><b>Unidade:</b> Semana 11 — Planejamento de release e iterações</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
+    <div class="rlinha"><b>Base teórica:</b> Capítulo 11 — Planejamento de release e iterações (capacidade da equipe, sprint backlog, planning poker)</div>
+
+    <h3>Objetivos</h3>
+    <ul class="lista-obj">
+      <li>Calcular a capacidade da equipe numa sprint a partir das horas produtivas de cada papel (DEV, QA, PO).</li>
+      <li>Montar um sprint backlog com até 5 histórias cuja soma de horas caiba na capacidade calculada.</li>
+      <li>Simular um planning poker, comparando estimativas individuais e discutindo suas divergências até chegar a um valor final combinado.</li>
+    </ul>
+
+    <h3>Solução digital</h3>
+    <p>Página interativa da atividade + navegador. O relatório é preenchido diretamente nesta página e exportado em PDF pelo próprio navegador (botão <b>Gerar PDF</b> ou Ctrl+P → Salvar como PDF). Não é preciso instalar nada, e a página funciona sem internet.</p>
+
+    <h3>Procedimento / Atividade</h3>
+    <p><b>Contexto:</b> o grupo define uma equipe com 3 papéis — DEV (desenvolvedor), QA (garantia de qualidade) e PO (dono do produto) — para uma sprint de 10 dias úteis. Primeiro calculam a capacidade total em horas; depois montam um sprint backlog com até 5 histórias que caibam nessa capacidade; por fim, simulam um planning poker para estimar o esforço de uma história.</p>
+
+    <h3>Procedimentos para a realização da atividade</h3>
+    <div id="corpoRoteiro"></div>
+
+    <h3>Checklist de entrega</h3>
+    <div id="corpoChecklist"></div>
+
+    <h3>Critérios de avaliação</h3>
+    <table>
+      <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
+      <tbody id="corpoCriterios"></tbody>
+    </table>
+
+    <h3>Referências</h3>
+    <ul>
+      <li>Apostila da disciplina — Processos de Desenvolvimento de Software, Semana 11 (Capítulo 11).</li>
+      <li>SEDUC-SP — Registro da Aula 11, Semana 11 (Montando um Sprint backlog viável).</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
   Situação fictícia produzida pela SEDUC-SP. Material da apostila
@@ -159,7 +272,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p2s11_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"O que é um roadmap de produto?","opts":["Um cronograma fixo de tarefas.","Um guia estratégico e adaptável de entregas.","Uma lista de bugs.","Um documento de design."],"correct":1,"exp":"O roadmap comunica a direção do produto ao longo do tempo (temas e objetivos, não datas exatas de tarefas). Ele é revisado conforme o aprendizado — é estratégico e adaptável, não um cronograma rígido."},{"q":"O que representa o planning poker?","opts":["Técnica colaborativa de estimativa de esforço.","Forma de votação.","Jogo de azar.","Ferramenta de priorização."],"correct":0,"exp":"No planning poker, cada pessoa da equipe estima o esforço de uma história em segredo (cartas); a discussão das divergências revela premissas diferentes e leva a uma estimativa combinada. É estimativa colaborativa, não priorização nem sorte."},{"q":"O que define se uma história está \"pronta\"?","opts":["Quando entra no backlog.","Quando passa pelos critérios da definition of done.","Quando o cliente aprova visualmente.","Quando o programador termina de \"codar\"."],"correct":1,"exp":"A Definition of Done (DoD) é a lista de condições que TODA história precisa cumprir para ser considerada concluída (ex.: testada, revisada, documentada, integrada). \"Terminar de codar\" é só uma parte da DoD."}];
-var ACTS=[{"k":0,"ids":["f_172","f_173","f_174","f_175","f_176","f_177","f_178","f_179","g_180","g_181","g_182","g_183","g_184","g_185","g_186","g_187","g_188","g_189","g_190","g_191","g_192","g_193","g_194","f_195","f_196","f_197","f_198","f_199","f_200","f_201","f_202"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_172"},{"label":"Data","id":"f_173"},{"label":"Nome ou nº do grupo","id":"f_174"},{"label":"Integrantes (separe por vírgula)","id":"f_175"},{"h":"Passo 1 — Capacidade da equipe"},{"label":"DEV — horas na sprint","id":"f_176"},{"label":"QA — horas na sprint","id":"f_177"},{"label":"PO — horas na sprint","id":"f_178"},{"label":"Capacidade total (soma)","id":"f_179"},{"h":"Passo 2 — Sprint backlog (até 5 histórias)"},{"label":"História escolhida #1 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_180"},{"label":"História escolhida #1 — Estimativa (horas)","id":"g_181"},{"label":"História escolhida #1 — Responsável (DEV/QA/PO)","id":"g_182"},{"label":"História escolhida #2 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_183"},{"label":"História escolhida #2 — Estimativa (horas)","id":"g_184"},{"label":"História escolhida #2 — Responsável (DEV/QA/PO)","id":"g_185"},{"label":"História escolhida #3 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_186"},{"label":"História escolhida #3 — Estimativa (horas)","id":"g_187"},{"label":"História escolhida #3 — Responsável (DEV/QA/PO)","id":"g_188"},{"label":"História escolhida #4 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_189"},{"label":"História escolhida #4 — Estimativa (horas)","id":"g_190"},{"label":"História escolhida #4 — Responsável (DEV/QA/PO)","id":"g_191"},{"label":"História escolhida #5 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_192"},{"label":"História escolhida #5 — Estimativa (horas)","id":"g_193"},{"label":"História escolhida #5 — Responsável (DEV/QA/PO)","id":"g_194"},{"label":"Soma das horas do backlog escolhido","id":"f_195"},{"label":"A soma cabe na capacidade? Se não, o que ficou de fora e por quê?","id":"f_196"},{"h":"Passo 3 — Planning poker"},{"label":"História estimada","id":"f_197"},{"label":"Estimativa DEV","id":"f_198"},{"label":"Estimativa QA","id":"f_199"},{"label":"Estimativa PO","id":"f_200"},{"label":"Por que as estimativas divergiram? O que a discussão revelou?","id":"f_201"},{"label":"Estimativa final combinada","id":"f_202"}],"title":"Montando um Sprint backlog viável"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_172","f_173","f_174","f_175","f_prof","f_176","f_177","f_178","f_179","g_180","g_181","g_182","g_183","g_184","g_185","g_186","g_187","g_188","g_189","g_190","g_191","g_192","g_193","g_194","f_195","f_196","f_197","f_198","f_199","f_200","f_201","f_202"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_172"},{"label":"Data","id":"f_173"},{"label":"Nome ou nº do grupo","id":"f_174"},{"label":"Integrantes (separe por vírgula)","id":"f_175"},{"label":"Professor(a)","id":"f_prof"},{"h":"Passo 1 — Capacidade da equipe"},{"label":"DEV — horas na sprint","id":"f_176"},{"label":"QA — horas na sprint","id":"f_177"},{"label":"PO — horas na sprint","id":"f_178"},{"label":"Capacidade total (soma)","id":"f_179"},{"h":"Passo 2 — Sprint backlog (até 5 histórias)"},{"label":"História escolhida #1 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_180"},{"label":"História escolhida #1 — Estimativa (horas)","id":"g_181"},{"label":"História escolhida #1 — Responsável (DEV/QA/PO)","id":"g_182"},{"label":"História escolhida #2 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_183"},{"label":"História escolhida #2 — Estimativa (horas)","id":"g_184"},{"label":"História escolhida #2 — Responsável (DEV/QA/PO)","id":"g_185"},{"label":"História escolhida #3 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_186"},{"label":"História escolhida #3 — Estimativa (horas)","id":"g_187"},{"label":"História escolhida #3 — Responsável (DEV/QA/PO)","id":"g_188"},{"label":"História escolhida #4 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_189"},{"label":"História escolhida #4 — Estimativa (horas)","id":"g_190"},{"label":"História escolhida #4 — Responsável (DEV/QA/PO)","id":"g_191"},{"label":"História escolhida #5 — Código e nome (ex.: H3 Listagem de produtos)","id":"g_192"},{"label":"História escolhida #5 — Estimativa (horas)","id":"g_193"},{"label":"História escolhida #5 — Responsável (DEV/QA/PO)","id":"g_194"},{"label":"Soma das horas do backlog escolhido","id":"f_195"},{"label":"A soma cabe na capacidade? Se não, o que ficou de fora e por quê?","id":"f_196"},{"h":"Passo 3 — Planning poker"},{"label":"História estimada","id":"f_197"},{"label":"Estimativa DEV","id":"f_198"},{"label":"Estimativa QA","id":"f_199"},{"label":"Estimativa PO","id":"f_200"},{"label":"Por que as estimativas divergiram? O que a discussão revelou?","id":"f_201"},{"label":"Estimativa final combinada","id":"f_202"}],"title":"Montando um Sprint backlog viável","rubrica":[["Capacidade calculada de forma explícita (horas por pessoa × dias)","0,2"],["Sprint backlog com até 5 histórias cuja soma de horas cabe na capacidade","0,2"],["Cada história tem responsável; o que ficou de fora foi justificado","0,2"],["Planning poker: estimativas individuais + discussão das divergências + valor final","0,2"],["Relatório em PDF/DOCX no AVA, claro e com identificação","0,2"]]}];
 var SEM_LABEL="Semana 11 · Planejamento de release e iterações";
 
 function renderQuiz(card){
@@ -237,28 +350,50 @@ ACTS.forEach(function(a){
   });
   a._collect=collect;
 });
-function buildSummary(a){
-  var o=a._collect(),h="";
-  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
-  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
-  a.spec.forEach(function(it){
-    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
-    var v;
-    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
-    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
-    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
-  });
-  document.getElementById("printSummary-"+a.k).innerHTML=h;
+function preencher(sel, texto){
+  document.querySelectorAll(sel).forEach(function(el){ el.textContent = texto; });
 }
-function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
-function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
-var PRINTING=null;
-window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
-window.addEventListener("afterprint",resetPrint);
+function montarRelatorio(a){
+  var o=a._collect();
+  var integrantes = o.f_175 || o.f_aluno || "___________________________";
+  preencher("[data-fill=escola]", o.f_esc || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
+  preencher("[data-fill=integrantes]", integrantes);
+  preencher("[data-fill=professor]", o.f_prof ? ("Professor(a): "+o.f_prof) : "");
+  preencher("[data-fill=turma]", o.f_172 ? ("Turma: "+o.f_172) : "");
+  preencher("[data-fill=data]", o.f_173 ? ("Data: "+o.f_173) : "");
+
+  var h="";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h3>"+escp(it.h)+"</h3>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"(não marcado)";}
+    else{v=o[it.id]||"(em branco)";}
+    h+="<div class='item'><div class='perg'>"+escp(it.label)+"</div><div class='resp'>"+escp(v)+"</div></div>";
+  });
+  document.getElementById("corpoRoteiro").innerHTML=h;
+
+  var checklist=[
+    "Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.",
+    "Capacidade da equipe (DEV, QA, PO) calculada e somada.",
+    "Sprint backlog com até 5 histórias, cada uma com responsável, cuja soma cabe na capacidade.",
+    "Planning poker simulado, com estimativas individuais, discussão e valor final combinado.",
+    "PDF gerado e enviado no AVA com o grupo identificado."
+  ];
+  var hc="";
+  checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
+  document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
+}
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
     var k=parseInt(this.getAttribute("data-k"),10);
-    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+    var a=ACTS.filter(function(x){return x.k===k;})[0];
+    montarRelatorio(a);
+    window.print();
   });
 });
 })();

@@ -51,6 +51,45 @@ th{background:var(--panel-2)}
 .score{font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+
+/* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
+#relatorio{display:none}
+@media print{
+  @page{size:A4;margin:25mm 20mm 20mm 25mm}
+  body{background:#fff;color:#000;font-family:"Times New Roman",Georgia,serif;font-size:12pt;line-height:1.5;padding:0}
+  .wrap>*:not(#relatorio){display:none !important}
+  #relatorio{display:block}
+  .wrap{max-width:none;padding:0;margin:0}
+
+  .folha{page-break-after:always;text-align:center}
+  .folha .inst{font-size:12pt;font-weight:bold;text-transform:uppercase;line-height:1.4}
+  .folha .meio{margin-top:70mm}
+  .folha .fim{margin-top:70mm;text-transform:uppercase}
+  .folha .tituloTrab{font-size:14pt;font-weight:bold;text-transform:uppercase;margin-top:6mm}
+  .folha .subtitulo{font-size:12pt;margin-top:2mm}
+  .folha .autores{font-size:12pt;margin-top:4mm}
+  .fr-nota{width:8.5cm;margin:14mm 0 0 auto;text-align:justify;font-size:10pt;line-height:1.3}
+  .fr-orient{width:8.5cm;margin:6mm 0 0 auto;text-align:left;font-size:10pt}
+
+  #roteiro h2.rtitulo{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:0 0 8mm}
+  #roteiro .rlinha{font-size:12pt;margin-bottom:2mm}
+  #roteiro .rlinha b{text-transform:uppercase}
+  #roteiro h3{font-size:12pt;font-weight:bold;text-transform:uppercase;margin:7mm 0 3mm;page-break-after:avoid}
+  #roteiro p{margin:0 0 3mm;text-align:justify}
+  #roteiro ul{margin:0 0 3mm;padding-left:6mm}
+  #roteiro li{margin-bottom:1.5mm}
+  #roteiro .lista-obj{list-style:none;padding-left:0}
+  #roteiro .lista-obj li:before{content:"✓  ";font-weight:bold}
+
+  #roteiro .item{margin-bottom:5mm;page-break-inside:avoid}
+  #roteiro .item .perg{font-weight:bold;margin-bottom:1.5mm}
+  #roteiro .item .rot{font-size:10.5pt;font-variant:small-caps;color:#333;margin-top:2mm}
+  #roteiro .item .resp{white-space:pre-wrap;border-bottom:1px dotted #999;padding-bottom:1mm;min-height:5mm}
+  #roteiro table{width:100%;border-collapse:collapse;font-size:10.5pt;margin-top:2mm}
+  #roteiro th,#roteiro td{border:1px solid #666;padding:1.5mm 2mm}
+  #roteiro th{background:#e8e8e8;color:#000;text-transform:none;font-variant:small-caps;letter-spacing:0}
+  #roteiro .checkline{margin-bottom:1.5mm;font-size:11pt}
+}
 @media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
 </style>
 </head>
@@ -99,10 +138,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
     <p class="muted">Requisitos: 5 a 50 perguntas por sessão · tempo-limite por pergunta 10 a 60 s · pontuação 1 a 10 · idade mínima para cadastro 13 · criar quizzes com 5 a 20 perguntas.</p>
     <p class="muted">Exemplo (TC-001): objetivo = criar quiz com nº mínimo de perguntas · técnica = valor-limite · entrada = nº de perguntas = 5 · resultado = sistema aceita a criação.</p></div>
 <form id="reg-0" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_76">Turma</label><input type="text" id="f_76" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
+<label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
+<label class="field" for="f_76">Turma</label><input type="text" id="f_76" placeholder="">
 <label class="field" for="f_77">Data</label><input type="text" id="f_77" placeholder="dd/mm/aaaa">
 <label class="field" for="f_78">Nome ou nº do grupo</label><input type="text" id="f_78" placeholder="">
 <label class="field" for="f_79">Integrantes (separe por vírgula)</label><input type="text" id="f_79" placeholder="">
+<label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Passo 1 — Variáveis e partições</h3><p class="muted">Para cada variável de entrada, indiquem as partições válidas e inválidas.</p><label class="field" for="f_80">Variável 1 — partições válidas / inválidas</label><textarea id="f_80"></textarea>
 <label class="field" for="f_81">Variável 2 — partições válidas / inválidas</label><textarea id="f_81"></textarea>
 <label class="field" for="f_82">Variável 3 — partições válidas / inválidas</label><textarea id="f_82"></textarea>
@@ -134,7 +176,78 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <h3>Rubrica — Testando um app de quiz (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Cumpriu todas as etapas/partes pedidas no roteiro</td><td>0,2</td></tr><tr><td>Conteúdo tecnicamente correto e coerente com o cenário</td><td>0,2</td></tr><tr><td>Usa corretamente os conceitos-chave da semana (particionamento de equivalência e análise de valor-limite)</td><td>0,2</td></tr><tr><td>Texto claro, organizado e com vocabulário técnico adequado</td><td>0,2</td></tr><tr><td>Entregue no prazo, em PDF pelo AVA, com identificação do grupo/aluno</td><td>0,2</td></tr></table>
 </div>
 
-<div class="print-only" id="printSummary-0"></div>
+<div id="relatorio">
+
+  <div class="folha">
+    <div class="inst" data-fill="escola"></div>
+    <div class="inst">Curso Técnico · Processos de Desenvolvimento de Software</div>
+    <div class="meio">
+      <div class="autores" data-fill="integrantes"></div>
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Processos de Desenvolvimento de Software</div>
+      <div class="subtitulo">Semana 5 — <span data-fill="atividade"></span></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div class="folha">
+    <div class="autores" data-fill="integrantes"></div>
+    <div class="meio">
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Semana 5 — <span data-fill="atividade"></span></div>
+      <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 1º bimestre.</div>
+      <div class="fr-orient" data-fill="professor"></div>
+      <div class="fr-orient" data-fill="turma"></div>
+      <div class="fr-orient" data-fill="data"></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div id="roteiro">
+    <h2 class="rtitulo">Registro de Aula</h2>
+    <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
+    <div class="rlinha"><b>Unidade:</b> Semana 5 — Testes funcionais: conceitos e metodologias</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
+    <div class="rlinha"><b>Base teórica:</b> Capítulo 5 — Testes funcionais: particionamento de equivalência e análise de valor-limite</div>
+
+    <h3>Objetivos</h3>
+    <ul class="lista-obj">
+      <li>Aplicar particionamento de equivalência para identificar partições válidas e inválidas de variáveis de entrada.</li>
+      <li>Aplicar análise de valor-limite para determinar os valores-limite de cada variável.</li>
+      <li>Elaborar casos de teste funcionais completos (ID, objetivo, técnica, entrada, resultado esperado).</li>
+    </ul>
+
+    <h3>Solução digital</h3>
+    <p>Página interativa da atividade + navegador. O relatório é preenchido diretamente nesta página e exportado em PDF pelo próprio navegador (botão <b>Gerar PDF</b> ou Ctrl+P → Salvar como PDF). Não é preciso instalar nada, e a página funciona sem internet.</p>
+
+    <h3>Procedimento / Atividade</h3>
+    <p><b>Contexto:</b> vocês vão aplicar particionamento de equivalência e análise de valor-limite para testar um app de quiz educacional, cujos requisitos incluem: 5 a 50 perguntas por sessão, tempo-limite por pergunta de 10 a 60 s, pontuação de 1 a 10, idade mínima para cadastro de 13 anos e criação de quizzes com 5 a 20 perguntas.</p>
+
+    <h3>Procedimentos para a realização da atividade</h3>
+    <div id="corpoRoteiro"></div>
+
+    <h3>Checklist de entrega</h3>
+    <div id="corpoChecklist"></div>
+
+    <h3>Critérios de avaliação</h3>
+    <table>
+      <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
+      <tbody id="corpoCriterios"></tbody>
+    </table>
+
+    <h3>Referências</h3>
+    <ul>
+      <li>Apostila da disciplina — Processos de Desenvolvimento de Software, Semana 5 (Capítulo 5).</li>
+      <li>SEDUC-SP — Registro da Aula 5, Semana 5 (Testando um app de quiz).</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
   Situação fictícia produzida pela SEDUC-SP. Material da apostila
@@ -151,7 +264,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p1s5_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"Uma equipe está testando um app de e-commerce. Qual dos testes abaixo é um teste FUNCIONAL?","opts":["Checar se o botão \"Adicionar ao carrinho\" adiciona o item.","Analisar se o código segue padrões de programação.","Medir se a página carrega em menos de 2 segundos.","Verificar se o código SQL está otimizado."],"correct":0,"exp":"Teste funcional verifica se o sistema faz o que deveria fazer (uma função visível ao usuário). Padrões de código, tempo de carregamento e otimização de SQL são aspectos não funcionais ou estruturais."},{"q":"Um sistema aceita idade entre 16 e 60 anos. Usando a técnica de valor-limite, qual conjunto de valores de teste é mais eficaz?","opts":["15, 16, 17, 59, 60, 61","16, 30, 45, 60","0, 16, 60, 100","10, 30, 50, 70"],"correct":0,"exp":"A análise de valor-limite testa os limites e os valores imediatamente ao redor deles: logo abaixo, no limite e logo acima (15/16/17 e 59/60/61). É onde os erros de programação mais aparecem."},{"q":"Um testador executou um caso de teste em que o sistema deveria mostrar \"Pedido confirmado\", mas mostrou \"Pedido realizado\". Qual deve ser o status do teste?","opts":["Passou – A mensagem tem o mesmo significado.","Pulado – É apenas texto, não importa.","Falhou – O resultado é diferente do esperado.","Bloqueado – Precisa confirmar com o cliente."],"correct":2,"exp":"O resultado obtido é diferente do resultado esperado documentado no caso de teste — isso é uma falha. Se a mensagem alternativa for aceitável, o caso de teste deve ser atualizado; enquanto não for, o status é Falhou."}];
-var ACTS=[{"k":0,"ids":["f_76","f_77","f_78","f_79","f_80","f_81","f_82","f_83","g_84","g_85","g_86","g_87","g_88","g_89","g_90","g_91","g_92","g_93","g_94","g_95","g_96","g_97","g_98"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_76"},{"label":"Data","id":"f_77"},{"label":"Nome ou nº do grupo","id":"f_78"},{"label":"Integrantes (separe por vírgula)","id":"f_79"},{"h":"Passo 1 — Variáveis e partições"},{"label":"Variável 1 — partições válidas / inválidas","id":"f_80"},{"label":"Variável 2 — partições válidas / inválidas","id":"f_81"},{"label":"Variável 3 — partições válidas / inválidas","id":"f_82"},{"h":"Passo 2 — Valores-limite"},{"label":"Valores-limite por variável","id":"f_83"},{"h":"Passo 3 — Casos de teste"},{"label":"Caso de teste #1 — ID","id":"g_84"},{"label":"Caso de teste #1 — Objetivo","id":"g_85"},{"label":"Caso de teste #1 — Técnica (partição / valor-limite)","id":"g_86"},{"label":"Caso de teste #1 — Entrada","id":"g_87"},{"label":"Caso de teste #1 — Resultado esperado","id":"g_88"},{"label":"Caso de teste #2 — ID","id":"g_89"},{"label":"Caso de teste #2 — Objetivo","id":"g_90"},{"label":"Caso de teste #2 — Técnica (partição / valor-limite)","id":"g_91"},{"label":"Caso de teste #2 — Entrada","id":"g_92"},{"label":"Caso de teste #2 — Resultado esperado","id":"g_93"},{"label":"Caso de teste #3 — ID","id":"g_94"},{"label":"Caso de teste #3 — Objetivo","id":"g_95"},{"label":"Caso de teste #3 — Técnica (partição / valor-limite)","id":"g_96"},{"label":"Caso de teste #3 — Entrada","id":"g_97"},{"label":"Caso de teste #3 — Resultado esperado","id":"g_98"}],"title":"Testando um app de quiz"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_76","f_77","f_78","f_79","f_prof","f_80","f_81","f_82","f_83","g_84","g_85","g_86","g_87","g_88","g_89","g_90","g_91","g_92","g_93","g_94","g_95","g_96","g_97","g_98"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_76"},{"label":"Data","id":"f_77"},{"label":"Nome ou nº do grupo","id":"f_78"},{"label":"Integrantes (separe por vírgula)","id":"f_79"},{"label":"Professor(a)","id":"f_prof"},{"h":"Passo 1 — Variáveis e partições"},{"label":"Variável 1 — partições válidas / inválidas","id":"f_80"},{"label":"Variável 2 — partições válidas / inválidas","id":"f_81"},{"label":"Variável 3 — partições válidas / inválidas","id":"f_82"},{"h":"Passo 2 — Valores-limite"},{"label":"Valores-limite por variável","id":"f_83"},{"h":"Passo 3 — Casos de teste"},{"label":"Caso de teste #1 — ID","id":"g_84"},{"label":"Caso de teste #1 — Objetivo","id":"g_85"},{"label":"Caso de teste #1 — Técnica (partição / valor-limite)","id":"g_86"},{"label":"Caso de teste #1 — Entrada","id":"g_87"},{"label":"Caso de teste #1 — Resultado esperado","id":"g_88"},{"label":"Caso de teste #2 — ID","id":"g_89"},{"label":"Caso de teste #2 — Objetivo","id":"g_90"},{"label":"Caso de teste #2 — Técnica (partição / valor-limite)","id":"g_91"},{"label":"Caso de teste #2 — Entrada","id":"g_92"},{"label":"Caso de teste #2 — Resultado esperado","id":"g_93"},{"label":"Caso de teste #3 — ID","id":"g_94"},{"label":"Caso de teste #3 — Objetivo","id":"g_95"},{"label":"Caso de teste #3 — Técnica (partição / valor-limite)","id":"g_96"},{"label":"Caso de teste #3 — Entrada","id":"g_97"},{"label":"Caso de teste #3 — Resultado esperado","id":"g_98"}],"title":"Testando um app de quiz","rubrica":[["Cumpriu todas as etapas/partes pedidas no roteiro","0,2"],["Conteúdo tecnicamente correto e coerente com o cenário","0,2"],["Usa corretamente os conceitos-chave da semana (particionamento de equivalência e análise de valor-limite)","0,2"],["Texto claro, organizado e com vocabulário técnico adequado","0,2"],["Entregue no prazo, em PDF pelo AVA, com identificação do grupo/aluno","0,2"]]}];
 var SEM_LABEL="Semana 5 · Testes funcionais: conceitos e metodologias";
 
 function renderQuiz(card){
@@ -229,28 +342,50 @@ ACTS.forEach(function(a){
   });
   a._collect=collect;
 });
-function buildSummary(a){
-  var o=a._collect(),h="";
-  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
-  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
-  a.spec.forEach(function(it){
-    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
-    var v;
-    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
-    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
-    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
-  });
-  document.getElementById("printSummary-"+a.k).innerHTML=h;
+function preencher(sel, texto){
+  document.querySelectorAll(sel).forEach(function(el){ el.textContent = texto; });
 }
-function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
-function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
-var PRINTING=null;
-window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
-window.addEventListener("afterprint",resetPrint);
+function montarRelatorio(a){
+  var o=a._collect();
+  var integrantes = o.f_79 || o.f_aluno || "___________________________";
+  preencher("[data-fill=escola]", o.f_esc || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
+  preencher("[data-fill=integrantes]", integrantes);
+  preencher("[data-fill=professor]", o.f_prof ? ("Professor(a): "+o.f_prof) : "");
+  preencher("[data-fill=turma]", o.f_76 ? ("Turma: "+o.f_76) : "");
+  preencher("[data-fill=data]", o.f_77 ? ("Data: "+o.f_77) : "");
+
+  var h="";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h3>"+escp(it.h)+"</h3>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"(não marcado)";}
+    else{v=o[it.id]||"(em branco)";}
+    h+="<div class='item'><div class='perg'>"+escp(it.label)+"</div><div class='resp'>"+escp(v)+"</div></div>";
+  });
+  document.getElementById("corpoRoteiro").innerHTML=h;
+
+  var checklist=[
+    "Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.",
+    "Passo 1 — as partições válidas e inválidas de cada variável foram indicadas.",
+    "Passo 2 — os valores-limite de cada variável foram determinados.",
+    "Passo 3 — pelo menos 3 casos de teste completos (ID, objetivo, técnica, entrada, resultado esperado).",
+    "PDF gerado e enviado no AVA com o grupo identificado."
+  ];
+  var hc="";
+  checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
+  document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
+}
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
     var k=parseInt(this.getAttribute("data-k"),10);
-    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+    var a=ACTS.filter(function(x){return x.k===k;})[0];
+    montarRelatorio(a);
+    window.print();
   });
 });
 })();

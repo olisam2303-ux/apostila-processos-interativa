@@ -51,6 +51,45 @@ th{background:var(--panel-2)}
 .score{font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+
+/* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
+#relatorio{display:none}
+@media print{
+  @page{size:A4;margin:25mm 20mm 20mm 25mm}
+  body{background:#fff;color:#000;font-family:"Times New Roman",Georgia,serif;font-size:12pt;line-height:1.5;padding:0}
+  .wrap>*:not(#relatorio){display:none !important}
+  #relatorio{display:block}
+  .wrap{max-width:none;padding:0;margin:0}
+
+  .folha{page-break-after:always;text-align:center}
+  .folha .inst{font-size:12pt;font-weight:bold;text-transform:uppercase;line-height:1.4}
+  .folha .meio{margin-top:70mm}
+  .folha .fim{margin-top:70mm;text-transform:uppercase}
+  .folha .tituloTrab{font-size:14pt;font-weight:bold;text-transform:uppercase;margin-top:6mm}
+  .folha .subtitulo{font-size:12pt;margin-top:2mm}
+  .folha .autores{font-size:12pt;margin-top:4mm}
+  .fr-nota{width:8.5cm;margin:14mm 0 0 auto;text-align:justify;font-size:10pt;line-height:1.3}
+  .fr-orient{width:8.5cm;margin:6mm 0 0 auto;text-align:left;font-size:10pt}
+
+  #roteiro h2.rtitulo{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:0 0 8mm}
+  #roteiro .rlinha{font-size:12pt;margin-bottom:2mm}
+  #roteiro .rlinha b{text-transform:uppercase}
+  #roteiro h3{font-size:12pt;font-weight:bold;text-transform:uppercase;margin:7mm 0 3mm;page-break-after:avoid}
+  #roteiro p{margin:0 0 3mm;text-align:justify}
+  #roteiro ul{margin:0 0 3mm;padding-left:6mm}
+  #roteiro li{margin-bottom:1.5mm}
+  #roteiro .lista-obj{list-style:none;padding-left:0}
+  #roteiro .lista-obj li:before{content:"✓  ";font-weight:bold}
+
+  #roteiro .item{margin-bottom:5mm;page-break-inside:avoid}
+  #roteiro .item .perg{font-weight:bold;margin-bottom:1.5mm}
+  #roteiro .item .rot{font-size:10.5pt;font-variant:small-caps;color:#333;margin-top:2mm}
+  #roteiro .item .resp{white-space:pre-wrap;border-bottom:1px dotted #999;padding-bottom:1mm;min-height:5mm}
+  #roteiro table{width:100%;border-collapse:collapse;font-size:10.5pt;margin-top:2mm}
+  #roteiro th,#roteiro td{border:1px solid #666;padding:1.5mm 2mm}
+  #roteiro th{background:#e8e8e8;color:#000;text-transform:none;font-variant:small-caps;letter-spacing:0}
+  #roteiro .checkline{margin-bottom:1.5mm;font-size:11pt}
+}
 @media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
 </style>
 </head>
@@ -98,10 +137,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>Sprint de um app de eventos culturais com resultados mistos: o MVP (listagem de eventos) foi entregue e a UI foi bem avaliada, mas houve <strong>comunicação descentralizada</strong>, <strong>scope creep</strong> (inclusão tardia do filtro por data) e <strong>burnout</strong> de um dev.</p>
     <p class="muted">Recursos: post-its + quadro, ou quadro virtual (Miro, Mural, FigJam).</p></div>
 <form id="reg-0" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_259">Turma</label><input type="text" id="f_259" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
+<label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
+<label class="field" for="f_259">Turma</label><input type="text" id="f_259" placeholder="">
 <label class="field" for="f_260">Data</label><input type="text" id="f_260" placeholder="dd/mm/aaaa">
 <label class="field" for="f_261">Nome ou nº do grupo</label><input type="text" id="f_261" placeholder="">
 <label class="field" for="f_262">Integrantes (separe por vírgula)</label><input type="text" id="f_262" placeholder="">
+<label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Parte 1 — Setting the Stage</h3><p class="muted">Leiam a Diretiva Primária em voz alta. Depois, cada integrante resume a sprint em UMA palavra.</p><label class="field" for="f_263">Palavras do check-in (uma por integrante)</label><textarea id="f_263"></textarea>
 <h3>Parte 2 — Start / Stop / Continue</h3><label class="field" for="f_264">START — novas práticas/ferramentas/comportamentos a implementar</label><textarea id="f_264"></textarea>
 <label class="field" for="f_265">STOP — o que é improdutivo ou prejudica a qualidade de vida e deve parar</label><textarea id="f_265"></textarea>
@@ -139,7 +181,79 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <h3>Rubrica — Laboratório de retrospectiva e melhoria contínua (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Cumpriu todas as etapas/partes pedidas no roteiro</td><td>0,2</td></tr><tr><td>Conteúdo tecnicamente correto e coerente com o cenário</td><td>0,2</td></tr><tr><td>Usa corretamente os conceitos-chave da semana (Diretiva Primária; Start-Stop-Continue; 4Ls; PDCA; melhoria contínua)</td><td>0,2</td></tr><tr><td>Texto claro, organizado e com vocabulário técnico adequado</td><td>0,2</td></tr><tr><td>Entregue no prazo, em PDF pelo AVA, com identificação do grupo/aluno</td><td>0,2</td></tr></table>
 </div>
 
-<div class="print-only" id="printSummary-0"></div>
+<div id="relatorio">
+
+  <div class="folha">
+    <div class="inst" data-fill="escola"></div>
+    <div class="inst">Curso Técnico · Processos de Desenvolvimento de Software</div>
+    <div class="meio">
+      <div class="autores" data-fill="integrantes"></div>
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Processos de Desenvolvimento de Software</div>
+      <div class="subtitulo">Semana 14 — <span data-fill="atividade"></span></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div class="folha">
+    <div class="autores" data-fill="integrantes"></div>
+    <div class="meio">
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Semana 14 — <span data-fill="atividade"></span></div>
+      <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 2º bimestre.</div>
+      <div class="fr-orient" data-fill="professor"></div>
+      <div class="fr-orient" data-fill="turma"></div>
+      <div class="fr-orient" data-fill="data"></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div id="roteiro">
+    <h2 class="rtitulo">Registro de Aula</h2>
+    <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
+    <div class="rlinha"><b>Unidade:</b> Semana 14 — Retrospectiva e melhoria contínua</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
+    <div class="rlinha"><b>Base teórica:</b> Capítulo 14 — Retrospectiva e melhoria contínua (Diretiva Primária, Start/Stop/Continue, 4Ls, PDCA)</div>
+
+    <h3>Objetivos</h3>
+    <ul class="lista-obj">
+      <li>Conduzir uma retrospectiva de sprint aplicando a Diretiva Primária como base de segurança psicológica do time.</li>
+      <li>Usar as técnicas Start/Stop/Continue e 4Ls para levantar e organizar percepções sobre a sprint.</li>
+      <li>Identificar temas centrais a partir do agrupamento (clusterização) dos itens levantados.</li>
+      <li>Refletir sobre a importância da retrospectiva para evitar dívida técnica e problemas de clima recorrentes.</li>
+    </ul>
+
+    <h3>Solução digital</h3>
+    <p>Página interativa da atividade + navegador. O relatório é preenchido diretamente nesta página e exportado em PDF pelo próprio navegador (botão <b>Gerar PDF</b> ou Ctrl+P → Salvar como PDF). Não é preciso instalar nada, e a página funciona sem internet.</p>
+
+    <h3>Procedimento / Atividade</h3>
+    <p><b>Contexto:</b> sprint de um app de eventos culturais com resultados mistos — o MVP (listagem de eventos) foi entregue e a UI foi bem avaliada, mas houve comunicação descentralizada, scope creep (inclusão tardia do filtro por data) e burnout de um dev. Recursos: post-its + quadro, ou quadro virtual (Miro, Mural, FigJam).</p>
+
+    <h3>Procedimentos para a realização da atividade</h3>
+    <div id="corpoRoteiro"></div>
+
+    <h3>Checklist de entrega</h3>
+    <div id="corpoChecklist"></div>
+
+    <h3>Critérios de avaliação</h3>
+    <table>
+      <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
+      <tbody id="corpoCriterios"></tbody>
+    </table>
+
+    <h3>Referências</h3>
+    <ul>
+      <li>Apostila da disciplina — Processos de Desenvolvimento de Software, Semana 14 (Capítulo 14).</li>
+      <li>SEDUC-SP — Registro da Aula 14, Semana 14 (Laboratório de retrospectiva e melhoria contínua).</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
   Situação fictícia produzida pela SEDUC-SP. Material da apostila
@@ -156,7 +270,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p2s14_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"Durante a abertura da retrospectiva, a leitura da diretiva primária é essencial para estabelecer a segurança psicológica do time. Qual é a premissa central desse rito?","opts":["Focar apenas nos acertos e ignorar os erros ocorridos.","Acreditar que todos fizeram o seu melhor trabalho.","Ignorar os problemas para evitar conflitos pessoais.","Identificar e punir os responsáveis pelas falhas."],"correct":1,"exp":"A Diretiva Primária de Norm Kerth: \"todos fizeram o melhor que podiam com o que sabiam, os recursos e a situação da época\". Isso tira o foco da culpa e permite discutir o processo com honestidade."},{"q":"Ao usar a matriz de esforço × impacto para selecionar uma ação de melhoria, qual quadrante representa as vitórias rápidas (Quick Wins), ideais para gerar motivação imediata sem consumir recursos excessivos?","opts":["Baixo esforço e baixo impacto.","Alto esforço e baixo impacto.","Baixo esforço e alto impacto.","Alto esforço e alto impacto."],"correct":2,"exp":"Quick Wins = baixo esforço e alto impacto: entregam resultado visível rápido, com pouco custo. São as primeiras ações a executar depois de uma retrospectiva."},{"q":"No ciclo PDCA, após executarmos o plano (DO) e coletarmos os resultados, entramos na fase de CHECK. Qual é o objetivo primordial dessa etapa antes de irmos para a fase ACT?","opts":["Comparar o resultado obtido com a hipótese e a métrica.","Criar um novo plano de ação sem os dados anteriores.","Punir os responsáveis caso o experimento tenha falhado.","Executar novamente o plano para garantir seu funcionamento."],"correct":0,"exp":"CHECK = verificar: comparar o que aconteceu com o que era esperado (a hipótese e a métrica definidas no PLAN). Só com essa comparação a fase ACT decide se padroniza a mudança ou tenta outra coisa."}];
-var ACTS=[{"k":0,"ids":["f_259","f_260","f_261","f_262","f_263","f_264","f_265","f_266","f_267","f_268","f_269","f_270","f_271","f_272","f_273"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_259"},{"label":"Data","id":"f_260"},{"label":"Nome ou nº do grupo","id":"f_261"},{"label":"Integrantes (separe por vírgula)","id":"f_262"},{"h":"Parte 1 — Setting the Stage"},{"label":"Palavras do check-in (uma por integrante)","id":"f_263"},{"h":"Parte 2 — Start / Stop / Continue"},{"label":"START — novas práticas/ferramentas/comportamentos a implementar","id":"f_264"},{"label":"STOP — o que é improdutivo ou prejudica a qualidade de vida e deve parar","id":"f_265"},{"label":"CONTINUE — o que funcionou e deve virar padrão","id":"f_266"},{"label":"Temas centrais após agrupar os itens semelhantes (clusterização)","id":"f_267"},{"h":"Parte 3 — 4Ls"},{"label":"LIKED — o que foi satisfatório na sprint","id":"f_268"},{"label":"LEARNED — que conhecimentos novos foram adquiridos","id":"f_269"},{"label":"LACKED — o que faltou e prejudicou o andamento","id":"f_270"},{"label":"LONGED FOR — o que você desejaria que existisse no futuro","id":"f_271"},{"h":"Perguntas de consolidação"},{"label":"Um ponto visto como positivo por um e negativo por outro: como expor essa divergência ajuda a maturidade do time e evita groupthink?","id":"f_272"},{"label":"Se a equipe pular a retrospectiva, quais as consequências prováveis em dívida técnica e clima? Como o rito transforma reclamações isoladas em plano de ação?","id":"f_273"}],"title":"Laboratório de retrospectiva e melhoria contínua"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_259","f_260","f_261","f_262","f_prof","f_263","f_264","f_265","f_266","f_267","f_268","f_269","f_270","f_271","f_272","f_273"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_259"},{"label":"Data","id":"f_260"},{"label":"Nome ou nº do grupo","id":"f_261"},{"label":"Integrantes (separe por vírgula)","id":"f_262"},{"label":"Professor(a)","id":"f_prof"},{"h":"Parte 1 — Setting the Stage"},{"label":"Palavras do check-in (uma por integrante)","id":"f_263"},{"h":"Parte 2 — Start / Stop / Continue"},{"label":"START — novas práticas/ferramentas/comportamentos a implementar","id":"f_264"},{"label":"STOP — o que é improdutivo ou prejudica a qualidade de vida e deve parar","id":"f_265"},{"label":"CONTINUE — o que funcionou e deve virar padrão","id":"f_266"},{"label":"Temas centrais após agrupar os itens semelhantes (clusterização)","id":"f_267"},{"h":"Parte 3 — 4Ls"},{"label":"LIKED — o que foi satisfatório na sprint","id":"f_268"},{"label":"LEARNED — que conhecimentos novos foram adquiridos","id":"f_269"},{"label":"LACKED — o que faltou e prejudicou o andamento","id":"f_270"},{"label":"LONGED FOR — o que você desejaria que existisse no futuro","id":"f_271"},{"h":"Perguntas de consolidação"},{"label":"Um ponto visto como positivo por um e negativo por outro: como expor essa divergência ajuda a maturidade do time e evita groupthink?","id":"f_272"},{"label":"Se a equipe pular a retrospectiva, quais as consequências prováveis em dívida técnica e clima? Como o rito transforma reclamações isoladas em plano de ação?","id":"f_273"}],"title":"Laboratório de retrospectiva e melhoria contínua","rubrica":[["Cumpriu todas as etapas/partes pedidas no roteiro","0,2"],["Conteúdo tecnicamente correto e coerente com o cenário","0,2"],["Usa corretamente os conceitos-chave da semana (Diretiva Primária; Start-Stop-Continue; 4Ls; PDCA; melhoria contínua)","0,2"],["Texto claro, organizado e com vocabulário técnico adequado","0,2"],["Entregue no prazo, em PDF pelo AVA, com identificação do grupo/aluno","0,2"]]}];
 var SEM_LABEL="Semana 14 · Retrospectiva e melhoria contínua";
 
 function renderQuiz(card){
@@ -234,28 +348,49 @@ ACTS.forEach(function(a){
   });
   a._collect=collect;
 });
-function buildSummary(a){
-  var o=a._collect(),h="";
-  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
-  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
-  a.spec.forEach(function(it){
-    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
-    var v;
-    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
-    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
-    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
-  });
-  document.getElementById("printSummary-"+a.k).innerHTML=h;
+function preencher(sel, texto){
+  document.querySelectorAll(sel).forEach(function(el){ el.textContent = texto; });
 }
-function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
-function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
-var PRINTING=null;
-window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
-window.addEventListener("afterprint",resetPrint);
+function montarRelatorio(a){
+  var o=a._collect();
+  var integrantes = o.f_262 || o.f_aluno || "___________________________";
+  preencher("[data-fill=escola]", o.f_esc || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
+  preencher("[data-fill=integrantes]", integrantes);
+  preencher("[data-fill=professor]", o.f_prof ? ("Professor(a): "+o.f_prof) : "");
+  preencher("[data-fill=turma]", o.f_259 ? ("Turma: "+o.f_259) : "");
+  preencher("[data-fill=data]", o.f_260 ? ("Data: "+o.f_260) : "");
+
+  var h="";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h3>"+escp(it.h)+"</h3>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"(não marcado)";}
+    else{v=o[it.id]||"(em branco)";}
+    h+="<div class='item'><div class='perg'>"+escp(it.label)+"</div><div class='resp'>"+escp(v)+"</div></div>";
+  });
+  document.getElementById("corpoRoteiro").innerHTML=h;
+
+  var checklist=[
+    "Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.",
+    "Setting the Stage, Start/Stop/Continue e 4Ls completos, com os temas centrais identificados.",
+    "As perguntas de consolidação foram respondidas.",
+    "PDF gerado e enviado no AVA com o grupo identificado."
+  ];
+  var hc="";
+  checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
+  document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
+}
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
     var k=parseInt(this.getAttribute("data-k"),10);
-    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+    var a=ACTS.filter(function(x){return x.k===k;})[0];
+    montarRelatorio(a);
+    window.print();
   });
 });
 })();

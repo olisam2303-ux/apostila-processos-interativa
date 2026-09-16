@@ -51,6 +51,45 @@ th{background:var(--panel-2)}
 .score{font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+
+/* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
+#relatorio{display:none}
+@media print{
+  @page{size:A4;margin:25mm 20mm 20mm 25mm}
+  body{background:#fff;color:#000;font-family:"Times New Roman",Georgia,serif;font-size:12pt;line-height:1.5;padding:0}
+  .wrap>*:not(#relatorio){display:none !important}
+  #relatorio{display:block}
+  .wrap{max-width:none;padding:0;margin:0}
+
+  .folha{page-break-after:always;text-align:center}
+  .folha .inst{font-size:12pt;font-weight:bold;text-transform:uppercase;line-height:1.4}
+  .folha .meio{margin-top:70mm}
+  .folha .fim{margin-top:70mm;text-transform:uppercase}
+  .folha .tituloTrab{font-size:14pt;font-weight:bold;text-transform:uppercase;margin-top:6mm}
+  .folha .subtitulo{font-size:12pt;margin-top:2mm}
+  .folha .autores{font-size:12pt;margin-top:4mm}
+  .fr-nota{width:8.5cm;margin:14mm 0 0 auto;text-align:justify;font-size:10pt;line-height:1.3}
+  .fr-orient{width:8.5cm;margin:6mm 0 0 auto;text-align:left;font-size:10pt}
+
+  #roteiro h2.rtitulo{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:0 0 8mm}
+  #roteiro .rlinha{font-size:12pt;margin-bottom:2mm}
+  #roteiro .rlinha b{text-transform:uppercase}
+  #roteiro h3{font-size:12pt;font-weight:bold;text-transform:uppercase;margin:7mm 0 3mm;page-break-after:avoid}
+  #roteiro p{margin:0 0 3mm;text-align:justify}
+  #roteiro ul{margin:0 0 3mm;padding-left:6mm}
+  #roteiro li{margin-bottom:1.5mm}
+  #roteiro .lista-obj{list-style:none;padding-left:0}
+  #roteiro .lista-obj li:before{content:"✓  ";font-weight:bold}
+
+  #roteiro .item{margin-bottom:5mm;page-break-inside:avoid}
+  #roteiro .item .perg{font-weight:bold;margin-bottom:1.5mm}
+  #roteiro .item .rot{font-size:10.5pt;font-variant:small-caps;color:#333;margin-top:2mm}
+  #roteiro .item .resp{white-space:pre-wrap;border-bottom:1px dotted #999;padding-bottom:1mm;min-height:5mm}
+  #roteiro table{width:100%;border-collapse:collapse;font-size:10.5pt;margin-top:2mm}
+  #roteiro th,#roteiro td{border:1px solid #666;padding:1.5mm 2mm}
+  #roteiro th{background:#e8e8e8;color:#000;text-transform:none;font-variant:small-caps;letter-spacing:0}
+  #roteiro .checkline{margin-bottom:1.5mm;font-size:11pt}
+}
 @media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
 </style>
 </head>
@@ -101,10 +140,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
     Login 500·8·25·23·12·12 · Cadastro 800·4·30·30·15·13 · Pagamento 1200·18·20·16·20·18 · Relatórios 2000·10·45·44·25·20 · Fórum 600·3·15·15·8·8.<br>
     Fórmulas: KPI-DF = defeitos÷linhas×1000 · taxa de sucesso = testes OK÷testes exec.×100 · cobertura = req. cobertos÷req. totais×100.</p></div>
 <form id="reg-0" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_143">Turma</label><input type="text" id="f_143" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
+<label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
+<label class="field" for="f_143">Turma</label><input type="text" id="f_143" placeholder="">
 <label class="field" for="f_144">Data</label><input type="text" id="f_144" placeholder="dd/mm/aaaa">
 <label class="field" for="f_145">Nome ou nº do grupo</label><input type="text" id="f_145" placeholder="">
 <label class="field" for="f_146">Integrantes (separe por vírgula)</label><input type="text" id="f_146" placeholder="">
+<label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Relatório Final — Módulo mais suspeito (maior KPI-DF)</h3><label class="field" for="f_147">Módulo</label><input type="text" id="f_147" placeholder="">
 <label class="field" for="f_148">KPI-DF calculado</label><input type="text" id="f_148" placeholder="">
 <label class="field" for="f_149">Por que ele é o mais problemático?</label><textarea id="f_149"></textarea>
@@ -144,7 +186,78 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <h3>Rubrica — Investigação digital: qualidade dos testes como um detetive (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>A planilha foi anexada, com as 3 abas e as fórmulas aplicadas a todos os módulos</td><td>0,2</td></tr><tr><td>KPI-DF, taxa de sucesso e cobertura calculados corretamente</td><td>0,2</td></tr><tr><td>Classificação de risco coerente com as faixas dadas</td><td>0,2</td></tr><tr><td>Recomendação final combina os três indicadores (não só um) e é justificada</td><td>0,2</td></tr><tr><td>Perguntas de consolidação respondidas; relatório claro; entregue no AVA</td><td>0,2</td></tr></table>
 </div>
 
-<div class="print-only" id="printSummary-0"></div>
+<div id="relatorio">
+
+  <div class="folha">
+    <div class="inst" data-fill="escola"></div>
+    <div class="inst">Curso Técnico · Processos de Desenvolvimento de Software</div>
+    <div class="meio">
+      <div class="autores" data-fill="integrantes"></div>
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Processos de Desenvolvimento de Software</div>
+      <div class="subtitulo">Semana 9 — <span data-fill="atividade"></span></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div class="folha">
+    <div class="autores" data-fill="integrantes"></div>
+    <div class="meio">
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Semana 9 — <span data-fill="atividade"></span></div>
+      <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 2º bimestre.</div>
+      <div class="fr-orient" data-fill="professor"></div>
+      <div class="fr-orient" data-fill="turma"></div>
+      <div class="fr-orient" data-fill="data"></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div id="roteiro">
+    <h2 class="rtitulo">Registro de Aula</h2>
+    <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
+    <div class="rlinha"><b>Unidade:</b> Semana 9 — Métricas de qualidade e priorização de testes</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
+    <div class="rlinha"><b>Base teórica:</b> Capítulo 9 — Métricas de qualidade e priorização de testes (KPI-DF, taxa de sucesso, cobertura de requisitos, princípio de Pareto)</div>
+
+    <h3>Objetivos</h3>
+    <ul class="lista-obj">
+      <li>Calcular e interpretar KPI-DF, taxa de sucesso dos testes e cobertura de requisitos a partir de dados reais de módulos de um sistema.</li>
+      <li>Classificar o risco de cada módulo combinando os três indicadores, em vez de olhar cada um isoladamente.</li>
+      <li>Recomendar, com justificativa técnica, qual módulo deve receber atenção prioritária.</li>
+    </ul>
+
+    <h3>Solução digital</h3>
+    <p>Página interativa da atividade + navegador. O relatório é preenchido diretamente nesta página e exportado em PDF pelo próprio navegador (botão <b>Gerar PDF</b> ou Ctrl+P → Salvar como PDF). Não é preciso instalar nada, e a página funciona sem internet.</p>
+
+    <h3>Procedimento / Atividade</h3>
+    <p><b>Contexto:</b> o grupo vai investigar o sistema fictício "EduTech" numa planilha (Google Sheets ou equivalente), calculando KPI-DF, taxa de sucesso dos testes e cobertura de requisitos para cada módulo, classificando o risco e escrevendo o relatório final. A planilha deve ser anexada no AVA; este formulário reúne o Relatório Final da investigação e as perguntas de consolidação.</p>
+
+    <h3>Procedimentos para a realização da atividade</h3>
+    <div id="corpoRoteiro"></div>
+
+    <h3>Checklist de entrega</h3>
+    <div id="corpoChecklist"></div>
+
+    <h3>Critérios de avaliação</h3>
+    <table>
+      <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
+      <tbody id="corpoCriterios"></tbody>
+    </table>
+
+    <h3>Referências</h3>
+    <ul>
+      <li>Apostila da disciplina — Processos de Desenvolvimento de Software, Semana 9 (Capítulo 9).</li>
+      <li>SEDUC-SP — Registro da Aula 9, Semana 9 (Investigação digital: qualidade dos testes como um detetive).</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
   Situação fictícia produzida pela SEDUC-SP. Material da apostila
@@ -161,7 +274,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p2s9_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"Um módulo A tem 1000 linhas e 10 defeitos. Um módulo B tem 500 linhas e 8 defeitos. Qual tem maior KPI-DF?","opts":["Módulo A, porque tem mais defeitos totais.","São iguais em termos de qualidade.","Módulo B, porque tem maior densidade de defeitos.","Impossível determinar sem mais dados."],"correct":2,"exp":"KPI-DF = defeitos ÷ linhas × 1000. Módulo A: 10/1000×1000 = 10. Módulo B: 8/500×1000 = 16. O B concentra mais defeitos por 1000 linhas, então tem maior densidade — é proporcionalmente mais problemático."},{"q":"O que acontece quando um sistema de CI/CD como GitHub Actions processa um arquivo XML de cobertura?","opts":["Apenas armazena o arquivo sem processá-lo.","Converte o XML para um formato de imagem.","Ele envia o arquivo por e-mail para a equipe.","Lê os dados, calcula métricas e gera relatórios automaticamente."],"correct":3,"exp":"O pipeline lê o relatório de cobertura (formato XML padrão), calcula a porcentagem de código coberto por testes e publica o resultado automaticamente — muitas vezes bloqueando o merge se a cobertura cair abaixo de um limite."},{"q":"Segundo o princípio de Pareto aplicado a testes, se você tem 10 módulos no sistema, quantos deles provavelmente concentram a maioria dos defeitos?","opts":["Aproximadamente 2 módulos (20%).","Todos os 10 módulos igualmente.","Apenas 1 módulo (10%).","Exatamente 8 módulos (80%)."],"correct":0,"exp":"O princípio de Pareto (regra 80/20): cerca de 80% dos defeitos tendem a se concentrar em cerca de 20% dos módulos. Com 10 módulos, isso é ~2 — que devem receber o esforço de teste primeiro."}];
-var ACTS=[{"k":0,"ids":["f_143","f_144","f_145","f_146","f_147","f_148","f_149","f_150","f_151","f_152","f_153","f_154","f_155","f_156","f_157","f_158","f_159"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_143"},{"label":"Data","id":"f_144"},{"label":"Nome ou nº do grupo","id":"f_145"},{"label":"Integrantes (separe por vírgula)","id":"f_146"},{"h":"Relatório Final — Módulo mais suspeito (maior KPI-DF)"},{"label":"Módulo","id":"f_147"},{"label":"KPI-DF calculado","id":"f_148"},{"label":"Por que ele é o mais problemático?","id":"f_149"},{"h":"Relatório Final — Maior risco de falha (menor taxa de sucesso)"},{"label":"Módulo","id":"f_150"},{"label":"Taxa de sucesso (%)","id":"f_151"},{"label":"Isso está relacionado ao KPI-DF? Explique.","id":"f_152"},{"h":"Relatório Final — Maior lacuna de cobertura"},{"label":"Módulo","id":"f_153"},{"label":"Cobertura (%)","id":"f_154"},{"label":"Quantos requisitos estão descobertos?","id":"f_155"},{"h":"Recomendação do detetive"},{"label":"Recomendação e justificativa","id":"f_156"},{"h":"Perguntas de consolidação (Aula 1)"},{"label":"Por que o KPI-DF é uma \"pista\" mais confiável do que apenas contar o total de defeitos?","id":"f_157"},{"label":"O que um módulo com 100% de testes passando pode indicar de problemático?","id":"f_158"},{"label":"Se tivesse que escolher só UM indicador para priorizar qual módulo investigar primeiro, qual seria e por quê?","id":"f_159"}],"title":"Investigação digital: qualidade dos testes como um detetive"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_143","f_144","f_145","f_146","f_prof","f_147","f_148","f_149","f_150","f_151","f_152","f_153","f_154","f_155","f_156","f_157","f_158","f_159"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_143"},{"label":"Data","id":"f_144"},{"label":"Nome ou nº do grupo","id":"f_145"},{"label":"Integrantes (separe por vírgula)","id":"f_146"},{"label":"Professor(a)","id":"f_prof"},{"h":"Relatório Final — Módulo mais suspeito (maior KPI-DF)"},{"label":"Módulo","id":"f_147"},{"label":"KPI-DF calculado","id":"f_148"},{"label":"Por que ele é o mais problemático?","id":"f_149"},{"h":"Relatório Final — Maior risco de falha (menor taxa de sucesso)"},{"label":"Módulo","id":"f_150"},{"label":"Taxa de sucesso (%)","id":"f_151"},{"label":"Isso está relacionado ao KPI-DF? Explique.","id":"f_152"},{"h":"Relatório Final — Maior lacuna de cobertura"},{"label":"Módulo","id":"f_153"},{"label":"Cobertura (%)","id":"f_154"},{"label":"Quantos requisitos estão descobertos?","id":"f_155"},{"h":"Recomendação do detetive"},{"label":"Recomendação e justificativa","id":"f_156"},{"h":"Perguntas de consolidação (Aula 1)"},{"label":"Por que o KPI-DF é uma \"pista\" mais confiável do que apenas contar o total de defeitos?","id":"f_157"},{"label":"O que um módulo com 100% de testes passando pode indicar de problemático?","id":"f_158"},{"label":"Se tivesse que escolher só UM indicador para priorizar qual módulo investigar primeiro, qual seria e por quê?","id":"f_159"}],"title":"Investigação digital: qualidade dos testes como um detetive","rubrica":[["A planilha foi anexada, com as 3 abas e as fórmulas aplicadas a todos os módulos","0,2"],["KPI-DF, taxa de sucesso e cobertura calculados corretamente","0,2"],["Classificação de risco coerente com as faixas dadas","0,2"],["Recomendação final combina os três indicadores (não só um) e é justificada","0,2"],["Perguntas de consolidação respondidas; relatório claro; entregue no AVA","0,2"]]}];
 var SEM_LABEL="Semana 9 · Métricas de qualidade e priorização de testes";
 
 function renderQuiz(card){
@@ -239,28 +352,50 @@ ACTS.forEach(function(a){
   });
   a._collect=collect;
 });
-function buildSummary(a){
-  var o=a._collect(),h="";
-  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
-  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
-  a.spec.forEach(function(it){
-    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
-    var v;
-    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
-    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
-    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
-  });
-  document.getElementById("printSummary-"+a.k).innerHTML=h;
+function preencher(sel, texto){
+  document.querySelectorAll(sel).forEach(function(el){ el.textContent = texto; });
 }
-function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
-function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
-var PRINTING=null;
-window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
-window.addEventListener("afterprint",resetPrint);
+function montarRelatorio(a){
+  var o=a._collect();
+  var integrantes = o.f_146 || o.f_aluno || "___________________________";
+  preencher("[data-fill=escola]", o.f_esc || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
+  preencher("[data-fill=integrantes]", integrantes);
+  preencher("[data-fill=professor]", o.f_prof ? ("Professor(a): "+o.f_prof) : "");
+  preencher("[data-fill=turma]", o.f_143 ? ("Turma: "+o.f_143) : "");
+  preencher("[data-fill=data]", o.f_144 ? ("Data: "+o.f_144) : "");
+
+  var h="";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h3>"+escp(it.h)+"</h3>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"(não marcado)";}
+    else{v=o[it.id]||"(em branco)";}
+    h+="<div class='item'><div class='perg'>"+escp(it.label)+"</div><div class='resp'>"+escp(v)+"</div></div>";
+  });
+  document.getElementById("corpoRoteiro").innerHTML=h;
+
+  var checklist=[
+    "Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.",
+    "Planilha com KPI-DF, taxa de sucesso e cobertura calculados para todos os módulos anexada no AVA.",
+    "Relatório Final (módulo mais suspeito, maior risco de falha, maior lacuna de cobertura) preenchido.",
+    "Recomendação final combina os três indicadores e está justificada.",
+    "PDF gerado e enviado no AVA com o grupo identificado."
+  ];
+  var hc="";
+  checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
+  document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
+}
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
     var k=parseInt(this.getAttribute("data-k"),10);
-    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+    var a=ACTS.filter(function(x){return x.k===k;})[0];
+    montarRelatorio(a);
+    window.print();
   });
 });
 })();

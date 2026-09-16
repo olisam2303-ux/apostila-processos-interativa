@@ -51,6 +51,45 @@ th{background:var(--panel-2)}
 .score{font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
+
+/* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
+#relatorio{display:none}
+@media print{
+  @page{size:A4;margin:25mm 20mm 20mm 25mm}
+  body{background:#fff;color:#000;font-family:"Times New Roman",Georgia,serif;font-size:12pt;line-height:1.5;padding:0}
+  .wrap>*:not(#relatorio){display:none !important}
+  #relatorio{display:block}
+  .wrap{max-width:none;padding:0;margin:0}
+
+  .folha{page-break-after:always;text-align:center}
+  .folha .inst{font-size:12pt;font-weight:bold;text-transform:uppercase;line-height:1.4}
+  .folha .meio{margin-top:70mm}
+  .folha .fim{margin-top:70mm;text-transform:uppercase}
+  .folha .tituloTrab{font-size:14pt;font-weight:bold;text-transform:uppercase;margin-top:6mm}
+  .folha .subtitulo{font-size:12pt;margin-top:2mm}
+  .folha .autores{font-size:12pt;margin-top:4mm}
+  .fr-nota{width:8.5cm;margin:14mm 0 0 auto;text-align:justify;font-size:10pt;line-height:1.3}
+  .fr-orient{width:8.5cm;margin:6mm 0 0 auto;text-align:left;font-size:10pt}
+
+  #roteiro h2.rtitulo{font-size:12pt;font-weight:bold;text-align:center;text-transform:uppercase;margin:0 0 8mm}
+  #roteiro .rlinha{font-size:12pt;margin-bottom:2mm}
+  #roteiro .rlinha b{text-transform:uppercase}
+  #roteiro h3{font-size:12pt;font-weight:bold;text-transform:uppercase;margin:7mm 0 3mm;page-break-after:avoid}
+  #roteiro p{margin:0 0 3mm;text-align:justify}
+  #roteiro ul{margin:0 0 3mm;padding-left:6mm}
+  #roteiro li{margin-bottom:1.5mm}
+  #roteiro .lista-obj{list-style:none;padding-left:0}
+  #roteiro .lista-obj li:before{content:"✓  ";font-weight:bold}
+
+  #roteiro .item{margin-bottom:5mm;page-break-inside:avoid}
+  #roteiro .item .perg{font-weight:bold;margin-bottom:1.5mm}
+  #roteiro .item .rot{font-size:10.5pt;font-variant:small-caps;color:#333;margin-top:2mm}
+  #roteiro .item .resp{white-space:pre-wrap;border-bottom:1px dotted #999;padding-bottom:1mm;min-height:5mm}
+  #roteiro table{width:100%;border-collapse:collapse;font-size:10.5pt;margin-top:2mm}
+  #roteiro th,#roteiro td{border:1px solid #666;padding:1.5mm 2mm}
+  #roteiro th{background:#e8e8e8;color:#000;text-transform:none;font-variant:small-caps;letter-spacing:0}
+  #roteiro .checkline{margin-bottom:1.5mm;font-size:11pt}
+}
 @media print{body{background:#fff;padding:0}.no-print{display:none!important}.card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}}
 </style>
 </head>
@@ -95,13 +134,15 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 </div>
 
 <h2 class="no-print">Registro da Aula — "Análise de Cumulative Flow Diagrams (CFD)"</h2>
-<div class="card no-print"><span class="tag">Contexto</span><p>Você é o <strong>Scrum Master</strong> da "DevFlow". Analisando o quadro de gestão visual, encontrou padrões nos CFD dos últimos sprints. Para cada cenário, preencha o <strong>relatório de diagnóstico</strong>.</p>
-    <p class="muted">Este roteiro não existia — foi montado a partir do enunciado da aula e do quiz.</p></div>
+<div class="card no-print"><span class="tag">Contexto</span><p>Você é o <strong>Scrum Master</strong> da "DevFlow". Analisando o quadro de gestão visual, encontrou padrões nos CFD dos últimos sprints. Para cada cenário, preencha o <strong>relatório de diagnóstico</strong>.</p></div>
 <form id="reg-0" class="card no-print">
-<h3>Identificação</h3><label class="field" for="f_241">Turma</label><input type="text" id="f_241" placeholder="">
+<h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
+<label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
+<label class="field" for="f_241">Turma</label><input type="text" id="f_241" placeholder="">
 <label class="field" for="f_242">Data</label><input type="text" id="f_242" placeholder="dd/mm/aaaa">
 <label class="field" for="f_243">Nome ou nº do grupo</label><input type="text" id="f_243" placeholder="">
 <label class="field" for="f_244">Integrantes (separe por vírgula)</label><input type="text" id="f_244" placeholder="">
+<label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Cenário 1 — O gargalo invisível (Sprint 30)</h3><p class="muted">A faixa de Code Review começou com 3 tarefas (Dia 1) e terminou com 12 (Dia 15), ficando cada vez mais larga. A faixa de Done cresceu muito devagar. Sintoma: as tarefas chegam à revisão mais rápido do que são aprovadas.</p><label class="field" for="f_245">Problema — o que está travando o fluxo?</label><textarea id="f_245"></textarea>
 <label class="field" for="f_246">Risco — o que acontece se nada for feito?</label><textarea id="f_246"></textarea>
 <label class="field" for="f_247">Violação — que boa prática (ex.: WIP Limit, fluxo contínuo) foi ignorada?</label><input type="text" id="f_247" placeholder="">
@@ -142,7 +183,79 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <h3>Rubrica — Análise de Cumulative Flow Diagrams (CFD) (0 a 1,0)</h3><table><tr><th>Critério</th><th>Vale</th></tr><tr><td>Preencheu os 5 campos do relatório (Problema/Risco/Violação/Recomendação/Responsável) nos 2 cenários</td><td>0,2</td></tr><tr><td>Identificou corretamente as violações (falta de WIP limit; excesso de trabalho em andamento)</td><td>0,2</td></tr><tr><td>Recomendações são práticas e ligadas ao problema (não genéricas)</td><td>0,2</td></tr><tr><td>Cálculo de lead time correto (WIP ÷ throughput) e interpretação coerente</td><td>0,2</td></tr><tr><td>Relatório claro; entregue no AVA com identificação</td><td>0,2</td></tr></table>
 </div>
 
-<div class="print-only" id="printSummary-0"></div>
+<div id="relatorio">
+
+  <div class="folha">
+    <div class="inst" data-fill="escola"></div>
+    <div class="inst">Curso Técnico · Processos de Desenvolvimento de Software</div>
+    <div class="meio">
+      <div class="autores" data-fill="integrantes"></div>
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Processos de Desenvolvimento de Software</div>
+      <div class="subtitulo">Semana 13 — <span data-fill="atividade"></span></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div class="folha">
+    <div class="autores" data-fill="integrantes"></div>
+    <div class="meio">
+      <div class="tituloTrab">Registro de Aula</div>
+      <div class="subtitulo">Semana 13 — <span data-fill="atividade"></span></div>
+      <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 2º bimestre.</div>
+      <div class="fr-orient" data-fill="professor"></div>
+      <div class="fr-orient" data-fill="turma"></div>
+      <div class="fr-orient" data-fill="data"></div>
+    </div>
+    <div class="fim">
+      <div>São Paulo - SP</div>
+      <div>2026</div>
+    </div>
+  </div>
+
+  <div id="roteiro">
+    <h2 class="rtitulo">Registro de Aula</h2>
+    <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
+    <div class="rlinha"><b>Unidade:</b> Semana 13 — Métricas ágeis: Velocity, Burndown e CFD</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
+    <div class="rlinha"><b>Base teórica:</b> Capítulo 13 — Métricas ágeis: Velocity, Burndown e Cumulative Flow Diagram (CFD)</div>
+
+    <h3>Objetivos</h3>
+    <ul class="lista-obj">
+      <li>Atuar como Scrum Master analisando Cumulative Flow Diagrams (CFD) para diagnosticar gargalos no fluxo de trabalho.</li>
+      <li>Identificar violações de boas práticas ágeis, como ausência de limite de WIP (work in progress).</li>
+      <li>Calcular o lead time de um fluxo de trabalho pela Lei de Little (WIP ÷ throughput) e interpretar o resultado.</li>
+      <li>Propor recomendações práticas e um responsável para cada problema identificado.</li>
+    </ul>
+
+    <h3>Solução digital</h3>
+    <p>Página interativa da atividade + navegador. O relatório é preenchido diretamente nesta página e exportado em PDF pelo próprio navegador (botão <b>Gerar PDF</b> ou Ctrl+P → Salvar como PDF). Não é preciso instalar nada, e a página funciona sem internet.</p>
+
+    <h3>Procedimento / Atividade</h3>
+    <p><b>Contexto:</b> você é o Scrum Master da "DevFlow". Analisando o quadro de gestão visual, encontrou padrões nos CFD dos últimos sprints. Para cada cenário, preencha o relatório de diagnóstico com problema, risco, violação, recomendação e responsável.</p>
+
+    <h3>Procedimentos para a realização da atividade</h3>
+    <div id="corpoRoteiro"></div>
+
+    <h3>Checklist de entrega</h3>
+    <div id="corpoChecklist"></div>
+
+    <h3>Critérios de avaliação</h3>
+    <table>
+      <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
+      <tbody id="corpoCriterios"></tbody>
+    </table>
+
+    <h3>Referências</h3>
+    <ul>
+      <li>Apostila da disciplina — Processos de Desenvolvimento de Software, Semana 13 (Capítulo 13).</li>
+      <li>SEDUC-SP — Registro da Aula 13, Semana 13 (Análise de Cumulative Flow Diagrams (CFD)).</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
   Situação fictícia produzida pela SEDUC-SP. Material da apostila
@@ -159,7 +272,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p2s13_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"Uma equipe Scrum planejou dez user stories (40 story points) para o Sprint 8. Ao final, sete stories ficaram 100% concluídas (28 points), duas ficaram 90% (10 points) e uma ficou 50% (2 points). Qual é a Velocity do Sprint 8?","opts":["30 points (28 + 2, stories 100% e 50% concluídas).","28 points (apenas stories 100% concluídas).","40 points (tudo que foi planejado).","38 points (28 + 10, stories 100% e 90% concluídas)."],"correct":1,"exp":"Velocity conta apenas o que foi 100% concluído (atende a Definition of Done). Histórias parciais não contam — nem as de 90%. Logo, Velocity = 28 points."},{"q":"Uma equipe Scrum está no Dia 5 de um sprint de 10 dias: trabalho total 30 story points; trabalho restante real 18 points; trabalho restante ideal 15 points. Qual é a situação da equipe?","opts":["A equipe está atrasada (acima da linha ideal).","A equipe está no ritmo certo (próxima da linha ideal).","A equipe está com platô (sem progresso).","A equipe está adiantada (abaixo da linha ideal)."],"correct":0,"exp":"No burndown, a linha real acima da ideal significa que sobra mais trabalho do que o previsto para aquele dia (18 > 15). A equipe está atrasada em relação ao ritmo planejado."},{"q":"Uma equipe Kanban tem um CFD no Dia 10 com: To Do 5, In Progress 6, Testing 15, Done 20. Throughput = 20 itens ÷ 10 dias = 2 itens/dia. Qual é o lead time?","opts":["20 dias","13 dias","5 dias","10 dias"],"correct":1,"exp":"Lei de Little: lead time = trabalho em andamento ÷ throughput. WIP (o que ainda não está \"Done\") = 5 + 6 + 15 = 26 itens. 26 ÷ 2 por dia = 13 dias."}];
-var ACTS=[{"k":0,"ids":["f_241","f_242","f_243","f_244","f_245","f_246","f_247","f_248","f_249","f_250","f_251","f_252","f_253","f_254","f_255","f_256","f_257","f_258"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Turma","id":"f_241"},{"label":"Data","id":"f_242"},{"label":"Nome ou nº do grupo","id":"f_243"},{"label":"Integrantes (separe por vírgula)","id":"f_244"},{"h":"Cenário 1 — O gargalo invisível (Sprint 30)"},{"label":"Problema — o que está travando o fluxo?","id":"f_245"},{"label":"Risco — o que acontece se nada for feito?","id":"f_246"},{"label":"Violação — que boa prática (ex.: WIP Limit, fluxo contínuo) foi ignorada?","id":"f_247"},{"label":"Recomendação — que ação prática deve ser tomada?","id":"f_248"},{"label":"Responsável — quem deve agir (SM / Time / PO)?","id":"f_249"},{"h":"Cenário 2 — A ilusão de produtividade (Sprint 31)"},{"label":"Problema — o que está travando o fluxo?","id":"f_250"},{"label":"Risco — o que acontece se nada for feito?","id":"f_251"},{"label":"Violação — que boa prática foi ignorada?","id":"f_252"},{"label":"Recomendação — que ação prática deve ser tomada?","id":"f_253"},{"label":"Responsável — quem deve agir?","id":"f_254"},{"h":"Cenário 3 — Cálculo de lead time"},{"label":"WIP (trabalho não concluído)","id":"f_255"},{"label":"Throughput (itens/dia)","id":"f_256"},{"label":"Lead time = WIP ÷ throughput","id":"f_257"},{"label":"O que esse lead time significa na prática para quem espera uma entrega?","id":"f_258"}],"title":"Análise de Cumulative Flow Diagrams (CFD)"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_241","f_242","f_243","f_244","f_prof","f_245","f_246","f_247","f_248","f_249","f_250","f_251","f_252","f_253","f_254","f_255","f_256","f_257","f_258"],"radios":[],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_241"},{"label":"Data","id":"f_242"},{"label":"Nome ou nº do grupo","id":"f_243"},{"label":"Integrantes (separe por vírgula)","id":"f_244"},{"label":"Professor(a)","id":"f_prof"},{"h":"Cenário 1 — O gargalo invisível (Sprint 30)"},{"label":"Problema — o que está travando o fluxo?","id":"f_245"},{"label":"Risco — o que acontece se nada for feito?","id":"f_246"},{"label":"Violação — que boa prática (ex.: WIP Limit, fluxo contínuo) foi ignorada?","id":"f_247"},{"label":"Recomendação — que ação prática deve ser tomada?","id":"f_248"},{"label":"Responsável — quem deve agir (SM / Time / PO)?","id":"f_249"},{"h":"Cenário 2 — A ilusão de produtividade (Sprint 31)"},{"label":"Problema — o que está travando o fluxo?","id":"f_250"},{"label":"Risco — o que acontece se nada for feito?","id":"f_251"},{"label":"Violação — que boa prática foi ignorada?","id":"f_252"},{"label":"Recomendação — que ação prática deve ser tomada?","id":"f_253"},{"label":"Responsável — quem deve agir?","id":"f_254"},{"h":"Cenário 3 — Cálculo de lead time"},{"label":"WIP (trabalho não concluído)","id":"f_255"},{"label":"Throughput (itens/dia)","id":"f_256"},{"label":"Lead time = WIP ÷ throughput","id":"f_257"},{"label":"O que esse lead time significa na prática para quem espera uma entrega?","id":"f_258"}],"title":"Análise de Cumulative Flow Diagrams (CFD)","rubrica":[["Preencheu os 5 campos do relatório (Problema/Risco/Violação/Recomendação/Responsável) nos 2 cenários","0,2"],["Identificou corretamente as violações (falta de WIP limit; excesso de trabalho em andamento)","0,2"],["Recomendações são práticas e ligadas ao problema (não genéricas)","0,2"],["Cálculo de lead time correto (WIP ÷ throughput) e interpretação coerente","0,2"],["Relatório claro; entregue no AVA com identificação","0,2"]]}];
 var SEM_LABEL="Semana 13 · Métricas ágeis: Velocity, Burndown e CFD";
 
 function renderQuiz(card){
@@ -237,28 +350,49 @@ ACTS.forEach(function(a){
   });
   a._collect=collect;
 });
-function buildSummary(a){
-  var o=a._collect(),h="";
-  h+="<h1 style='font-size:1.3rem;margin:0 0 4px'>"+escp(a.title)+"</h1>";
-  h+="<p style='margin:0 0 12px;color:#555'>"+escp(SEM_LABEL)+" · Processos de Desenvolvimento de Software</p>";
-  a.spec.forEach(function(it){
-    if(it.h){h+="<h2 style='font-size:1.05rem;margin:16px 0 4px'>"+escp(it.h)+"</h2>";return;}
-    var v;
-    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"<em>(não marcado)</em>";}
-    else{v=escp(o[it.id])||"<em>(em branco)</em>";}
-    h+="<p><strong>"+escp(it.label)+":</strong> "+v+"</p>";
-  });
-  document.getElementById("printSummary-"+a.k).innerHTML=h;
+function preencher(sel, texto){
+  document.querySelectorAll(sel).forEach(function(el){ el.textContent = texto; });
 }
-function showOnly(k){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display=(k==null||k===a.k)?"block":"none";});}
-function resetPrint(){ACTS.forEach(function(a){document.getElementById("printSummary-"+a.k).style.display="";});PRINTING=null;}
-var PRINTING=null;
-window.addEventListener("beforeprint",function(){ACTS.forEach(buildSummary);if(PRINTING==null)showOnly(null);});
-window.addEventListener("afterprint",resetPrint);
+function montarRelatorio(a){
+  var o=a._collect();
+  var integrantes = o.f_244 || o.f_aluno || "___________________________";
+  preencher("[data-fill=escola]", o.f_esc || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
+  preencher("[data-fill=integrantes]", integrantes);
+  preencher("[data-fill=professor]", o.f_prof ? ("Professor(a): "+o.f_prof) : "");
+  preencher("[data-fill=turma]", o.f_241 ? ("Turma: "+o.f_241) : "");
+  preencher("[data-fill=data]", o.f_242 ? ("Data: "+o.f_242) : "");
+
+  var h="";
+  a.spec.forEach(function(it){
+    if(it.h){h+="<h3>"+escp(it.h)+"</h3>";return;}
+    var v;
+    if(it.name){var raw=o[it.name];v=raw?(it.map[raw]||raw):"(não marcado)";}
+    else{v=o[it.id]||"(em branco)";}
+    h+="<div class='item'><div class='perg'>"+escp(it.label)+"</div><div class='resp'>"+escp(v)+"</div></div>";
+  });
+  document.getElementById("corpoRoteiro").innerHTML=h;
+
+  var checklist=[
+    "Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.",
+    "Os 2 cenários de CFD com Problema, Risco, Violação, Recomendação e Responsável completos.",
+    "O cálculo de lead time (WIP ÷ throughput) foi feito e explicado.",
+    "PDF gerado e enviado no AVA com o grupo identificado."
+  ];
+  var hc="";
+  checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
+  document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
+}
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
     var k=parseInt(this.getAttribute("data-k"),10);
-    PRINTING=k; ACTS.forEach(buildSummary); showOnly(k); window.print();
+    var a=ACTS.filter(function(x){return x.k===k;})[0];
+    montarRelatorio(a);
+    window.print();
   });
 });
 })();
