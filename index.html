@@ -394,17 +394,18 @@ function bimestreOfWeek(wid) {
 const SCREEN_META = {
   intro:    { label:'Ponto de partida',      xp:8,  icon:'flag' },
   concept:  { label:'Conceito',              xp:12, icon:'bulb' },
-  practice: { label:'Colocando em prática',  xp:15, icon:'hand' },
+  practice: { label:'Registro de aula',      xp:15, icon:'hand' },
   quiz:     { label:'Quiz',                  xp:0,  icon:'quiz' },
   social:   { label:'Ser sempre +',          xp:15, icon:'heart' },
   summary:  { label:'Síntese',               xp:6,  icon:'star' },
   activity: { label:'Atividade prática',     xp:25, icon:'hand' }
 };
 
-function buildScreensForAula(aula, aulaIdx) {
+function buildScreensForAula(aula, aulaIdx, weekId) {
   const screens = [];
   const n = aulaIdx + 1;
-  const push = (type, extra) => screens.push(Object.assign({ id: aula.code+'-'+type, title: 'Aula '+n+' — '+SCREEN_META[type].label, type, aulaTitle: aula.title, aulaCode: aula.code }, extra));
+  const weekNum = weekId ? String(+weekId.replace(/\D/g,'')) : '';
+  const push = (type, extra) => screens.push(Object.assign({ id: aula.code+'-'+type, title: type==='practice' ? 'Registro de aula — Semana '+weekNum : 'Aula '+n+' — '+SCREEN_META[type].label, type, aulaTitle: aula.title, aulaCode: aula.code }, extra));
 
   if (aula.pontoDePartida) push('intro', { data: aula.pontoDePartida });
   if (aula.conceito && aula.conceito.length) push('concept', { data: { blocks: aula.conceito, skills: { tecnica: aula.habilidadeTecnica, socio: aula.habilidadeSocioemocional }, duracao: aula.duracao } });
@@ -418,7 +419,7 @@ function buildScreensForAula(aula, aulaIdx) {
 
 function buildModule(week) {
   const screens = [];
-  week.aulas.forEach((aula, i) => { screens.push(...buildScreensForAula(aula, i)); });
+  week.aulas.forEach((aula, i) => { screens.push(...buildScreensForAula(aula, i, week.id)); });
   return { id: week.id, title: week.title, unidade: week.unidade, bimestre: bimestreOfWeek(week.id), screens };
 }
 
@@ -4152,6 +4153,7 @@ function renderPractice(body, mod, screen) {
     var gb = GABARITO[wk] || [];
     var head = '<strong>\uD83E\uDDE9 Registro da Aula \u2014 formul\u00e1rio interativo:</strong> preencha abaixo e clique em <em>Gerar PDF</em> para enviar no AVA. Os 3 quizzes <em>Pause e Responda</em> desta semana (at\u00e9 3 tentativas cada) tamb\u00e9m est\u00e3o na vers\u00e3o completa. <a href="' + sf + '" target="_blank" rel="noopener">Abrir em uma aba pr\u00F3pria \u2197</a>';
     if (gb.length) head += '<div class="pratica-gab"><span>\uD83D\uDCC4 Gabarito de exemplo (PDF):</span> ' + gb.map(function(g){return '<a href="' + g[1] + '" target="_blank" rel="noopener">' + g[0] + '</a>';}).join(' \u00b7 ') + '</div>';
+    head += '<div class="pratica-gab"><span>\uD83D\uDD8A\uFE0F Precisa desenhar um diagrama?</span> <a href="https://app.diagrams.net/" target="_blank" rel="noopener">Abrir o draw.io \u2197</a> \u2014 ao abrir, escolha salvar no <strong>Dispositivo</strong> (n\u00e3o no Google Drive, que costuma ser bloqueado na rede da escola).</div>';
     var box = el('div','pratica-link'); box.innerHTML = head; body.appendChild(box);
     var frameWrap = el('div','pratica-frame');
     var frame = document.createElement('iframe');
