@@ -196,7 +196,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
       <div class="autores" data-fill="integrantes"></div>
       <div class="tituloTrab">Registro de Aula</div>
       <div class="subtitulo">Processos de Desenvolvimento de Software</div>
-      <div class="subtitulo">Semana 1 — Simulando o ciclo completo</div>
+      <div class="subtitulo">Semana 1 — <span data-fill="atividade"></span></div>
     </div>
     <div class="fim">
       <div>São Paulo - SP</div>
@@ -208,7 +208,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
     <div class="autores" data-fill="integrantes"></div>
     <div class="meio">
       <div class="tituloTrab">Registro de Aula</div>
-      <div class="subtitulo">Semana 1 — Simulando o ciclo completo</div>
+      <div class="subtitulo">Semana 1 — <span data-fill="atividade"></span></div>
       <div class="fr-nota">Registro de Aula apresentado ao componente curricular Processos de Desenvolvimento de Software, como requisito parcial de avaliação do 1º bimestre.</div>
       <div class="fr-orient" data-fill="professor"></div>
       <div class="fr-orient" data-fill="turma"></div>
@@ -224,7 +224,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
     <h2 class="rtitulo">Registro de Aula</h2>
     <div class="rlinha"><b>Nome da disciplina:</b> PROCESSOS DE DESENVOLVIMENTO DE SOFTWARE</div>
     <div class="rlinha"><b>Unidade:</b> Semana 1 — Requisitos: o ciclo de um requisito</div>
-    <div class="rlinha"><b>Aula:</b> Simulando o ciclo completo</div>
+    <div class="rlinha"><b>Aula:</b> <span data-fill="atividade"></span></div>
     <div class="rlinha"><b>Base teórica:</b> Capítulo 1 — O ciclo de um requisito (identificação, elicitação, documentação, validação)</div>
 
     <h3>Objetivos</h3>
@@ -249,13 +249,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
     <h3>Critérios de avaliação</h3>
     <table>
       <thead><tr><th>Critério</th><th>Vale</th></tr></thead>
-      <tbody>
-        <tr><td>Completou as 4 fases (identificação, elicitação, documentação, validação)</td><td>0,2</td></tr>
-        <tr><td>Os 3 problemas da identificação são reais e ligados ao contexto da padaria</td><td>0,2</td></tr>
-        <tr><td>Perguntas de elicitação abertas e úteis; requisito no formato pedido (ID, tipo, descrição testável, critério de aceitação, prioridade)</td><td>0,2</td></tr>
-        <tr><td>A validação aplica os 5 critérios e as correções/melhoria fazem sentido</td><td>0,2</td></tr>
-        <tr><td>Usa corretamente F × NF; texto claro; entregue em PDF no AVA com o grupo identificado</td><td>0,2</td></tr>
-      </tbody>
+      <tbody id="corpoCriterios"></tbody>
     </table>
 
     <h3>Referências</h3>
@@ -281,7 +275,7 @@ set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del
 var PFX="p1s1_";
 var QCOUNT=3;
 var QUIZZES=[{"q":"Uma empresa especificou: \"O sistema precisa ser rápido e bonito\". Por que essa descrição não é um bom requisito?","opts":["Porque mistura requisitos funcionais e não funcionais.","Porque não é específico nem mensurável.","Porque é muito caro para ser implementado.","Porque é impossível de fazer."],"correct":1,"exp":"\"Rápido\" e \"bonito\" são termos subjetivos. Um bom requisito é específico e mensurável — por exemplo: \"a busca deve retornar em até 2 segundos\". Sem um número ou critério objetivo não há como testar nem saber se foi atendido."},{"q":"Em qual fase do ciclo de um requisito descobrimos os detalhes específicos do que o cliente precisa de fato?","opts":["Elicitação.","Validação.","Identificação.","Documentação."],"correct":0,"exp":"Na elicitação a equipe conversa com as partes interessadas (entrevista, questionário, observação, workshop) para extrair os detalhes reais da necessidade. A identificação apenas reconhece que existe uma necessidade; a documentação registra; a validação confere."},{"q":"O sistema estar disponível 24/7 com 99,9% de uptime é um requisito:","opts":["Não Funcional de confiabilidade.","Funcional e Não Funcional ao mesmo tempo.","Não Funcional de performance.","Funcional, pois descreve uma função."],"correct":0,"exp":"Disponibilidade/uptime é uma qualidade do sistema, não uma função que ele executa — logo, requisito não funcional. Dentro dos não funcionais pertence à categoria confiabilidade. Performance trataria de tempo de resposta/velocidade."}];
-var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_1","f_2","f_3","f_4","f_prof","f_5","f_6","f_7","f_8","f_9","f_10","f_11","f_12","f_13","f_14","f_15","f_16","f_17","f_23","f_24","f_25"],"radios":["v_18","v_19","v_20","v_21","v_22"],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_1"},{"label":"Data","id":"f_2"},{"label":"Nome ou nº do grupo","id":"f_3"},{"label":"Integrantes (separe por vírgula)","id":"f_4"},{"label":"Professor(a)","id":"f_prof"},{"h":"Fase 1 — Identificação"},{"label":"Problema / necessidade 1","id":"f_5"},{"label":"Problema / necessidade 2","id":"f_6"},{"label":"Problema / necessidade 3","id":"f_7"},{"h":"Fase 2 — Elicitação"},{"label":"Pergunta 1","id":"f_8"},{"label":"Pergunta 2","id":"f_9"},{"label":"Pergunta 3","id":"f_10"},{"label":"Pergunta 4","id":"f_11"},{"label":"Pergunta 5","id":"f_12"},{"h":"Fase 3 — Documentação"},{"label":"Identificador (ex.: RF-01 ou RNF-01)","id":"f_13"},{"label":"Tipo","id":"f_14"},{"label":"Descrição (uma frase clara e testável)","id":"f_15"},{"label":"Critério de aceitação (mensurável)","id":"f_16"},{"label":"Prioridade","id":"f_17"},{"h":"Fase 4 — Validação"},{"label":"1. A descrição está clara, sem ambiguidade?","name":"v_18","map":{"sim":"Atende","nao":"Não atende"}},{"label":"2. É testável / verificável?","name":"v_19","map":{"sim":"Atende","nao":"Não atende"}},{"label":"3. É atômico (um requisito só)?","name":"v_20","map":{"sim":"Atende","nao":"Não atende"}},{"label":"4. Não mistura função com qualidade (F × NF)?","name":"v_21","map":{"sim":"Atende","nao":"Não atende"}},{"label":"5. Tem critério de aceitação mensurável?","name":"v_22","map":{"sim":"Atende","nao":"Não atende"}},{"label":"Para cada item marcado \"Não atende\", explique como corrigir","id":"f_23"},{"label":"Se todos os itens atenderem, proponha uma melhoria no requisito","id":"f_24"},{"h":"Reflexão (opcional)"},{"label":"O que foi mais difícil nesta atividade?","id":"f_25"}],"title":"Simulando o ciclo completo"}];
+var ACTS=[{"k":0,"ids":["f_esc","f_aluno","f_1","f_2","f_3","f_4","f_prof","f_5","f_6","f_7","f_8","f_9","f_10","f_11","f_12","f_13","f_14","f_15","f_16","f_17","f_23","f_24","f_25"],"radios":["v_18","v_19","v_20","v_21","v_22"],"spec":[{"h":"Identificação"},{"label":"Escola","id":"f_esc"},{"label":"Nome do aluno","id":"f_aluno"},{"label":"Turma","id":"f_1"},{"label":"Data","id":"f_2"},{"label":"Nome ou nº do grupo","id":"f_3"},{"label":"Integrantes (separe por vírgula)","id":"f_4"},{"label":"Professor(a)","id":"f_prof"},{"h":"Fase 1 — Identificação"},{"label":"Problema / necessidade 1","id":"f_5"},{"label":"Problema / necessidade 2","id":"f_6"},{"label":"Problema / necessidade 3","id":"f_7"},{"h":"Fase 2 — Elicitação"},{"label":"Pergunta 1","id":"f_8"},{"label":"Pergunta 2","id":"f_9"},{"label":"Pergunta 3","id":"f_10"},{"label":"Pergunta 4","id":"f_11"},{"label":"Pergunta 5","id":"f_12"},{"h":"Fase 3 — Documentação"},{"label":"Identificador (ex.: RF-01 ou RNF-01)","id":"f_13"},{"label":"Tipo","id":"f_14"},{"label":"Descrição (uma frase clara e testável)","id":"f_15"},{"label":"Critério de aceitação (mensurável)","id":"f_16"},{"label":"Prioridade","id":"f_17"},{"h":"Fase 4 — Validação"},{"label":"1. A descrição está clara, sem ambiguidade?","name":"v_18","map":{"sim":"Atende","nao":"Não atende"}},{"label":"2. É testável / verificável?","name":"v_19","map":{"sim":"Atende","nao":"Não atende"}},{"label":"3. É atômico (um requisito só)?","name":"v_20","map":{"sim":"Atende","nao":"Não atende"}},{"label":"4. Não mistura função com qualidade (F × NF)?","name":"v_21","map":{"sim":"Atende","nao":"Não atende"}},{"label":"5. Tem critério de aceitação mensurável?","name":"v_22","map":{"sim":"Atende","nao":"Não atende"}},{"label":"Para cada item marcado \"Não atende\", explique como corrigir","id":"f_23"},{"label":"Se todos os itens atenderem, proponha uma melhoria no requisito","id":"f_24"},{"h":"Reflexão (opcional)"},{"label":"O que foi mais difícil nesta atividade?","id":"f_25"}],"title":"Simulando o ciclo completo","rubrica":[["Completou as 4 fases (identificação, elicitação, documentação, validação)","0,2"],["Os 3 problemas da identificação são reais e ligados ao contexto da padaria","0,2"],["Perguntas de elicitação abertas e úteis; requisito no formato pedido (ID, tipo, descrição testável, critério de aceitação, prioridade)","0,2"],["A validação aplica os 5 critérios e as correções/melhoria fazem sentido","0,2"],["Usa corretamente F × NF; texto claro; entregue em PDF no AVA com o grupo identificado","0,2"]]}];
 var SEM_LABEL="Semana 1 · Requisitos: o ciclo de um requisito";
 
 function renderQuiz(card){
@@ -366,6 +360,7 @@ function montarRelatorio(a){
   var o=a._collect();
   var integrantes = o.f_4 || o.f_aluno || "___________________________";
   preencher("[data-fill=escola]", o.f_esc || "ESCOLA");
+  preencher("[data-fill=atividade]", a.title || "");
   preencher("[data-fill=integrantes]", integrantes);
   preencher("[data-fill=professor]", o.f_prof ? ("Professor(a): "+o.f_prof) : "");
   preencher("[data-fill=turma]", o.f_1 ? ("Turma: "+o.f_1) : "");
@@ -390,6 +385,10 @@ function montarRelatorio(a){
   var hc="";
   checklist.forEach(function(t){ hc+="<div class='checkline'>☐ "+escp(t)+"</div>"; });
   document.getElementById("corpoChecklist").innerHTML=hc;
+
+  var hr="";
+  (a.rubrica||[]).forEach(function(row){ hr+="<tr><td>"+escp(row[0])+"</td><td>"+escp(row[1])+"</td></tr>"; });
+  document.getElementById("corpoCriterios").innerHTML=hr;
 }
 document.querySelectorAll(".btnPdf").forEach(function(btn){
   btn.addEventListener("click",function(){
