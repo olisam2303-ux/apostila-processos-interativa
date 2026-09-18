@@ -105,7 +105,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <strong>Como funciona.</strong> Cada aula tem um quiz <em>Pause e Responda</em> — você tem
   <strong>até 3 tentativas</strong> por quiz e vale a melhor.
   Esta semana tem <strong>duas atividades práticas</strong>; cada uma tem seu próprio botão <strong>Gerar PDF</strong>.
-  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente).
+  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente). Antes de salvar, clique em <strong>Mais configurações</strong> e desmarque <strong>Cabeçalhos e rodapés</strong> — assim o PDF não sai com o endereço da página.
 </div>
 
 <h2 class="no-print">Pause e Responda 1</h2>
@@ -166,7 +166,14 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Desafio 5 — Avaliação crítica</h3><label class="field" for="f_297">O cascata serve para projetos longos, complexos e com requisitos incertos? Justifique.</label><textarea id="f_297"></textarea>
 <label class="field" for="f_298">Por que escolher o modelo adequado é uma decisão importante</label><textarea id="f_298"></textarea>
 <label class="field" for="f_299">Por que não existe um modelo &quot;perfeito&quot; para todos os projetos</label><textarea id="f_299"></textarea>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>Todos os desafios/etapas da atividade selecionada foram respondidos.</span></label>
+  <label class="opt"><input type="checkbox"><span>Os diagramas do draw.io mencionados no roteiro foram descritos ou colados no PDF.</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF gerado e enviado no AVA com o grupo identificado.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="0">Gerar PDF — Atividade 1</button>
     <button type="button" class="btn-ghost btnSave" data-k="0">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="0">Limpar</button>
@@ -194,7 +201,14 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Etapa 4 — Relação com as fases clássicas</h3><p class="muted">Em 3 a 4 frases: como requisitos, análise, projeto, implementação, testes e manutenção acontecem dentro de cada ciclo (várias vezes), e não uma única vez.</p><label class="field" for="f_316">Explicação</label><textarea id="f_316"></textarea>
 <h3>Etapa 5 — Diagramas no draw.io</h3><p class="muted">Página 1: incremental (3 mini-ciclos em sequência). Página 2: evolutivo (esboço → protótipo → retorno → losango "atende?": não volta a "refinar", sim segue para o fim).</p><label class="field" for="f_317">Descreva ou cole as duas imagens no PDF</label><textarea id="f_317"></textarea>
 <h3>Etapa 6 — Justificativa da escolha</h3><p class="muted">Por que incremental/evolutivo é melhor que cascata rígido para este projeto (use a tabela do Capítulo 15).</p><label class="field" for="f_318">Justificativa</label><textarea id="f_318"></textarea>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>Todos os desafios/etapas da atividade selecionada foram respondidos.</span></label>
+  <label class="opt"><input type="checkbox"><span>Os diagramas do draw.io mencionados no roteiro foram descritos ou colados no PDF.</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF gerado e enviado no AVA com o grupo identificado.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="1">Gerar PDF — Atividade 2</button>
     <button type="button" class="btn-ghost btnSave" data-k="1">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="1">Limpar</button>

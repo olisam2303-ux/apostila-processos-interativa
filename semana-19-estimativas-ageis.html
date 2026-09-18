@@ -105,7 +105,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <strong>Como funciona.</strong> Cada aula tem um quiz <em>Pause e Responda</em> — você tem
   <strong>até 3 tentativas</strong> por quiz e vale a melhor.
   O <em>Registro da Aula</em> é um formulário: preencha, clique em <strong>Gerar PDF</strong> e envie o PDF no AVA.
-  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente).
+  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente). Antes de salvar, clique em <strong>Mais configurações</strong> e desmarque <strong>Cabeçalhos e rodapés</strong> — assim o PDF não sai com o endereço da página.
 </div>
 
 <h2 class="no-print">Pause e Responda 1</h2>
@@ -149,7 +149,14 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <p class="muted">Tarefas: 1. Corrigir erro de texto na home · 2. Criar tela de cadastro de usuário · 3. Integrar API de pagamento externo · 4. Atualizar cor de botão no sistema · 5. Criar relatório de vendas.</p>
 <h3>Análise</h3><label class="field" for="f_430">Qual tarefa tem maior incerteza e por quê?</label><textarea id="f_430"></textarea>
 <label class="field" for="f_431">Se a velocity do time fosse 13 pontos por sprint, quantas sprints o backlog levaria?</label><textarea id="f_431"></textarea>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>Tarefa âncora escolhida e as 5 tarefas do backlog classificadas por tamanho de camiseta e story points.</span></label>
+  <label class="opt"><input type="checkbox"><span>Análise identifica a tarefa de maior incerteza e estima o número de sprints.</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF (ou foto da tabela) gerado e enviado no AVA com identificação.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="0">Gerar PDF</button>
     <button type="button" class="btn-ghost btnSave" data-k="0">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="0">Limpar</button>

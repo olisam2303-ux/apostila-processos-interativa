@@ -105,7 +105,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <strong>Como funciona.</strong> Cada aula tem um quiz <em>Pause e Responda</em> — você tem
   <strong>até 3 tentativas</strong> por quiz e vale a melhor.
   O <em>Registro da Aula</em> é um formulário: preencha, clique em <strong>Gerar PDF</strong> e envie o PDF no AVA.
-  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente).
+  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente). Antes de salvar, clique em <strong>Mais configurações</strong> e desmarque <strong>Cabeçalhos e rodapés</strong> — assim o PDF não sai com o endereço da página.
 </div>
 
 <h2 class="no-print">Pause e Responda 1</h2>
@@ -153,7 +153,14 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Perguntas de consolidação (Aula 1)</h3><label class="field" for="f_238">O que faz um PO dizer &quot;isso agora / isso depois&quot; sem parecer que está &quot;barrando&quot; o cliente?</label><textarea id="f_238"></textarea>
 <label class="field" for="f_239">Você conseguiu explicar sua decisão usando valor de negócio em vez de opinião pessoal?</label><textarea id="f_239"></textarea>
 <label class="field" for="f_240">O backlog que você montou faria sentido para alguém de fora entender o que vem primeiro e por quê?</label><textarea id="f_240"></textarea>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>As 3 partes — refinamento do backlog, priorização por ROI, resposta à pressão do stakeholder — estão completas.</span></label>
+  <label class="opt"><input type="checkbox"><span>As perguntas de consolidação foram respondidas.</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF gerado e enviado no AVA com o grupo identificado.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="0">Gerar PDF</button>
     <button type="button" class="btn-ghost btnSave" data-k="0">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="0">Limpar</button>

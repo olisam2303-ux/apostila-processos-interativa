@@ -105,7 +105,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <strong>Como funciona.</strong> Cada aula tem um quiz <em>Pause e Responda</em> — você tem
   <strong>até 3 tentativas</strong> por quiz e vale a melhor.
   O <em>Registro da Aula</em> é um formulário: preencha, clique em <strong>Gerar PDF</strong> e envie o PDF no AVA.
-  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente).
+  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente). Antes de salvar, clique em <strong>Mais configurações</strong> e desmarque <strong>Cabeçalhos e rodapés</strong> — assim o PDF não sai com o endereço da página.
 </div>
 
 <h2 class="no-print">Pause e Responda 2_1</h2>
@@ -150,7 +150,15 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_82">Variável 3 — partições válidas / inválidas</label><textarea id="f_82"></textarea>
 <h3>Passo 2 — Valores-limite</h3><p class="muted">Determinem os valores-limite de cada variável.</p><label class="field" for="f_83">Valores-limite por variável</label><textarea id="f_83"></textarea>
 <h3>Passo 3 — Casos de teste</h3><p class="muted">Criem pelo menos 3 casos de teste usando as técnicas.</p><label class="field">Caso de teste</label><div class="sub"><strong>1</strong><label class="field" for="g_84">ID</label><input type="text" id="g_84"><label class="field" for="g_85">Objetivo</label><input type="text" id="g_85"><label class="field" for="g_86">Técnica (partição / valor-limite)</label><input type="text" id="g_86"><label class="field" for="g_87">Entrada</label><input type="text" id="g_87"><label class="field" for="g_88">Resultado esperado</label><input type="text" id="g_88"></div><div class="sub"><strong>2</strong><label class="field" for="g_89">ID</label><input type="text" id="g_89"><label class="field" for="g_90">Objetivo</label><input type="text" id="g_90"><label class="field" for="g_91">Técnica (partição / valor-limite)</label><input type="text" id="g_91"><label class="field" for="g_92">Entrada</label><input type="text" id="g_92"><label class="field" for="g_93">Resultado esperado</label><input type="text" id="g_93"></div><div class="sub"><strong>3</strong><label class="field" for="g_94">ID</label><input type="text" id="g_94"><label class="field" for="g_95">Objetivo</label><input type="text" id="g_95"><label class="field" for="g_96">Técnica (partição / valor-limite)</label><input type="text" id="g_96"><label class="field" for="g_97">Entrada</label><input type="text" id="g_97"><label class="field" for="g_98">Resultado esperado</label><input type="text" id="g_98"></div>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>Passo 1 — as partições válidas e inválidas de cada variável foram indicadas.</span></label>
+  <label class="opt"><input type="checkbox"><span>Passo 2 — os valores-limite de cada variável foram determinados.</span></label>
+  <label class="opt"><input type="checkbox"><span>Passo 3 — pelo menos 3 casos de teste completos (ID, objetivo, técnica, entrada, resultado esperado).</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF gerado e enviado no AVA com o grupo identificado.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="0">Gerar PDF</button>
     <button type="button" class="btn-ghost btnSave" data-k="0">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="0">Limpar</button>

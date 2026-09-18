@@ -105,7 +105,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <strong>Como funciona.</strong> Cada aula tem um quiz <em>Pause e Responda</em> — você tem
   <strong>até 3 tentativas</strong> por quiz e vale a melhor.
   Esta semana tem <strong>duas atividades práticas</strong>; cada uma tem seu próprio botão <strong>Gerar PDF</strong>.
-  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente).
+  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente). Antes de salvar, clique em <strong>Mais configurações</strong> e desmarque <strong>Cabeçalhos e rodapés</strong> — assim o PDF não sai com o endereço da página.
 </div>
 
 <h2 class="no-print">Pause e Responda 1</h2>
@@ -155,7 +155,14 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_331">Relação com a auto-organização das equipes</label><textarea id="f_331"></textarea>
 <h3>Desafio 5 — Quando um papel invade o outro</h3><p class="muted">O PO começa a definir como o código deve ser escrito.</p><label class="field" for="f_332">Por que isso gera problemas e qual princípio ágil é violado</label><textarea id="f_332"></textarea>
 <label class="field" for="f_333">Como a separação correta de papéis melhora o trabalho</label><textarea id="f_333"></textarea>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>Todos os desafios/etapas da atividade selecionada foram respondidos.</span></label>
+  <label class="opt"><input type="checkbox"><span>Relação com valores/princípios ágeis explicada nas respostas.</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF gerado (e, na Atividade 2, fotos das folhas) enviado no AVA com o grupo identificado.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="0">Gerar PDF — Atividade 1</button>
     <button type="button" class="btn-ghost btnSave" data-k="0">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="0">Limpar</button>
@@ -188,7 +195,14 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Etapa 6 — Reflexão final</h3><label class="field" for="f_350">Como foi trabalhar em grupo e como as decisões foram tomadas</label><textarea id="f_350"></textarea>
 <label class="field" for="f_351">O que poderia melhorar numa próxima iteração</label><textarea id="f_351"></textarea>
 <label class="field" for="f_352">Relação da experiência com valores e princípios ágeis</label><textarea id="f_352"></textarea>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>Todos os desafios/etapas da atividade selecionada foram respondidos.</span></label>
+  <label class="opt"><input type="checkbox"><span>Relação com valores/princípios ágeis explicada nas respostas.</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF gerado (e, na Atividade 2, fotos das folhas) enviado no AVA com o grupo identificado.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="1">Gerar PDF — Atividade 2</button>
     <button type="button" class="btn-ghost btnSave" data-k="1">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="1">Limpar</button>

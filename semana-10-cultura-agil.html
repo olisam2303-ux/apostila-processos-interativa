@@ -105,7 +105,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <strong>Como funciona.</strong> Cada aula tem um quiz <em>Pause e Responda</em> — você tem
   <strong>até 3 tentativas</strong> por quiz e vale a melhor.
   O <em>Registro da Aula</em> é um formulário: preencha, clique em <strong>Gerar PDF</strong> e envie o PDF no AVA.
-  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente).
+  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente). Antes de salvar, clique em <strong>Mais configurações</strong> e desmarque <strong>Cabeçalhos e rodapés</strong> — assim o PDF não sai com o endereço da página.
 </div>
 
 <h2 class="no-print">Pause e Responda 1</h2>
@@ -152,7 +152,15 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_169">Como valorizar a colaboração diminui a tensão de uma negociação?</label><textarea id="f_169"></textarea>
 <label class="field" for="f_170">Por que é difícil para equipes de contrato rígido terem essa abertura?</label><textarea id="f_170"></textarea>
 <label class="field" for="f_171">O objetivo de um projeto é seguir um contrato ou entregar valor ao cliente? Justifique.</label><textarea id="f_171"></textarea>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>Rascunho da abordagem de contrato rígido e sua análise de impacto completos.</span></label>
+  <label class="opt"><input type="checkbox"><span>Rascunho da abordagem de colaboração ágil e sua análise de impacto completos.</span></label>
+  <label class="opt"><input type="checkbox"><span>As perguntas de consolidação foram respondidas.</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF gerado e enviado no AVA com o grupo identificado.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="0">Gerar PDF</button>
     <button type="button" class="btn-ghost btnSave" data-k="0">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="0">Limpar</button>

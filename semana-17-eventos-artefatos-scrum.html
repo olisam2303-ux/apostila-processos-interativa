@@ -105,7 +105,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
   <strong>Como funciona.</strong> Cada aula tem um quiz <em>Pause e Responda</em> — você tem
   <strong>até 3 tentativas</strong> por quiz e vale a melhor.
   Esta semana tem <strong>duas atividades práticas</strong>; cada uma tem seu próprio botão <strong>Gerar PDF</strong>.
-  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente).
+  Seus dados ficam salvos apenas neste navegador (nada é enviado automaticamente). Antes de salvar, clique em <strong>Mais configurações</strong> e desmarque <strong>Cabeçalhos e rodapés</strong> — assim o PDF não sai com o endereço da página.
 </div>
 
 <h2 class="no-print">Pause e Responda 1</h2>
@@ -157,7 +157,14 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Etapa 5 — Monitoramento do progresso</h3><label class="field" for="f_377">Por que a Daily funciona como ferramenta de monitoramento</label><textarea id="f_377"></textarea>
 <label class="field" for="f_378">Como impedimentos impactam o progresso e como falhas pequenas viram grandes atrasos</label><textarea id="f_378"></textarea>
 <h3>Etapa 6 — Reflexão final</h3><label class="field" for="f_379">Qual o verdadeiro objetivo da Daily Scrum e como a gestão de impedimentos protege o time</label><textarea id="f_379"></textarea>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>Todas as etapas da atividade selecionada (Atividade 1 — Daily Scrum, ou Atividade 2 — Sprint Review/Retrospective) estão completas.</span></label>
+  <label class="opt"><input type="checkbox"><span>As respostas seguem a distinção pedida em cada atividade (identificar × resolver impedimento; produto × processo).</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF gerado e enviado no AVA com o grupo identificado.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="0">Gerar PDF — Atividade 1</button>
     <button type="button" class="btn-ghost btnSave" data-k="0">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="0">Limpar</button>
@@ -186,7 +193,14 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_392">Ação 2</label><textarea id="f_392"></textarea>
 <label class="field" for="f_393">Ação 3</label><textarea id="f_393"></textarea>
 <h3>Etapa 5 — Conexão com inspeção e adaptação</h3><label class="field" for="f_394">Por que Review e Retrospective são eventos de inspeção e como promovem a adaptação</label><textarea id="f_394"></textarea>
-  <div class="btn-row no-print">
+  <div class="card no-print confira">
+  <span class="tag">Confira antes de gerar o PDF</span>
+  <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>
+  <label class="opt"><input type="checkbox"><span>Todas as etapas da atividade selecionada (Atividade 1 — Daily Scrum, ou Atividade 2 — Sprint Review/Retrospective) estão completas.</span></label>
+  <label class="opt"><input type="checkbox"><span>As respostas seguem a distinção pedida em cada atividade (identificar × resolver impedimento; produto × processo).</span></label>
+  <label class="opt"><input type="checkbox"><span>PDF gerado e enviado no AVA com o grupo identificado.</span></label>
+</div>
+<div class="btn-row no-print">
     <button type="button" class="btn-primary btnPdf" data-k="1">Gerar PDF — Atividade 2</button>
     <button type="button" class="btn-ghost btnSave" data-k="1">Salvar rascunho</button>
     <button type="button" class="btn-ghost btnClear" data-k="1">Limpar</button>
