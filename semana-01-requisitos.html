@@ -50,6 +50,14 @@ th{background:var(--panel-2)}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
 .print-only{display:none}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
 /* ================= RELATÓRIO IMPRESSO (padrão roteiro de aula prática) ============= */
@@ -136,6 +144,52 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "Simulando o ciclo completo"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Vocês vão planejar um <strong>sistema de pedidos on-line</strong> para uma <strong>padaria que abre em dois meses, em Campinas</strong>, percorrendo as quatro fases do ciclo de um requisito: <strong>identificação → elicitação → documentação → validação</strong>.</p>
     <p class="muted">Grupo de 3 a 5 pessoas; cada integrante assume ao menos uma fase. Se o grupo não tiver 4 pessoas, redistribuam as fases — todas as quatro precisam ser feitas.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 620 280" role="img" aria-label="Diagrama do ciclo de um requisito: identificação, elicitação, documentação e validação em ciclo, com retorno à documentação quando o requisito não atende aos critérios">
+<defs>
+<marker id="pAseta" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#0e8074"/></marker>
+<marker id="pAsetaWarn" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a5a1b"/></marker>
+</defs>
+<style>.pbx{fill:#e8f2f0;stroke:#0e8074;stroke-width:2}.ptxt{font:700 15px sans-serif;fill:#17231f;text-anchor:middle}.pn{font:700 12px sans-serif;fill:#0a5e55;text-anchor:middle}.pdesc{font:12px sans-serif;fill:#59736c;text-anchor:middle}.pline{stroke:#0e8074;stroke-width:2.5;fill:none;marker-end:url(#pAseta)}.pwarn{stroke:#8a5a1b;stroke-width:2;fill:none;stroke-dasharray:5 4;marker-end:url(#pAsetaWarn)}.pwlbl{font:italic 11.5px sans-serif;fill:#8a5a1b;text-anchor:middle}</style>
+<rect class="pbx" x="30" y="20" width="170" height="72" rx="12"/>
+<text class="pn" x="115" y="42">1</text>
+<text class="ptxt" x="115" y="62">Identificação</text>
+<text class="pdesc" x="115" y="80">"existe um problema"</text>
+<rect class="pbx" x="420" y="20" width="170" height="72" rx="12"/>
+<text class="pn" x="505" y="42">2</text>
+<text class="ptxt" x="505" y="62">Elicitação</text>
+<text class="pdesc" x="505" y="80">conversar, extrair detalhes</text>
+<rect class="pbx" x="420" y="188" width="170" height="72" rx="12"/>
+<text class="pn" x="505" y="210">3</text>
+<text class="ptxt" x="505" y="230">Documentação</text>
+<text class="pdesc" x="505" y="248">escrever o requisito</text>
+<rect class="pbx" x="30" y="188" width="170" height="72" rx="12"/>
+<text class="pn" x="115" y="210">4</text>
+<text class="ptxt" x="115" y="230">Validação</text>
+<text class="pdesc" x="115" y="248">confere os 5 critérios</text>
+<path class="pline" d="M200,56 C280,56 340,56 418,56"/>
+<path class="pline" d="M505,92 C505,120 505,156 505,186"/>
+<path class="pline" d="M418,224 C340,224 280,224 202,224"/>
+<path class="pline" d="M115,186 C115,160 115,120 115,94"/>
+<path class="pwarn" d="M418,240 C350,255 250,255 202,236"/>
+<text class="pwlbl" x="310" y="270">não atende → volta e documenta de novo</text>
+</svg>
+<p class="cap">O ciclo não é uma linha reta: se a validação encontrar um problema, o requisito volta para a documentação (ou até para a elicitação) antes de seguir em frente.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Formem o grupo e decidam quem cuida de cada fase (podem revezar, mas cada fase precisa de um responsável).</span></li>
+    <li><span class="num">2</span><span>Preencham a identificação do grupo (escola, nome, turma, integrantes, professor(a), data).</span></li>
+    <li><span class="num">3</span><span>Façam uma fase de cada vez, na ordem do ciclo acima — cada uma tem uma dica de <b>como pensar</b> ao lado do campo.</span></li>
+    <li><span class="num">4</span><span>Na Fase 4, se algum item ficar "Não atende", voltem e ajustem o requisito da Fase 3 antes de finalizar — é assim que o ciclo funciona de verdade.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e cliquem em <b>Gerar PDF</b>. Na janela de impressão, escolha <b>Destino: Salvar como PDF</b> e desmarquem <b>Cabeçalhos e rodapés</b> em "Mais configurações".</span></li>
+    <li><span class="num">6</span><span>Enviem o PDF no AVA. O que vocês digitarem fica salvo neste computador sozinho — dá para fechar a página e voltar depois.</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -144,20 +198,20 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_3">Nome ou nº do grupo</label><input type="text" id="f_3" placeholder="">
 <label class="field" for="f_4">Integrantes (separe por vírgula)</label><input type="text" id="f_4" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
-<h3>Fase 1 — Identificação</h3><p class="muted">Listem três problemas ou necessidades reais que o sistema deve resolver.</p><label class="field" for="f_5">Problema / necessidade 1</label><textarea id="f_5"></textarea>
+<h3>Fase 1 — Identificação</h3><p class="muted">Listem três problemas ou necessidades reais que o sistema deve resolver.</p><span class="hint">Pensem no dia a dia real da padaria: filas, pedido errado por telefone, dificuldade de saber se tem o produto — não em recursos genéricos como "ter um app bonito".</span><label class="field" for="f_5">Problema / necessidade 1</label><textarea id="f_5"></textarea>
 <label class="field" for="f_6">Problema / necessidade 2</label><textarea id="f_6"></textarea>
 <label class="field" for="f_7">Problema / necessidade 3</label><textarea id="f_7"></textarea>
-<h3>Fase 2 — Elicitação</h3><p class="muted">Cinco perguntas abertas que vocês fariam ao dono da padaria (evitem perguntas de sim/não).</p><label class="field" for="f_8">Pergunta 1</label><input type="text" id="f_8" placeholder="">
+<h3>Fase 2 — Elicitação</h3><p class="muted">Cinco perguntas abertas que vocês fariam ao dono da padaria (evitem perguntas de sim/não).</p><span class="hint">Teste rápido: se a pergunta pode ser respondida só com "sim" ou "não" (ex.: "o senhor quer um app?"), ela é fechada — troque por algo que abra espaço para detalhes (ex.: "como os clientes fazem pedido hoje?").</span><label class="field" for="f_8">Pergunta 1</label><input type="text" id="f_8" placeholder="">
 <label class="field" for="f_9">Pergunta 2</label><input type="text" id="f_9" placeholder="">
 <label class="field" for="f_10">Pergunta 3</label><input type="text" id="f_10" placeholder="">
 <label class="field" for="f_11">Pergunta 4</label><input type="text" id="f_11" placeholder="">
 <label class="field" for="f_12">Pergunta 5</label><input type="text" id="f_12" placeholder="">
-<h3>Fase 3 — Documentação</h3><p class="muted">Escrevam um requisito completo.</p><label class="field" for="f_13">Identificador (ex.: RF-01 ou RNF-01)</label><input type="text" id="f_13" placeholder="">
-<label class="field" for="f_14">Tipo</label><select id="f_14"><option value="">—</option><option>Funcional</option><option>Não funcional</option></select>
-<label class="field" for="f_15">Descrição (uma frase clara e testável)</label><textarea id="f_15"></textarea>
-<label class="field" for="f_16">Critério de aceitação (mensurável)</label><textarea id="f_16"></textarea>
+<h3>Fase 3 — Documentação</h3><p class="muted">Escrevam um requisito completo, baseado em uma das necessidades da Fase 1 e no que aprenderam na Fase 2.</p><label class="field" for="f_13">Identificador (ex.: RF-01 ou RNF-01)</label><input type="text" id="f_13" placeholder=""><span class="hint">RF = requisito funcional (uma ação do sistema); RNF = requisito não funcional (uma qualidade, como velocidade ou segurança).</span>
+<label class="field" for="f_14">Tipo</label><select id="f_14"><option value="">—</option><option>Funcional</option><option>Não funcional</option></select><span class="hint">Funcional = "o sistema faz X" (uma função). Não funcional = "o sistema é X" (uma qualidade: rápido, seguro, disponível). Se a frase descreve uma ação do sistema, é funcional; se descreve uma característica, é não funcional.</span>
+<label class="field" for="f_15">Descrição (uma frase clara e testável)</label><textarea id="f_15"></textarea><span class="hint">Testável significa: dá para verificar se foi atendido ou não, sem depender de opinião. Evitem palavras vagas como "rápido" ou "fácil" sem um número ou condição junto.</span>
+<label class="field" for="f_16">Critério de aceitação (mensurável)</label><textarea id="f_16"></textarea><span class="hint">Um número ou condição objetiva que prova que o requisito foi atendido — ex.: "a busca retorna em até 2 segundos", não "a busca deve ser rápida".</span>
 <label class="field" for="f_17">Prioridade</label><select id="f_17"><option value="">—</option><option>Alta</option><option>Média</option><option>Baixa</option></select>
-<h3>Fase 4 — Validação</h3><p class="muted">Confiram o requisito da Fase 3 contra os cinco critérios.</p><label class="field">Marquem Atende ou Não atende:</label><div><div class="check-row"><span class="q">1. A descrição está clara, sem ambiguidade?</span><label><input type="radio" name="v_18" value="sim"> Atende</label><label><input type="radio" name="v_18" value="nao"> Não atende</label></div><div class="check-row"><span class="q">2. É testável / verificável?</span><label><input type="radio" name="v_19" value="sim"> Atende</label><label><input type="radio" name="v_19" value="nao"> Não atende</label></div><div class="check-row"><span class="q">3. É atômico (um requisito só)?</span><label><input type="radio" name="v_20" value="sim"> Atende</label><label><input type="radio" name="v_20" value="nao"> Não atende</label></div><div class="check-row"><span class="q">4. Não mistura função com qualidade (F × NF)?</span><label><input type="radio" name="v_21" value="sim"> Atende</label><label><input type="radio" name="v_21" value="nao"> Não atende</label></div><div class="check-row"><span class="q">5. Tem critério de aceitação mensurável?</span><label><input type="radio" name="v_22" value="sim"> Atende</label><label><input type="radio" name="v_22" value="nao"> Não atende</label></div></div>
+<h3>Fase 4 — Validação</h3><p class="muted">Confiram o requisito da Fase 3 contra os cinco critérios — é normal que algum item fique "Não atende" na primeira tentativa; o objetivo é achar isso agora, não depois de o sistema estar pronto.</p><label class="field">Marquem Atende ou Não atende:</label><div><div class="check-row"><span class="q">1. A descrição está clara, sem ambiguidade?</span><label><input type="radio" name="v_18" value="sim"> Atende</label><label><input type="radio" name="v_18" value="nao"> Não atende</label></div><div class="check-row"><span class="q">2. É testável / verificável?</span><label><input type="radio" name="v_19" value="sim"> Atende</label><label><input type="radio" name="v_19" value="nao"> Não atende</label></div><div class="check-row"><span class="q">3. É atômico (um requisito só)?</span><label><input type="radio" name="v_20" value="sim"> Atende</label><label><input type="radio" name="v_20" value="nao"> Não atende</label></div><div class="check-row"><span class="q">4. Não mistura função com qualidade (F × NF)?</span><label><input type="radio" name="v_21" value="sim"> Atende</label><label><input type="radio" name="v_21" value="nao"> Não atende</label></div><div class="check-row"><span class="q">5. Tem critério de aceitação mensurável?</span><label><input type="radio" name="v_22" value="sim"> Atende</label><label><input type="radio" name="v_22" value="nao"> Não atende</label></div></div>
 <label class="field" for="f_23">Para cada item marcado &quot;Não atende&quot;, explique como corrigir</label><textarea id="f_23"></textarea>
 <label class="field" for="f_24">Se todos os itens atenderem, proponha uma melhoria no requisito</label><textarea id="f_24"></textarea>
 <h3>Reflexão (opcional)</h3><label class="field" for="f_25">O que foi mais difícil nesta atividade?</label><textarea id="f_25"></textarea>
