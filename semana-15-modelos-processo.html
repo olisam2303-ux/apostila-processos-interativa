@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,36 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Atividade 1 — "Modelo em cascata na prática"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Uma empresa vai desenvolver um sistema de controle de pedidos. Prazo curto, orçamento limitado, requisitos definidos e (segundo o cliente) sem mudanças. A equipe escolhe o <strong>modelo cascata</strong>.</p>
       <p class="muted">Base: apostila, Capítulo 15. Fases oficiais (aula S15A1): requisitos, análise, projeto, implementação, testes, manutenção. Desenhem o fluxograma no draw.io.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 200 260" role="img" aria-label="Fluxo do modelo em cascata: seis fases em sequência de cima para baixo, sem setas de retorno — requisitos, análise, projeto, implementação, testes, manutenção">
+<defs><marker id="p15a" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L8,0 L4,7 z" fill="#0e8074"/></marker></defs>
+<style>.p15b{fill:#e8f2f0;stroke:#0e8074;stroke-width:2}.p15t{font:700 11.5px sans-serif;fill:#17231f;text-anchor:middle}</style>
+<rect class="p15b" x="10" y="5" width="180" height="30" rx="7"/><text class="p15t" x="100" y="24">Requisitos</text>
+<rect class="p15b" x="10" y="49" width="180" height="30" rx="7"/><text class="p15t" x="100" y="68">Análise</text>
+<rect class="p15b" x="10" y="93" width="180" height="30" rx="7"/><text class="p15t" x="100" y="112">Projeto</text>
+<rect class="p15b" x="10" y="137" width="180" height="30" rx="7"/><text class="p15t" x="100" y="156">Implementação</text>
+<rect class="p15b" x="10" y="181" width="180" height="30" rx="7"/><text class="p15t" x="100" y="200">Testes</text>
+<rect class="p15b" x="10" y="225" width="180" height="30" rx="7"/><text class="p15t" x="100" y="244">Manutenção</text>
+<path d="M100,35 L100,47" stroke="#0e8074" stroke-width="2" marker-end="url(#p15a)"/>
+<path d="M100,79 L100,91" stroke="#0e8074" stroke-width="2" marker-end="url(#p15a)"/>
+<path d="M100,123 L100,135" stroke="#0e8074" stroke-width="2" marker-end="url(#p15a)"/>
+<path d="M100,167 L100,179" stroke="#0e8074" stroke-width="2" marker-end="url(#p15a)"/>
+<path d="M100,211 L100,223" stroke="#0e8074" stroke-width="2" marker-end="url(#p15a)"/>
+</svg>
+<p class="cap">Este é o formato esperado no draw.io: uma seta só para baixo, entre cada par de caixas — nenhuma seta volta para uma fase anterior.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Desafio 1: expliquem cada fase em uma frase e desenhem o fluxograma no draw.io igual ao diagrama de referência acima.</span></li>
+    <li><span class="num">3</span><span>Desafios 2 a 5: sigam na ordem — cada um olha o modelo cascata de um ângulo diferente (erro interno, quando funciona bem, mudança do cliente, avaliação crítica).</span></li>
+    <li><span class="num">4</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -150,7 +188,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_281">Implementação</label><input type="text" id="f_281" placeholder="">
 <label class="field" for="f_282">Testes</label><input type="text" id="f_282" placeholder="">
 <label class="field" for="f_283">Manutenção</label><input type="text" id="f_283" placeholder="">
-<label class="field" for="f_284">Por que uma fase só começa após a anterior?</label><textarea id="f_284"></textarea>
+<label class="field" for="f_284">Por que uma fase só começa após a anterior?</label><textarea id="f_284"></textarea><span class="hint">Cada fase depende do resultado da anterior (ex.: não dá para desenhar o projeto sem saber os requisitos) — é por isso que o fluxo do diagrama só tem setas para baixo.</span>
 <label class="field" for="f_285">O que acontece se uma fase for mal executada?</label><textarea id="f_285"></textarea>
 <label class="field" for="f_286">Fluxograma do draw.io — descreva ou cole a imagem no PDF</label><textarea id="f_286"></textarea>
 <h3>Desafio 2 — Erro de entendimento da própria equipe</h3><p class="muted">Um requisito foi mal entendido; percebe-se só na implementação. O erro é interno.</p><label class="field" for="f_287">O cascata permite voltar fácil aos requisitos? Justifique.</label><textarea id="f_287"></textarea>
@@ -183,6 +221,41 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Atividade 2 — "Modelos incremental e evolutivo"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Uma startup desenvolve um app de organização de estudos para o ensino médio. Objetivo inicial: registrar matérias e tarefas. Com o uso surgem lembretes automáticos, gráficos de desempenho, integração com calendário — os requisitos mudam.</p>
       <p class="muted">Base: apostila, Capítulo 15 (tabela de comparação dos três modelos). Desenhem os dois modelos no draw.io.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 160" role="img" aria-label="Modelo incremental: três mini-ciclos completos em sequência, cada um entregando uma versão utilizável. Modelo evolutivo: esboço, protótipo, retorno do usuário e decisão se atende — se não, volta a refinar; se sim, segue para o fim">
+<style>.p15t2{font:700 11px sans-serif;fill:#fff;text-anchor:middle}.p15h{font:700 12px sans-serif;fill:#17231f}</style>
+<text class="p15h" x="10" y="15">Incremental</text>
+<rect x="10" y="25" width="80" height="30" rx="6" fill="#0e8074"/><text class="p15t2" x="50" y="44">Versão 1</text>
+<rect x="100" y="25" width="80" height="30" rx="6" fill="#3a9c8f"/><text class="p15t2" x="140" y="44">Versão 2</text>
+<rect x="190" y="25" width="80" height="30" rx="6" fill="#8fc9be"/><text class="p15t2" x="230" y="44">Versão 3</text>
+<text x="140" y="72" font-size="10" fill="#59736c" text-anchor="middle">cada versão já é usável, e soma funcionalidades à anterior</text>
+<text class="p15h" x="330" y="15">Evolutivo</text>
+<rect x="330" y="25" width="70" height="30" rx="6" fill="#0e8074"/><text class="p15t2" x="365" y="44">Esboço</text>
+<rect x="415" y="25" width="70" height="30" rx="6" fill="#3a9c8f"/><text class="p15t2" x="450" y="44">Protótipo</text>
+<polygon points="565,10 600,40 565,70 530,40" fill="#8a5a1b"/><text x="565" y="37" font-size="9.5" fill="#fff" text-anchor="middle">Atende?</text><text x="565" y="49" font-size="9.5" fill="#fff" text-anchor="middle">usuário</text>
+<path d="M400,40 L413,40" stroke="#0e8074" stroke-width="2"/>
+<path d="M485,40 L528,40" stroke="#0e8074" stroke-width="2"/>
+<path d="M565,70 C565,100 450,100 415,55" stroke="#8a5a1b" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="480" y="112" font-size="10" fill="#8a5a1b">não → volta a refinar o protótipo</text>
+<text x="565" y="95" font-size="10" fill="#0f5e3f">sim ↓ fim</text>
+</svg>
+<p class="cap">Desenhem exatamente essas duas formas no draw.io: 3 mini-ciclos em sequência (incremental) e o laço com o losango de decisão (evolutivo).</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Etapa 1: expliquem por que os requisitos ainda não estão 100% definidos neste projeto.</span></li>
+    <li><span class="num">3</span><span>Etapa 2: planejem as 3 versões incrementais, na ordem que já está sugerida pelo contexto.</span></li>
+    <li><span class="num">4</span><span>Etapas 3 e 4: expliquem o ciclo evolutivo com feedback e como as fases clássicas se repetem dentro de cada ciclo.</span></li>
+    <li><span class="num">5</span><span>Etapa 5: desenhem os dois diagramas no draw.io, iguais à referência acima.</span></li>
+    <li><span class="num">6</span><span>Etapa 6: justifiquem a escolha usando a tabela do Capítulo 15.</span></li>
+    <li><span class="num">7</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-1" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc2">Escola</label><input type="text" id="f_esc2" placeholder="">
 <label class="field" for="f_aluno2">Nome do aluno</label><input type="text" id="f_aluno2" placeholder="">
@@ -194,7 +267,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Etapa 1 — Compreensão do problema</h3><label class="field" for="f_304">Objetivo inicial do sistema</label><textarea id="f_304"></textarea>
 <label class="field" for="f_305">Por que os requisitos não estão totalmente definidos</label><textarea id="f_305"></textarea>
 <label class="field" for="f_306">Que tipos de mudança podem surgir com o uso</label><textarea id="f_306"></textarea>
-<h3>Etapa 2 — Planejamento incremental</h3><p class="muted">O contexto já sugere a ordem: registrar matérias/tarefas → lembretes → gráficos + calendário. Para cada versão, o que entrega e por que essa ordem.</p><label class="field">Versão</label><div class="sub"><strong>1</strong><label class="field" for="g_307">O que a versão entrega</label><input type="text" id="g_307"><label class="field" for="g_308">Por que nesta ordem (valor / dependências)</label><input type="text" id="g_308"></div><div class="sub"><strong>2</strong><label class="field" for="g_309">O que a versão entrega</label><input type="text" id="g_309"><label class="field" for="g_310">Por que nesta ordem (valor / dependências)</label><input type="text" id="g_310"></div><div class="sub"><strong>3</strong><label class="field" for="g_311">O que a versão entrega</label><input type="text" id="g_311"><label class="field" for="g_312">Por que nesta ordem (valor / dependências)</label><input type="text" id="g_312"></div>
+<h3>Etapa 2 — Planejamento incremental</h3><p class="muted">O contexto já sugere a ordem: registrar matérias/tarefas → lembretes → gráficos + calendário. Para cada versão, o que entrega e por que essa ordem.</p><span class="hint">Cada versão precisa ser útil por si só (o usuário já consegue usar algo), não uma peça incompleta que só funciona quando somada às outras.</span><label class="field">Versão</label><div class="sub"><strong>1</strong><label class="field" for="g_307">O que a versão entrega</label><input type="text" id="g_307"><label class="field" for="g_308">Por que nesta ordem (valor / dependências)</label><input type="text" id="g_308"></div><div class="sub"><strong>2</strong><label class="field" for="g_309">O que a versão entrega</label><input type="text" id="g_309"><label class="field" for="g_310">Por que nesta ordem (valor / dependências)</label><input type="text" id="g_310"></div><div class="sub"><strong>3</strong><label class="field" for="g_311">O que a versão entrega</label><input type="text" id="g_311"><label class="field" for="g_312">Por que nesta ordem (valor / dependências)</label><input type="text" id="g_312"></div>
 <h3>Etapa 3 — Aplicação do modelo evolutivo</h3><label class="field" for="f_313">Como o feedback dos usuários gera mudanças</label><textarea id="f_313"></textarea>
 <label class="field" for="f_314">Como os requisitos são ajustados a cada ciclo</label><textarea id="f_314"></textarea>
 <label class="field" for="f_315">Por que esse modelo se adapta melhor a contextos incertos</label><textarea id="f_315"></textarea>

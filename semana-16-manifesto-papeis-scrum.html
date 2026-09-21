@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,31 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Atividade 1 — "Papéis do Scrum: PO, SM e Dev Team"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Uma empresa adota o Scrum. As decisões do dia a dia não são de uma única pessoa: cada papel tem responsabilidades próprias. Analisem situações e decidam qual papel decide o quê, ligando às valores/princípios ágeis.</p>
       <p class="muted">Base: apostila, Capítulos 12 e 16.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 560 130" role="img" aria-label="As três responsabilidades do Scrum: Product Owner decide o quê e por quê (prioridade e valor), Scrum Master cuida do processo e remove impedimentos, e o Dev Team decide como fazer tecnicamente, de forma auto-organizada">
+<style>.p16t{font:700 13px sans-serif;fill:#fff;text-anchor:middle}.p16d{font:10.5px sans-serif;fill:#59736c;text-anchor:middle}</style>
+<rect x="5" y="5" width="176" height="32" rx="8" fill="#0e8074"/><text class="p16t" x="93" y="27">Product Owner</text>
+<text class="p16d" x="93" y="55">decide O QUÊ e</text><text class="p16d" x="93" y="70">em que ordem (valor)</text>
+<rect x="191" y="5" width="176" height="32" rx="8" fill="#3a9c8f"/><text class="p16t" x="279" y="27">Scrum Master</text>
+<text class="p16d" x="279" y="55">cuida do PROCESSO e</text><text class="p16d" x="279" y="70">remove impedimentos</text>
+<rect x="377" y="5" width="176" height="32" rx="8" fill="#8fc9be"/><text class="p16t" x="465" y="27" fill="#17231f">Dev Team</text>
+<text class="p16d" x="465" y="55">decide COMO fazer,</text><text class="p16d" x="465" y="70">tecnicamente (auto-organizado)</text>
+<text x="280" y="100" font-size="11" fill="#8a5a1b" text-anchor="middle">Quando um papel decide algo que é do outro (ex.: PO dizendo como programar),</text>
+<text x="280" y="115" font-size="11" fill="#8a5a1b" text-anchor="middle">a auto-organização do time é quebrada — é isso que os Desafios pedem para identificar.</text>
+</svg>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Desafio 1: expliquem o foco de cada papel, usando o diagrama acima.</span></li>
+    <li><span class="num">3</span><span>Desafios 2 a 5: para cada situação, decidam qual papel deveria decidir e liguem a um valor/princípio ágil.</span></li>
+    <li><span class="num">4</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -151,7 +184,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_327">Ligação com o princípio de entregar valor ao cliente com frequência</label><textarea id="f_327"></textarea>
 <h3>Desafio 3 — Impedimentos no trabalho</h3><p class="muted">O time está atrasado por problemas de comunicação e bloqueios externos.</p><label class="field" for="f_328">Quem deve atuar para remover os impedimentos e como isso protege o time</label><textarea id="f_328"></textarea>
 <label class="field" for="f_329">Relação com um princípio ágil</label><textarea id="f_329"></textarea>
-<h3>Desafio 4 — Quem decide a técnica</h3><p class="muted">É preciso escolher tecnologias e abordagem técnica.</p><label class="field" for="f_330">Quem toma essa decisão e por que não é do PO nem do SM</label><textarea id="f_330"></textarea>
+<h3>Desafio 4 — Quem decide a técnica</h3><p class="muted">É preciso escolher tecnologias e abordagem técnica.</p><span class="hint">Nem PO, nem SM: decisões técnicas são do Dev Team, que se auto-organiza para decidir "como".</span><label class="field" for="f_330">Quem toma essa decisão e por que não é do PO nem do SM</label><textarea id="f_330"></textarea>
 <label class="field" for="f_331">Relação com a auto-organização das equipes</label><textarea id="f_331"></textarea>
 <h3>Desafio 5 — Quando um papel invade o outro</h3><p class="muted">O PO começa a definir como o código deve ser escrito.</p><label class="field" for="f_332">Por que isso gera problemas e qual princípio ágil é violado</label><textarea id="f_332"></textarea>
 <label class="field" for="f_333">Como a separação correta de papéis melhora o trabalho</label><textarea id="f_333"></textarea>
@@ -172,6 +205,31 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Atividade 2 — "Dinâmica &quot;Construindo um produto em papel&quot; (Sprint Zero)"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Antes de qualquer código, o grupo vai <strong>construir um produto em papel</strong>, simulando as decisões iniciais de um projeto ágil (Sprint Zero): definir o produto, levantar ideias, priorizar e planejar.</p>
       <p class="muted">A construção é em papel (rascunho rápido). A entrega é: fotos das folhas do grupo + este relato individual em PDF no AVA.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 90" role="img" aria-label="Fluxo do Sprint Zero: definição do problema, geração de ideias, priorização e planejamento inicial">
+<defs><marker id="p16b" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#0e8074"/></marker></defs>
+<style>.p16b2{fill:#e8f2f0;stroke:#0e8074;stroke-width:2}.p16t2{font:700 12px sans-serif;fill:#17231f;text-anchor:middle}.p16l{stroke:#0e8074;stroke-width:2.5;fill:none;marker-end:url(#p16b)}</style>
+<rect class="p16b2" x="5" y="20" width="130" height="50" rx="9"/><text class="p16t2" x="70" y="49">Problema</text>
+<rect class="p16b2" x="160" y="20" width="130" height="50" rx="9"/><text class="p16t2" x="225" y="49">Ideias</text>
+<rect class="p16b2" x="315" y="20" width="130" height="50" rx="9"/><text class="p16t2" x="380" y="49">Priorização</text>
+<rect class="p16b2" x="470" y="20" width="125" height="50" rx="9"/><text class="p16t2" x="532" y="42">Planejamento</text><text class="p16t2" x="532" y="56" font-size="10">(Sprint Zero)</text>
+<path class="p16l" d="M135,45 L158,45"/><path class="p16l" d="M290,45 L313,45"/><path class="p16l" d="M445,45 L468,45"/>
+</svg>
+<p class="cap">As Etapas 1 a 4 seguem exatamente essa ordem, antes de qualquer código ser escrito.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Etapas 1 a 4: sigam o fluxo do diagrama acima — problema, ideias, priorização e planejamento.</span></li>
+    <li><span class="num">3</span><span>Etapa 5: desenhem ou descrevam a representação da solução (telas, fluxos).</span></li>
+    <li><span class="num">4</span><span>Etapa 6: façam a reflexão final do grupo.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF — não esqueçam de anexar as fotos das folhas de papel também.</span></li>
+  </ol>
+</div>
+
 <form id="reg-1" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc2">Escola</label><input type="text" id="f_esc2" placeholder="">
 <label class="field" for="f_aluno2">Nome do aluno</label><input type="text" id="f_aluno2" placeholder="">
