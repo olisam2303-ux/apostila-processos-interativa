@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -135,6 +143,46 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 
 <h2 class="no-print">Registro da Aula — "Análise de Cumulative Flow Diagrams (CFD)"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Você é o <strong>Scrum Master</strong> da "DevFlow". Analisando o quadro de gestão visual, encontrou padrões nos CFD dos últimos sprints. Para cada cenário, preencha o <strong>relatório de diagnóstico</strong>.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 460 160" role="img" aria-label="Um CFD com gargalo: a faixa de Code Review fica cada vez mais larga ao longo dos dias, enquanto a faixa de Done cresce devagar, mostrando que o trabalho se acumula antes de ser aprovado">
+<style>.p13t{font:10.5px sans-serif;fill:#17231f}</style>
+<polygon points="10,140 460,140 460,120 10,60" fill="#0a5e55"/>
+<text class="p13t" x="60" y="130" fill="#fff">Done</text>
+<polygon points="10,60 460,120 460,60 10,20" fill="#c9333a" opacity=".85"/>
+<text class="p13t" x="340" y="80" fill="#fff">Code Review (cresce e cresce)</text>
+<polygon points="10,20 460,60 460,20 10,10" fill="#8fc9be"/>
+<text class="p13t" x="60" y="18" fill="#17231f">To Do</text>
+<text class="p13t" x="10" y="155">Dia 1</text><text class="p13t" x="420" y="155">Dia 15</text>
+</svg>
+<p class="cap">Quando uma faixa do meio fica mais larga com o tempo (em vez de manter tamanho estável), é sinal de gargalo: entra mais do que sai naquela etapa.</p>
+</div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 400 60" role="img" aria-label="Lei de Little: lead time é igual a WIP dividido por throughput">
+<style>.p13f{font:700 13px sans-serif;fill:#0a5e55}.p13d{font:10.5px sans-serif;fill:#59736c}</style>
+<rect x="5" y="5" width="390" height="50" rx="8" fill="#e8f2f0" stroke="#0e8074" stroke-width="1.5"/>
+<text class="p13f" x="45" y="30">Lead time</text><text class="p13d" x="45" y="45">tempo até ficar pronto</text>
+<text class="p13f" x="185" y="30">=</text>
+<text class="p13f" x="230" y="30">WIP</text><text class="p13d" x="230" y="45">tudo que não é Done</text>
+<text class="p13f" x="230" y="20" text-decoration="underline"> </text>
+<line x1="205" y1="35" x2="380" y2="35" stroke="#0a5e55" stroke-width="1.5"/>
+<text class="p13f" x="310" y="30">Throughput</text><text class="p13d" x="310" y="55">itens entregues por dia</text>
+</svg>
+<p class="cap">WIP = soma de tudo que ainda não chegou em Done (todas as colunas antes dela).</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Cenário 1: usem o CFD acima como referência para identificar o gargalo, o risco, a boa prática violada e a recomendação.</span></li>
+    <li><span class="num">3</span><span>Cenário 2: mesma estrutura, agora para o excesso de WIP (muitas tarefas em andamento ao mesmo tempo).</span></li>
+    <li><span class="num">4</span><span>Cenário 3: somem o WIP (tudo que não é Done) e apliquem a Lei de Little para achar o lead time.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -153,7 +201,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_252">Violação — que boa prática foi ignorada?</label><input type="text" id="f_252" placeholder="">
 <label class="field" for="f_253">Recomendação — que ação prática deve ser tomada?</label><textarea id="f_253"></textarea>
 <label class="field" for="f_254">Responsável — quem deve agir?</label><input type="text" id="f_254" placeholder="">
-<h3>Cenário 3 — Cálculo de lead time</h3><p class="muted">Usando os dados do quiz (To Do 5, In Progress 6, Testing 15, Done 20; throughput 2 itens/dia), calcule o lead time pela Lei de Little e explique o que ele significa para o cliente.</p><label class="field" for="f_255">WIP (trabalho não concluído)</label><input type="text" id="f_255" placeholder="">
+<h3>Cenário 3 — Cálculo de lead time</h3><p class="muted">Usando os dados do quiz (To Do 5, In Progress 6, Testing 15, Done 20; throughput 2 itens/dia), calcule o lead time pela Lei de Little e explique o que ele significa para o cliente.</p><label class="field" for="f_255">WIP (trabalho não concluído)</label><input type="text" id="f_255" placeholder=""><span class="hint">Somem todas as colunas do quiz que NÃO são Done — Done já saiu do sistema, não conta como WIP.</span>
 <label class="field" for="f_256">Throughput (itens/dia)</label><input type="text" id="f_256" placeholder="">
 <label class="field" for="f_257">Lead time = WIP ÷ throughput</label><input type="text" id="f_257" placeholder="">
 <label class="field" for="f_258">O que esse lead time significa na prática para quem espera uma entrega?</label><textarea id="f_258"></textarea>

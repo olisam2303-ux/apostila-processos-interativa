@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,49 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "Product Owner: a voz do negócio"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Você atua como <strong>Product Owner</strong>. Necessidades brutas do cliente interno: <em>"Quero um dashboard bonito" · "Tem que ter login seguro" · "Quero gráfico em tempo real" · "Tem que funcionar no celular"</em>.</p>
     <p class="muted">Papéis: Pessoa A = PO · Pessoa B = Time de Desenvolvimento · Pessoa C (se houver) = Stakeholder.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 560 60" role="img" aria-label="Fórmula da user story: como um tipo de usuário, quero uma funcionalidade, para obter um valor ou benefício">
+<style>.p12t{font:700 13px sans-serif;fill:#0a5e55}.p12d{font:11px sans-serif;fill:#59736c}</style>
+<rect x="5" y="5" width="550" height="50" rx="8" fill="#e8f2f0" stroke="#0e8074" stroke-width="1.5"/>
+<text class="p12t" x="20" y="27">Como</text><text class="p12d" x="70" y="27">[tipo de usuário]</text>
+<text class="p12t" x="200" y="27">quero</text><text class="p12d" x="255" y="27">[funcionalidade]</text>
+<text class="p12t" x="380" y="27">para</text><text class="p12d" x="420" y="27">[valor/benefício]</text>
+<text class="p12d" x="280" y="46" text-anchor="middle">o "para" é a parte mais fácil de esquecer — mas é ela que justifica o esforço</text>
+</svg>
+</div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 420 300" role="img" aria-label="Matriz de priorização com Valor no eixo vertical e Esforço no eixo horizontal: alto valor e baixo esforço é vitória rápida, alto valor e alto esforço é projeto grande, baixo valor e baixo esforço pode esperar, baixo valor e alto esforço deve ser evitado">
+<style>.p12q{font:700 12.5px sans-serif;text-anchor:middle}.p12s{font:10.5px sans-serif;text-anchor:middle}</style>
+<line x1="60" y1="10" x2="60" y2="270" stroke="#59736c" stroke-width="1.5"/>
+<line x1="60" y1="270" x2="410" y2="270" stroke="#59736c" stroke-width="1.5"/>
+<text x="30" y="20" font-size="11" fill="#59736c" transform="rotate(-90 30 140)">Valor →</text>
+<text x="235" y="292" font-size="11" fill="#59736c">Esforço →</text>
+<rect x="60" y="10" width="175" height="130" fill="#e6f6ee"/>
+<text class="p12q" x="147" y="65" fill="#0f5e3f">🏆 Vitória rápida</text><text class="p12s" x="147" y="85" fill="#0f5e3f">alto valor, pouco esforço</text><text class="p12s" x="147" y="100" fill="#0f5e3f">fazer primeiro</text>
+<rect x="235" y="10" width="175" height="130" fill="#fbf0dc"/>
+<text class="p12q" x="322" y="65" fill="#8a5a1b">📅 Projeto grande</text><text class="p12s" x="322" y="85" fill="#8a5a1b">alto valor, muito esforço</text><text class="p12s" x="322" y="100" fill="#8a5a1b">planejar com calma</text>
+<rect x="60" y="140" width="175" height="130" fill="#f3f7f6"/>
+<text class="p12q" x="147" y="195" fill="#59736c">🤷 Pode esperar</text><text class="p12s" x="147" y="215" fill="#59736c">baixo valor, pouco esforço</text>
+<rect x="235" y="140" width="175" height="130" fill="#fdecec"/>
+<text class="p12q" x="322" y="195" fill="#8f2229">🚫 Evitar</text><text class="p12s" x="322" y="215" fill="#8f2229">baixo valor, muito esforço</text>
+</svg>
+<p class="cap">ROI = Valor ÷ Esforço — quanto mais alto, mais para a esquerda-cima do gráfico o item cai, e mais prioridade ele merece.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Parte 1: transformem as 4 necessidades brutas em user stories usando a fórmula acima, com critério de aceitação. Quebrem as que forem grandes demais.</span></li>
+    <li><span class="num">3</span><span>Parte 2: para 3 itens, deem notas de Valor e Esforço, calculem o ROI e ordenem — usem a matriz acima para entender por que.</span></li>
+    <li><span class="num">4</span><span>Parte 3: simulem a pressão do stakeholder, respondendo como PO — firme, mas sem entrar em conflito.</span></li>
+    <li><span class="num">5</span><span>Respondam as 3 perguntas de consolidação.</span></li>
+    <li><span class="num">6</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">

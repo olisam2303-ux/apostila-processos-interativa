@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,39 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "O dilema do contrato: traduzindo valores em ações"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Vocês são a equipe de um app de delivery. O contrato foi assinado. Na metade do projeto, o dono do restaurante pede uma funcionalidade nova: <strong>rastrear o entregador em tempo real no mapa</strong> — que não estava prevista.</p>
     <p class="muted">Simulem as duas mentalidades. Ferramenta: editor de texto.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 180" role="img" aria-label="Comparação entre a abordagem de contrato rígido e a abordagem de colaboração ágil diante do mesmo pedido do cliente">
+<style>.p10t{font:700 13px sans-serif;fill:#fff;text-anchor:middle}.p10i{font:11.5px sans-serif;text-anchor:middle}</style>
+<rect x="10" y="5" width="280" height="30" rx="8" fill="#c9333a"/><text class="p10t" x="150" y="26">Contrato rígido</text>
+<rect x="10" y="40" width="280" height="130" rx="8" fill="#fdecec" stroke="#c9333a" stroke-width="1.5"/>
+<text class="p10i" x="150" y="64" fill="#8f2229">"não está no contrato"</text>
+<text class="p10i" x="150" y="86" fill="#8f2229">precisa de aditivo formal</text>
+<text class="p10i" x="150" y="108" fill="#8f2229">reavalia custo e prazo antes de tudo</text>
+<text class="p10i" x="150" y="130" fill="#8f2229">cliente e equipe viram "lados opostos"</text>
+<text class="p10i" x="150" y="152" fill="#8f2229">tensão sobe, confiança cai</text>
+<rect x="310" y="5" width="280" height="30" rx="8" fill="#1b8a5a"/><text class="p10t" x="450" y="26">Colaboração ágil</text>
+<rect x="310" y="40" width="280" height="130" rx="8" fill="#e6f6ee" stroke="#1b8a5a" stroke-width="1.5"/>
+<text class="p10i" x="450" y="64" fill="#0f5e3f">"boa ideia, vamos ver como"</text>
+<text class="p10i" x="450" y="86" fill="#0f5e3f">transparência sobre o estado do projeto</text>
+<text class="p10i" x="450" y="108" fill="#0f5e3f">propõe uma troca de esforço parecido</text>
+<text class="p10i" x="450" y="130" fill="#0f5e3f">cliente e equipe do mesmo lado</text>
+<text class="p10i" x="450" y="152" fill="#0f5e3f">confiança cresce, mesmo com pedido novo</text>
+</svg>
+<p class="cap">Mesmo pedido do cliente (rastreamento em tempo real), duas reações completamente diferentes — é isso que os rascunhos das Partes 1 e 2 precisam mostrar.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Parte 1: escrevam a resposta no estilo "contrato rígido" (coluna vermelha do diagrama) e analisem o impacto no clima.</span></li>
+    <li><span class="num">3</span><span>Parte 2: escrevam a mesma situação no estilo "colaboração ágil" (coluna verde), incluindo uma troca concreta — não só um "sim" sem condição.</span></li>
+    <li><span class="num">4</span><span>Respondam as 4 perguntas de consolidação, comparando as duas abordagens.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -146,7 +187,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Parte 1 — Abordagem do contrato rígido</h3><p class="muted">Rascunho de e-mail/fala baseado estritamente no contrato: agradecer · informar que está fora do escopo · explicar que precisa de aditivo contratual · mencionar reavaliação de custos e prazos.</p><label class="field" for="f_164">Rascunho da resposta &quot;contrato rígido&quot;</label><textarea id="f_164"></textarea>
 <label class="field" for="f_165">Análise de impacto: sentimento do cliente, clima (parceria ou adversários), nível de estresse</label><textarea id="f_165"></textarea>
-<h3>Parte 2 — Abordagem da colaboração ágil</h3><p class="muted">Conversa baseada em "colaboração com o cliente mais que negociação de contratos": mostrar entusiasmo · ser transparente sobre o estado do projeto · propor uma troca inteligente (ex.: trocar por 'histórico de pedidos', de esforço parecido).</p><label class="field" for="f_166">Rascunho da conversa &quot;colaboração ágil&quot;</label><textarea id="f_166"></textarea>
+<h3>Parte 2 — Abordagem da colaboração ágil</h3><p class="muted">Conversa baseada em "colaboração com o cliente mais que negociação de contratos": mostrar entusiasmo · ser transparente sobre o estado do projeto · propor uma troca inteligente (ex.: trocar por 'histórico de pedidos', de esforço parecido).</p><span class="hint">A troca precisa ser concreta e de esforço parecido — não é "aceitar de graça", é combinar algo em troca (adiar outra funcionalidade, por exemplo).</span><label class="field" for="f_166">Rascunho da conversa &quot;colaboração ágil&quot;</label><textarea id="f_166"></textarea>
 <label class="field" for="f_167">Análise de impacto: sentimento do cliente, clima, nível de estresse da equipe e do cliente</label><textarea id="f_167"></textarea>
 <h3>Perguntas de consolidação</h3><label class="field" for="f_168">Qual a principal diferença de resultado entre a abordagem 1 e a 2?</label><textarea id="f_168"></textarea>
 <label class="field" for="f_169">Como valorizar a colaboração diminui a tensão de uma negociação?</label><textarea id="f_169"></textarea>

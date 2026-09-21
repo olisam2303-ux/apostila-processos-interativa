@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -137,6 +145,43 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>Definam uma equipe com 3 papéis: <strong>DEV</strong> (desenvolvedor), <strong>QA</strong> (garantia de qualidade) e <strong>PO</strong> (dono do produto). A sprint tem <strong>10 dias úteis</strong>.</p>
     <p class="muted">Passo a passo: (1) calculem a capacidade total em horas; (2) montem um Sprint backlog com até 5 histórias que caibam nessa capacidade; (3) simulem um planning poker para estimar o esforço.</p>
     <p class="muted"><strong>Histórias candidatas</strong> (estimativa inicial em horas): H1 Tela de login — 16h · H2 Cadastro de cliente — 24h · H3 Listagem de produtos — 20h · H4 Carrinho de compras — 32h · H5 Filtro por categoria — 12h · H6 Relatório de vendas — 28h · H7 Modo escuro — 8h.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 560 90" role="img" aria-label="A capacidade da sprint é um balde com espaço limitado: as histórias escolhidas precisam somar no máximo a capacidade total da equipe, sem estourar">
+<style>.p11t{font:11.5px sans-serif;fill:#17231f}</style>
+<rect x="10" y="15" width="540" height="34" rx="8" fill="none" stroke="#0e8074" stroke-width="2" stroke-dasharray="4 4"/>
+<rect x="14" y="19" width="330" height="26" rx="5" fill="#0e8074"/>
+<text class="p11t" x="179" y="37" text-anchor="middle" fill="#fff">histórias escolhidas (soma de horas)</text>
+<text class="p11t" x="450" y="37" text-anchor="middle" fill="#59736c">espaço livre</text>
+<text class="p11t" x="280" y="70" text-anchor="middle" fill="#59736c">capacidade total = horas de DEV + QA + PO na sprint</text>
+</svg>
+<p class="cap">Nunca escolham histórias cuja soma passe da capacidade total — sobra é normal, estourar não.</p>
+</div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 460 60" role="img" aria-label="Sequência de valores do planning poker: 1, 2, 3, 5, 8, 13 — os intervalos crescem porque tarefas maiores são mais difíceis de estimar com precisão">
+<style>.p11c{fill:#e8f2f0;stroke:#0e8074;stroke-width:2}.p11n{font:700 15px sans-serif;fill:#0a5e55;text-anchor:middle}</style>
+<rect class="p11c" x="10" y="5" width="60" height="44" rx="6"/><text class="p11n" x="40" y="33">1</text>
+<rect class="p11c" x="85" y="5" width="60" height="44" rx="6"/><text class="p11n" x="115" y="33">2</text>
+<rect class="p11c" x="160" y="5" width="60" height="44" rx="6"/><text class="p11n" x="190" y="33">3</text>
+<rect class="p11c" x="235" y="5" width="60" height="44" rx="6"/><text class="p11n" x="265" y="33">5</text>
+<rect class="p11c" x="310" y="5" width="60" height="44" rx="6"/><text class="p11n" x="340" y="33">8</text>
+<rect class="p11c" x="385" y="5" width="60" height="44" rx="6"/><text class="p11n" x="415" y="33">13</text>
+</svg>
+<p class="cap">Cada pessoa escolhe uma carta em segredo; se as cartas divergirem muito, discutem o porquê antes de fechar num valor.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Passo 1: somem as horas de DEV, QA e PO para achar a capacidade total.</span></li>
+    <li><span class="num">3</span><span>Passo 2: escolham até 5 histórias cuja soma caiba nessa capacidade (veja o "balde" acima) e definam um responsável para cada.</span></li>
+    <li><span class="num">4</span><span>Passo 3: escolham 1 história e simulem o planning poker — cada integrante estima, discutem as diferenças e fecham num valor.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -156,8 +201,8 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_198">Estimativa DEV</label><input type="text" id="f_198" placeholder="">
 <label class="field" for="f_199">Estimativa QA</label><input type="text" id="f_199" placeholder="">
 <label class="field" for="f_200">Estimativa PO</label><input type="text" id="f_200" placeholder="">
-<label class="field" for="f_201">Por que as estimativas divergiram? O que a discussão revelou?</label><textarea id="f_201"></textarea>
-<label class="field" for="f_202">Estimativa final combinada</label><input type="text" id="f_202" placeholder="">
+<label class="field" for="f_201">Por que as estimativas divergiram? O que a discussão revelou?</label><textarea id="f_201"></textarea><span class="hint">Divergência é normal e útil: geralmente aparece porque uma pessoa sabe de uma dificuldade que as outras não conheciam.</span>
+<label class="field" for="f_202">Estimativa final combinada</label><input type="text" id="f_202" placeholder=""><span class="hint">O valor final é um consenso da conversa, não a média das cartas — precisa ser um dos valores válidos da sequência (1, 2, 3, 5, 8, 13).</span>
   <div class="card no-print confira">
   <span class="tag">Confira antes de gerar o PDF</span>
   <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>

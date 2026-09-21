@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,37 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "Escrevendo a receita perfeita para encontrar bugs"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Hoje vocês não vão programar — vão escrever <strong>casos de teste</strong> para a funcionalidade de login do site fictício <strong>"Compra-Tudo.com"</strong>. Ferramenta: um editor de texto simples.</p>
     <p class="muted">Ingredientes de um caso de teste: ID · título/cenário · precondições · passos · dados de teste · resultado esperado (critério de aceitação).</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 420 240" role="img" aria-label="A receita de um caso de teste: ID, título, precondições, dados de teste, passos e resultado esperado, em ordem">
+<style>.p8t{font:700 12.5px sans-serif;fill:#17231f}.p8d{font:10.5px sans-serif;fill:#59736c}</style>
+<rect x="10" y="5" width="400" height="230" rx="10" fill="#fbfdfc" stroke="#d3e3e0" stroke-width="1.5"/>
+<line x1="10" y1="42" x2="410" y2="42" stroke="#d3e3e0"/>
+<line x1="10" y1="80" x2="410" y2="80" stroke="#d3e3e0"/>
+<line x1="10" y1="118" x2="410" y2="118" stroke="#d3e3e0"/>
+<line x1="10" y1="156" x2="410" y2="156" stroke="#d3e3e0"/>
+<line x1="10" y1="194" x2="410" y2="194" stroke="#d3e3e0"/>
+<text class="p8t" x="22" y="27">1. ID — CT-LOGIN-00X</text><text class="p8d" x="22" y="38">identificador único do caso</text>
+<text class="p8t" x="22" y="65">2. Título / cenário</text><text class="p8d" x="22" y="76">o que está sendo testado, em 1 frase</text>
+<text class="p8t" x="22" y="103">3. Precondições</text><text class="p8d" x="22" y="114">o que precisa já estar pronto antes de começar</text>
+<text class="p8t" x="22" y="141">4. Dados de teste</text><text class="p8d" x="22" y="152">os valores exatos usados (e-mail, senha...)</text>
+<text class="p8t" x="22" y="179">5. Passos</text><text class="p8d" x="22" y="190">ações numeradas, na ordem em que o usuário faz</text>
+<text class="p8t" x="22" y="217">6. Resultado esperado</text><text class="p8d" x="22" y="228">o que precisa acontecer para o teste passar</text>
+</svg>
+<p class="cap">Toda "receita de teste" segue essa mesma ordem — os 3 casos que vocês vão escrever precisam ter os 6 ingredientes.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Parte 2: reescrevam o CT-LOGIN-001 com uma variação sua, seguindo os 6 ingredientes do diagrama acima.</span></li>
+    <li><span class="num">3</span><span>Parte 3: criem do zero um caso novo para um erro diferente de "senha inválida".</span></li>
+    <li><span class="num">4</span><span>Respondam as 3 perguntas de consolidação.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -149,8 +188,8 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_130">Precondições</label><textarea id="f_130"></textarea>
 <label class="field" for="f_131">Dados de teste</label><textarea id="f_131"></textarea>
 <label class="field" for="f_132">Passos</label><textarea id="f_132"></textarea>
-<label class="field" for="f_133">Resultado esperado</label><textarea id="f_133"></textarea>
-<h3>Parte 3 — Caso de teste autoral (novo)</h3><p class="muted">Escrevam do zero um 3º caso de teste para um cenário de erro que NÃO seja "senha inválida" — por exemplo: e-mail não cadastrado, campos vazios, e-mail em formato inválido.</p><label class="field" for="f_134">ID</label><input type="text" id="f_134" placeholder="">
+<label class="field" for="f_133">Resultado esperado</label><textarea id="f_133"></textarea><span class="hint">Precisa ser algo que dá para checar objetivamente na tela — ex.: "aparece a mensagem 'Bem-vindo, [nome]' e o botão Sair fica visível", não "o login funciona".</span>
+<h3>Parte 3 — Caso de teste autoral (novo)</h3><p class="muted">Escrevam do zero um 3º caso de teste para um cenário de erro que NÃO seja "senha inválida" — por exemplo: e-mail não cadastrado, campos vazios, e-mail em formato inválido.</p><span class="hint">Sigam CT-LOGIN-003 como ID, para manter a sequência.</span><label class="field" for="f_134">ID</label><input type="text" id="f_134" placeholder="">
 <label class="field" for="f_135">Título</label><input type="text" id="f_135" placeholder="">
 <label class="field" for="f_136">Precondições</label><textarea id="f_136"></textarea>
 <label class="field" for="f_137">Dados de teste</label><textarea id="f_137"></textarea>

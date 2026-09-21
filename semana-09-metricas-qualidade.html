@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -139,6 +147,39 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
     <p class="muted">Dados (Módulo | Linhas | Defeitos | Testes exec. | Testes OK | Req. totais | Req. cobertos):<br>
     Login 500·8·25·23·12·12 · Cadastro 800·4·30·30·15·13 · Pagamento 1200·18·20·16·20·18 · Relatórios 2000·10·45·44·25·20 · Fórum 600·3·15·15·8·8.<br>
     Fórmulas: KPI-DF = defeitos÷linhas×1000 · taxa de sucesso = testes OK÷testes exec.×100 · cobertura = req. cobertos÷req. totais×100.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 150" role="img" aria-label="As três pistas do detetive: KPI-DF (defeitos a cada mil linhas), taxa de sucesso dos testes e cobertura de requisitos, cada uma com um exemplo de cálculo genérico">
+<style>.p9t{font:700 12.5px sans-serif;fill:#fff;text-anchor:middle}.p9f{font:11px sans-serif;fill:#17231f;text-anchor:middle}.p9e{font:10.5px sans-serif;fill:#59736c;text-anchor:middle}</style>
+<rect x="5" y="5" width="190" height="34" rx="8" fill="#0e8074"/><text class="p9t" x="100" y="27">KPI-DF</text>
+<text class="p9f" x="100" y="60">defeitos ÷ linhas × 1000</text>
+<text class="p9e" x="100" y="78">ex.: 10 defeitos em 2.000 linhas</text>
+<text class="p9e" x="100" y="93">= 10÷2000×1000 = 5</text>
+<rect x="205" y="5" width="190" height="34" rx="8" fill="#0e8074"/><text class="p9t" x="300" y="27">Taxa de sucesso</text>
+<text class="p9f" x="300" y="60">testes OK ÷ testes exec. × 100</text>
+<text class="p9e" x="300" y="78">ex.: 18 de 20 testes passaram</text>
+<text class="p9e" x="300" y="93">= 18÷20×100 = 90%</text>
+<rect x="405" y="5" width="190" height="34" rx="8" fill="#0e8074"/><text class="p9t" x="500" y="27">Cobertura</text>
+<text class="p9f" x="500" y="60">req. cobertos ÷ req. totais × 100</text>
+<text class="p9e" x="500" y="78">ex.: 9 de 10 requisitos testados</text>
+<text class="p9e" x="500" y="93">= 9÷10×100 = 90%</text>
+<text class="p9e" x="300" y="125">Nenhum indicador sozinho fecha o caso — um módulo pode ter taxa de sucesso alta</text>
+<text class="p9e" x="300" y="139">e ainda assim esconder problema, se a cobertura for baixa (poucos requisitos testados).</text>
+</svg>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Na planilha, calculem os 3 indicadores (fórmulas acima) para os 5 módulos e anexem no AVA.</span></li>
+    <li><span class="num">3</span><span>Preencham o Relatório Final: módulo com maior KPI-DF, com menor taxa de sucesso, e com maior lacuna de cobertura.</span></li>
+    <li><span class="num">4</span><span>Escrevam a recomendação final combinando os 3 indicadores — não escolham só pelo maior número de um deles.</span></li>
+    <li><span class="num">5</span><span>Respondam as 3 perguntas de consolidação.</span></li>
+    <li><span class="num">6</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -147,7 +188,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_145">Nome ou nº do grupo</label><input type="text" id="f_145" placeholder="">
 <label class="field" for="f_146">Integrantes (separe por vírgula)</label><input type="text" id="f_146" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
-<h3>Relatório Final — Módulo mais suspeito (maior KPI-DF)</h3><label class="field" for="f_147">Módulo</label><input type="text" id="f_147" placeholder="">
+<h3>Relatório Final — Módulo mais suspeito (maior KPI-DF)</h3><span class="hint">KPI-DF é "defeitos a cada mil linhas", não porcentagem — confiram se calcularam ÷1000 e não só a razão defeitos/linhas.</span><label class="field" for="f_147">Módulo</label><input type="text" id="f_147" placeholder="">
 <label class="field" for="f_148">KPI-DF calculado</label><input type="text" id="f_148" placeholder="">
 <label class="field" for="f_149">Por que ele é o mais problemático?</label><textarea id="f_149"></textarea>
 <h3>Relatório Final — Maior risco de falha (menor taxa de sucesso)</h3><label class="field" for="f_150">Módulo</label><input type="text" id="f_150" placeholder="">
@@ -156,7 +197,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Relatório Final — Maior lacuna de cobertura</h3><label class="field" for="f_153">Módulo</label><input type="text" id="f_153" placeholder="">
 <label class="field" for="f_154">Cobertura (%)</label><input type="text" id="f_154" placeholder="">
 <label class="field" for="f_155">Quantos requisitos estão descobertos?</label><input type="text" id="f_155" placeholder="">
-<h3>Recomendação do detetive</h3><p class="muted">Qual módulo deve receber atenção IMEDIATA? Justifique combinando KPI-DF, taxa de sucesso e cobertura.</p><label class="field" for="f_156">Recomendação e justificativa</label><textarea id="f_156"></textarea>
+<h3>Recomendação do detetive</h3><p class="muted">Qual módulo deve receber atenção IMEDIATA? Justifique combinando KPI-DF, taxa de sucesso e cobertura.</p><span class="hint">Um módulo pode parecer "seguro" num indicador e problemático em outro — a recomendação forte é a que junta os três, não a que olha só um número isolado.</span><label class="field" for="f_156">Recomendação e justificativa</label><textarea id="f_156"></textarea>
 <h3>Perguntas de consolidação (Aula 1)</h3><label class="field" for="f_157">Por que o KPI-DF é uma &quot;pista&quot; mais confiável do que apenas contar o total de defeitos?</label><textarea id="f_157"></textarea>
 <label class="field" for="f_158">O que um módulo com 100% de testes passando pode indicar de problemático?</label><textarea id="f_158"></textarea>
 <label class="field" for="f_159">Se tivesse que escolher só UM indicador para priorizar qual módulo investigar primeiro, qual seria e por quê?</label><textarea id="f_159"></textarea>
