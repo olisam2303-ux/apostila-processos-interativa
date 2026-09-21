@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,29 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Atividade 1 — "Daily Scrum e gestão de impedimentos"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Uma equipe usa Scrum; a sprint está em andamento. A meta é entregar uma funcionalidade importante, mas surgiram situações que podem comprometer o prazo. O grupo conduz uma Daily Scrum e decide como lidar com os bloqueios.</p>
       <p class="muted">Base: apostila, Capítulos 17 e 7.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 460 90" role="img" aria-label="As três perguntas da Daily Scrum, feitas em até 15 minutos: o que fiz desde ontem, o que farei hoje, e existe algum impedimento no meu caminho">
+<style>.p17t{font:700 12px sans-serif;fill:#fff;text-anchor:middle}.p17d{font:10px sans-serif;fill:#59736c;text-anchor:middle}</style>
+<rect x="5" y="5" width="140" height="34" rx="8" fill="#0e8074"/><text class="p17t" x="75" y="27">O que fiz ontem?</text>
+<rect x="155" y="5" width="140" height="34" rx="8" fill="#0e8074"/><text class="p17t" x="225" y="27">O que farei hoje?</text>
+<rect x="305" y="5" width="150" height="34" rx="8" fill="#8a5a1b"/><text class="p17t" x="380" y="27">Tenho impedimento?</text>
+<text class="p17d" x="230" y="60">Reunião com tempo limitado (time-box) — cerca de 15 minutos, todo dia, no mesmo horário.</text>
+<text class="p17d" x="230" y="76">Aqui só se IDENTIFICA o impedimento; resolver é depois, fora da reunião.</text>
+</svg>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Etapa 1: respondam as 3 perguntas da Daily (diagrama acima) e expliquem por que ela é rápida.</span></li>
+    <li><span class="num">3</span><span>Etapa 2: para os 3 cenários, decidam só se é impedimento real — ainda não é hora de resolver.</span></li>
+    <li><span class="num">4</span><span>Etapas 3 a 6: comunicação, priorização, monitoramento e reflexão final.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -147,7 +178,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Etapa 1 — Estrutura da Daily Scrum</h3><label class="field" for="f_357">O que foi feito desde a última reunião?</label><textarea id="f_357"></textarea>
 <label class="field" for="f_358">O que será feito hoje?</label><textarea id="f_358"></textarea>
 <label class="field" for="f_359">Por que a reunião deve ser curta (time-boxed)?</label><textarea id="f_359"></textarea>
-<h3>Etapa 2 — Identificando impedimentos</h3><p class="muted">Este é o momento de identificar, não de resolver. Preencham para cada cenário.</p><label class="field">Cenário</label><div class="sub"><strong>1</strong><label class="field" for="g_360">Cenário</label><input type="text" id="g_360"><label class="field" for="g_361">É impedimento real? (sim/não)</label><input type="text" id="g_361"><label class="field" for="g_362">Por que pode afetar a sprint</label><input type="text" id="g_362"><label class="field" for="g_363">Quem deve agir</label><input type="text" id="g_363"></div><div class="sub"><strong>2</strong><label class="field" for="g_364">Cenário</label><input type="text" id="g_364"><label class="field" for="g_365">É impedimento real? (sim/não)</label><input type="text" id="g_365"><label class="field" for="g_366">Por que pode afetar a sprint</label><input type="text" id="g_366"><label class="field" for="g_367">Quem deve agir</label><input type="text" id="g_367"></div><div class="sub"><strong>3</strong><label class="field" for="g_368">Cenário</label><input type="text" id="g_368"><label class="field" for="g_369">É impedimento real? (sim/não)</label><input type="text" id="g_369"><label class="field" for="g_370">Por que pode afetar a sprint</label><input type="text" id="g_370"><label class="field" for="g_371">Quem deve agir</label><input type="text" id="g_371"></div>
+<h3>Etapa 2 — Identificando impedimentos</h3><p class="muted">Este é o momento de identificar, não de resolver. Preencham para cada cenário.</p><span class="hint">Nesta etapa, não proponham a solução — só decidam SE é um impedimento real e QUEM deveria agir depois da reunião.</span><label class="field">Cenário</label><div class="sub"><strong>1</strong><label class="field" for="g_360">Cenário</label><input type="text" id="g_360"><label class="field" for="g_361">É impedimento real? (sim/não)</label><input type="text" id="g_361"><label class="field" for="g_362">Por que pode afetar a sprint</label><input type="text" id="g_362"><label class="field" for="g_363">Quem deve agir</label><input type="text" id="g_363"></div><div class="sub"><strong>2</strong><label class="field" for="g_364">Cenário</label><input type="text" id="g_364"><label class="field" for="g_365">É impedimento real? (sim/não)</label><input type="text" id="g_365"><label class="field" for="g_366">Por que pode afetar a sprint</label><input type="text" id="g_366"><label class="field" for="g_367">Quem deve agir</label><input type="text" id="g_367"></div><div class="sub"><strong>3</strong><label class="field" for="g_368">Cenário</label><input type="text" id="g_368"><label class="field" for="g_369">É impedimento real? (sim/não)</label><input type="text" id="g_369"><label class="field" for="g_370">Por que pode afetar a sprint</label><input type="text" id="g_370"><label class="field" for="g_371">Quem deve agir</label><input type="text" id="g_371"></div>
 <p class="muted">Cenários sugeridos: (a) um integrante não consegue acesso ao repositório; (b) uma tarefa depende de decisão do cliente; (c) dois membros trabalham na mesma funcionalidade sem saber.</p>
 <h3>Etapa 3 — Comunicação correta</h3><label class="field" for="f_372">Como uma comunicação inadequada pode gerar conflito</label><textarea id="f_372"></textarea>
 <label class="field" for="f_373">Diferença entre justificar um atraso e relatar um impedimento</label><textarea id="f_373"></textarea>
@@ -174,6 +205,31 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Atividade 2 — "Sprint Review e Sprint Retrospective"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>A equipe concluiu uma sprint de duas semanas. Meta: <em>"Implementar cadastro de usuários e sistema básico de login"</em>. Resultados: cadastro OK; login com falhas intermitentes; documentação não concluída; conflito de comunicação entre dois membros.</p>
       <p class="muted">Base: apostila, Capítulos 17 e 14. Separem <strong>produto</strong> (Review) de <strong>processo</strong> (Retrospective).</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 460 100" role="img" aria-label="Sprint Review inspeciona o produto, o que foi entregue; Sprint Retrospective inspeciona o processo, como a equipe trabalhou — ambos terminam em adaptação para a próxima sprint">
+<style>.p17t2{font:700 13px sans-serif;fill:#fff;text-anchor:middle}.p17d2{font:10.5px sans-serif;text-anchor:middle}</style>
+<rect x="10" y="5" width="210" height="32" rx="8" fill="#0e8074"/><text class="p17t2" x="115" y="27">Sprint Review</text>
+<text class="p17d2" x="115" y="55" fill="#0f5e3f">PRODUTO — o que foi entregue,</text>
+<text class="p17d2" x="115" y="70" fill="#0f5e3f">o que ajustar no backlog</text>
+<rect x="240" y="5" width="210" height="32" rx="8" fill="#8a5a1b"/><text class="p17t2" x="345" y="27">Sprint Retrospective</text>
+<text class="p17d2" x="345" y="55" fill="#8a5a1b">PROCESSO — como a equipe</text>
+<text class="p17d2" x="345" y="70" fill="#8a5a1b">trabalhou, o que muda na forma de agir</text>
+<text x="230" y="92" font-size="10" fill="#59736c" text-anchor="middle">Os dois são inspeção → adaptação: olham para trás para mudar algo daqui pra frente.</text>
+</svg>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Etapas 1 e 2: Sprint Review — foquem no que foi ENTREGUE (produto) e no feedback do cliente.</span></li>
+    <li><span class="num">3</span><span>Etapas 3 e 4: Sprint Retrospective — foquem em COMO a equipe trabalhou (processo) e proponham 3 ações concretas.</span></li>
+    <li><span class="num">4</span><span>Etapa 5: expliquem a conexão dos dois eventos com inspeção e adaptação.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-1" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc2">Escola</label><input type="text" id="f_esc2" placeholder="">
 <label class="field" for="f_aluno2">Nome do aluno</label><input type="text" id="f_aluno2" placeholder="">
@@ -182,7 +238,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_382">Nome ou nº do grupo</label><input type="text" id="f_382" placeholder="">
 <label class="field" for="f_383">Integrantes (separe por vírgula)</label><input type="text" id="f_383" placeholder="">
 <label class="field" for="f_prof2">Professor(a)</label><input type="text" id="f_prof2" placeholder="">
-<h3>Etapa 1 — Sprint Review (produto)</h3><label class="field" for="f_384">A meta foi totalmente atingida? O que foi entregue corretamente?</label><textarea id="f_384"></textarea>
+<h3>Etapa 1 — Sprint Review (produto)</h3><span class="hint">Foquem no produto: o que foi construído e entregue, não em como a equipe se sentiu trabalhando.</span><label class="field" for="f_384">A meta foi totalmente atingida? O que foi entregue corretamente?</label><textarea id="f_384"></textarea>
 <label class="field" for="f_385">O que precisa de ajustes?</label><textarea id="f_385"></textarea>
 <label class="field" for="f_386">O que priorizar no backlog para a próxima sprint?</label><textarea id="f_386"></textarea>
 <h3>Etapa 2 — Feedback do cliente</h3><p class="muted">O cliente comentou: "O cadastro funciona bem, mas o login precisa ser mais estável."</p><label class="field" for="f_387">Como esse feedback impacta o backlog e o que priorizar</label><textarea id="f_387"></textarea>
