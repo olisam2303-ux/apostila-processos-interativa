@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,35 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "Laboratório de retrospectiva e melhoria contínua"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Sprint de um app de eventos culturais com resultados mistos: o MVP (listagem de eventos) foi entregue e a UI foi bem avaliada, mas houve <strong>comunicação descentralizada</strong>, <strong>scope creep</strong> (inclusão tardia do filtro por data) e <strong>burnout</strong> de um dev.</p>
     <p class="muted">Recursos: post-its + quadro, ou quadro virtual (Miro, Mural, FigJam).</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 100" role="img" aria-label="Duas técnicas de retrospectiva: Start, Stop e Continue de um lado; Liked, Learned, Lacked e Longed for do outro">
+<style>.p14t{font:700 12px sans-serif;fill:#fff;text-anchor:middle}</style>
+<rect x="5" y="5" width="90" height="40" rx="8" fill="#1b8a5a"/><text class="p14t" x="50" y="29">START</text>
+<rect x="100" y="5" width="90" height="40" rx="8" fill="#c9333a"/><text class="p14t" x="145" y="29">STOP</text>
+<rect x="195" y="5" width="90" height="40" rx="8" fill="#0e8074"/><text class="p14t" x="240" y="29">CONTINUE</text>
+<rect x="310" y="5" width="68" height="40" rx="8" fill="#3a9c8f"/><text class="p14t" x="344" y="29">LIKED</text>
+<rect x="383" y="5" width="68" height="40" rx="8" fill="#3a9c8f"/><text class="p14t" x="417" y="29">LEARNED</text>
+<rect x="456" y="5" width="68" height="40" rx="8" fill="#8a5a1b"/><text class="p14t" x="490" y="29">LACKED</text>
+<rect x="529" y="5" width="68" height="40" rx="8" fill="#8a5a1b"/><text class="p14t" x="563" y="24">LONGED</text><text class="p14t" x="563" y="38" font-size="9">FOR</text>
+<text x="145" y="70" font-size="11" fill="#59736c" text-anchor="middle">Start/Stop/Continue: ação — o que fazer diferente</text>
+<text x="450" y="70" font-size="11" fill="#59736c" text-anchor="middle">4Ls: sentimento — como cada aspecto da sprint foi vivido</text>
+<text x="300" y="90" font-size="10.5" fill="#59736c" text-anchor="middle">"Lacked" é algo que fez falta e vocês sentiram a ausência; "Longed for" é um desejo/sonho para o futuro, mesmo sem ter existido antes.</text>
+</svg>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Parte 1: leiam a Diretiva Primária e façam o check-in de uma palavra por integrante.</span></li>
+    <li><span class="num">3</span><span>Parte 2: preencham Start/Stop/Continue e depois agrupem os itens parecidos em temas centrais (clusterização).</span></li>
+    <li><span class="num">4</span><span>Parte 3: preencham os 4Ls.</span></li>
+    <li><span class="num">5</span><span>Respondam as 2 perguntas de consolidação.</span></li>
+    <li><span class="num">6</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -148,7 +185,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h3>Parte 2 — Start / Stop / Continue</h3><label class="field" for="f_264">START — novas práticas/ferramentas/comportamentos a implementar</label><textarea id="f_264"></textarea>
 <label class="field" for="f_265">STOP — o que é improdutivo ou prejudica a qualidade de vida e deve parar</label><textarea id="f_265"></textarea>
 <label class="field" for="f_266">CONTINUE — o que funcionou e deve virar padrão</label><textarea id="f_266"></textarea>
-<label class="field" for="f_267">Temas centrais após agrupar os itens semelhantes (clusterização)</label><textarea id="f_267"></textarea>
+<label class="field" for="f_267">Temas centrais após agrupar os itens semelhantes (clusterização)</label><textarea id="f_267"></textarea><span class="hint">Clusterizar é agrupar itens que apontam para o mesmo problema (ex.: "reunião longa" + "muita interrupção" podem virar o tema "comunicação descentralizada"), não repetir a lista.</span>
 <h3>Parte 3 — 4Ls</h3><label class="field" for="f_268">LIKED — o que foi satisfatório na sprint</label><textarea id="f_268"></textarea>
 <label class="field" for="f_269">LEARNED — que conhecimentos novos foram adquiridos</label><textarea id="f_269"></textarea>
 <label class="field" for="f_270">LACKED — o que faltou e prejudicou o andamento</label><textarea id="f_270"></textarea>
