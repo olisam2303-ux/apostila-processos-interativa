@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -137,6 +145,37 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>A biblioteca da faculdade quer modernizar o <strong>sistema de reserva de salas de estudo</strong>. Vocês vão registrar perguntas e descobertas durante a elicitação.</p>
     <p class="muted">Trabalhem em duplas; depois juntem-se em quartetos para as entrevistas.</p>
     <p class="muted"><strong>MoSCoW</strong> = forma de priorizar: <em>Must</em> (essencial), <em>Should</em> (importante), <em>Could</em> (desejável), <em>Won't have (for now)</em> — não agora (não é "nunca").</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 560 210" role="img" aria-label="Diagrama da priorização MoSCoW: quatro barras decrescentes — Must (essencial), Should (importante), Could (desejável) e Won't have for now (não agora)">
+<style>.mtxt{font:700 14px sans-serif;fill:#17231f}.mdesc{font:12px sans-serif;fill:#59736c}</style>
+<rect x="10" y="10" width="540" height="34" rx="8" fill="#0e8074"/>
+<text class="mtxt" x="22" y="32" fill="#fff">MUST</text>
+<text class="mdesc" x="110" y="32" fill="#e6f6ee">essencial — sem isso, o sistema não funciona</text>
+<rect x="10" y="56" width="410" height="34" rx="8" fill="#3a9c8f"/>
+<text class="mtxt" x="22" y="78" fill="#fff">SHOULD</text>
+<text class="mdesc" x="130" y="78" fill="#e6f6ee">importante — dói não ter, mas dá pra lançar sem</text>
+<rect x="10" y="102" width="280" height="34" rx="8" fill="#8fc9be"/>
+<text class="mtxt" x="22" y="124">COULD</text>
+<text class="mdesc" x="115" y="124" fill="#17231f">desejável — bom ter, se sobrar tempo</text>
+<rect x="10" y="148" width="170" height="34" rx="8" fill="none" stroke="#8a5a1b" stroke-width="2" stroke-dasharray="5 4"/>
+<text class="mtxt" x="22" y="170" fill="#8a5a1b">WON'T (por ora)</text>
+<text class="mdesc" x="10" y="200" fill="#8a5a1b">não é "nunca" — só fica de fora desta rodada</text>
+</svg>
+<p class="cap">Cada requisito da Etapa 3 recebe uma dessas 4 categorias — a largura da barra representa a prioridade, não o esforço.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Formem duplas e preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Etapa 1, em dupla: escrevam as perguntas estruturadas, semiestruturadas e o questionário.</span></li>
+    <li><span class="num">3</span><span>Juntem-se em quarteto e entrevistem a outra dupla usando essas perguntas; registrem o que descobriram.</span></li>
+    <li><span class="num">4</span><span>Etapa 3: escolham 3 requisitos que apareceram e classifiquem cada um com MoSCoW (veja o diagrama acima).</span></li>
+    <li><span class="num">5</span><span>Escrevam a síntese e confiram o checklist antes de gerar o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -145,7 +184,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_28">Nome ou nº do grupo</label><input type="text" id="f_28" placeholder="">
 <label class="field" for="f_29">Integrantes (separe por vírgula)</label><input type="text" id="f_29" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
-<h3>Etapa 1 — Perguntas (em dupla)</h3><label class="field" for="f_30">Pergunta estruturada (fechada) 1</label><input type="text" id="f_30" placeholder="">
+<h3>Etapa 1 — Perguntas (em dupla)</h3><span class="hint">Estruturada = tem opções fixas ou resposta sim/não (ex.: "quantas horas a sala fica ocupada por dia?"). Semiestruturada = abre espaço pra aprofundar (ex.: "conte como costuma ser reservar uma sala hoje").</span><label class="field" for="f_30">Pergunta estruturada (fechada) 1</label><input type="text" id="f_30" placeholder="">
 <label class="field" for="f_31">Pergunta estruturada (fechada) 2</label><input type="text" id="f_31" placeholder="">
 <label class="field" for="f_32">Pergunta estruturada (fechada) 3</label><input type="text" id="f_32" placeholder="">
 <label class="field" for="f_33">Pergunta semiestruturada 1</label><input type="text" id="f_33" placeholder="">
@@ -153,7 +192,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_35">Pergunta semiestruturada 3</label><input type="text" id="f_35" placeholder="">
 <label class="field" for="f_36">5 questões para um questionário (mistura de tipos)</label><textarea id="f_36"></textarea>
 <h3>Etapa 2 — Entrevista (em quarteto)</h3><p class="muted">Entrevistem a outra dupla e registrem as principais descobertas.</p><label class="field" for="f_37">Principais descobertas da entrevista</label><textarea id="f_37"></textarea>
-<h3>Etapa 3 — Requisitos identificados</h3><p class="muted">Identifiquem 3 requisitos; pelo menos 1 deve ser "não óbvio" (não apareceria numa pergunta superficial). Classifiquem cada um com MoSCoW.</p><label class="field">Requisito</label><div class="sub"><strong>1</strong><label class="field" for="g_38">Descrição do requisito</label><input type="text" id="g_38"><label class="field" for="g_39">É &quot;não óbvio&quot;? (sim/não)</label><input type="text" id="g_39"><label class="field" for="g_40">Classificação MoSCoW (Must/Should/Could/Won't)</label><input type="text" id="g_40"></div><div class="sub"><strong>2</strong><label class="field" for="g_41">Descrição do requisito</label><input type="text" id="g_41"><label class="field" for="g_42">É &quot;não óbvio&quot;? (sim/não)</label><input type="text" id="g_42"><label class="field" for="g_43">Classificação MoSCoW (Must/Should/Could/Won't)</label><input type="text" id="g_43"></div><div class="sub"><strong>3</strong><label class="field" for="g_44">Descrição do requisito</label><input type="text" id="g_44"><label class="field" for="g_45">É &quot;não óbvio&quot;? (sim/não)</label><input type="text" id="g_45"><label class="field" for="g_46">Classificação MoSCoW (Must/Should/Could/Won't)</label><input type="text" id="g_46"></div>
+<h3>Etapa 3 — Requisitos identificados</h3><p class="muted">Identifiquem 3 requisitos; pelo menos 1 deve ser "não óbvio" (não apareceria numa pergunta superficial). Classifiquem cada um com MoSCoW.</p><span class="hint">"Não óbvio" é aquele que só apareceu na entrevista/observação, não na primeira pergunta fechada — geralmente vem de um "ah, mas também..." do entrevistado.</span><label class="field">Requisito</label><div class="sub"><strong>1</strong><label class="field" for="g_38">Descrição do requisito</label><input type="text" id="g_38"><label class="field" for="g_39">É &quot;não óbvio&quot;? (sim/não)</label><input type="text" id="g_39"><label class="field" for="g_40">Classificação MoSCoW (Must/Should/Could/Won't)</label><input type="text" id="g_40"></div><div class="sub"><strong>2</strong><label class="field" for="g_41">Descrição do requisito</label><input type="text" id="g_41"><label class="field" for="g_42">É &quot;não óbvio&quot;? (sim/não)</label><input type="text" id="g_42"><label class="field" for="g_43">Classificação MoSCoW (Must/Should/Could/Won't)</label><input type="text" id="g_43"></div><div class="sub"><strong>3</strong><label class="field" for="g_44">Descrição do requisito</label><input type="text" id="g_44"><label class="field" for="g_45">É &quot;não óbvio&quot;? (sim/não)</label><input type="text" id="g_45"><label class="field" for="g_46">Classificação MoSCoW (Must/Should/Could/Won't)</label><input type="text" id="g_46"></div>
 <h3>Síntese</h3><label class="field" for="f_47">Em 3 a 5 frases: o que a elicitação revelou que a equipe não sabia no início?</label><textarea id="f_47"></textarea>
   <div class="card no-print confira">
   <span class="tag">Confira antes de gerar o PDF</span>

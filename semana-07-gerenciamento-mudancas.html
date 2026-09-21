@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -135,6 +143,32 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 
 <h2 class="no-print">Registro da Aula — "Guardiões do livro de receitas da vovó"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>O grupo vai organizar o livro de receitas da família criando um <strong>Registro de Controle de Mudanças</strong> (uma planilha simples). Depois, registram duas solicitações que acabaram de chegar.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 110" role="img" aria-label="Etapas do Processo de Controle de Mudanças: solicitação, avaliação de impacto, aprovação, implementação e rastreamento">
+<defs><marker id="p7a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#0e8074"/></marker></defs>
+<style>.p7b{fill:#e8f2f0;stroke:#0e8074;stroke-width:2}.p7t{font:700 12px sans-serif;fill:#17231f;text-anchor:middle}.p7l{stroke:#0e8074;stroke-width:2.5;fill:none;marker-end:url(#p7a)}</style>
+<rect class="p7b" x="5" y="20" width="104" height="50" rx="9"/><text class="p7t" x="57" y="49">Solicitação</text>
+<rect class="p7b" x="129" y="20" width="104" height="50" rx="9"/><text class="p7t" x="181" y="42">Avaliação</text><text class="p7t" x="181" y="56" font-size="10">de impacto</text>
+<rect class="p7b" x="253" y="20" width="104" height="50" rx="9"/><text class="p7t" x="305" y="49">Aprovação</text>
+<rect class="p7b" x="377" y="20" width="104" height="50" rx="9"/><text class="p7t" x="429" y="49">Implementação</text>
+<rect class="p7b" x="501" y="20" width="94" height="50" rx="9"/><text class="p7t" x="548" y="49">Rastreamento</text>
+<path class="p7l" d="M109,45 L127,45"/><path class="p7l" d="M233,45 L251,45"/><path class="p7l" d="M357,45 L375,45"/><path class="p7l" d="M481,45 L499,45"/>
+</svg>
+<p class="cap">Essas 5 etapas viram colunas na planilha do grupo. As duas solicitações desta atividade ainda estão só na 1ª/2ª etapa — por isso o status delas deve ser "Pendente" ou "Em avaliação", nunca "Aprovada".</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Desenhem a estrutura da planilha com pelo menos 6 colunas, usando as 5 etapas do diagrama acima como base.</span></li>
+    <li><span class="num">3</span><span>Registrem a solicitação do Tio Carlos: tipo, urgência, impacto na receita e status atual.</span></li>
+    <li><span class="num">4</span><span>Registrem a solicitação da Prima Joana, do mesmo jeito.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -144,7 +178,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_112">Integrantes (separe por vírgula)</label><input type="text" id="f_112" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Estrutura da planilha</h3><p class="muted">Descrevam a estrutura da planilha: pelo menos 6 colunas pensando nas etapas do PCM (solicitação, avaliação, aprovação, implementação, rastreamento...).</p><label class="field" for="f_113">Liste as colunas da planilha e o que cada uma registra</label><textarea id="f_113"></textarea>
-<h3>Solicitação 1 — Tio Carlos</h3><p class="muted">"O bolo de chocolate é ótimo, mas sou diabético. Seria possível criar uma versão sem açúcar, com adoçante culinário? A urgência é alta, meu aniversário é no mês que vem."</p><label class="field" for="f_114">Tipo de mudança</label><input type="text" id="f_114" placeholder="">
+<h3>Solicitação 1 — Tio Carlos</h3><p class="muted">"O bolo de chocolate é ótimo, mas sou diabético. Seria possível criar uma versão sem açúcar, com adoçante culinário? A urgência é alta, meu aniversário é no mês que vem."</p><span class="hint">Tipo de mudança: pense em categorias como "corretiva" (conserta algo), "evolutiva" (melhora algo que já existe) ou "nova funcionalidade". Aqui, é uma adaptação de uma receita já existente.</span><label class="field" for="f_114">Tipo de mudança</label><input type="text" id="f_114" placeholder="">
 <label class="field" for="f_115">Urgência</label><input type="text" id="f_115" placeholder="">
 <label class="field" for="f_116">Avaliação de impacto (o que muda na receita/no processo)</label><textarea id="f_116"></textarea>
 <label class="field" for="f_117">Status atual (ex.: Pendente, Em avaliação...)</label><input type="text" id="f_117" placeholder="">

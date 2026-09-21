@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,42 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "Responder um e-mail sobre requisitos"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>E-mail da PM: <em>"Pessoal, precisamos de um relatório de vendas bonito e rápido para a diretoria o quanto antes. Ele deve mostrar os dados por mês e permitir exportar."</em></p>
     <p class="muted">Redijam uma resposta aplicando <strong>SMART</strong> (específico, mensurável, atingível, relevante, temporal) e proponham os requisitos reescritos com critérios de aceite.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 200" role="img" aria-label="Os cinco critérios SMART e um exemplo transformando o requisito vago relatório bonito e rápido em um requisito SMART">
+<style>.p6t{font:700 15px sans-serif;fill:#fff;text-anchor:middle}.p6d{font:10.5px sans-serif;fill:#59736c;text-anchor:middle}.p6ex{font:11.5px sans-serif}</style>
+<rect x="5" y="5" width="108" height="34" rx="8" fill="#0e8074"/><text class="p6t" x="59" y="28">S</text>
+<rect x="121" y="5" width="108" height="34" rx="8" fill="#0e8074"/><text class="p6t" x="175" y="28">M</text>
+<rect x="237" y="5" width="108" height="34" rx="8" fill="#0e8074"/><text class="p6t" x="291" y="28">A</text>
+<rect x="353" y="5" width="108" height="34" rx="8" fill="#0e8074"/><text class="p6t" x="407" y="28">R</text>
+<rect x="469" y="5" width="126" height="34" rx="8" fill="#0e8074"/><text class="p6t" x="532" y="28">T</text>
+<text class="p6d" x="59" y="52">específico</text><text class="p6d" x="175" y="52">mensurável</text><text class="p6d" x="291" y="52">atingível</text><text class="p6d" x="407" y="52">relevante</text><text class="p6d" x="532" y="52">temporal</text>
+<rect x="10" y="72" width="270" height="60" rx="8" fill="#fdecec" stroke="#c9333a" stroke-width="1.5"/>
+<text class="p6ex" x="145" y="96" text-anchor="middle" fill="#8f2229" font-weight="700">Vago</text>
+<text class="p6ex" x="145" y="116" text-anchor="middle" fill="#8f2229">"relatório bonito e rápido"</text>
+<rect x="320" y="72" width="270" height="60" rx="8" fill="#e6f6ee" stroke="#1b8a5a" stroke-width="1.5"/>
+<text class="p6ex" x="455" y="90" text-anchor="middle" fill="#0f5e3f" font-weight="700">SMART</text>
+<text class="p6ex" x="455" y="106" text-anchor="middle" fill="#0f5e3f">"relatório de vendas por mês,</text>
+<text class="p6ex" x="455" y="121" text-anchor="middle" fill="#0f5e3f">carrega em até 3s, exportável até dia 30"</text>
+<path d="M282,102 L316,102" stroke="#0e8074" stroke-width="2.5" fill="none" marker-end="url(#p6a)"/>
+<defs><marker id="p6a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#0e8074"/></marker></defs>
+<text class="p6d" x="300" y="150">Nem todo requisito precisa citar as 5 letras — o importante é ficar testável e ter prazo.</text>
+</svg>
+<p class="cap">Cada requisito reescrito no Bloco 3 deve virar algo parecido com a caixa verde: com números, prazo e forma de verificar.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Bloco 1: resumam, em 2-3 frases, o que vocês entenderam do pedido da PM (mostra que ouviram antes de questionar).</span></li>
+    <li><span class="num">3</span><span>Bloco 2: façam perguntas que faltam para tornar o pedido específico e mensurável (o que é "bonito"? em quanto tempo é "rápido"?).</span></li>
+    <li><span class="num">4</span><span>Bloco 3: reescrevam pelo menos 2 requisitos no formato SMART, cada um com um critério de aceite que dá pra testar.</span></li>
+    <li><span class="num">5</span><span>Bloco 4: apontem riscos (ex.: prazo apertado) e o que fariam a seguir.</span></li>
+    <li><span class="num">6</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -145,8 +189,8 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_102">Integrantes (separe por vírgula)</label><input type="text" id="f_102" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
 <h3>Bloco 1 — Agradecimento e síntese do entendido</h3><label class="field" for="f_103">Texto do bloco 1</label><textarea id="f_103"></textarea>
-<h3>Bloco 2 — Perguntas de esclarecimento (SMART)</h3><label class="field" for="f_104">Perguntas de esclarecimento</label><textarea id="f_104"></textarea>
-<h3>Bloco 3 — Requisitos reescritos (SMART) + critérios de aceite</h3><label class="field" for="f_105">Requisito 1 reescrito + critério de aceite</label><textarea id="f_105"></textarea>
+<h3>Bloco 2 — Perguntas de esclarecimento (SMART)</h3><span class="hint">Mirem nas palavras vagas do e-mail: "bonito" (o que define isso?), "rápido" (em quantos segundos?), "por mês" (desde quando? quantos meses de histórico?).</span><label class="field" for="f_104">Perguntas de esclarecimento</label><textarea id="f_104"></textarea>
+<h3>Bloco 3 — Requisitos reescritos (SMART) + critérios de aceite</h3><span class="hint">Usem o exemplo do diagrama acima como molde: um número, um prazo e uma forma clara de verificar se foi atendido.</span><label class="field" for="f_105">Requisito 1 reescrito + critério de aceite</label><textarea id="f_105"></textarea>
 <label class="field" for="f_106">Requisito 2 reescrito + critério de aceite</label><textarea id="f_106"></textarea>
 <h3>Bloco 4 — Riscos, dependências e próximos passos</h3><label class="field" for="f_107">Texto do bloco 4</label><textarea id="f_107"></textarea>
 <h3>Anexo (opcional) — Antes × Depois</h3><label class="field" for="f_108">Requisito original → requisito SMART</label><textarea id="f_108"></textarea>

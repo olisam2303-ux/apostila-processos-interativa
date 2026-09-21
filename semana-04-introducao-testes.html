@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,29 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "Arquiteto de testes do app de mensagens"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Vocês são a nova equipe de QA de um aplicativo de mensagens. A nova funcionalidade é <strong>"Mensagem que desaparece após 24 horas"</strong>.</p>
     <p class="muted">Parte 1 — Mapeamento: descrevam um teste para cada tipo. Parte 2 — Priorização: distribuam 10 testes entre os tipos.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 420 220" role="img" aria-label="Pirâmide de testes: base larga de testes unitários, depois integração, depois E2E, e o topo estreito com testes manuais — a base deve ter mais testes que o topo">
+<style>.p4t{font:700 13px sans-serif;fill:#fff;text-anchor:middle}.p4d{font:11px sans-serif;fill:#e6f6ee;text-anchor:middle}</style>
+<polygon points="150,10 270,10 300,55 120,55" fill="#8fc9be"/><text class="p4t" x="210" y="35" fill="#17231f">Manual</text><text class="p4d" x="210" y="49" fill="#3a5a52">poucos, mais lentos e caros</text>
+<polygon points="120,58 300,58 330,103 90,103" fill="#3a9c8f"/><text class="p4t" x="210" y="83">E2E (sistema)</text><text class="p4d" x="210" y="97">testa o fluxo inteiro</text>
+<polygon points="90,106 330,106 360,151 60,151" fill="#0e8074"/><text class="p4t" x="210" y="131">Integração</text><text class="p4d" x="210" y="145">testa peças conversando entre si</text>
+<polygon points="60,154 360,154 390,199 30,199" fill="#0a5e55"/><text class="p4t" x="210" y="179">Unitário</text><text class="p4d" x="210" y="193">muitos, rápidos e baratos — a base</text>
+</svg>
+<p class="cap">Quanto mais embaixo na pirâmide, mais rápido e barato é o teste — por isso a maioria dos 10 testes da Parte 2 deve ficar na base (unitário), e só alguns poucos no topo (manual).</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Parte 1: descrevam um teste real (não genérico) para cada um dos 4 níveis, pensando na função "mensagem que desaparece após 24h".</span></li>
+    <li><span class="num">3</span><span>Parte 2: distribuam 10 testes entre os 4 níveis, usando a pirâmide acima como guia — a soma precisa dar exatamente 10.</span></li>
+    <li><span class="num">4</span><span>Justifiquem por que colocaram mais peso em algum nível.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -144,11 +175,11 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_65">Nome ou nº do grupo</label><input type="text" id="f_65" placeholder="">
 <label class="field" for="f_66">Integrantes (separe por vírgula)</label><input type="text" id="f_66" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
-<h3>Parte 1 — Mapeamento</h3><p class="muted">Um teste para cada tipo (o exemplo de Unitário já vem preenchido no roteiro).</p><label class="field" for="f_67">Unitário — descreva um teste</label><textarea id="f_67"></textarea>
+<h3>Parte 1 — Mapeamento</h3><p class="muted">Um teste para cada tipo (o exemplo de Unitário já vem preenchido no roteiro).</p><span class="hint">Unitário = testa 1 função isolada (ex.: "a função de contagem regressiva calcula 24h certo?"). Integração = testa 2+ peças juntas (ex.: "o app apaga a mensagem no banco de dados quando o timer chega a zero?"). E2E = simula o usuário do início ao fim (ex.: "envio a mensagem e, 24h depois, ela some da tela"). Manual = uma pessoa testando na mão, sem script.</span><label class="field" for="f_67">Unitário — descreva um teste</label><textarea id="f_67"></textarea>
 <label class="field" for="f_68">Integração — descreva um teste</label><textarea id="f_68"></textarea>
 <label class="field" for="f_69">E2E (sistema) — descreva um teste</label><textarea id="f_69"></textarea>
 <label class="field" for="f_70">Manual (aceitação) — descreva um teste</label><textarea id="f_70"></textarea>
-<h3>Parte 2 — Priorização</h3><p class="muted">Distribuam 10 testes entre os quatro tipos (a soma deve dar 10) e justifiquem.</p><label class="field" for="f_71">Unitário — quantos testes</label><input type="text" id="f_71" placeholder="">
+<h3>Parte 2 — Priorização</h3><p class="muted">Distribuam 10 testes entre os quatro tipos (a soma deve dar 10) e justifiquem.</p><span class="hint">Sigam a forma da pirâmide: o número de testes unitários deve ser o maior, e o de testes manuais o menor.</span><label class="field" for="f_71">Unitário — quantos testes</label><input type="text" id="f_71" placeholder="">
 <label class="field" for="f_72">Integração — quantos testes</label><input type="text" id="f_72" placeholder="">
 <label class="field" for="f_73">E2E (sistema) — quantos testes</label><input type="text" id="f_73" placeholder="">
 <label class="field" for="f_74">Manual (aceitação) — quantos testes</label><input type="text" id="f_74" placeholder="">

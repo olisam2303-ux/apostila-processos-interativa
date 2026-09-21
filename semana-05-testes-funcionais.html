@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -137,6 +145,33 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <div class="card no-print"><span class="tag">Contexto</span><p>Apliquem <strong>particionamento de equivalência</strong> e <strong>análise de valor-limite</strong> para testar um app de quiz educacional.</p>
     <p class="muted">Requisitos: 5 a 50 perguntas por sessão · tempo-limite por pergunta 10 a 60 s · pontuação 1 a 10 · idade mínima para cadastro 13 · criar quizzes com 5 a 20 perguntas.</p>
     <p class="muted">Exemplo (TC-001): objetivo = criar quiz com nº mínimo de perguntas · técnica = valor-limite · entrada = nº de perguntas = 5 · resultado = sistema aceita a criação.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 130" role="img" aria-label="Reta numérica do número de perguntas por quiz: de 0 a 4 é partição inválida, de 5 a 50 é partição válida, e de 51 em diante é inválida de novo — os valores-limite são 4, 5, 50 e 51">
+<style>.p5t{font:700 12px sans-serif;fill:#17231f;text-anchor:middle}.p5n{font:11px sans-serif;fill:#59736c;text-anchor:middle}</style>
+<rect x="10" y="45" width="90" height="26" fill="#fdecec" stroke="#c9333a" stroke-width="1.5"/><text class="p5t" x="55" y="62" fill="#8f2229">inválida</text>
+<rect x="100" y="45" width="400" height="26" fill="#e6f6ee" stroke="#1b8a5a" stroke-width="1.5"/><text class="p5t" x="300" y="62" fill="#0f5e3f">válida (5 a 50 perguntas)</text>
+<rect x="500" y="45" width="90" height="26" fill="#fdecec" stroke="#c9333a" stroke-width="1.5"/><text class="p5t" x="545" y="62" fill="#8f2229">inválida</text>
+<circle cx="90" cy="20" r="4" fill="#8a5a1b"/><text class="p5n" x="90" y="12">4</text>
+<circle cx="100" cy="20" r="4" fill="#0e8074"/><text class="p5n" x="100" y="12">5</text>
+<circle cx="500" cy="20" r="4" fill="#0e8074"/><text class="p5n" x="500" y="12">50</text>
+<circle cx="510" cy="20" r="4" fill="#8a5a1b"/><text class="p5n" x="510" y="12">51</text>
+<text class="p5n" x="300" y="100">Partição = a "faixa" (dentro ou fora da regra). Valor-limite = os pontos exatos na borda entre elas.</text>
+</svg>
+<p class="cap">Exemplo com a variável "número de perguntas por quiz" (regra: 5 a 50). Repitam esse raciocínio para as outras variáveis do enunciado.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Passo 1: para cada variável do enunciado (perguntas, tempo, pontuação, idade), separem o que é válido do que é inválido — igual ao diagrama acima.</span></li>
+    <li><span class="num">3</span><span>Passo 2: achem os valores exatamente na fronteira de cada partição (o mínimo, o mínimo-1, o máximo, o máximo+1).</span></li>
+    <li><span class="num">4</span><span>Passo 3: montem 3 casos de teste completos, misturando as duas técnicas — usem o TC-001 do enunciado como modelo.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -145,11 +180,11 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_78">Nome ou nº do grupo</label><input type="text" id="f_78" placeholder="">
 <label class="field" for="f_79">Integrantes (separe por vírgula)</label><input type="text" id="f_79" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
-<h3>Passo 1 — Variáveis e partições</h3><p class="muted">Para cada variável de entrada, indiquem as partições válidas e inválidas.</p><label class="field" for="f_80">Variável 1 — partições válidas / inválidas</label><textarea id="f_80"></textarea>
+<h3>Passo 1 — Variáveis e partições</h3><p class="muted">Para cada variável de entrada, indiquem as partições válidas e inválidas.</p><span class="hint">Ex.: idade mínima 13 → partição inválida é "menor que 13", partição válida é "13 ou mais". Repitam para as outras variáveis do enunciado.</span><label class="field" for="f_80">Variável 1 — partições válidas / inválidas</label><textarea id="f_80"></textarea>
 <label class="field" for="f_81">Variável 2 — partições válidas / inválidas</label><textarea id="f_81"></textarea>
 <label class="field" for="f_82">Variável 3 — partições válidas / inválidas</label><textarea id="f_82"></textarea>
-<h3>Passo 2 — Valores-limite</h3><p class="muted">Determinem os valores-limite de cada variável.</p><label class="field" for="f_83">Valores-limite por variável</label><textarea id="f_83"></textarea>
-<h3>Passo 3 — Casos de teste</h3><p class="muted">Criem pelo menos 3 casos de teste usando as técnicas.</p><label class="field">Caso de teste</label><div class="sub"><strong>1</strong><label class="field" for="g_84">ID</label><input type="text" id="g_84"><label class="field" for="g_85">Objetivo</label><input type="text" id="g_85"><label class="field" for="g_86">Técnica (partição / valor-limite)</label><input type="text" id="g_86"><label class="field" for="g_87">Entrada</label><input type="text" id="g_87"><label class="field" for="g_88">Resultado esperado</label><input type="text" id="g_88"></div><div class="sub"><strong>2</strong><label class="field" for="g_89">ID</label><input type="text" id="g_89"><label class="field" for="g_90">Objetivo</label><input type="text" id="g_90"><label class="field" for="g_91">Técnica (partição / valor-limite)</label><input type="text" id="g_91"><label class="field" for="g_92">Entrada</label><input type="text" id="g_92"><label class="field" for="g_93">Resultado esperado</label><input type="text" id="g_93"></div><div class="sub"><strong>3</strong><label class="field" for="g_94">ID</label><input type="text" id="g_94"><label class="field" for="g_95">Objetivo</label><input type="text" id="g_95"><label class="field" for="g_96">Técnica (partição / valor-limite)</label><input type="text" id="g_96"><label class="field" for="g_97">Entrada</label><input type="text" id="g_97"><label class="field" for="g_98">Resultado esperado</label><input type="text" id="g_98"></div>
+<h3>Passo 2 — Valores-limite</h3><p class="muted">Determinem os valores-limite de cada variável.</p><span class="hint">São sempre 2 pares por variável: o valor logo abaixo do limite e o próprio limite (ex.: 12 e 13), e o próprio limite superior e o valor logo acima (ex.: 50 e 51).</span><label class="field" for="f_83">Valores-limite por variável</label><textarea id="f_83"></textarea>
+<h3>Passo 3 — Casos de teste</h3><p class="muted">Criem pelo menos 3 casos de teste usando as técnicas.</p><span class="hint">Técnica "partição" testa um valor bem no meio de uma faixa (válida ou inválida); técnica "valor-limite" testa exatamente na borda. Um bom conjunto de 3 casos mistura as duas.</span><label class="field">Caso de teste</label><div class="sub"><strong>1</strong><label class="field" for="g_84">ID</label><input type="text" id="g_84"><label class="field" for="g_85">Objetivo</label><input type="text" id="g_85"><label class="field" for="g_86">Técnica (partição / valor-limite)</label><input type="text" id="g_86"><label class="field" for="g_87">Entrada</label><input type="text" id="g_87"><label class="field" for="g_88">Resultado esperado</label><input type="text" id="g_88"></div><div class="sub"><strong>2</strong><label class="field" for="g_89">ID</label><input type="text" id="g_89"><label class="field" for="g_90">Objetivo</label><input type="text" id="g_90"><label class="field" for="g_91">Técnica (partição / valor-limite)</label><input type="text" id="g_91"><label class="field" for="g_92">Entrada</label><input type="text" id="g_92"><label class="field" for="g_93">Resultado esperado</label><input type="text" id="g_93"></div><div class="sub"><strong>3</strong><label class="field" for="g_94">ID</label><input type="text" id="g_94"><label class="field" for="g_95">Objetivo</label><input type="text" id="g_95"><label class="field" for="g_96">Técnica (partição / valor-limite)</label><input type="text" id="g_96"><label class="field" for="g_97">Entrada</label><input type="text" id="g_97"><label class="field" for="g_98">Resultado esperado</label><input type="text" id="g_98"></div>
   <div class="card no-print confira">
   <span class="tag">Confira antes de gerar o PDF</span>
   <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>

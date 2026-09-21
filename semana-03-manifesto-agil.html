@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,31 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "Clínica dos princípios"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Uma startup caótica relata: <em>"Nossas entregas atrasam, às vezes só a cada 6 meses. A equipe faz hora extra todos os dias. O cliente reclama porque não é ouvido. O código está desorganizado, mas nunca sobra tempo para arrumar."</em></p>
     <p class="muted">Diagnostiquem e "tratem" a startup com base nos 12 princípios do Manifesto Ágil.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 130" role="img" aria-label="Fluxo da consulta clínica: sintoma no relato leva ao diagnóstico (princípio violado), que causa uma consequência, que é tratada por uma ação de melhoria">
+<defs><marker id="p3a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#0e8074"/></marker></defs>
+<style>.p3b{fill:#e8f2f0;stroke:#0e8074;stroke-width:2}.p3t{font:700 13px sans-serif;fill:#17231f;text-anchor:middle}.p3d{font:11px sans-serif;fill:#59736c;text-anchor:middle}.p3l{stroke:#0e8074;stroke-width:2.5;fill:none;marker-end:url(#p3a)}</style>
+<rect class="p3b" x="10" y="20" width="128" height="60" rx="10"/><text class="p3t" x="74" y="46">Sintoma</text><text class="p3d" x="74" y="64">trecho do relato</text>
+<rect class="p3b" x="163" y="20" width="128" height="60" rx="10"/><text class="p3t" x="227" y="46">Diagnóstico</text><text class="p3d" x="227" y="64">princípio violado</text>
+<rect class="p3b" x="316" y="20" width="128" height="60" rx="10"/><text class="p3t" x="380" y="46">Consequência</text><text class="p3d" x="380" y="64">o que isso causa</text>
+<rect class="p3b" x="469" y="20" width="128" height="60" rx="10"/><text class="p3t" x="533" y="46">Tratamento</text><text class="p3d" x="533" y="64">ação de melhoria</text>
+<path class="p3l" d="M138,50 L161,50"/><path class="p3l" d="M291,50 L314,50"/><path class="p3l" d="M444,50 L467,50"/>
+</svg>
+<p class="cap">Cada princípio violado que vocês escolherem passa pelas quatro caixas: um sintoma real no relato, o princípio que ele quebra, a consequência disso e uma ação para corrigir.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Releiam o relato da startup e sublinhem (mentalmente) as frases que soam como problema.</span></li>
+    <li><span class="num">2</span><span>Para cada frase escolhida, achem o princípio do Manifesto Ágil que ela contraria — anotem o número e a ideia do princípio.</span></li>
+    <li><span class="num">3</span><span>Expliquem a consequência de cada violação, tanto no processo interno quanto na relação com o cliente.</span></li>
+    <li><span class="num">4</span><span>Proponham uma ação de melhoria para cada princípio escolhido — a ação precisa resolver aquele princípio específico, não ser um conselho genérico.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -144,10 +177,10 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_50">Nome ou nº do grupo</label><input type="text" id="f_50" placeholder="">
 <label class="field" for="f_51">Integrantes (separe por vírgula)</label><input type="text" id="f_51" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
-<h3>Princípios violados</h3><p class="muted">Identifiquem três princípios do Manifesto Ágil que foram violados.</p><label class="field">Princípio</label><div class="sub"><strong>1</strong><label class="field" for="g_52">Qual princípio (nº e ideia)</label><input type="text" id="g_52"><label class="field" for="g_53">Trecho do relato que mostra a violação</label><input type="text" id="g_53"></div><div class="sub"><strong>2</strong><label class="field" for="g_54">Qual princípio (nº e ideia)</label><input type="text" id="g_54"><label class="field" for="g_55">Trecho do relato que mostra a violação</label><input type="text" id="g_55"></div><div class="sub"><strong>3</strong><label class="field" for="g_56">Qual princípio (nº e ideia)</label><input type="text" id="g_56"><label class="field" for="g_57">Trecho do relato que mostra a violação</label><input type="text" id="g_57"></div>
+<h3>Princípios violados</h3><p class="muted">Identifiquem três princípios do Manifesto Ágil que foram violados.</p><span class="hint">Escolham um princípio bem específico (ex.: "entregar software funcionando frequentemente") e liguem a uma frase exata do relato — evitem princípios genéricos que "sempre" seriam violados por qualquer equipe.</span><label class="field">Princípio</label><div class="sub"><strong>1</strong><label class="field" for="g_52">Qual princípio (nº e ideia)</label><input type="text" id="g_52"><label class="field" for="g_53">Trecho do relato que mostra a violação</label><input type="text" id="g_53"></div><div class="sub"><strong>2</strong><label class="field" for="g_54">Qual princípio (nº e ideia)</label><input type="text" id="g_54"><label class="field" for="g_55">Trecho do relato que mostra a violação</label><input type="text" id="g_55"></div><div class="sub"><strong>3</strong><label class="field" for="g_56">Qual princípio (nº e ideia)</label><input type="text" id="g_56"><label class="field" for="g_57">Trecho do relato que mostra a violação</label><input type="text" id="g_57"></div>
 <h3>Consequências</h3><p class="muted">Expliquem as consequências dessas violações no processo e na relação com o cliente.</p><label class="field" for="f_58">Consequências no processo</label><textarea id="f_58"></textarea>
 <label class="field" for="f_59">Consequências na relação com o cliente</label><textarea id="f_59"></textarea>
-<h3>Ações de melhoria</h3><p class="muted">Proponham três ações de melhoria, cada uma ligada a um dos princípios escolhidos.</p><label class="field" for="f_60">Ação 1</label><textarea id="f_60"></textarea>
+<h3>Ações de melhoria</h3><p class="muted">Proponham três ações de melhoria, cada uma ligada a um dos princípios escolhidos.</p><span class="hint">Cada ação deve resolver diretamente o princípio que ela referencia — se a ação serviria igual para qualquer um dos 3 princípios, ela é genérica demais.</span><label class="field" for="f_60">Ação 1</label><textarea id="f_60"></textarea>
 <label class="field" for="f_61">Ação 2</label><textarea id="f_61"></textarea>
 <label class="field" for="f_62">Ação 3</label><textarea id="f_62"></textarea>
   <div class="card no-print confira">
