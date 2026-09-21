@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,34 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "Lendo um workflow"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Observem o workflow do GitHub Actions apresentado na aula (slide anterior). <strong>Traduzam</strong> o que o pipeline faz, como se explicassem para alguém que nunca viu isso.</p>
     <p class="muted">Base: apostila, Capítulo 20 (+ apostila de GitHub — Actions).</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 600 90" role="img" aria-label="Fluxo típico de um pipeline de CI/CD: um evento como push dispara o workflow, que roda num runner, executa passos (checkout, instalar, testar) e termina em sucesso ou falha"><defs><marker id="p20a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#0e8074"/></marker></defs>
+<style>.p20b{fill:#e8f2f0;stroke:#0e8074;stroke-width:2}.p20t{font:700 11px sans-serif;fill:#17231f;text-anchor:middle}.p20l{stroke:#0e8074;stroke-width:2;fill:none;marker-end:url(#p20a)}</style>
+<rect class="p20b" x="5" y="25" width="90" height="40" rx="8"/><text class="p20t" x="50" y="49">Evento</text>
+<rect class="p20b" x="115" y="25" width="90" height="40" rx="8"/><text class="p20t" x="160" y="49">Runner</text>
+<rect class="p20b" x="225" y="25" width="90" height="40" rx="8"/><text class="p20t" x="270" y="49">Passos</text>
+<rect x="335" y="25" width="120" height="40" rx="8" fill="#e6f6ee" stroke="#1b8a5a" stroke-width="2"/><text class="p20t" x="395" y="49" fill="#0f5e3f">✓ Sucesso</text>
+<rect x="335" y="72" width="120" height="0" fill="none"/>
+<rect x="465" y="25" width="120" height="40" rx="8" fill="#fdecec" stroke="#c9333a" stroke-width="2"/><text class="p20t" x="525" y="49" fill="#8f2229">✗ Falha</text>
+<path class="p20l" d="M95,45 L113,45"/><path class="p20l" d="M205,45 L223,45"/><path class="p20l" d="M315,40 L333,40"/><path class="p20l" d="M315,50 L463,50"/>
+<text x="50" y="20" font-size="9.5" fill="#59736c" text-anchor="middle">ex.: push</text>
+<text x="270" y="20" font-size="9.5" fill="#59736c" text-anchor="middle">checkout, instalar, testar...</text>
+</svg>
+<p class="cap">Todo workflow segue essa forma geral — usem o arquivo apresentado na aula pra preencher cada caixa com o valor real dele.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Leitura do workflow: encontrem no arquivo apresentado o evento, nome, runner, primeira ação e comando final.</span></li>
+    <li><span class="num">3</span><span>Expliquem com suas palavras o que o pipeline faz, do gatilho ao resultado.</span></li>
+    <li><span class="num">4</span><span>Análise: pensem no que acontece se um teste falhar, e por que rodar isso a cada push é melhor que testar só no fim.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -144,13 +180,13 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_434">Nome ou nº do grupo</label><input type="text" id="f_434" placeholder="">
 <label class="field" for="f_435">Integrantes (separe por vírgula)</label><input type="text" id="f_435" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
-<h3>Leitura do workflow</h3><p class="muted">Completem com base no arquivo apresentado.</p><label class="field" for="f_436">Evento que dispara o workflow</label><input type="text" id="f_436" placeholder="">
+<h3>Leitura do workflow</h3><p class="muted">Completem com base no arquivo apresentado.</p><span class="hint">Eventos comuns: "push" (a cada envio de código) ou "pull_request" (a cada pedido de integração). Vejam qual está escrito no arquivo da aula.</span><label class="field" for="f_436">Evento que dispara o workflow</label><input type="text" id="f_436" placeholder="">
 <label class="field" for="f_437">Nome do workflow</label><input type="text" id="f_437" placeholder="">
 <label class="field" for="f_438">Sistema utilizado (runner)</label><input type="text" id="f_438" placeholder="">
 <label class="field" for="f_439">Primeira ação executada</label><input type="text" id="f_439" placeholder="">
 <label class="field" for="f_440">Comando final executado</label><input type="text" id="f_440" placeholder="">
 <h3>Explicação</h3><p class="muted">Com suas palavras, descrevam o que acontece nesse pipeline, do gatilho ao resultado.</p><label class="field" for="f_441">Descrição do pipeline</label><textarea id="f_441"></textarea>
-<h3>Análise</h3><label class="field" for="f_442">O que aconteceria se um dos testes falhasse nesse pipeline?</label><textarea id="f_442"></textarea>
+<h3>Análise</h3><label class="field" for="f_442">O que aconteceria se um dos testes falhasse nesse pipeline?</label><textarea id="f_442"></textarea><span class="hint">Pensem no diagrama acima: o fluxo pararia nos "Passos" e cairia no lado "✗ Falha" — o pipeline avisa a equipe em vez de deixar o código com problema seguir adiante.</span>
 <label class="field" for="f_443">Por que rodar isso a cada push é melhor do que testar só no fim do projeto?</label><textarea id="f_443"></textarea>
   <div class="card no-print confira">
   <span class="tag">Confira antes de gerar o PDF</span>

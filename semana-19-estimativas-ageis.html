@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,29 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "Estimando o backlog do nosso aplicativo"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Organizem as tarefas do novo aplicativo <strong>"Entregas da escola"</strong>. Não usem horas — estimativa relativa!</p>
     <p class="muted">Passos: (1) escolham a tarefa <strong>âncora</strong> (a mais simples, como referência); (2) classifiquem cada tarefa por <strong>tamanho de camiseta</strong> (XS a XL) comparando com a âncora; (3) convertam para <strong>story points (Fibonacci: 1, 2, 3, 5, 8, 13)</strong> com base na complexidade e na incerteza. Base: apostila, Capítulo 19.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 460 70" role="img" aria-label="Escala de tamanho de camiseta mapeada para story points: XS igual a 1, S igual a 2, M igual a 3, L igual a 5, XL igual a 8 ou 13, sempre comparando com a tarefa âncora"><style>.p19t{font:700 13px sans-serif;fill:#fff;text-anchor:middle}.p19n{font:10px sans-serif;fill:#fff;text-anchor:middle}</style>
+<rect x="5" y="5" width="70" height="34" rx="7" fill="#8fc9be"/><text class="p19t" x="40" y="27" fill="#17231f">XS</text><text class="p19n" x="40" y="55" fill="#59736c">1 pt</text>
+<rect x="85" y="5" width="70" height="34" rx="7" fill="#3a9c8f"/><text class="p19t" x="120" y="27">S</text><text class="p19n" x="120" y="55" fill="#59736c">2 pt</text>
+<rect x="165" y="5" width="70" height="34" rx="7" fill="#0e8074"/><text class="p19t" x="200" y="27">M</text><text class="p19n" x="200" y="55" fill="#59736c">3 pt</text>
+<rect x="245" y="5" width="70" height="34" rx="7" fill="#0a5e55"/><text class="p19t" x="280" y="27">L</text><text class="p19n" x="280" y="55" fill="#59736c">5 pt</text>
+<rect x="325" y="5" width="130" height="34" rx="7" fill="#083f38"/><text class="p19t" x="390" y="27">XL</text><text class="p19n" x="390" y="55" fill="#59736c">8 ou 13 pt</text>
+</svg>
+<p class="cap">A âncora costuma ser XS (1 ponto). Toda outra tarefa é comparada com ela: "isso é mais fácil, parecido ou bem mais difícil que a âncora?"</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Escolham a tarefa mais simples da lista como âncora.</span></li>
+    <li><span class="num">3</span><span>Para as 5 tarefas, comparem cada uma com a âncora, classifiquem por tamanho de camiseta e convertam em story points (escala acima).</span></li>
+    <li><span class="num">4</span><span>Análise: identifiquem a tarefa de maior incerteza e calculem quantas sprints o backlog levaria.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -144,11 +175,11 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_407">Nome ou nº do grupo</label><input type="text" id="f_407" placeholder="">
 <label class="field" for="f_408">Integrantes (separe por vírgula)</label><input type="text" id="f_408" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
-<h3>Tarefa âncora</h3><label class="field" for="f_409">Qual tarefa foi escolhida como âncora e por quê</label><input type="text" id="f_409" placeholder="">
+<h3>Tarefa âncora</h3><span class="hint">Escolham a tarefa mais simples e clara da lista — geralmente algo pequeno e bem entendido, como "corrigir erro de texto".</span><label class="field" for="f_409">Qual tarefa foi escolhida como âncora e por quê</label><input type="text" id="f_409" placeholder="">
 <h3>Tabela de estimativas</h3><p class="muted">Para as 5 tarefas do backlog, preencham o tamanho de camiseta e os story points.</p><label class="field">Tarefa</label><div class="sub"><strong>1</strong><label class="field" for="g_410">Tarefa</label><input type="text" id="g_410"><label class="field" for="g_411">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_411"><label class="field" for="g_412">Story points (1,2,3,5,8,13)</label><input type="text" id="g_412"><label class="field" for="g_413">Por que essa estimativa</label><input type="text" id="g_413"></div><div class="sub"><strong>2</strong><label class="field" for="g_414">Tarefa</label><input type="text" id="g_414"><label class="field" for="g_415">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_415"><label class="field" for="g_416">Story points (1,2,3,5,8,13)</label><input type="text" id="g_416"><label class="field" for="g_417">Por que essa estimativa</label><input type="text" id="g_417"></div><div class="sub"><strong>3</strong><label class="field" for="g_418">Tarefa</label><input type="text" id="g_418"><label class="field" for="g_419">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_419"><label class="field" for="g_420">Story points (1,2,3,5,8,13)</label><input type="text" id="g_420"><label class="field" for="g_421">Por que essa estimativa</label><input type="text" id="g_421"></div><div class="sub"><strong>4</strong><label class="field" for="g_422">Tarefa</label><input type="text" id="g_422"><label class="field" for="g_423">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_423"><label class="field" for="g_424">Story points (1,2,3,5,8,13)</label><input type="text" id="g_424"><label class="field" for="g_425">Por que essa estimativa</label><input type="text" id="g_425"></div><div class="sub"><strong>5</strong><label class="field" for="g_426">Tarefa</label><input type="text" id="g_426"><label class="field" for="g_427">Tamanho de camiseta (XS–XL)</label><input type="text" id="g_427"><label class="field" for="g_428">Story points (1,2,3,5,8,13)</label><input type="text" id="g_428"><label class="field" for="g_429">Por que essa estimativa</label><input type="text" id="g_429"></div>
 <p class="muted">Tarefas: 1. Corrigir erro de texto na home · 2. Criar tela de cadastro de usuário · 3. Integrar API de pagamento externo · 4. Atualizar cor de botão no sistema · 5. Criar relatório de vendas.</p>
 <h3>Análise</h3><label class="field" for="f_430">Qual tarefa tem maior incerteza e por quê?</label><textarea id="f_430"></textarea>
-<label class="field" for="f_431">Se a velocity do time fosse 13 pontos por sprint, quantas sprints o backlog levaria?</label><textarea id="f_431"></textarea>
+<label class="field" for="f_431">Se a velocity do time fosse 13 pontos por sprint, quantas sprints o backlog levaria?</label><textarea id="f_431"></textarea><span class="hint">Somem os story points das 5 tarefas e dividam por 13 — se der número quebrado, arredondem para cima (uma sprint não termina "pela metade").</span>
   <div class="card no-print confira">
   <span class="tag">Confira antes de gerar o PDF</span>
   <label class="opt"><input type="checkbox"><span>Identificação (escola, nome do aluno, turma, grupo, integrantes, professor(a), data) preenchida.</span></label>

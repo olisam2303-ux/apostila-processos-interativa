@@ -49,6 +49,14 @@ th{background:var(--panel-2)}
 .check-row .q{flex:1 1 260px}
 .check-row label{font-weight:600;font-size:.9rem;display:inline-flex;gap:5px;align-items:center}
 .score{font-weight:700}
+.hint{display:block;color:var(--accent-d);font-size:.82rem;margin:3px 0 10px;font-style:italic}
+.visual{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin:14px 0;overflow-x:auto}
+.visual svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.visual .cap{font-size:.85rem;color:var(--text-dim);text-align:center;margin-top:8px}
+.comoBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
+.comoList{margin:0;padding-left:0;list-style:none;display:grid;gap:9px}
+.comoList li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+.comoList .num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
 .print-only{display:none}
 footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border);padding-top:14px}
 
@@ -136,6 +144,31 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <h2 class="no-print">Registro da Aula — "O contrato da equipe"</h2>
 <div class="card no-print"><span class="tag">Contexto</span><p>Uma equipe sofre porque muitas tarefas da coluna <strong>"feito"</strong> voltam para <strong>"em execução"</strong> por falta de teste. Além disso, as tarefas comuns ficam paradas porque surgem "urgências" o tempo todo.</p>
     <p class="muted">Base: apostila, Capítulo 18. Entrega: arquivo de texto (PDF) no AVA, individual.</p></div>
+
+<div class="visual no-print">
+<svg viewBox="0 0 460 150" role="img" aria-label="Quadro Kanban com política explícita na coluna feito, limite de WIP na coluna em execução, e quatro classes de serviço: urgente, data fixa, padrão e intangível"><style>.p18t{font:700 11px sans-serif;fill:#17231f;text-anchor:middle}.p18d{font:9.5px sans-serif;fill:#59736c;text-anchor:middle}</style>
+<rect x="10" y="10" width="130" height="90" rx="6" fill="#fbfdfc" stroke="#d3e3e0"/><text class="p18t" x="75" y="26">A fazer</text>
+<rect x="150" y="10" width="130" height="90" rx="6" fill="#fbfdfc" stroke="#d3e3e0"/><text class="p18t" x="215" y="26">Em execução</text><text class="p18d" x="215" y="42">limite de WIP: só cabem</text><text class="p18d" x="215" y="54">N tarefas ao mesmo tempo</text>
+<rect x="290" y="10" width="160" height="90" rx="6" fill="#e6f6ee" stroke="#1b8a5a"/><text class="p18t" x="370" y="26" fill="#0f5e3f">Feito</text><text class="p18d" x="370" y="42" fill="#0f5e3f">só entra aqui se passar</text><text class="p18d" x="370" y="54" fill="#0f5e3f">pela política explícita</text><text class="p18d" x="370" y="66" fill="#0f5e3f">(ex.: "testado e sem bug crítico")</text>
+<rect x="10" y="115" width="105" height="26" rx="6" fill="#c9333a"/><text x="62" y="132" font-size="9.5" fill="#fff" text-anchor="middle">Urgente</text>
+<rect x="120" y="115" width="105" height="26" rx="6" fill="#8a5a1b"/><text x="172" y="132" font-size="9.5" fill="#fff" text-anchor="middle">Data fixa</text>
+<rect x="230" y="115" width="105" height="26" rx="6" fill="#0e8074"/><text x="282" y="132" font-size="9.5" fill="#fff" text-anchor="middle">Padrão</text>
+<rect x="340" y="115" width="105" height="26" rx="6" fill="#3a5a8a"/><text x="392" y="132" font-size="9.5" fill="#fff" text-anchor="middle">Intangível</text>
+</svg>
+<p class="cap">Uma política explícita evita o retorno de tarefas de "Feito"; as classes de serviço decidem o que passa na frente sem precisar gritar "urgente" toda vez.</p>
+</div>
+
+<div class="comoBox no-print">
+  <h3 style="margin-top:0">Como preencher esta atividade</h3>
+  <ol class="comoList">
+    <li><span class="num">1</span><span>Preencham a identificação do grupo.</span></li>
+    <li><span class="num">2</span><span>Item 1: escrevam 2 políticas explícitas e objetivas para entrar em "feito" (o diagrama mostra o papel dessa política).</span></li>
+    <li><span class="num">3</span><span>Item 2: criem 3 classes de serviço, usando o exemplo do diagrama como referência.</span></li>
+    <li><span class="num">4</span><span>Item 3: expliquem como isso estabiliza o lead time.</span></li>
+    <li><span class="num">5</span><span>Confiram o checklist e gerem o PDF (lembrem de desmarcar Cabeçalhos e rodapés).</span></li>
+  </ol>
+</div>
+
 <form id="reg-0" class="card no-print">
 <h3>Identificação</h3><label class="field" for="f_esc">Escola</label><input type="text" id="f_esc" placeholder="">
 <label class="field" for="f_aluno">Nome do aluno</label><input type="text" id="f_aluno" placeholder="">
@@ -144,7 +177,7 @@ footer{margin-top:40px;color:var(--text-dim);font-size:.85rem;border-top:1px sol
 <label class="field" for="f_397">Nome ou nº do grupo</label><input type="text" id="f_397" placeholder="">
 <label class="field" for="f_398">Integrantes (separe por vírgula)</label><input type="text" id="f_398" placeholder="">
 <label class="field" for="f_prof">Professor(a)</label><input type="text" id="f_prof" placeholder="">
-<h3>1 — Políticas explícitas para a coluna &quot;feito&quot;</h3><p class="muted">Definam duas políticas (critérios de qualidade) que impeçam o retorno de tarefas.</p><label class="field" for="f_399">Política explícita 1</label><textarea id="f_399"></textarea>
+<h3>1 — Políticas explícitas para a coluna &quot;feito&quot;</h3><p class="muted">Definam duas políticas (critérios de qualidade) que impeçam o retorno de tarefas.</p><span class="hint">Precisa ser algo objetivo, que qualquer pessoa consiga checar (ex.: "passou por todos os testes automatizados") — não algo subjetivo como "está bom".</span><label class="field" for="f_399">Política explícita 1</label><textarea id="f_399"></textarea>
 <label class="field" for="f_400">Política explícita 2</label><textarea id="f_400"></textarea>
 <h3>2 — Classes de serviço</h3><p class="muted">Criem três classes de serviço para organizar o que deve ser feito primeiro (ex.: urgente, data fixa, padrão, intangível).</p><label class="field" for="f_401">Classe de serviço 1 — nome e quando se aplica</label><input type="text" id="f_401" placeholder="">
 <label class="field" for="f_402">Classe de serviço 2 — nome e quando se aplica</label><input type="text" id="f_402" placeholder="">
